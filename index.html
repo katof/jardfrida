@@ -593,14 +593,14 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     <li>Gå til <i>Settings → Pages</i>, og vælg <i>Deploy from a branch</i> med grenen <code>main</code>.</li>
     <li>Efter et par minutter ligger siden på <code>https://BRUGERNAVN.github.io/jardfrida/</code>.</li>
   </ol>
-  <p style="margin-top:10px"><b>Elevernes sten:</b> Galleriet er en Padlet-væg, som vises på siden.</p>
+  <p style="margin-top:10px"><b>Elevernes sten:</b> Galleriet er en Padlet-væg, som vises på siden. Klassens væg er allerede sat ind. Vil du bruge en anden væg, så følg trinene herunder.</p>
   <ol>
     <li>Opret en væg på padlet.com, fx som gitter.</li>
     <li>Slå <i>Godkend opslag</i> til, så du ser billederne, før de bliver vist.</li>
     <li>Vælg <i>Del → Indlejr</i>, og kopiér linket, der indeholder <code>/embed/</code>.</li>
     <li>Sæt linket bag på sidens adresse: <code>…/jardfrida/?padlet=</code> og så Padlet-linket. Giv eleverne den adresse.</li>
   </ol>
-  <p style="margin-top:10px;color:var(--ink-soft);font-size:.9rem">Tjek, at skolen må bruge Padlet til elever. Bed eleverne om kun at fotografere sten, og om ikke at skrive deres fulde navn. Uden et Padlet-link viser siden ikke noget galleri.</p>
+  <p style="margin-top:10px;color:var(--ink-soft);font-size:.9rem">Tjek, at skolen må bruge Padlet til elever. Bed eleverne om kun at fotografere sten, og om ikke at skrive deres fulde navn. Uden et Padlet-link i adressen viser siden klassens faste væg.</p>
 
   <h3>Designprincipper</h3>
   <div class="principles">
@@ -1055,8 +1055,9 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   // ---------- klassens galleri (Padlet) ----------
   (function gallery(){
     const g = document.getElementById('gallery');
-    let url = '';
-    try { url = new URLSearchParams(location.search).get('padlet') || ''; } catch(e){}
+    const DEFAULT_PADLET = 'https://padlet.com/embed/s0243ctlzzvx2scmvpxs';
+    let url = DEFAULT_PADLET;
+    try { url = new URLSearchParams(location.search).get('padlet') || DEFAULT_PADLET; } catch(e){}
     let ok = false;
     try { const u = new URL(url); ok = u.protocol === 'https:' && /(^|\.)padlet\.(com|org)$/.test(u.hostname); } catch(e){}
     if (!ok){
@@ -1066,7 +1067,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     }
     if (/\/embed\//.test(url)){
       const f = document.createElement('iframe'); f.src = url; f.title = 'Klassens sten på Padlet'; f.loading = 'lazy';
-      f.setAttribute('allow', 'camera;microphone;geolocation;clipboard-write'); g.appendChild(f);
+      f.setAttribute('allow', 'camera;microphone;geolocation;display-capture;clipboard-write'); g.appendChild(f);
     }
     const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
     a.className = 'btn primary'; a.style.justifySelf = 'start'; a.style.textDecoration = 'none';
