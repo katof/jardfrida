@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jarðfríða – tre lektioner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+
+:root{
+  color-scheme: light;
+  --ground:#EDF0F1;
+  --surface:#FFFFFF;
+  --surface-2:#E3E8EA;
+  --ink:#1E2326;
+  --ink-soft:#4E585E;
+  --line:#C9D1D5;
+  --basalt:#3A3F44;
+  --basalt-2:#565C62;
+  --vest:#F2C230;
+  --vest-ink:#2A2100;
+  --moss:#5F7A5B;
+  --rust:#A4533A;
+  --good:#2F7A4A;
+  --warn:#A86A00;
+  --focus:#1B6FB8;
+  --display:"Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --ground:#15191B; --surface:#1F2427; --surface-2:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
+    --line:#3A4348; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#F2C230; --vest-ink:#2A2100;
+    --moss:#8FAE8A; --rust:#D0795D; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --ground:#15191B; --surface:#1F2427; --surface-2:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
+  --line:#3A4348; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#F2C230; --vest-ink:#2A2100;
+  --moss:#8FAE8A; --rust:#D0795D; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--ground);color:var(--ink);font:16px/1.55 var(--body);padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:960px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:800}
+h2{font-size:1.6rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0;max-width:65ch}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.proto{background:var(--vest);color:var(--vest-ink);font-size:.85rem;padding:6px 16px;margin-inline:-16px;text-align:center}
+.proto b{font-weight:700}
+
+/* hero */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding-block:28px 20px}
+.hero svg{width:130px;height:auto}
+.bubble{background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:16px 18px;position:relative;display:grid;gap:8px}
+.bubble::before{content:"";position:absolute;left:-12px;top:34px;border:10px solid transparent;border-right-color:var(--ink);border-left:0}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+@media (max-width:560px){.hero{grid-template-columns:1fr}.hero svg{width:100px}.bubble::before{display:none}}
+
+/* phases */
+.phases{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin-bottom:22px}
+.phase{appearance:none;border:0;background:none;padding:10px 14px;border-radius:10px 10px 0 0;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--ink-soft);position:relative;top:2px;border-bottom:3px solid transparent}
+.phase[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--vest);background:var(--surface)}
+
+/* core-depth nav */
+.layout{display:grid;grid-template-columns:190px 1fr;gap:24px;align-items:start}
+@media (max-width:760px){.layout{grid-template-columns:1fr}}
+.depth{position:relative;padding-left:26px;display:grid;gap:14px}
+.depth::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:6px;border-radius:3px;background:linear-gradient(var(--basalt-2),var(--basalt) 60%,var(--rust) 62%,var(--basalt) 66%)}
+.stop{appearance:none;border:0;background:none;text-align:left;cursor:pointer;padding:4px 6px;border-radius:8px;display:grid;gap:0;position:relative}
+.stop::before{content:"";position:absolute;left:-23px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--basalt)}
+.stop.done::before{background:var(--good);border-color:var(--good)}
+.stop[aria-current="step"]{background:var(--surface)}
+.stop[aria-current="step"]::before{background:var(--vest);border-color:var(--ink)}
+.stop .m{font-family:var(--mono);font-size:.75rem;color:var(--ink-soft)}
+.stop .t{font-weight:700}
+@media (max-width:760px){.depth{grid-template-columns:repeat(2,1fr);padding-left:0}.depth::before{display:none}.stop{background:var(--surface-2)}.stop::before{display:none}}
+
+.panel{background:var(--surface);border-radius:16px;padding:22px;display:grid;gap:16px;border:1px solid var(--line)}
+.say{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;background:var(--surface-2);border-radius:12px;padding:12px}
+.say svg{width:44px;height:44px}
+.say p{font-size:.98rem}
+.task{font-weight:700}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{appearance:none;border:2px solid var(--ink);background:var(--surface);border-radius:999px;padding:8px 16px;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--vest);color:var(--vest-ink);border-color:var(--vest-ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.feedback{border-radius:12px;padding:12px 14px;font-size:.96rem;border:2px solid}
+.feedback.good{border-color:var(--good)}
+.feedback.warn{border-color:var(--warn)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px dashed var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink-soft)}
+.chip.found{border-style:solid;border-color:var(--good);color:var(--ink)}
+.chip.found::before{content:"✓ ";color:var(--good);font-weight:700}
+
+/* lens */
+.core-box{position:relative;touch-action:none;cursor:none;border-radius:14px;overflow:hidden;background:var(--surface-2);user-select:none}
+.core-box svg{display:block;width:100%;height:auto}
+.core-detail{position:absolute;inset:0;clip-path:circle(0 at 50% 50%)}
+.lens{position:absolute;width:110px;height:110px;border-radius:50%;border:5px solid var(--ink);box-shadow:0 0 0 2px var(--surface) inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0}
+.lens::after{content:"";position:absolute;width:44px;height:10px;background:var(--ink);border-radius:5px;right:-38px;bottom:-6px;transform:rotate(45deg)}
+.scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);padding-inline:4px}
+
+/* compare */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.card{appearance:none;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:10px;cursor:pointer;display:grid;gap:6px;justify-items:center}
+.card[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2)}
+.card canvas,.sample canvas{width:100%;max-width:140px;aspect-ratio:1;border-radius:8px}
+.card span{font-family:var(--mono);font-weight:600}
+.sample{display:grid;justify-items:center;gap:6px}
+.sample canvas{max-width:180px}
+.reasons{display:grid;gap:6px}
+.reasons label{display:flex;gap:8px;align-items:center;cursor:pointer}
+
+/* log */
+.logsheet{font-family:var(--mono);border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.logsheet .hd{background:var(--ink);color:var(--surface);padding:8px 12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:.85rem}
+.logrow{display:grid;grid-template-columns:160px 1fr;border-top:1px solid var(--line)}
+.logrow > *{padding:10px 12px}
+.logrow .k{background:var(--surface-2);font-size:.85rem;font-weight:600}
+@media (max-width:520px){.logrow{grid-template-columns:1fr}}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.sw{appearance:none;width:44px;height:44px;border-radius:8px;border:3px solid transparent;cursor:pointer;position:relative}
+.sw[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--surface) inset}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{appearance:none;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;cursor:pointer;font-family:var(--mono)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+textarea{width:100%;min-height:64px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--surface);font-family:var(--mono);font-size:.9rem}
+.compare-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.compare-table th,.compare-table td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.compare-table td.m{color:var(--good);font-weight:700}
+.compare-table td.x{color:var(--warn);font-weight:700}
+.tablewrap{overflow-x:auto}
+
+/* tunnel */
+.mountain{border-radius:14px;overflow:hidden;background:var(--surface-2)}
+.mountain svg{display:block;width:100%;height:auto}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.route{appearance:none;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;cursor:pointer;text-align:left;display:grid;gap:4px}
+.route[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2)}
+.route b{font-family:var(--display);font-size:1.15rem}
+.boreholes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.bh{border:1px solid var(--line);border-radius:10px;padding:10px;font-family:var(--mono);font-size:.82rem;display:grid;gap:4px}
+.bh b{font-family:var(--body)}
+
+/* diploma */
+.diploma{border:3px double var(--ink);border-radius:14px;padding:18px;text-align:center;display:grid;gap:8px;justify-items:center}
+.diploma .big{font-family:var(--display);font-size:1.8rem;font-weight:800}
+
+/* teacher */
+details.teacher{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.teacher summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.1rem}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.principles div{border-left:4px solid var(--vest);padding:4px 10px;display:grid;gap:2px}
+.principles b{font-size:.95rem}
+.principles span{font-size:.9rem;color:var(--ink-soft)}
+.checklist{display:grid;gap:8px;padding:0;margin:0;list-style:none}
+.checklist li{display:flex;gap:10px;align-items:flex-start}
+.checklist input{width:20px;height:20px;margin-top:2px}
+.photo-drop{border:2px dashed var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;justify-items:start}
+.photo-drop img{max-width:260px;border-radius:10px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- tre lektioner ---------- */
+.lesson-head{display:grid;gap:6px;margin-bottom:18px}
+.lesson-head .meta{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft)}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:6px}
+.plan div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:4px}
+.plan b{font-size:.95rem}
+.plan span{font-size:.88rem;color:var(--ink-soft)}
+.stack{display:grid;gap:18px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px;border:1.5px solid var(--ink);justify-self:start}
+.tag.screen{background:var(--surface-2)}
+.tag.stone{background:var(--basalt-2);color:#fff;border-color:var(--basalt-2)}
+.tag.clay{background:var(--rust);color:#fff;border-color:var(--rust)}
+.steps{margin:0;padding-left:22px;display:grid;gap:6px}
+.steps li::marker{font-family:var(--display);font-weight:800}
+.hint{background:var(--surface-2);border-left:4px solid var(--vest);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.field{display:grid;gap:6px}
+.field label{font-weight:700}
+.field textarea{font-family:var(--body);font-size:1rem}
+
+/* kernelog-bygger */
+.holes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.hole{border:2px solid var(--ink);border-radius:12px;overflow:hidden;display:grid;align-content:start}
+.hole .hd{background:var(--ink);color:var(--surface);padding:8px 12px;font-family:var(--mono);font-size:.85rem;display:flex;justify-content:space-between;gap:6px}
+.hole .bd{display:grid;grid-template-columns:46px 1fr;gap:12px;padding:12px}
+.hole svg{width:46px;height:auto;display:block}
+.layers{display:grid;gap:6px;align-content:start}
+.layer{display:grid;grid-template-columns:1fr 72px 32px;gap:6px;align-items:center}
+.layer select,.layer input{border:1px solid var(--line);border-radius:8px;padding:5px 6px;background:var(--surface);font-family:var(--mono);font-size:.85rem;min-width:0}
+.layer .x{appearance:none;border:1px solid var(--line);background:var(--surface);border-radius:8px;height:32px;cursor:pointer;font-weight:700}
+.total{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:.88rem}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:16px;border-radius:4px;display:inline-block;border:1px solid rgba(0,0,0,.25)}
+
+/* tværsnit */
+.section-box{border-radius:14px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+.section-box svg{display:block;width:100%;height:auto}
+.section-box .lay{cursor:pointer}
+.section-box .lay:focus{outline:none}
+.section-box .lay.sel{stroke:var(--focus);stroke-width:4}
+.slider{display:grid;gap:6px}
+.slider input{width:100%;accent-color:var(--rust)}
+.slider output{font-family:var(--mono);font-weight:600}
+.reflect{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.forloeb{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:10px}
+.forloeb th,.forloeb td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.forloeb th{font-family:var(--display);font-size:.95rem}
+details.teacher h3{margin-top:18px}
+.sub{font-family:var(--display);font-size:1.15rem;margin-top:6px}
+.tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.slot{border:1px dashed var(--line);border-radius:12px;padding:10px;display:grid;gap:6px;justify-items:center;min-height:120px;align-content:start}
+.slot.on{border-style:solid;border-color:var(--ink);background:var(--surface)}
+.slot b{font-family:var(--mono)}
+.slot svg{width:100%;max-width:110px;height:auto}
+.slot span{font-size:.82rem;color:var(--ink-soft);text-align:center}
+#mtn .pin,#mtnCut .pin{cursor:pointer}
+.gallery{display:grid;gap:12px}
+.gallery iframe{width:100%;height:620px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+details.teacher code{font-family:var(--mono);font-size:.85rem;background:var(--surface-2);padding:1px 5px;border-radius:5px;word-break:break-all}
+details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:grid;gap:4px}
+</style>
+</head>
+<body>
+<div class="proto"><b>Prototype til vurdering</b> · Indhold og eksempler er foreløbige · Endelig version på færøsk</div>
+<div class="wrap">
+
+<header class="hero">
+
+  <svg viewBox="0 0 140 170" role="img" aria-label="Tegning af geologen Jarðfríða med lup og gul vest">
+    <defs><clipPath id="face"><circle cx="70" cy="58" r="34"/></clipPath></defs>
+    <!-- hair back -->
+    <path d="M32 62 C30 22 110 22 108 62 L110 92 C96 84 44 84 30 92 Z" fill="#5A3A2A"/>
+    <!-- body / vest -->
+    <path d="M26 170 C26 118 46 100 70 100 C94 100 114 118 114 170 Z" fill="#3E6E8E"/>
+    <path d="M38 170 L44 112 C54 104 60 102 64 102 L60 170 Z M102 170 L96 112 C86 104 80 102 76 102 L80 170 Z" fill="#F2C230"/>
+    <rect x="40" y="136" width="22" height="5" fill="#D9DDE0" transform="rotate(-4 51 138)"/>
+    <rect x="78" y="136" width="22" height="5" fill="#D9DDE0" transform="rotate(4 89 138)"/>
+    <!-- neck & face -->
+    <rect x="62" y="86" width="16" height="18" fill="#E8B894"/>
+    <circle cx="70" cy="58" r="34" fill="#F0C4A0"/>
+    <!-- fringe -->
+    <path d="M36 52 C40 26 100 22 106 52 C92 40 70 36 52 44 C46 46 40 50 36 52 Z" fill="#5A3A2A"/>
+    <circle cx="70" cy="18" r="12" fill="#5A3A2A"/>
+    <!-- eyes, cheeks, smile -->
+    <circle cx="58" cy="60" r="3.4" fill="#1E2326"/><circle cx="82" cy="60" r="3.4" fill="#1E2326"/>
+    <circle cx="52" cy="70" r="5" fill="#E89A86" opacity=".55"/><circle cx="88" cy="70" r="5" fill="#E89A86" opacity=".55"/>
+    <path d="M60 74 Q70 82 80 74" stroke="#1E2326" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <!-- magnifier -->
+    <line x1="112" y1="124" x2="128" y2="150" stroke="#1E2326" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="106" cy="114" r="15" fill="#CFE6F2" fill-opacity=".7" stroke="#1E2326" stroke-width="5"/>
+    <circle cx="100" cy="109" r="4" fill="#FFFFFF" opacity=".8"/>
+  </svg>
+  
+  <div class="bubble">
+    <span class="eyebrow">Geoskúli · Jarðfeingi · Tre lektioner</span>
+    <h1>Hej, jeg er Jarðfríða!</h1>
+    <p>Jeg er geolog. Det betyder, at jeg læser historier, der står skrevet i sten. Når der skal bygges en tunnel, borer vi dybt ned i fjeldet og henter lange stenpølser op – de hedder <b>boreprøver</b>. I tre lektioner skal I undersøge rigtige sten, bore i jeres eget fjeld og vælge, hvor tunnelen skal gå.</p>
+  </div>
+</header>
+
+<nav class="phases" role="tablist" aria-label="Forløbets lektioner">
+  <button class="phase" role="tab" id="tab-l1" aria-selected="true" aria-controls="phase-l1">1 · Se</button>
+  <button class="phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2">2 · Bor</button>
+  <button class="phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3">3 · Vælg tunnel</button>
+  <button class="phase" role="tab" id="tab-after" aria-selected="false" aria-controls="phase-after">Bagefter</button>
+</nav>
+
+<!-- ============ LEKTION 1 ============ -->
+<section id="phase-l1" role="tabpanel" aria-labelledby="tab-l1">
+  <div class="lesson-head">
+    <span class="meta">LEKTION 1 · 45 MIN</span>
+    <h2>Lær at se som en geolog</h2>
+    <div class="plan">
+      <div><span class="tag screen">Skærm</span><b>Øv dig med Jarðfríða</b><span>Undersøg en boreprøve med luppen, og sammenlign med kortene.</span></div>
+      <div><span class="tag stone">Rigtige sten</span><b>Gør det selv</b><span>Kig, gæt og sammenlign med rigtige sten og din logbog.</span></div>
+    </div>
+  </div>
+  <div class="stack">
+<!-- Station: lup -->
+      <article class="panel station" data-s="0">
+        <span class="tag screen">Skærm</span>
+        <div class="say">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <p>»Med det blotte øje ligner boreprøven bare en grå sten. Men når jeg kigger med luppen, ser jeg små spor. Jeg leder altid efter tre ting: <b>huller</b>, <b>krystaller</b> og <b>farve</b>.«</p>
+        </div>
+        <h2>Undersøg boreprøven med luppen</h2>
+        <p class="task">Bevæg luppen hen over boreprøven. Klik, når du finder noget.</p>
+        <div>
+          <div class="core-box" id="coreBox" aria-describedby="coreHelp">
+            <svg id="coreBase" viewBox="0 0 600 150" aria-hidden="true"></svg>
+            <svg id="coreDetail" class="core-detail" viewBox="0 0 600 150" aria-hidden="true"></svg>
+            <div class="lens" id="lens"></div>
+          </div>
+          <div class="scale" aria-hidden="true"><span>12,0 m</span><span>12,25</span><span>12,5</span><span>12,75</span><span>13,0 m</span></div>
+        </div>
+        <p id="coreHelp" class="chip" style="border:0;padding:0">Tip: Du kan også trække med fingeren på en tablet.</p>
+        <div class="chips" id="finds">
+          <span class="chip" data-f="huller">Små huller (blærer)</span>
+          <span class="chip" data-f="krystaller">Hvide krystaller</span>
+          <span class="chip" data-f="farve">Rødlig farve</span>
+        </div>
+        <div id="lensFeedback" class="feedback good" hidden></div>
+      </article>
+
+      
+<!-- Station: sammenlign -->
+      <article class="panel station" data-s="1">
+        <span class="tag screen">Skærm</span>
+        <div class="say">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <p>»Hvor mange krystaller er der egentlig? Jeg tæller dem ikke én for én. Jeg sammenligner med mine <b>sammenligningskort</b>. Nogle gange passer ingen af kortene helt – så må jeg vælge det, der ligner mest, og skrive hvorfor.«</p>
+        </div>
+        <h2>Sammenlign med kortene</h2>
+        <div class="row" style="align-items:flex-start;gap:24px">
+          <div class="sample"><canvas id="sampleCanvas" width="360" height="360" aria-label="Udsnit af boreprøven set gennem lup"></canvas><span class="eyebrow">Udsnit af din boreprøve</span></div>
+          <div style="flex:1;min-width:220px;display:grid;gap:12px">
+            <p class="task">Hvilket kort ligner udsnittet mest?</p>
+            <div class="cards" id="cards"></div>
+          </div>
+        </div>
+        <fieldset class="reasons" style="border:0;padding:0;margin:0">
+          <legend class="task" style="margin-bottom:6px">Hvordan valgte du?</legend>
+          <label><input type="radio" name="reason" id="r1" value="talte"> Jeg talte krystaller i en lille del</label>
+          <label><input type="radio" name="reason" id="r2" value="lignede"> Jeg så, hvilket kort der lignede mest</label>
+          <label><input type="radio" name="reason" id="r3" value="gættede"> Jeg gættede</label>
+        </fieldset>
+        <div class="row"><button class="btn" id="checkCompare" disabled>Tjek mit valg</button></div>
+        <div id="compareFeedback" class="feedback" hidden></div>
+      </article>
+
+      
+      <article class="panel">
+        <span class="tag stone">Rigtige sten</span>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Skærmen var kun en øvelse. Nu skal I kigge på rigtige sten. De kan noget, skærmen ikke kan: I kan mærke dem, vende dem og gøre dem våde.«</p></div>
+        <h2>Nu med rigtige sten</h2>
+        <ol class="steps">
+          <li>Kig først på stenen uden lup. Tegn den, og skriv med dine egne ord, hvad du ser (logbog s. 2).</li>
+          <li>Kig så med luppen. Finder du huller, krystaller eller en særlig farve?</li>
+          <li>Gæt: Hvad tror du, der er sket med stenen? Skriv, hvorfor du tror det.</li>
+          <li>Sammenlign med farvekortet, hulkortet og krystalkortet (logbog s. 3).</li>
+        </ol>
+        <p class="hint"><b>Tip:</b> Gør stenen lidt våd. Så kan du bedre se farverne.</p>
+        <p class="hint"><b>Tal med din sidemakker:</b> Valgte I det samme kort? Hvad gør I, når intet kort passer helt?</p>
+      </article>
+  </div>
+</section>
+
+<!-- ============ LEKTION 2 ============ -->
+<section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden>
+  <div class="lesson-head">
+    <span class="meta">LEKTION 2 · 45 MIN</span>
+    <h2>Skriv i loggen, og bor i fjeldet</h2>
+    <div class="plan">
+      <div><span class="tag screen">Skærm</span><b>Skriv i loggen</b><span>Lav en log, og sammenlign med Jarðfríðas.</span></div>
+      <div><span class="tag clay">Fjeld</span><b>Gæt, og bor</b><span>Gæt, hvad der er inde i fjeldet. Bor i modellervoksen – eller i det digitale fjeld.</span></div>
+      <div><span class="tag screen">Skærm</span><b>Skriv kernerne ind</b><span>Lav en kernelog for hver boring.</span></div>
+    </div>
+  </div>
+  <div class="stack">
+<!-- Station: log -->
+      <article class="panel station" data-s="2">
+        <span class="tag screen">Skærm</span>
+        <div class="say">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          <p>»Det vigtigste er at skrive ned, hvad jeg ser. Min <b>log</b> bliver senere til en rapport, som dem, der bygger tunnelen, læser. Hvis jeg skriver uklart, kan de ikke bruge det.«</p>
+        </div>
+        <h2>Skriv i loggen</h2>
+        <div class="logsheet">
+          <div class="hd"><span>BOREPRØVE-LOG · Boring B2</span><span>Dybde: 12,0–13,0 m</span></div>
+          <div class="logrow"><div class="k">Farve</div><div><div class="swatches" id="swatches"></div></div></div>
+          <div class="logrow"><div class="k">Kornstørrelse</div><div><div class="seg" id="grain"><button data-v="fin">fin</button><button data-v="mellem">mellem</button><button data-v="grov">grov</button></div></div></div>
+          <div class="logrow"><div class="k">Huller (blærer)</div><div><div class="seg" id="holes"><button data-v="ingen">ingen</button><button data-v="få">få</button><button data-v="mange">mange</button></div></div></div>
+          <div class="logrow"><div class="k">Krystaller</div><div id="crystalVal" style="font-family:var(--mono)">– (fra station 2)</div></div>
+          <div class="logrow"><div class="k"><label for="notes">Bemærkninger</label></div><div><textarea id="notes">Rødt lag nederst i prøven.</textarea></div></div>
+        </div>
+        <div class="row"><button class="btn" id="compareLog">Sammenlign med Jarðfríðas log</button></div>
+        <div id="logCompare" hidden class="tablewrap"></div>
+      </article>
+
+      
+      <article class="panel">
+        <span class="tag clay">Fjeld</span>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Før jeg borer, tænker jeg over, hvad jeg forventer at finde. Bagefter kan jeg se, om jeg havde ret.«</p></div>
+        <h2>Gæt, før I borer</h2>
+        <p class="task">Kig på jeres fjeld udefra. I må ikke røre det endnu.</p>
+        <div class="field">
+          <label for="guess">Vi tror, at der inde i fjeldet er …</label>
+          <textarea id="guess" placeholder="Fx: grå sten i bunden og et rødt lag et sted i midten"></textarea>
+        </div>
+        <p class="hint">Tegn også jeres gæt på papir: Sådan tror vi, fjeldet ser ud indeni.</p>
+      </article>
+
+      <article class="panel">
+        <span class="tag clay">Fjeld</span>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Nu skal I bore ligesom os. Bor lige ned, helt ned til bordet. Så kan I bagefter sammenligne boringerne, fordi de alle slutter samme sted.«</p></div>
+        <h2>Bor i fjeldet</h2>
+        <h3 class="sub">Med modellervoks</h3>
+        <ol class="steps">
+          <li>Bor ved B1, B2 og B3. Pres sugerøret lige ned, til det rammer bordet.</li>
+          <li>Drej sugerøret lidt, og træk det forsigtigt op.</li>
+          <li>Klip sugerøret op, og læg kernen på papiret. Skriv B1, B2 eller B3 ved den.</li>
+          <li>Mål lagene med en lineal. Start øverst.</li>
+          <li>Skriv lagene ind herunder – øverste lag først.</li>
+        </ol>
+        <h3 class="sub">Eller bor i det digitale fjeld</h3>
+        <p class="task">Klik på B1, B2 eller B3 for at bore. Kernen kommer op i kernebakken.</p>
+        <div class="section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Et fjeld med tre steder at bore: B1, B2 og B3"></svg></div>
+        <div class="row">
+          <button class="btn" data-drill="B1">Bor ved B1</button>
+          <button class="btn" data-drill="B2">Bor ved B2</button>
+          <button class="btn" data-drill="B3">Bor ved B3</button>
+        </div>
+        <div class="tray" id="tray" aria-live="polite"></div>
+        <p class="hint">Mål lagene med linealen ved siden af kernen. 0 cm er toppen af kernen.</p>
+        <h3 class="sub">Skriv kernerne ind</h3>
+        <div class="legend" aria-label="Farver i fjeldet">
+          <span><i style="background:#5F7A5B"></i>grøn = græs og jord</span>
+          <span><i style="background:#7A8086"></i>grå = fast basalt</span>
+          <span><i style="background:#2E3236"></i>sort = fast basalt</span>
+          <span><i style="background:#A4533A"></i>rød = blødt lag</span>
+        </div>
+        <div class="holes" id="coreHoles"></div>
+        <div class="row">
+          <button class="btn" id="loadExample">Vis Jarðfríðas kernelog</button>
+        </div>
+      </article>
+  </div>
+</section>
+
+<!-- ============ LEKTION 3 ============ -->
+<section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden>
+  <div class="lesson-head">
+    <span class="meta">LEKTION 3 · 30–45 MIN</span>
+    <h2>Forbind boringerne, og vælg tunnelen</h2>
+    <div class="plan">
+      <div><span class="tag screen">Skærm</span><b>Forbind lagene</b><span>Find de samme lag i boringerne, og tegn, hvordan de går gennem fjeldet.</span></div>
+      <div><span class="tag screen">Skærm</span><b>Vælg tunnel</b><span>Find en højde, hvor tunnelen kun går gennem fast sten.</span></div>
+      <div><span class="tag clay">Fjeld</span><b>Skær fjeldet over</b><span>Se, om I havde ret – og tal sammen om det.</span></div>
+    </div>
+  </div>
+  <div class="stack">
+      <article class="panel">
+        <span class="tag screen">Skærm</span>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Jeg kan ikke se ind i fjeldet. Jeg kan kun se det, der er i boringerne. Derfor forbinder jeg de lag, der ligner hinanden, og gætter, hvordan de går imellem.«</p></div>
+        <h2>Forbind boringerne</h2>
+        <p class="task" id="linkHelp">Klik på et lag i én boring og derefter på det samme lag i boringen ved siden af.</p>
+        <div class="section-box"><svg id="xsec" viewBox="0 0 640 320" role="img" aria-label="Tværsnit med jeres tre boringer"></svg></div>
+        <div class="row"><button class="btn" id="clearLinks">Fjern stregerne</button></div>
+        <p class="hint" id="emptyHint">Skriv jeres kerner ind i lektion 2 først – eller vis Jarðfríðas kernelog dér.</p>
+      </article>
+
+      <article class="panel">
+        <span class="tag screen">Skærm</span>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Fast basalt er godt at bore tunnel i. Det røde, bløde lag er farligt, for det kan skride sammen.«</p></div>
+        <h2>Hvor skal tunnelen gå?</h2>
+        <div class="slider">
+          <label for="tunnel" class="task">Flyt tunnelen op og ned</label>
+          <input type="range" id="tunnel" min="0.5" max="10" step="0.5" value="2">
+          <span>Tunnelens højde over bordet: <output id="tunnelOut" for="tunnel">2 cm</output></span>
+        </div>
+        <div class="row"><button class="btn primary" id="checkTunnel">Tjek tunnelen</button></div>
+        <div id="tunnelFeedback" class="feedback" hidden></div>
+      </article>
+
+      <article class="panel">
+        <span class="tag clay">Fjeld</span>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Nu må I gøre noget, som en geolog aldrig kan: skære fjeldet over. Så kan I se, om jeres tegning passer.«</p></div>
+        <h2>Skær fjeldet over</h2>
+        <ol class="steps">
+          <li>Skær jeres fjeld af modellervoks over langs boringerne B1, B2 og B3 – eller skær det digitale fjeld over herunder.</li>
+          <li>Sammenlign med jeres gæt fra lektion 2 og med stregerne på skærmen.</li>
+        </ol>
+        <div class="row"><button class="btn primary" id="cutBtn">Skær det digitale fjeld over</button></div>
+        <div class="section-box" id="cutBox" hidden><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Det digitale fjeld skåret over, så man kan se lagene indeni"></svg></div>
+        <div class="reflect">
+          <div class="field"><label for="ref1">Hvad passede?</label><textarea id="ref1"></textarea></div>
+          <div class="field"><label for="ref2">Hvad overraskede jer?</label><textarea id="ref2"></textarea></div>
+          <div class="field"><label for="ref3">Hvor var I mest i tvivl – og hvorfor?</label><textarea id="ref3"></textarea></div>
+        </div>
+        <div class="say"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg><p>»Vi geologer kan ikke skære fjeldet over. Derfor borer vi mange huller, og derfor skriver vi i loggen, når vi er i tvivl.«</p></div>
+      </article>
+
+      <article class="panel">
+        <h2>Tal sammen</h2>
+        <ul class="steps">
+          <li>Hvad så I i dag, som I ikke så før?</li>
+          <li>Hvad hjalp jer mest til at se: luppen, kortene, boringerne eller at tale sammen?</li>
+          <li>Hvorfor borer geologer mange huller, før de bygger en tunnel?</li>
+        </ul>
+        <div class="diploma">
+          <span class="eyebrow">Geoskúli</span>
+          <span class="big">I har arbejdet som geologer!</span>
+          <p>I har undersøgt, sammenlignet, skrevet i loggen, boret og valgt en tunnel.</p>
+        </div>
+      </article>
+  </div>
+</section>
+
+<!-- ============ BAGEFTER ============ -->
+<!-- ============ BAGEFTER ============ -->
+<section id="phase-after" role="tabpanel" aria-labelledby="tab-after" hidden>
+  <div class="panel">
+    <div class="say">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <p>»Nu er du selv geolog! Find en sten i nærheden af din skole eller dit hjem, og skriv en log om den. Så kan vi sammenligne med stenene fra boreprøvehallen.«</p>
+    </div>
+    <h2>Min egen sten</h2>
+    <div class="photo-drop">
+      <label for="photo" class="task">Tag et billede af din sten og læg det her</label>
+      <input type="file" id="photo" accept="image/*">
+      <img id="photoPreview" alt="Dit billede af stenen" hidden>
+    </div>
+    <div class="logsheet">
+      <div class="hd"><span>MIN LOG</span><span><label for="where">Fundet ved:</label> <input id="where" value="Stranden ved skolen" style="background:transparent;border:0;border-bottom:1px solid currentColor;color:inherit;font-family:var(--mono);width:12em"></span></div>
+      <div class="logrow"><div class="k">Farve</div><div><div class="swatches" id="swatches2"></div></div></div>
+      <div class="logrow"><div class="k">Kornstørrelse</div><div><div class="seg" id="grain2"><button data-v="fin">fin</button><button data-v="mellem">mellem</button><button data-v="grov">grov</button></div></div></div>
+      <div class="logrow"><div class="k">Huller</div><div><div class="seg" id="holes2"><button data-v="ingen">ingen</button><button data-v="få">få</button><button data-v="mange">mange</button></div></div></div>
+      <div class="logrow"><div class="k"><label for="notes2">Hvad tror du, stenens historie er?</label></div><div><textarea id="notes2">Den er rund, så den har måske ligget i vandet længe.</textarea></div></div>
+    </div>
+  </div>
+  <div style="height:18px"></div>
+  <div class="panel">
+    <h2>Vores klasses sten</h2>
+    <p>Læg et billede af din sten op, så I kan se hinandens sten og sammenligne. Tag kun billeder af stenen – ikke af dig selv eller andre.</p>
+    <div class="gallery" id="gallery"></div>
+  </div>
+  <div style="height:18px"></div>
+  <div class="panel">
+    <div class="say">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <p>»Velkommen til boreprøvehallen! Her ligger prøver fra mange boringer. Tag din log med, og se, om du kan finde det samme som på skærmen – i rigtige sten.«</p>
+    </div>
+    <h2>Hvis I besøger Jarðfeingi</h2>
+    <ul class="checklist">
+      <li><input type="checkbox" id="c1"><label for="c1">Find en prøve med mange små huller. Hvor dybt nede er den fra?</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">Brug en rigtig lup. Kan du se hvide krystaller?</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">Hold farvekortet op ved en prøve. Hvilken farve passer bedst?</label></li>
+      <li><input type="checkbox" id="c4"><label for="c4">Find et rødt lag. Hvordan føles det i forhold til basalten?</label></li>
+      <li><input type="checkbox" id="c5"><label for="c5">Spørg en geolog: Hvad er det sværeste ved at beskrive en sten?</label></li>
+    </ul>
+    <p class="chip" style="border:0;padding:0">Tag logbogen med, når I besøger Jarðfeingi.</p>
+  </div>
+</section>
+
+
+
+<details class="teacher">
+  <summary>Til læreren og til vurdering af prototypen</summary>
+
+  <h3>Forløbet i tre lektioner</h3>
+  <div class="tablewrap">
+  <table class="forloeb">
+    <thead><tr><th>Lektion</th><th>Skærm</th><th>Rigtige sten</th><th>Fjeld</th><th>Logbog</th></tr></thead>
+    <tbody>
+      <tr><td><b>1 · Se</b><br>45 min</td><td>Lup og sammenligningskort med Jarðfríða</td><td>Kigge, gætte og sammenligne</td><td>–</td><td>s. 1–3</td></tr>
+      <tr><td><b>2 · Bor</b><br>45 min</td><td>Skrive log og kernelog</td><td>–</td><td>Gætte, bore, måle</td><td>s. 4 + kerner</td></tr>
+      <tr><td><b>3 · Vælg tunnel</b><br>30–45 min</td><td>Forbinde boringer og vælge tunnel</td><td>–</td><td>Skære over og sammenligne</td><td>s. 5</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Sådan bygger I fjeldet</h3>
+  <p>Ét fjeld pr. gruppe på 3–4 elever. Det tager cirka 10 minutter at bygge et fjeld. Byg dem dagen før, eller lad grupperne bygge til hinanden.</p>
+  <ul>
+    <li><b>Materialer:</b> modellervoks i fire farver (sort, grå, rød og grøn), tykke gennemsigtige sugerør (fx til bubble tea), lineal, saks, plastikkniv, tandstikker og et stykke bagepapir som underlag.</li>
+  </ul>
+  <ol>
+    <li>Rul plader af modellervoks, cirka 1 cm tykke. Det røde lag skal være tyndere.</li>
+    <li>Læg pladerne oven på hinanden: sort, grå, rød, grå.</li>
+    <li>Lad det røde lag hælde lidt, så det ligger højere i den ene side. Så viser boringerne noget forskelligt.</li>
+    <li>Form det hele til et fjeld, og dæk det med et tyndt lag grønt, så man ikke kan se lagene.</li>
+    <li>Sæt tre tandstikker med B1, B2 og B3 i fjeldet: på den ene skråning, på toppen og på den anden skråning.</li>
+  </ol>
+
+  <h3>Del siden og elevernes sten online</h3>
+  <p><b>Siden:</b> Læg filen på GitHub Pages, så eleverne kan åbne den på et link.</p>
+  <ol>
+    <li>Opret et nyt, offentligt repository på github.com, fx <code>jardfrida</code>.</li>
+    <li>Upload denne fil, og kald den <code>index.html</code>.</li>
+    <li>Gå til <i>Settings → Pages</i>, og vælg <i>Deploy from a branch</i> med grenen <code>main</code>.</li>
+    <li>Efter et par minutter ligger siden på <code>https://BRUGERNAVN.github.io/jardfrida/</code>.</li>
+  </ol>
+  <p style="margin-top:10px"><b>Elevernes sten:</b> Galleriet er en Padlet-væg, som vises på siden.</p>
+  <ol>
+    <li>Opret en væg på padlet.com, fx som gitter.</li>
+    <li>Slå <i>Godkend opslag</i> til, så du ser billederne, før de bliver vist.</li>
+    <li>Vælg <i>Del → Indlejr</i>, og kopiér linket, der indeholder <code>/embed/</code>.</li>
+    <li>Sæt linket bag på sidens adresse: <code>…/jardfrida/?padlet=</code> og så Padlet-linket. Giv eleverne den adresse.</li>
+  </ol>
+  <p style="margin-top:10px;color:var(--ink-soft);font-size:.9rem">Tjek, at skolen må bruge Padlet til elever. Bed eleverne om kun at fotografere sten, og om ikke at skrive deres fulde navn. Uden et Padlet-link viser siden ikke noget galleri.</p>
+
+  <h3>Designprincipper</h3>
+  <div class="principles">
+    <div><b>Tre slags materialer</b><span>Skærm, rigtige sten og fjeld lærer eleverne noget forskelligt og bruges sammen (sammenfiltret pædagogik).</span></div>
+    <div><b>Jarðfríða tænker højt</b><span>Geologens tænkning gøres synlig, før eleven selv prøver (kognitiv mesterlære).</span></div>
+    <div><b>At lære at se</b><span>Lup, sammenligningskort og farvekort er geologens redskaber til at se systematisk (professionel vision).</span></div>
+    <div><b>Gæt, før I borer</b><span>Eleverne formulerer forventninger, før de observerer (Eberbach &amp; Crowley).</span></div>
+    <div><b>At slutte, ikke kun at se</b><span>Ved at forbinde boringerne slutter eleverne fra få observationer til hele fjeldet – med usikkerhed.</span></div>
+    <div><b>Skær over = feedback</b><span>Eleverne kan se, om deres tegning passede. Det kan en rigtig geolog ikke.</span></div>
+    <div><b>Begrund dit valg</b><span>Kortene passer ikke perfekt, og eleverne skal sige hvorfor (produktive vanskeligheder).</span></div>
+    <div><b>Egen log mod ekspertens</b><span>Elevens log sammenlignes med Jarðfríðas – ikke rigtigt/forkert, men hvad man lagde mærke til.</span></div>
+  </div>
+  <p style="margin-top:12px;color:var(--ink-soft);font-size:.9rem">Boreprøven, kortene og fjeldet er forenklede, fiktive eksempler inspireret af Jarðfeingis arbejde. Fagligt indhold skal tjekkes med en geolog. Det, eleverne skriver her, bliver ikke gemt, når siden lukkes.</p>
+</details>
+
+</div>
+
+<script>
+
+(() => {
+  // ---------- phases ----------
+  const tabs = [...document.querySelectorAll('.phase')];
+  function showPhase(id){
+    tabs.forEach(t => {
+      const on = t.id === id;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', () => showPhase(t.id)));
+
+  const done = () => {};
+
+  const state = { finds:new Set(), card:null, color:null, grain:null, holes:null };
+
+  // seeded random
+  function rng(seed){ return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+
+  // ---------- station 1: core & lens ----------
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+  const base = document.getElementById('coreBase'), det = document.getElementById('coreDetail');
+  const HOT = { huller:[150,62], krystaller:[330,92], farve:[500,70] };
+  function drawCore(svg, detail){
+    const defs = el('defs', {}, svg);
+    const g = el('linearGradient', {id: detail ? 'gd' : 'gb', x1:0, y1:0, x2:0, y2:1}, defs);
+    el('stop', {offset:0, 'stop-color':'#6B7278'}, g); el('stop', {offset:.5, 'stop-color':'#4A5056'}, g); el('stop', {offset:1, 'stop-color':'#33383C'}, g);
+    const rg = el('linearGradient', {id: detail ? 'rd' : 'rb', x1:0, y1:0, x2:1, y2:0}, defs);
+    el('stop', {offset:0, 'stop-color':'#4A5056', 'stop-opacity':0}, rg); el('stop', {offset:.35, 'stop-color': detail ? '#9A4A34' : '#5E4A46', 'stop-opacity':1}, rg); el('stop', {offset:1, 'stop-color': detail ? '#8A3F2C' : '#574643', 'stop-opacity':1}, rg);
+    el('rect', {x:20, y:25, width:560, height:100, rx:50, fill:`url(#${detail?'gd':'gb'})`}, svg);
+    el('rect', {x:410, y:25, width:170, height:100, rx:50, fill:`url(#${detail?'rd':'rb'})`}, svg);
+    el('rect', {x:410, y:25, width:60, height:100, fill:`url(#${detail?'rd':'rb'})`}, svg);
+    // break lines
+    el('path', {d:'M232 25 l8 30 l-6 22 l10 48', stroke:'#25292C', 'stroke-width':2, fill:'none'}, svg);
+    if (!detail){
+      // faint speckles only
+      const r = rng(7);
+      for (let i=0;i<120;i++){ const x=40+r()*520, y=35+r()*80; el('circle',{cx:x,cy:y,r:.8,fill:'#8C9398',opacity:.5},svg); }
+      el('rect', {x:20, y:25, width:560, height:100, rx:50, fill:'#FFFFFF', opacity:.06}, svg);
+      return;
+    }
+    const r = rng(42);
+    // fine groundmass
+    for (let i=0;i<700;i++){ const x=30+r()*540, y=30+r()*90; if ((x<70||x>530) && (y<45||y>105)) continue; el('circle',{cx:x,cy:y,r:.6+r()*.8,fill:r()>.5?'#262A2E':'#7D858B'},svg); }
+    // vesicles cluster
+    for (let i=0;i<26;i++){ const x=HOT.huller[0]+(r()-.5)*120, y=HOT.huller[1]+(r()-.5)*50; const rr=2+r()*4;
+      el('ellipse',{cx:x,cy:y,rx:rr*1.3,ry:rr,fill:'#16191B',stroke:'#A9B1B6','stroke-width':.8},svg); }
+    // plagioclase laths
+    for (let i=0;i<34;i++){ const x=HOT.krystaller[0]+(r()-.5)*150, y=HOT.krystaller[1]+(r()-.5)*44; const a=r()*180;
+      el('rect',{x:x-5,y:y-1.3,width:10+r()*6,height:2.6,fill:'#EDEFE8',transform:`rotate(${a} ${x} ${y})`,opacity:.95},svg); }
+    // rust veins
+    for (let i=0;i<14;i++){ const x=430+r()*130, y=35+r()*80; el('path',{d:`M${x} ${y} q${8+r()*10} ${-4+r()*8} ${16+r()*14} ${r()*6}`,stroke:'#D98A5E','stroke-width':1.4,fill:'none',opacity:.9},svg); }
+  }
+  drawCore(base, false); drawCore(det, true);
+
+  const box = document.getElementById('coreBox'), lens = document.getElementById('lens');
+  const R = 55;
+  function toView(e){ const b = box.getBoundingClientRect(); return { px:e.clientX-b.left, py:e.clientY-b.top, vx:(e.clientX-b.left)/b.width*600, vy:(e.clientY-b.top)/b.height*150, w:b.width }; }
+  box.addEventListener('pointermove', e => {
+    const p = toView(e);
+    lens.style.left = p.px+'px'; lens.style.top = p.py+'px'; lens.style.opacity = 1;
+    det.style.clipPath = `circle(${R}px at ${p.px}px ${p.py}px)`;
+  });
+  box.addEventListener('pointerleave', () => { lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
+  const lensMsg = {
+    huller:'Godt set! De små huller hedder <b>blærer</b>. De er lavet af gasbobler, da lavaen størknede.',
+    krystaller:'Flot! De hvide streger er <b>krystaller</b>. De voksede, mens lavaen langsomt blev kold.',
+    farve:'Rigtigt! Den <b>rødlige farve</b> kan betyde et blødere lag. Den skal i loggen!'
+  };
+  box.addEventListener('click', e => {
+    const p = toView(e), scale = 600 / p.w;
+    for (const [k,[hx,hy]] of Object.entries(HOT)){
+      const d = Math.hypot(p.vx-hx, (p.vy-hy)*1.0);
+      if (d < 70 && !state.finds.has(k)){
+        state.finds.add(k);
+        document.querySelector(`[data-f="${k}"]`).classList.add('found');
+        const fb = document.getElementById('lensFeedback'); fb.hidden = false; fb.innerHTML = lensMsg[k];
+      }
+    }
+    if (state.finds.size === 3){ done(0); }
+  });
+
+  // ---------- station 2: compare ----------
+  const PCTS = [5, 15, 30];
+  const TRUE = 15;
+  function speckle(canvas, pct, seed){
+    const c = canvas.getContext('2d'), s = canvas.width, r = rng(seed);
+    c.fillStyle = '#3F454A'; c.fillRect(0,0,s,s);
+    for (let i=0;i<1600;i++){ c.fillStyle = r()>.5 ? '#2C3034':'#5C6369'; c.fillRect(r()*s, r()*s, 3, 3); }
+    const target = pct/100 * s*s, laths = [];
+    let area = 0;
+    while (area < target){
+      const w = s*(0.05+r()*0.05), h = s*0.012+ r()*s*0.01;
+      laths.push([r()*s, r()*s, w, h, r()*Math.PI]); area += w*h;
+    }
+    c.fillStyle = '#EEF0EA';
+    for (const [x,y,w,h,a] of laths){ c.save(); c.translate(x,y); c.rotate(a); c.fillRect(-w/2,-h/2,w,h); c.restore(); }
+  }
+  let compareDrawn = false;
+  function drawCompare(){
+    if (compareDrawn) return; compareDrawn = true;
+    speckle(document.getElementById('sampleCanvas'), TRUE, 99);
+    const wrap = document.getElementById('cards');
+    PCTS.forEach((p,i) => {
+      const b = document.createElement('button'); b.className='card'; b.setAttribute('aria-pressed','false'); b.dataset.p = p;
+      const cv = document.createElement('canvas'); cv.width = cv.height = 240; cv.setAttribute('aria-hidden','true');
+      const lab = document.createElement('span'); lab.textContent = p + ' %';
+      b.append(cv, lab); wrap.appendChild(b); speckle(cv, p, 11+i);
+      b.addEventListener('click', () => {
+        wrap.querySelectorAll('.card').forEach(c => c.setAttribute('aria-pressed', c === b));
+        state.card = p; updCheck(); document.getElementById('crystalVal').textContent = 'ca. ' + p + ' %';
+      });
+    });
+  }
+  drawCompare();
+  const reasons = [...document.querySelectorAll('input[name="reason"]')];
+  reasons.forEach(r => r.addEventListener('change', updCheck));
+  function updCheck(){ document.getElementById('checkCompare').disabled = !(state.card && reasons.some(r => r.checked)); }
+  document.getElementById('checkCompare').addEventListener('click', () => {
+    const fb = document.getElementById('compareFeedback'); fb.hidden = false;
+    const how = reasons.find(r => r.checked).value;
+    let msg, cls;
+    if (state.card === TRUE){ cls='good'; msg = 'Jarðfríða valgte også <b>15 %</b>. '; }
+    else { cls='warn'; msg = `Jarðfríða valgte <b>15 %</b>, men ${state.card} % er ikke helt skævt – geologer er faktisk ofte uenige om det her. Kig igen: Hvor tæt ligger de hvide streger? `; }
+    msg += how === 'talte' ? 'At tælle i en lille del er præcis det, geologer gør!' :
+           how === 'lignede' ? 'At sammenligne med kortene er geologens metode. Prøv også at tælle i et lille hjørne.' :
+           'Det er i orden at gætte – men næste gang: prøv at tælle i et lille hjørne og gange op.';
+    fb.className = 'feedback ' + cls; fb.innerHTML = msg;
+    done(1);
+  });
+
+  // ---------- station 3: log ----------
+  const COLORS = [['mørkegrå','#3F454A'],['grøngrå','#5E6B5E'],['lysegrå','#A7ADB0'],['rødbrun','#8A4A36']];
+  function swatches(id, key){
+    const w = document.getElementById(id);
+    COLORS.forEach(([n,c]) => {
+      const b = document.createElement('button'); b.className='sw'; b.style.background = c; b.title = n; b.setAttribute('aria-label', n); b.setAttribute('aria-pressed','false');
+      b.addEventListener('click', () => { w.querySelectorAll('.sw').forEach(x => x.setAttribute('aria-pressed', x === b)); if (key) state[key] = n; });
+      w.appendChild(b);
+    });
+  }
+  function seg(id, key){
+    const w = document.getElementById(id);
+    w.querySelectorAll('button').forEach(b => { b.setAttribute('aria-pressed','false'); b.addEventListener('click', () => { w.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); if (key) state[key] = b.dataset.v; }); });
+  }
+  swatches('swatches','color'); seg('grain','grain'); seg('holes','holes');
+  swatches('swatches2'); seg('grain2'); seg('holes2');
+
+  document.getElementById('compareLog').addEventListener('click', () => {
+    const J = { Farve:'mørkegrå', Kornstørrelse:'fin', Huller:'mange', Krystaller:'ca. 15 %', Bemærkninger:'Rødt, blødere lag ved 12,8–13,0 m. Vigtigt for tunnelen!' };
+    const mine = { Farve:state.color||'–', Kornstørrelse:state.grain||'–', Huller:state.holes||'–', Krystaller: state.card ? `ca. ${state.card} %` : '–', Bemærkninger: document.getElementById('notes').value || '–' };
+    const same = k => k === 'Bemærkninger' ? /rød/i.test(mine[k]) : mine[k] === J[k];
+    let h = '<table class="compare-table"><thead><tr><th>Felt</th><th>Min log</th><th>Jarðfríðas log</th><th></th></tr></thead><tbody>';
+    for (const k in J) h += `<tr><td>${k}</td><td>${escape(mine[k])}</td><td>${J[k]}</td><td class="${same(k)?'m':'x'}">${same(k)?'samme':'kig igen'}</td></tr>`;
+    h += '</tbody></table><p style="margin-top:10px">Hvor så I forskelligt? Tal med din sidemakker om, hvorfor.</p>';
+    const out = document.getElementById('logCompare'); out.innerHTML = h; out.hidden = false;
+    done(2);
+  });
+  function escape(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  // ---------- after: photo ----------
+  document.getElementById('photo').addEventListener('change', e => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    const img = document.getElementById('photoPreview'); img.src = URL.createObjectURL(f); img.hidden = false;
+  });
+
+  // ---------- lektion 2: kernelog for fjeldet ----------
+  const COLS = { 'grøn':'#5F7A5B', 'grå':'#7A8086', 'sort':'#2E3236', 'rød':'#A4533A', 'anden farve':'#C9B27A' };
+  const MEANING = { 'grøn':'græs og jord', 'grå':'fast basalt', 'sort':'fast basalt', 'rød':'blødt lag', 'anden farve':'ukendt lag' };
+  const HOLE_IDS = ['B1','B2','B3'];
+  const WHERE = { B1:'venstre skråning', B2:'toppen', B3:'højre skråning' };
+  const holes = { B1:[], B2:[], B3:[] };
+  const EXAMPLE = {
+    B1:[['grøn',.5],['grå',1.5],['rød',.5],['grå',2],['sort',1.5]],
+    B2:[['grøn',.5],['grå',3],['rød',.5],['grå',3],['sort',2]],
+    B3:[['grøn',.5],['grå',1],['rød',.5],['grå',3],['sort',2]]
+  };
+  const fmt = n => String(Math.round(n*10)/10).replace('.', ',');
+  const total = id => holes[id].reduce((a, l) => a + (+l.h || 0), 0);
+  const maxTotal = () => Math.max(0, ...HOLE_IDS.map(total));
+
+  const holesEl = document.getElementById('coreHoles');
+  function columnSvg(id){
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 46 200'); svg.setAttribute('aria-hidden', 'true');
+    drawColumn(svg, id);
+    return svg;
+  }
+  function drawColumn(svg, id){
+    svg.innerHTML = '';
+    const sc = 190 / Math.max(10, maxTotal());
+    el('rect', {x:8, y:4, width:30, height:192, rx:6, fill:'none', stroke:'var(--line)', 'stroke-width':1.5, 'stroke-dasharray':'3 3'}, svg);
+    let y = 196;
+    [...holes[id]].reverse().forEach(l => {
+      const h = (+l.h || 0) * sc; y -= h;
+      el('rect', {x:8, y, width:30, height:h, fill:COLS[l.c] || '#999', stroke:'rgba(0,0,0,.25)', 'stroke-width':.8}, svg);
+    });
+  }
+  function renderHoles(){
+    holesEl.innerHTML = '';
+    HOLE_IDS.forEach(id => {
+      const card = document.createElement('div'); card.className = 'hole';
+      card.innerHTML = `<div class="hd"><span>KERNELOG · ${id}</span><span>${WHERE[id]}</span></div>`;
+      const bd = document.createElement('div'); bd.className = 'bd';
+      const col = columnSvg(id); col.dataset.col = id;
+      const list = document.createElement('div'); list.className = 'layers';
+      holes[id].forEach((l, i) => {
+        const row = document.createElement('div'); row.className = 'layer';
+        const sel = document.createElement('select'); sel.setAttribute('aria-label', `${id}, lag ${i+1}: farve`);
+        Object.keys(COLS).forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; if (c === l.c) o.selected = true; sel.appendChild(o); });
+        sel.addEventListener('change', () => { l.c = sel.value; refresh(); });
+        const num = document.createElement('input'); num.type = 'number'; num.min = '0.5'; num.step = '0.5'; num.value = l.h; num.setAttribute('aria-label', `${id}, lag ${i+1}: tykkelse i cm`);
+        num.addEventListener('input', () => { l.h = Math.max(0, parseFloat(num.value) || 0); refresh(); });
+        const x = document.createElement('button'); x.className = 'x'; x.textContent = '×'; x.setAttribute('aria-label', `Fjern lag ${i+1} i ${id}`);
+        x.addEventListener('click', () => { holes[id].splice(i, 1); links = links.filter(k => !(k.a.h === id || k.b.h === id)); renderHoles(); });
+        row.append(sel, num, x); list.appendChild(row);
+      });
+      const add = document.createElement('button'); add.className = 'btn'; add.textContent = '+ Tilføj lag';
+      add.addEventListener('click', () => { holes[id].push({c:'grå', h:1}); renderHoles(); const s = holesEl.querySelectorAll(`.hole:nth-child(${HOLE_IDS.indexOf(id)+1}) select`); s[s.length-1]?.focus(); });
+      const tot = document.createElement('span'); tot.className = 'total'; tot.dataset.tot = id; tot.textContent = `Kernen er ${fmt(total(id))} cm lang`;
+      list.append(add, tot);
+      bd.append(col, list); card.appendChild(bd); holesEl.appendChild(card);
+    });
+    refresh();
+  }
+  function refresh(){
+    HOLE_IDS.forEach(id => {
+      const c = holesEl.querySelector(`svg[data-col="${id}"]`); if (c) drawColumn(c, id);
+      const t = holesEl.querySelector(`[data-tot="${id}"]`); if (t) t.textContent = `Kernen er ${fmt(total(id))} cm lang`;
+    });
+    renderX();
+  }
+  document.getElementById('loadExample').addEventListener('click', () => {
+    HOLE_IDS.forEach(id => holes[id] = EXAMPLE[id].map(([c, h]) => ({c, h})));
+    links = []; renderHoles();
+  });
+
+  // ---------- lektion 3: tværsnit, forbindelser og tunnel ----------
+  const xsec = document.getElementById('xsec');
+  const X = { B1:140, B2:320, B3:500 }, W = 40, BASE = 292;
+  let links = [], pick = null;
+  const slider = document.getElementById('tunnel'), out = document.getElementById('tunnelOut');
+  function geom(sc){
+    const g = {};
+    HOLE_IDS.forEach(id => {
+      let y = BASE; const arr = [];
+      for (let i = holes[id].length - 1; i >= 0; i--){ const h = (+holes[id][i].h || 0) * sc; arr[i] = {top:y - h, bot:y}; y -= h; }
+      g[id] = arr;
+    });
+    return g;
+  }
+  function renderX(){
+    xsec.innerHTML = '';
+    const mt = maxTotal();
+    document.getElementById('emptyHint').hidden = mt > 0;
+    const sc = 230 / Math.max(6, mt);
+    const g = geom(sc);
+    // bord
+    el('line', {x1:20, y1:BASE, x2:620, y2:BASE, stroke:'var(--ink)', 'stroke-width':2}, xsec);
+    const tb = el('text', {x:24, y:BASE+18, 'font-family':'IBM Plex Mono, monospace', 'font-size':12, fill:'var(--ink-soft)'}, xsec); tb.textContent = 'bordet';
+    if (!mt){ const t = el('text', {x:320, y:160, 'text-anchor':'middle', 'font-size':16, fill:'var(--ink-soft)'}, xsec); t.textContent = 'Ingen boringer endnu'; return; }
+    // fjeldets omrids (gættet)
+    const tops = HOLE_IDS.map(id => BASE - total(id) * sc);
+    el('path', {d:`M40 ${BASE} L${X.B1} ${tops[0]} L${X.B2} ${tops[1]} L${X.B3} ${tops[2]} L600 ${BASE} Z`, fill:'var(--surface)', stroke:'var(--ink-soft)', 'stroke-width':1.5, 'stroke-dasharray':'5 5'}, xsec);
+    // forbindelser
+    links.forEach(k => {
+      const [L, R] = HOLE_IDS.indexOf(k.a.h) < HOLE_IDS.indexOf(k.b.h) ? [k.a, k.b] : [k.b, k.a];
+      const a = g[L.h][L.i], b = g[R.h][R.i]; if (!a || !b) return;
+      const c = COLS[holes[L.h][L.i].c];
+      el('path', {d:`M${X[L.h]+W/2} ${a.top} L${X[R.h]-W/2} ${b.top} L${X[R.h]-W/2} ${b.bot} L${X[L.h]+W/2} ${a.bot} Z`, fill:c, opacity:.5, stroke:c, 'stroke-width':1}, xsec);
+    });
+    // boringer
+    HOLE_IDS.forEach(id => {
+      const lb = el('text', {x:X[id], y:Math.min(...g[id].map(s => s.top), BASE) - 10, 'text-anchor':'middle', 'font-family':'IBM Plex Mono, monospace', 'font-size':13, 'font-weight':600, fill:'var(--ink)'}, xsec); lb.textContent = id;
+      holes[id].forEach((l, i) => {
+        const s = g[id][i]; if (!s || s.bot - s.top <= 0) return;
+        const r = el('rect', {x:X[id]-W/2, y:s.top, width:W, height:s.bot - s.top, fill:COLS[l.c], stroke:'var(--ink)', 'stroke-width':1, class:'lay' + (pick && pick.h === id && pick.i === i ? ' sel' : ''), tabindex:0, role:'button', 'aria-label':`${id}, lag ${i+1}: ${l.c}, ${fmt(l.h)} cm`}, xsec);
+        const act = () => choose(id, i);
+        r.addEventListener('click', act);
+        r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); act(); } });
+      });
+    });
+    // tunnel
+    slider.max = Math.max(1, mt - .5);
+    if (+slider.value > +slider.max) slider.value = slider.max;
+    out.textContent = fmt(+slider.value) + ' cm';
+    const ty = BASE - (+slider.value) * sc;
+    el('line', {x1:30, y1:ty, x2:610, y2:ty, stroke:'var(--rust)', 'stroke-width':4, 'stroke-dasharray':'10 6', 'stroke-linecap':'round'}, xsec);
+    const tt = el('text', {x:612, y:ty - 6, 'text-anchor':'end', 'font-family':'Baloo 2, sans-serif', 'font-weight':800, 'font-size':15, fill:'var(--rust)'}, xsec); tt.textContent = 'tunnel';
+  }
+  const help = document.getElementById('linkHelp');
+  function choose(id, i){
+    if (!pick || pick.h === id){ pick = {h:id, i}; help.textContent = `Du valgte ${holes[id][i].c} i ${id}. Klik nu på det samme lag i boringen ved siden af.`; }
+    else if (Math.abs(HOLE_IDS.indexOf(pick.h) - HOLE_IDS.indexOf(id)) === 1){
+      const k = {a:pick, b:{h:id, i}};
+      links = links.filter(x => !((x.a.h === k.a.h && x.a.i === k.a.i && x.b.h === k.b.h) || (x.b.h === k.a.h && x.b.i === k.a.i && x.a.h === k.b.h)));
+      links.push(k); pick = null;
+      help.textContent = 'Godt! Forbind flere lag – eller gå videre til tunnelen.';
+    } else { pick = {h:id, i}; help.textContent = `Du kan kun forbinde boringer, der står ved siden af hinanden. Du valgte nu ${holes[id][i].c} i ${id}.`; }
+    renderX();
+  }
+  document.getElementById('clearLinks').addEventListener('click', () => { links = []; pick = null; help.textContent = 'Klik på et lag i én boring og derefter på det samme lag i boringen ved siden af.'; renderX(); });
+  slider.addEventListener('input', () => { document.getElementById('tunnelFeedback').hidden = true; renderX(); });
+
+  document.getElementById('checkTunnel').addEventListener('click', () => {
+    const fb = document.getElementById('tunnelFeedback'); fb.hidden = false;
+    if (!maxTotal()){ fb.className = 'feedback warn'; fb.innerHTML = 'Skriv jeres kerner ind i lektion 2 først – eller vis Jarðfríðas kernelog dér.'; return; }
+    const H = +slider.value, rows = [], soft = [], outside = [], unknown = [], surface = [];
+    HOLE_IDS.forEach(id => {
+      if (!holes[id].length) return;
+      if (H >= total(id)){ outside.push(id); rows.push(`<li><b>${id}:</b> her er tunnelen uden for fjeldet</li>`); return; }
+      let y = 0;
+      for (let i = holes[id].length - 1; i >= 0; i--){
+        const l = holes[id][i], top = y + (+l.h || 0);
+        if (H >= y && H < top){
+          rows.push(`<li><b>${id}:</b> ${l.c} (${MEANING[l.c]})</li>`);
+          if (l.c === 'rød') soft.push(id); if (l.c === 'anden farve') unknown.push(id); if (l.c === 'grøn') surface.push(id);
+          break;
+        }
+        y = top;
+      }
+    });
+    let msg = `<p>I ${fmt(H)} cm højde går tunnelen gennem:</p><ul class="steps">${rows.join('')}</ul>`;
+    if (soft.length){ fb.className = 'feedback warn'; msg += `<p style="margin-top:8px">Pas på! Tunnelen rammer det <b>røde, bløde lag</b> i ${soft.join(' og ')}. Det kan skride sammen. Prøv en anden højde.</p>`; }
+    else if (surface.length){ fb.className = 'feedback warn'; msg += `<p style="margin-top:8px">Ved ${surface.join(' og ')} går tunnelen gennem græs og jord lige under overfladen. Den skal ligge dybere inde i fjeldet.</p>`; }
+    else { fb.className = 'feedback good'; msg += `<p style="margin-top:8px">Godt valg! I boringerne går tunnelen gennem fast sten. Men husk: I ved ikke sikkert, hvad der er <b>mellem</b> boringerne. Kig på jeres streger – kan det røde lag ligge et andet sted?</p>`; }
+    if (outside.length) msg += `<p style="margin-top:8px">Ved ${outside.join(' og ')} kommer tunnelen ud af fjeldet. Er det et godt sted at have en indgang?</p>`;
+    if (unknown.length) msg += `<p style="margin-top:8px">I ${unknown.join(' og ')} er der et lag med en anden farve. Hvad tror I, det er? Skriv det i loggen.</p>`;
+    fb.innerHTML = msg;
+  });
+
+  tabs.forEach(t => t.addEventListener('click', () => { if (t.id === 'tab-l3') renderX(); }));
+
+  // ---------- det digitale fjeld ----------
+  const MX = { B1:150, B2:320, B3:490 }, MB = 300, MS = 25; // bund, px pr. cm
+  const SURF = [[40,0],[150,6],[320,9],[490,7],[600,0]];
+  const BOUNDS = [[1.5,2,2],[3.5,5,5],[4,5.5,5.5],[5.5,8.5,6.5]]; // toppen af sort, grå, rød, grå
+  const BFILL = ['sort','grå','rød','grå'];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const drilled = new Set();
+  function lin(pts, x){
+    if (x <= pts[0][0]) return pts[0][1];
+    for (let i = 1; i < pts.length; i++){ const [x0,y0] = pts[i-1], [x1,y1] = pts[i]; if (x <= x1) return y0 + (y1 - y0) * (x - x0) / (x1 - x0); }
+    return pts[pts.length-1][1];
+  }
+  const surf = x => lin(SURF, x);
+  const bound = (k, x) => lin([[MX.B1,BOUNDS[k][0]],[MX.B2,BOUNDS[k][1]],[MX.B3,BOUNDS[k][2]]], x);
+  const Y = h => MB - h * MS;
+  function band(lo, hi){
+    const xs = []; for (let x = 40; x <= 600; x += 4) xs.push(x);
+    const top = xs.map(x => `${x},${Y(Math.max(0, hi(x)))}`), bot = xs.slice().reverse().map(x => `${x},${Y(Math.max(0, lo(x)))}`);
+    return top.concat(bot).join(' ');
+  }
+  function drawMountain(svg, open){
+    svg.innerHTML = '';
+    el('rect', {x:0, y:0, width:640, height:330, fill:'#DCE8EF'}, svg);
+    el('line', {x1:10, y1:MB, x2:630, y2:MB, stroke:'var(--ink)', 'stroke-width':2}, svg);
+    const tb = el('text', {x:14, y:MB+20, 'font-family':'IBM Plex Mono, monospace', 'font-size':12, fill:'var(--ink-soft)'}, svg); tb.textContent = 'bordet';
+    const skin = x => surf(x) - .5;
+    if (open){
+      BFILL.forEach((c, k) => {
+        const lo = k ? x => Math.min(bound(k-1, x), skin(x)) : () => 0;
+        const hi = x => Math.min(bound(k, x), skin(x));
+        el('polygon', {points:band(lo, hi), fill:COLS[c], stroke:'rgba(0,0,0,.2)', 'stroke-width':.6}, svg);
+      });
+      el('polygon', {points:band(x => Math.max(0, skin(x)), surf), fill:COLS['grøn']}, svg);
+    } else {
+      el('polygon', {points:band(() => 0, surf), fill:'#8E9A86'}, svg);
+      el('polygon', {points:band(x => Math.max(0, skin(x)), surf), fill:COLS['grøn']}, svg);
+    }
+    el('polyline', {points:SURF.map(([x,h]) => `${x},${Y(h)}`).join(' '), fill:'none', stroke:'var(--ink)', 'stroke-width':2}, svg);
+    HOLE_IDS.forEach(id => {
+      const x = MX[id], top = Y(surf(x));
+      if (drilled.has(id)) el('line', {x1:x, y1:top, x2:x, y2:MB, stroke:'#1E2326', 'stroke-width':5, 'stroke-dasharray': open ? '0' : '0', opacity: open ? .55 : 1, 'data-hole':id}, svg);
+      const g = el('g', {class:'pin', tabindex: open ? -1 : 0, role: open ? 'presentation' : 'button', 'aria-label':`Bor ved ${id}`}, svg);
+      el('line', {x1:x, y1:top, x2:x, y2:top - 30, stroke:'var(--ink)', 'stroke-width':2}, g);
+      el('rect', {x:x, y:top - 30, width:30, height:18, rx:3, fill:'var(--vest)', stroke:'var(--ink)', 'stroke-width':1.5}, g);
+      const t = el('text', {x:x + 15, y:top - 17, 'text-anchor':'middle', 'font-family':'IBM Plex Mono, monospace', 'font-size':11, 'font-weight':600, fill:'#2A2100'}, g); t.textContent = id;
+      if (!open){
+        g.addEventListener('click', () => drill(id));
+        g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); drill(id); } });
+      }
+    });
+  }
+  const mtn = document.getElementById('mtn'), tray = document.getElementById('tray');
+  function coreSvg(id){
+    const layers = EXAMPLE[id], tot = layers.reduce((a, [, h]) => a + h, 0), S = 20, H = 9 * S + 32;
+    const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', `0 0 110 ${H}`);
+    svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', `Kerne fra ${id}, ${fmt(tot)} cm lang, med lineal`);
+    let y = 8;
+    layers.forEach(([c, h]) => { el('rect', {x:52, y, width:34, height:h * S, fill:COLS[c], stroke:'rgba(0,0,0,.3)', 'stroke-width':.8}, svg); y += h * S; });
+    el('rect', {x:52, y:8, width:34, height:tot * S, fill:'none', stroke:'var(--ink)', 'stroke-width':1.5, rx:3}, svg);
+    for (let c = 0; c <= tot * 2; c++){
+      const yy = 8 + c * S / 2, whole = c % 2 === 0;
+      el('line', {x1: whole ? 34 : 40, y1:yy, x2:48, y2:yy, stroke:'var(--ink)', 'stroke-width':1}, svg);
+      if (whole){ const t = el('text', {x:30, y:yy + 4, 'text-anchor':'end', 'font-family':'IBM Plex Mono, monospace', 'font-size':10, fill:'var(--ink)'}, svg); t.textContent = c / 2; }
+    }
+    el('line', {x1:48, y1:8, x2:48, y2:8 + tot * S, stroke:'var(--ink)', 'stroke-width':1}, svg);
+    const u = el('text', {x:30, y:H - 6, 'text-anchor':'end', 'font-family':'IBM Plex Mono, monospace', 'font-size':9, fill:'var(--ink-soft)'}, svg); u.textContent = 'cm';
+    return svg;
+  }
+  function renderTray(){
+    tray.innerHTML = '';
+    HOLE_IDS.forEach(id => {
+      const s = document.createElement('div'); s.className = 'slot' + (drilled.has(id) ? ' on' : '');
+      const b = document.createElement('b'); b.textContent = id; s.appendChild(b);
+      if (drilled.has(id)){
+        s.appendChild(coreSvg(id));
+        const t = document.createElement('span'); t.textContent = 'Mål lagene, og skriv dem i kerneloggen.'; s.appendChild(t);
+      } else { const t = document.createElement('span'); t.textContent = 'Ikke boret endnu'; s.appendChild(t); }
+      tray.appendChild(s);
+    });
+  }
+  function drill(id){
+    if (drilled.has(id)) return;
+    const x = MX[id], top = Y(surf(x));
+    const rod = el('line', {x1:x, y1:top, x2:x, y2:top, stroke:'#1E2326', 'stroke-width':5}, mtn);
+    const finish = () => { drilled.add(id); drawMountain(mtn, false); renderTray(); };
+    if (reduce){ finish(); return; }
+    const t0 = performance.now(), dur = 900;
+    const step = now => { const k = Math.min(1, (now - t0) / dur); rod.setAttribute('y2', top + (MB - top) * k); k < 1 ? requestAnimationFrame(step) : finish(); };
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('[data-drill]').forEach(b => b.addEventListener('click', () => drill(b.dataset.drill)));
+  drawMountain(mtn, false); renderTray();
+  document.getElementById('cutBtn').addEventListener('click', () => {
+    const box = document.getElementById('cutBox'); box.hidden = !box.hidden;
+    document.getElementById('cutBtn').textContent = box.hidden ? 'Skær det digitale fjeld over' : 'Saml fjeldet igen';
+    if (!box.hidden) drawMountain(document.getElementById('mtnCut'), true);
+  });
+
+  // ---------- klassens galleri (Padlet) ----------
+  (function gallery(){
+    const g = document.getElementById('gallery');
+    let url = '';
+    try { url = new URLSearchParams(location.search).get('padlet') || ''; } catch(e){}
+    let ok = false;
+    try { const u = new URL(url); ok = u.protocol === 'https:' && /(^|\.)padlet\.(com|org)$/.test(u.hostname); } catch(e){}
+    if (!ok){
+      const p = document.createElement('p'); p.className = 'hint';
+      p.textContent = 'Jeres lærer har ikke koblet et galleri på endnu. Læreren kan se, hvordan det gøres, nederst på siden.';
+      g.appendChild(p); return;
+    }
+    if (/\/embed\//.test(url)){
+      const f = document.createElement('iframe'); f.src = url; f.title = 'Klassens sten på Padlet'; f.loading = 'lazy';
+      f.setAttribute('allow', 'camera;microphone;geolocation;clipboard-write'); g.appendChild(f);
+    }
+    const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    a.className = 'btn primary'; a.style.justifySelf = 'start'; a.style.textDecoration = 'none';
+    a.textContent = 'Åbn klassens galleri, og læg dit billede op'; g.appendChild(a);
+  })();
+
+  renderHoles();
+
+})();
+
+</script>
+</body>
+</html>
