@@ -182,9 +182,9 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 
 <nav class="phases" role="tablist" aria-label="Forløbets dele">
   <button class="phase" role="tab" id="tab-l1" aria-selected="true" aria-controls="phase-l1"><span class="n">1</span>Kig på sten</button>
-  <button class="phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2"><span class="n">2</span>Bor i fjeldet</button>
-  <button class="phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3"><span class="n">3</span>Find tunnelen</button>
-  <button class="phase" role="tab" id="tab-l4" aria-selected="false" aria-controls="phase-l4"><span class="n">4</span>Min sten</button>
+  <button class="phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2"><span class="n">2</span>Min sten</button>
+  <button class="phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3"><span class="n">3</span>Boreprøver og tunnel</button>
+  <button class="phase" role="tab" id="tab-l4" aria-selected="false" aria-controls="phase-l4"><span class="n">4</span>Jeres eget fjeld</button>
 </nav>
 
 <!-- ============ 1 · KIG PÅ STEN ============ -->
@@ -224,90 +224,8 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   </div>
 </section>
 
-<!-- ============ 2 · BOR I FJELDET ============ -->
+<!-- ============ 2 · MIN STEN ============ -->
 <section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden>
-  <div class="stack">
-    <article class="panel">
-      <span class="tag clay">Fjeld</span>
-      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Vi kan ikke se ind i fjeldet. Derfor gætter jeg først. Så borer jeg og ser, om jeg havde ret.«</p></div>
-      <h2>Gæt først</h2>
-      <p class="task">Kig på jeres fjeld. Tegn på papir, hvordan I tror, det ser ud indeni.</p>
-    </article>
-
-    <article class="panel">
-      <span class="tag clay">Fjeld</span>
-      <h2>Bor i jeres fjeld</h2>
-      <ol class="steps">
-        <li>Stik sugerøret lige ned ved B1. Helt ned til bordet.</li>
-        <li>Drej lidt, og træk sugerøret op.</li>
-        <li>Klip røret op, og se på farverne. Gør det samme ved B2 og B3.</li>
-      </ol>
-    </article>
-
-    <article class="panel">
-      <span class="tag screen">Skærm</span>
-      <h2>Bor i Jarðfríðas fjeld</h2>
-      <p class="task">Tryk på B1, B2 og B3 for at bore.</p>
-      <div class="section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Et fjeld med tre steder at bore: B1, B2 og B3"></svg></div>
-      <div class="row">
-        <button class="btn" data-drill="B1">Bor ved B1</button>
-        <button class="btn" data-drill="B2">Bor ved B2</button>
-        <button class="btn" data-drill="B3">Bor ved B3</button>
-      </div>
-      <div class="tray" id="tray" aria-live="polite"></div>
-      <div class="legend" aria-label="Hvad farverne betyder">
-        <span><i style="background:#5F7A5B"></i>grøn = jord</span>
-        <span><i style="background:#7A8086"></i>grå = hård sten</span>
-        <span><i style="background:#2E3236"></i>sort = hård sten</span>
-        <span><i style="background:#A4533A"></i>rød = blød sten</span>
-      </div>
-      <p class="hint"><b>Tal sammen:</b> Er der rødt i alle tre boringer? Ligger det røde lige højt?</p>
-    </article>
-  </div>
-</section>
-
-<!-- ============ 3 · FIND TUNNELEN ============ -->
-<section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden>
-  <div class="stack">
-    <article class="panel">
-      <span class="tag clay">Fjeld</span>
-      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Nu må I gøre noget, jeg aldrig kan: skære fjeldet over! Så kan I se, om jeres gæt passede.«</p></div>
-      <h2>Skær fjeldet over</h2>
-      <p class="task">Skær jeres fjeld over med kniven. Lignede det jeres tegning?</p>
-      <div class="row"><button class="btn primary" id="cutBtn">Skær Jarðfríðas fjeld over</button></div>
-      <div id="cutArea" class="stack" hidden>
-        <div class="section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjeldet skåret over, så man kan se lagene indeni"></svg></div>
-        <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-          <p>»Tunnelen skal gå gennem <b>hård sten</b>. Det røde lag er blødt. Der kan tunnelen falde sammen!«</p></div>
-        <div class="slider">
-          <label for="tunnel" class="task">Flyt tunnelen op og ned</label>
-          <input type="range" id="tunnel" min="0.5" max="8" step="0.5" value="4">
-          <div class="ends" aria-hidden="true"><span>⬇ længere nede</span><span>højere oppe ⬆</span></div>
-        </div>
-        <div class="row"><button class="btn primary" id="checkTunnel">Tjek tunnelen</button></div>
-        <div id="tunnelFeedback" class="feedback" hidden aria-live="polite"></div>
-      </div>
-    </article>
-
-    <article class="panel">
-      <h2>Tal sammen</h2>
-      <ul class="steps">
-        <li>Hvad overraskede jer, da I skar fjeldet over?</li>
-        <li>Hvorfor borer geologer, før de bygger en tunnel?</li>
-      </ul>
-      <div class="diploma">
-        <span class="eyebrow">Geoskúli</span>
-        <span class="big">I har arbejdet som geologer!</span>
-        <p>I har kigget på sten, boret i et fjeld og fundet en tunnel.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- ============ 4 · MIN STEN ============ -->
-<section id="phase-l4" role="tabpanel" aria-labelledby="tab-l4" hidden>
   <div class="stack">
     <article class="panel">
       <span class="tag stone">Rigtige sten</span>
@@ -329,6 +247,119 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   </div>
 </section>
 
+<!-- ============ 3 · BOREPRØVER OG TUNNEL ============ -->
+<section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden>
+  <div class="stack">
+    <article class="panel">
+      <span class="tag screen">Skærm</span>
+      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+        <p>»Vi skal bygge en tunnel gennem fjeldet. Men vi kan ikke se ind i det. Derfor borer vi og henter boreprøver op.«</p></div>
+      <h2>Bor i Jarðfríðas fjeld</h2>
+      <p class="task">Tryk på B1, B2 og B3 for at bore.</p>
+      <div class="section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Et fjeld med tre steder at bore: B1, B2 og B3"></svg></div>
+      <div class="row">
+        <button class="btn" data-drill="B1">Bor ved B1</button>
+        <button class="btn" data-drill="B2">Bor ved B2</button>
+        <button class="btn" data-drill="B3">Bor ved B3</button>
+      </div>
+      <div class="tray" id="tray" aria-live="polite"></div>
+      <div class="legend" aria-label="Hvad farverne betyder">
+        <span><i style="background:#5F7A5B"></i>grøn = jord</span>
+        <span><i style="background:#7A8086"></i>grå = hård sten</span>
+        <span><i style="background:#2E3236"></i>sort = hård sten</span>
+        <span><i style="background:#A4533A"></i>rød = blød sten</span>
+      </div>
+      <p class="hint"><b>Tal sammen:</b> Er der rødt i alle tre boreprøver? Ligger det røde lige højt?</p>
+    </article>
+
+    <article class="panel">
+      <span class="tag screen">Skærm</span>
+      <h2>Skær fjeldet over, og find tunnelen</h2>
+      <p class="task">Hvordan tror du, fjeldet ser ud indeni? Tryk og se, om du havde ret.</p>
+      <div class="row"><button class="btn primary" id="cutBtn">Skær Jarðfríðas fjeld over</button></div>
+      <div id="cutArea" class="stack" hidden>
+        <div class="section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjeldet skåret over, så man kan se lagene indeni"></svg></div>
+        <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+          <p>»Tunnelen skal gå gennem <b>hård sten</b>. Det røde lag er blødt. Der kan tunnelen falde sammen!«</p></div>
+        <div class="slider">
+          <label for="tunnel" class="task">Flyt tunnelen op og ned</label>
+          <input type="range" id="tunnel" min="0.5" max="8" step="0.5" value="4">
+          <div class="ends" aria-hidden="true"><span>⬇ længere nede</span><span>højere oppe ⬆</span></div>
+        </div>
+        <div class="row"><button class="btn primary" id="checkTunnel">Tjek tunnelen</button></div>
+        <div id="tunnelFeedback" class="feedback" hidden aria-live="polite"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 4 · JERES EGET FJELD ============ -->
+<section id="phase-l4" role="tabpanel" aria-labelledby="tab-l4" hidden>
+  <div class="stack">
+    <article class="panel">
+      <span class="tag clay">Fjeld</span>
+      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+        <p>»Nu skal I selv være geologer! I bygger et fjeld af trolddej. Bagefter skal et andet par finde ud af, hvad der er inde i jeres fjeld.«</p></div>
+      <h2>Byg et fjeld – to og to</h2>
+      <ol class="steps">
+        <li>Lav 3–4 flade plader af trolddej i forskellige farver.</li>
+        <li>Læg pladerne oven på hinanden. Det er lagene i jeres fjeld.</li>
+        <li>Form det hele til et fjeld. Dæk det med et tyndt grønt lag, så ingen kan se lagene.</li>
+        <li>Sæt tre tandstikker i fjeldet: B1, B2 og B3.</li>
+      </ol>
+      <p class="hint"><b>Hemmeligt!</b> Fortæl ikke de andre, hvordan jeres fjeld ser ud indeni.</p>
+    </article>
+
+    <article class="panel">
+      <span class="tag clay">Fjeld</span>
+      <h2>Byt fjeld</h2>
+      <p class="task">Byt fjeld med et andet par. Nu skal I undersøge deres fjeld.</p>
+    </article>
+
+    <article class="panel">
+      <span class="tag clay">Fjeld</span>
+      <h2>Lav boreprøver</h2>
+      <ol class="steps">
+        <li>Stik et sugerør lige ned ved B1. Helt ned til bordet.</li>
+        <li>Drej lidt, og træk sugerøret op.</li>
+        <li>Klip sugerøret op, og læg boreprøven ved siden af. Skriv B1 ved den.</li>
+        <li>Gør det samme ved B2 og B3.</li>
+      </ol>
+    </article>
+
+    <article class="panel">
+      <span class="tag clay">Fjeld</span>
+      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+        <p>»Kig godt på jeres boreprøver. Hvilke farver er der? Hvor ligger de?«</p></div>
+      <h2>Gæt, og tegn</h2>
+      <p class="task">Tegn, hvordan I tror, fjeldet ser ud indeni. Brug farverne fra boreprøverne.</p>
+    </article>
+
+    <article class="panel">
+      <span class="tag clay">Fjeld</span>
+      <h2>Skær fjeldet over</h2>
+      <ol class="steps">
+        <li>Skær fjeldet over på langs, gennem B1, B2 og B3.</li>
+        <li>Læg jeres tegning ved siden af. Passede den?</li>
+        <li>Vis det til parret, der byggede fjeldet.</li>
+      </ol>
+    </article>
+
+    <article class="panel">
+      <h2>Tal sammen</h2>
+      <ul class="steps">
+        <li>Hvad passede på jeres tegning? Hvad overraskede jer?</li>
+        <li>Hvorfor borer geologer, før de bygger en tunnel?</li>
+      </ul>
+      <div class="diploma">
+        <span class="eyebrow">Geoskúli</span>
+        <span class="big">I har arbejdet som geologer!</span>
+        <p>I har kigget på sten, lavet boreprøver og fundet ud af, hvad der er inde i et fjeld.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 <details class="teacher">
   <summary>Til læreren</summary>
 
@@ -338,25 +369,25 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     <thead><tr><th>Del</th><th>Skærm</th><th>Rigtige sten / fjeld</th><th>Tid</th></tr></thead>
     <tbody>
       <tr><td><b>1 · Kig på sten</b></td><td>Find 3 ting med luppen</td><td>Mærke, kigge med lup, tegne en sten</td><td>45 min</td></tr>
-      <tr><td><b>2 · Bor i fjeldet</b></td><td>Bor B1–B3 i Jarðfríðas fjeld</td><td>Tegne et gæt, bore i fjeld af modellervoks</td><td>45 min</td></tr>
-      <tr><td><b>3 · Find tunnelen</b></td><td>Skær over, og flyt tunnelen</td><td>Skære fjeldet over, tale sammen</td><td>30–45 min</td></tr>
-      <tr><td><b>4 · Min sten</b></td><td>Læg et billede på Padlet</td><td>Finde en sten derhjemme eller ved skolen</td><td>Hjemme / bagefter</td></tr>
+      <tr><td><b>2 · Min sten</b></td><td>Læg et billede på Padlet</td><td>Finde en sten derhjemme eller ved skolen</td><td>Hjemme + 15 min</td></tr>
+      <tr><td><b>3 · Boreprøver og tunnel</b></td><td>Bor i Jarðfríðas fjeld, skær over, find tunnelen</td><td>–</td><td>30 min</td></tr>
+      <tr><td><b>4 · Jeres eget fjeld</b></td><td>–</td><td>To og to: bygge fjeld af trolddej, bytte, bore, tegne et gæt, skære over</td><td>60–90 min</td></tr>
     </tbody>
   </table>
   </div>
 
-  <h3>Sådan bygger I fjeldet</h3>
-  <p>Ét fjeld pr. gruppe på 3–4 elever. Det tager cirka 10 minutter. Byg dem gerne dagen før.</p>
+  <h3>Trolddej</h3>
+  <p>Til ca. 4 fjelde: 4 dl hvedemel, 2 dl fint salt, 2 dl vand og 1 spsk olie. Ælt dejen, og del den i 4. Farv delene med madfarve: rød, grøn og to andre farver (fx sort og hvid/ufarvet).</p>
+  <p class=note>Lav dejen dagen før, og opbevar den i en lukket pose. Er den for klistret, så tilsæt lidt mel. Så sætter den sig ikke fast i sugerøret.</p>
+
+  <h3>Materialer til del 4</h3>
   <ul>
-    <li><b>Materialer:</b> modellervoks i fire farver (sort, grå, rød og grøn), tykke gennemsigtige sugerør (fx til bubble tea), saks, plastikkniv, tandstikker og bagepapir som underlag.</li>
+    <li>Trolddej i 4 farver – én portion pr. par</li>
+    <li>Tykke, gennemsigtige sugerør (fx til bubble tea) – 3 pr. par</li>
+    <li>Saks, plastikkniv, tandstikker med B1, B2 og B3</li>
+    <li>Bagepapir som underlag, papir og farveblyanter til tegningen</li>
   </ul>
-  <ol>
-    <li>Rul plader af modellervoks, cirka 1 cm tykke. Det røde lag skal være tyndere.</li>
-    <li>Læg pladerne oven på hinanden: sort, grå, rød, grå.</li>
-    <li>Lad det røde lag hælde lidt, så boringerne viser noget forskelligt.</li>
-    <li>Form det hele til et fjeld, og dæk det med et tyndt lag grønt.</li>
-    <li>Sæt tre tandstikker med B1, B2 og B3 i fjeldet: på den ene skråning, på toppen og på den anden skråning.</li>
-  </ol>
+  <p class=note>Bed parrene om at lægge lagene lidt skævt eller gøre ét lag tyndere i den ene side. Så viser de tre boreprøver noget forskelligt, og det bliver sjovere at gætte.</p>
 
   <h3>Hvis I besøger Jarðfeingi</h3>
   <ul>
@@ -366,7 +397,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   </ul>
 
   <h3>Klassens Padlet</h3>
-  <p>Klassens Padlet-væg vises i del 4. Slå <i>Godkend opslag</i> til i Padlet, så du ser billederne, før klassen gør. Tjek, at skolen må bruge Padlet til elever.</p>
+  <p>Klassens Padlet-væg vises i del 2. Slå <i>Godkend opslag</i> til i Padlet, så du ser billederne, før klassen gør. Tjek, at skolen må bruge Padlet til elever.</p>
   <p class="note">Vil du bruge en anden væg, så sæt <code>?padlet=</code> og væggens indlejringslink (med <code>/embed/</code>) bag på sidens adresse.</p>
 
   <h3>Fagord, hvis eleverne spørger</h3>
@@ -452,7 +483,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     }
   });
 
-  // ---------- 2 og 3: det digitale fjeld ----------
+  // ---------- 3: det digitale fjeld ----------
   const COLS = { 'grøn':'#5F7A5B', 'grå':'#7A8086', 'sort':'#2E3236', 'rød':'#A4533A' };
   const HOLE_IDS = ['B1','B2','B3'];
   const EXAMPLE = {
@@ -583,7 +614,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     }
   });
 
-  // ---------- 4: klassens galleri (Padlet) ----------
+  // ---------- 2: klassens galleri (Padlet) ----------
   (function gallery(){
     const g = document.getElementById('gallery');
     const DEFAULT_PADLET = 'https://padlet.com/embed/s0243ctlzzvx2scmvpxs';
