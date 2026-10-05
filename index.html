@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="da">
+<html lang="fo">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jarðfríða – tre lektioner</title>
+<title>Jarðfríða borar ein tunnil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
@@ -11,21 +11,26 @@
 
 :root{
   color-scheme: light;
-  --ground:#EDF0F1;
+  --ground:#FFF8E8;
   --surface:#FFFFFF;
-  --surface-2:#E3E8EA;
+  --surface-2:#FCEFC4;
+  --stone-bg:#ECEFF0;
   --ink:#1E2326;
   --ink-soft:#4E585E;
-  --line:#C9D1D5;
+  --line:#EADFC0;
   --basalt:#3A3F44;
   --basalt-2:#565C62;
   --vest:#F2C230;
   --vest-ink:#2A2100;
+  --hivis:#D6EE1E;
+  --jacket:#2F5562;
   --moss:#5F7A5B;
   --rust:#A4533A;
+  --hat:#C8553D;
   --good:#2F7A4A;
   --warn:#A86A00;
   --focus:#1B6FB8;
+  --shadow:0 2px 0 rgba(30,35,38,.06), 0 8px 24px rgba(30,35,38,.06);
   --display:"Baloo 2", "Trebuchet MS", system-ui, sans-serif;
   --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -33,16 +38,16 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme: dark;
-    --ground:#15191B; --surface:#1F2427; --surface-2:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
+    --ground:#15191B; --surface:#1F2427; --surface-2:#3A3420; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
     --line:#3A4348; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#F2C230; --vest-ink:#2A2100;
-    --moss:#8FAE8A; --rust:#D0795D; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0;
+    --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0; --shadow:none;
   }
 }
 :root[data-theme="dark"]{
   color-scheme: dark;
-  --ground:#15191B; --surface:#1F2427; --surface-2:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
+  --ground:#15191B; --surface:#1F2427; --surface-2:#3A3420; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
   --line:#3A4348; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#F2C230; --vest-ink:#2A2100;
-  --moss:#8FAE8A; --rust:#D0795D; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0;
+  --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0; --shadow:none;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -51,7 +56,7 @@ body{background:var(--ground);color:var(--ink);font:17px/1.55 var(--body);paddin
 .wrap{max-width:960px;margin:0 auto}
 h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
 h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:800}
-h2{font-size:1.6rem;font-weight:700}
+h2{font-size:1.6rem;font-weight:800}
 h3{font-size:1.2rem;font-weight:700}
 p{margin:0;max-width:65ch}
 button,input{font:inherit;color:inherit}
@@ -60,26 +65,30 @@ button,input{font:inherit;color:inherit}
 .proto b{font-weight:700}
 
 /* hero */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding-block:28px 20px}
-.hero svg{width:130px;height:auto}
-.bubble{background:var(--surface);border:2px solid var(--ink);border-radius:18px;padding:16px 18px;position:relative;display:grid;gap:8px}
-.bubble::before{content:"";position:absolute;left:-12px;top:34px;border:10px solid transparent;border-right-color:var(--ink);border-left:0}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding-block:28px 22px}
+.hero .figure{width:170px;height:auto;display:block}
+.bubble{background:var(--surface);border:2px solid var(--ink);border-radius:22px;padding:18px 20px 22px;position:relative;display:grid;gap:8px;box-shadow:var(--shadow)}
+.bubble::before{content:"";position:absolute;left:-12px;top:44px;border:10px solid transparent;border-right-color:var(--ink);border-left:0}
 .bubble p{font-size:1.1rem}
+.bubble .malli-peek{position:absolute;right:14px;bottom:-26px;width:68px;height:auto}
+.bubble p:last-of-type{padding-right:78px}
 .eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
-@media (max-width:560px){.hero{grid-template-columns:1fr}.hero svg{width:100px}.bubble::before{display:none}}
+@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:center}.hero .figure{width:120px}.bubble::before{display:none}}
 
 /* faner */
-.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:22px}
-.phase{appearance:none;border:2px solid var(--line);background:var(--surface);padding:10px 8px;border-radius:14px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.15;color:var(--ink-soft);display:grid;gap:2px;justify-items:center;text-align:center}
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 22px}
+.phase{appearance:none;border:2px solid var(--line);background:var(--surface);padding:10px 8px;border-radius:16px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.15;color:var(--ink-soft);display:grid;gap:2px;justify-items:center;text-align:center;box-shadow:var(--shadow)}
 .phase .n{font-size:1.6rem;line-height:1}
 .phase[aria-selected="true"]{color:var(--vest-ink);background:var(--vest);border-color:var(--vest-ink)}
 @media (max-width:560px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .stack{display:grid;gap:18px}
-.panel{background:var(--surface);border-radius:16px;padding:22px;display:grid;gap:16px;border:1px solid var(--line)}
-.say{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;background:var(--surface-2);border-radius:12px;padding:12px}
-.say svg{width:44px;height:44px}
+.panel{background:var(--surface);border-radius:18px;padding:22px;display:grid;gap:16px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.say{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;background:var(--surface-2);border-radius:14px;padding:12px 14px}
+.say svg{width:52px;height:52px}
 .say p{font-size:1.05rem}
+.say .who{display:block;font-family:var(--display);font-weight:800;font-size:.9rem;line-height:1.1}
+.say.malli{background:var(--stone-bg)}
 .task{font-weight:700;font-size:1.05rem}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .btn{appearance:none;border:2px solid var(--ink);background:var(--surface);border-radius:999px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:1.05rem}
@@ -99,15 +108,15 @@ button,input{font:inherit;color:inherit}
 .steps li::marker{font-family:var(--display);font-weight:800}
 .hint{background:var(--surface-2);border-left:4px solid var(--vest);border-radius:8px;padding:10px 12px}
 
-/* lup */
-.core-box{position:relative;touch-action:none;cursor:none;border-radius:14px;overflow:hidden;background:var(--surface-2);user-select:none}
+/* sjóneyka */
+.core-box{position:relative;touch-action:none;cursor:none;border-radius:14px;overflow:hidden;background:var(--stone-bg);user-select:none}
 .core-box svg{display:block;width:100%;height:auto}
 .core-detail{position:absolute;inset:0;clip-path:circle(0 at 50% 50%)}
 .lens{position:absolute;width:110px;height:110px;border-radius:50%;border:5px solid var(--ink);box-shadow:0 0 0 2px var(--surface) inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0}
 .lens::after{content:"";position:absolute;width:44px;height:10px;background:var(--ink);border-radius:5px;right:-38px;bottom:-6px;transform:rotate(45deg)}
 
-/* fjeld */
-.section-box{border-radius:14px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line)}
+/* fjall */
+.section-box{border-radius:14px;overflow:hidden;background:var(--stone-bg);border:1px solid var(--line)}
 .section-box svg{display:block;width:100%;height:auto}
 #mtn .pin{cursor:pointer}
 .legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:1rem}
@@ -123,16 +132,23 @@ button,input{font:inherit;color:inherit}
 .slider input{width:100%;height:32px;accent-color:var(--rust)}
 .slider .ends{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-soft)}
 
-/* diplom */
-.diploma{border:3px double var(--ink);border-radius:14px;padding:18px;text-align:center;display:grid;gap:8px;justify-items:center}
+/* Malli-søgan */
+.journey{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.journey figure{margin:0;display:grid;justify-items:center;gap:4px;font-size:.9rem;color:var(--ink-soft)}
+.journey svg{width:70px;height:56px}
+.journey .arr{font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--ink-soft);text-align:center;line-height:1.15}
+
+/* prógv */
+.diploma{border:3px double var(--ink);border-radius:16px;padding:18px;text-align:center;display:grid;gap:8px;justify-items:center;background:var(--surface-2)}
 .diploma .big{font-family:var(--display);font-size:1.8rem;font-weight:800}
+.diploma svg{width:80px;height:auto}
 
 /* galleri */
 .gallery{display:grid;gap:12px}
 .gallery iframe{width:100%;height:620px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:block}
 
-/* lærer */
-details.teacher{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:1rem}
+/* lærari */
+details.teacher{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;font-size:1rem;box-shadow:var(--shadow)}
 details.teacher summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.1rem}
 details.teacher h3{margin-top:18px}
 details.teacher code{font-family:var(--mono);font-size:.85rem;background:var(--surface-2);padding:1px 5px;border-radius:5px;word-break:break-all}
@@ -146,274 +162,343 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 </style>
 </head>
 <body>
-<!-- Jarðfríðas lille ansigt, genbruges i talebobler -->
+<!-- Andlitið hjá Jarðfríðu og Malli – verða brúkt í talubløðrunum -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="jf" viewBox="0 0 44 44"><circle cx="22" cy="22" r="21" fill="#F0C4A0"/><path d="M4 20 C6 4 38 4 40 20 C32 12 12 12 4 20Z" fill="#5A3A2A"/><circle cx="16" cy="24" r="2" fill="#1E2326"/><circle cx="28" cy="24" r="2" fill="#1E2326"/><path d="M16 31 Q22 35 28 31" stroke="#1E2326" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="jf" viewBox="-84 -104 192 196"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"/>
+<circle cx="-60" cy="10" r="11" fill="#E2AE88"/><circle cx="60" cy="10" r="11" fill="#E2AE88"/>
+<circle cx="0" cy="0" r="62" fill="#F0C4A0"/>
+<path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"/>
+<path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"/>
+<path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"/>
+<rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"/>
+<path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"/>
+<circle cx="0" cy="-82" r="17" fill="#EFE7DA"/><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"/>
+<circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"/><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"/>
+<circle cx="-40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="-33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="-44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="-22" cy="8" r="5.5" fill="#1E2326"/><circle cx="22" cy="8" r="5.5" fill="#1E2326"/>
+<path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="malli" viewBox="-90 -78 180 160"><path d="M-78 18 C-84 -30 -40 -66 6 -64 C56 -62 86 -28 80 16 C76 52 40 70 -2 70 C-44 70 -74 52 -78 18 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-60 -18 C-50 -48 -10 -58 22 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-70 30 C-50 62 40 66 70 30 C50 52 -40 56 -70 30Z" fill="#666D73" opacity=".6"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="8" fill="#fff"/><circle cx="20" cy="-4" r="8" fill="#fff"/><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"/><circle cx="22" cy="-3" r="4.6" fill="#1E2326"/><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-78 18 C-84 -30 -40 -66 6 -64 C56 -62 86 -28 80 16 C76 52 40 70 -2 70 C-44 70 -74 52 -78 18 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-60 -18 C-50 -48 -10 -58 22 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-70 30 C-50 62 40 66 70 30 C50 52 -40 56 -70 30Z" fill="#666D73" opacity=".6"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="10" fill="#fff"/><circle cx="20" cy="-4" r="10" fill="#fff"/><circle cx="-20" cy="-6" r="5" fill="#1E2326"/><circle cx="20" cy="-6" r="5" fill="#1E2326"/><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"/><text x="58" y="-56" font-family="Baloo 2" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol>
 </svg>
 
-<div class="proto"><b>Prototype til vurdering</b> · Indhold og eksempler er foreløbige · Endelig version på færøsk</div>
+<div class="proto"><b>Prototypa til meting</b> · Innihald og dømi eru fyribils · Jarðfeingi og Nám skulu góðkenna tekstin</div>
 <div class="wrap">
 
 <header class="hero">
-  <svg viewBox="0 0 140 170" role="img" aria-label="Tegning af geologen Jarðfríða med lup og gul vest">
-    <defs><clipPath id="face"><circle cx="70" cy="58" r="34"/></clipPath></defs>
-    <path d="M32 62 C30 22 110 22 108 62 L110 92 C96 84 44 84 30 92 Z" fill="#5A3A2A"/>
-    <path d="M26 170 C26 118 46 100 70 100 C94 100 114 118 114 170 Z" fill="#3E6E8E"/>
-    <path d="M38 170 L44 112 C54 104 60 102 64 102 L60 170 Z M102 170 L96 112 C86 104 80 102 76 102 L80 170 Z" fill="#F2C230"/>
-    <rect x="40" y="136" width="22" height="5" fill="#D9DDE0" transform="rotate(-4 51 138)"/>
-    <rect x="78" y="136" width="22" height="5" fill="#D9DDE0" transform="rotate(4 89 138)"/>
-    <rect x="62" y="86" width="16" height="18" fill="#E8B894"/>
-    <circle cx="70" cy="58" r="34" fill="#F0C4A0"/>
-    <path d="M36 52 C40 26 100 22 106 52 C92 40 70 36 52 44 C46 46 40 50 36 52 Z" fill="#5A3A2A"/>
-    <circle cx="70" cy="18" r="12" fill="#5A3A2A"/>
-    <circle cx="58" cy="60" r="3.4" fill="#1E2326"/><circle cx="82" cy="60" r="3.4" fill="#1E2326"/>
-    <circle cx="52" cy="70" r="5" fill="#E89A86" opacity=".55"/><circle cx="88" cy="70" r="5" fill="#E89A86" opacity=".55"/>
-    <path d="M60 74 Q70 82 80 74" stroke="#1E2326" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-    <line x1="112" y1="124" x2="128" y2="150" stroke="#1E2326" stroke-width="7" stroke-linecap="round"/>
-    <circle cx="106" cy="114" r="15" fill="#CFE6F2" fill-opacity=".7" stroke="#1E2326" stroke-width="5"/>
-    <circle cx="100" cy="109" r="4" fill="#FFFFFF" opacity=".8"/>
-  </svg>
+  <svg class="figure" viewBox="0 0 320 630" role="img" aria-label="Tekning av jarðfrøðinginum Jarðfríðu við sjóneyku, bundnari húgvu og trygdarvesti. Steinurin Malli hyggur upp úr lummanum."><ellipse cx="150" cy="612" rx="96" ry="13" fill="#D5D9D2"/>
+<rect x="110" y="440" width="34" height="140" rx="10" fill="#3A4045"/><rect x="158" y="440" width="34" height="140" rx="10" fill="#3A4045"/>
+<path d="M98 572 Q98 556 116 556 L146 556 L146 600 L98 600 Z" fill="#6B4A32"/><path d="M154 556 L186 556 Q204 556 204 572 L204 600 L154 600 Z" fill="#6B4A32"/>
+<rect x="96" y="594" width="52" height="8" rx="3" fill="#3A2A1E"/><rect x="152" y="594" width="54" height="8" rx="3" fill="#3A2A1E"/>
+<path d="M92 270 C66 300 60 360 70 410" stroke="#2F5562" stroke-width="30" fill="none" stroke-linecap="round"/>
+<path d="M88 262 C96 240 204 240 212 262 L224 462 C190 476 110 476 76 462 Z" fill="#2F5562"/>
+<path d="M90 300 C120 306 180 306 210 300 M88 340 C120 346 180 346 212 340 M86 380 C120 386 180 386 214 380 M84 420 C120 426 180 426 216 420" stroke="#264652" stroke-width="3" fill="none"/>
+<path d="M118 238 L182 238 L176 268 L124 268 Z" fill="#EFE7DA"/>
+<path d="M122 252 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6" stroke="#A4533A" stroke-width="3" fill="none"/>
+<path d="M100 262 L140 270 L136 466 C120 466 106 462 96 458 Z" fill="#D6EE1E"/>
+<path d="M200 262 L160 270 L164 466 C180 466 194 462 204 458 Z" fill="#D6EE1E"/>
+<image x="161.0" y="334" width="40" height="8.40" href="data:image/png;base64,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"/>
+<path d="M166 434 C166 418 194 416 196 432 Z" fill="#7E858B" stroke="#1E2326" stroke-width="1.6"/><circle cx="176" cy="427" r="2.6" fill="#fff"/><circle cx="186" cy="427" r="2.6" fill="#fff"/><circle cx="176.6" cy="427.4" r="1.5" fill="#1E2326"/><circle cx="186.6" cy="427.4" r="1.5" fill="#1E2326"/><rect x="170" y="421" width="4" height="1.2" fill="#F4F1EA" transform="rotate(-20 172 421)"/>
+<rect x="164" y="432" width="34" height="22" rx="4" fill="#BBD218"/>
+<g transform="rotate(-10 70 418)"><rect x="40" y="392" width="44" height="56" rx="4" fill="#A4533A"/><rect x="44" y="396" width="6" height="48" fill="#8E4430"/><rect x="56" y="404" width="22" height="4" rx="2" fill="#F3D9C9"/></g>
+<circle cx="74" cy="414" r="13" fill="#F0C4A0"/>
+<path d="M208 272 C236 262 248 230 246 196" stroke="#2F5562" stroke-width="30" fill="none" stroke-linecap="round"/>
+<line x1="252" y1="168" x2="270" y2="120" stroke="#1E2326" stroke-width="10" stroke-linecap="round"/>
+<circle cx="246" cy="186" r="15" fill="#F0C4A0"/>
+<circle cx="276" cy="96" r="28" fill="#CFE6F2" fill-opacity=".8" stroke="#1E2326" stroke-width="8"/>
+<path d="M260 86 A18 18 0 0 1 272 76" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+<rect x="138" y="196" width="24" height="44" fill="#E2AE88"/>
+<g transform="translate(150 150)"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"/>
+<circle cx="-60" cy="10" r="11" fill="#E2AE88"/><circle cx="60" cy="10" r="11" fill="#E2AE88"/>
+<circle cx="0" cy="0" r="62" fill="#F0C4A0"/>
+<path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"/>
+<path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"/>
+<path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"/>
+<rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"/>
+<path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"/>
+<circle cx="0" cy="-82" r="17" fill="#EFE7DA"/><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"/>
+<circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"/><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"/>
+<circle cx="-40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="-33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="-44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="-22" cy="8" r="5.5" fill="#1E2326"/><circle cx="22" cy="8" r="5.5" fill="#1E2326"/>
+<path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>
   <div class="bubble">
-    <span class="eyebrow">Geoskúli · Jarðfeingi</span>
-    <h1>Hej, jeg er Jarðfríða!</h1>
-    <p>Jeg er geolog. Jeg undersøger sten. Vi skal bygge en tunnel gennem et fjeld. Kan I hjælpe mig med at finde det bedste sted?</p>
+    <span class="eyebrow">Jarðfeingi · Ein dagur hjá Jarðfríðu</span>
+    <h1>Hey, eg eri Jarðfríða!</h1>
+    <p>Eg eri jarðfrøðingur og kanni steinar. Nú skulu vit gera ein tunnil gjøgnum eitt fjall. Kunnu tit hjálpa mær at finna besta staðið?</p>
+    <p>Malli, steinurin í lummanum hjá mær, er eisini við.</p>
+    <svg class="malli-peek" aria-hidden="true"><use href="#malli"/></svg>
   </div>
 </header>
 
-<nav class="phases" role="tablist" aria-label="Forløbets dele">
-  <button class="phase" role="tab" id="tab-l1" aria-selected="true" aria-controls="phase-l1"><span class="n">1</span>Kig på sten</button>
-  <button class="phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2"><span class="n">2</span>Min sten</button>
-  <button class="phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3"><span class="n">3</span>Boreprøver og tunnel</button>
-  <button class="phase" role="tab" id="tab-l4" aria-selected="false" aria-controls="phase-l4"><span class="n">4</span>Jeres eget fjeld</button>
+<nav class="phases" role="tablist" aria-label="Partarnir í gongdini">
+  <button class="phase" role="tab" id="tab-l1" aria-selected="true" aria-controls="phase-l1"><span class="n">1</span>Kanna steinar</button>
+  <button class="phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2"><span class="n">2</span>Mín steinur</button>
+  <button class="phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3"><span class="n">3</span>Kjarnuroyndir og tunnil</button>
+  <button class="phase" role="tab" id="tab-l4" aria-selected="false" aria-controls="phase-l4"><span class="n">4</span>Tykkara egna fjall</button>
 </nav>
 
-<!-- ============ 1 · KIG PÅ STEN ============ -->
+<!-- ============ 1 · KANNA STEINAR ============ -->
 <section id="phase-l1" role="tabpanel" aria-labelledby="tab-l1">
   <div class="stack">
     <article class="panel">
-      <span class="tag screen">Skærm</span>
+      <span class="tag screen">Skermur</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Det her er en boreprøve. Det er en lang sten fra inde i fjeldet. Med luppen kan jeg se små ting, som jeg ellers ikke ser.«</p></div>
-      <h2>Find 3 ting med luppen</h2>
-      <p class="task">Flyt luppen hen over stenen. Tryk, når du finder noget.</p>
+        <p><span class="who">Jarðfríða</span>»Hetta er ein kjarnuroynd. Tað er ein langur steinur innan úr fjallinum. Við sjóneykuni síggi eg smálutir, sum eg annars ikki síggi.«</p></div>
+      <h2>Finn trý ting við sjóneykuni</h2>
+      <p class="task">Flyt sjóneykuna yvir steinin. Trýst, tá ið tú finnur okkurt.</p>
       <div class="core-box" id="coreBox">
         <svg id="coreBase" viewBox="0 0 600 150" aria-hidden="true"></svg>
         <svg id="coreDetail" class="core-detail" viewBox="0 0 600 150" aria-hidden="true"></svg>
         <div class="lens" id="lens"></div>
       </div>
       <div class="chips" id="finds">
-        <span class="chip" data-f="huller">Små huller</span>
-        <span class="chip" data-f="krystaller">Hvide streger</span>
-        <span class="chip" data-f="farve">Rød farve</span>
+        <span class="chip" data-f="huller">Smá hol</span>
+        <span class="chip" data-f="krystaller">Hvítar strikur</span>
+        <span class="chip" data-f="farve">Reyður litur</span>
       </div>
       <div id="lensFeedback" class="feedback good" hidden></div>
     </article>
 
     <article class="panel">
-      <span class="tag stone">Rigtige sten</span>
+      <span class="tag stone">Veruligir steinar</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Nu skal I kigge på rigtige sten. Dem kan I røre ved!«</p></div>
-      <h2>Nu med rigtige sten</h2>
+        <p><span class="who">Jarðfríða</span>»Nú skulu tit hyggja at veruligum steinum. Teir kunnu tit nerta við!«</p></div>
+      <h2>Nú við veruligum steinum</h2>
       <ol class="steps">
-        <li>Mærk stenen. Er den glat eller ru? Tung eller let?</li>
-        <li>Kig med luppen. Kan du finde huller, hvide streger eller rød farve?</li>
-        <li>Tegn stenen i din logbog.</li>
+        <li>Kenn steinin. Er hann sleipur ella grovur? Tungur ella lættur?</li>
+        <li>Hygg við sjóneykuni. Finnur tú hol, hvítar strikur ella reyðan lit?</li>
+        <li>Tekna steinin í loggbókina.</li>
       </ol>
-      <p class="hint"><b>Tip:</b> Gør stenen lidt våd. Så kan du bedre se farverne.</p>
+      <p class="hint"><b>Gott ráð:</b> Ger steinin eitt sindur vátan. So síggja tit litirnar betur.</p>
+      <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
+        <p><span class="who">Malli</span>»Eg havi eisini hol og krystall. Kanst tú finna tey á mær?«</p></div>
     </article>
   </div>
 </section>
 
-<!-- ============ 2 · MIN STEN ============ -->
+<!-- ============ 2 · MÍN STEINUR ============ -->
 <section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden>
   <div class="stack">
     <article class="panel">
-      <span class="tag stone">Rigtige sten</span>
+      <span class="tag stone">Veruligir steinar</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Nu er du selv geolog! Find en sten, og vis den til klassen.«</p></div>
-      <h2>Min egen sten</h2>
+        <p><span class="who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Finn ein stein, og vís flokkinum hann.«</p></div>
+      <h2>Mín egni steinur</h2>
       <ol class="steps">
-        <li>Find en sten ved skolen eller derhjemme.</li>
-        <li>Tag et billede af stenen. Kun af stenen – ikke af dig selv eller andre.</li>
-        <li>Læg billedet på klassens væg herunder. Skriv dit fornavn, og hvor du fandt stenen.</li>
+        <li>Finn ein stein við skúlan ella heima.</li>
+        <li>Tak eina mynd av steininum. Bert av steininum – ikki av tær sjálvum ella øðrum.</li>
+        <li>Legg myndina á vegg flokksins niðanfyri. Skriva fornavn títt, og hvar tú fanst steinin.</li>
       </ol>
     </article>
 
     <article class="panel">
-      <h2>Vores klasses sten</h2>
+      <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
+        <p><span class="who">Malli</span>»Ísur og vatn hava máað burturav mær, so nú eri eg rundur. Er tín steinur rundur ella kantaður?«</p></div>
+      <h2>Søgan hjá Malla</h2>
+      <div class="journey" aria-label="Søgan hjá Malla: hann brotnar av fjallinum, ísurin flytur hann, og vatnið fær hann at rulla, til hann er rundur.">
+        <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><rect x="-56" y="-44" width="112" height="88" fill="#7A8086" stroke="#1E2326" stroke-width="4"/><rect x="-56" y="-44" width="112" height="22" fill="#5F7A5B" stroke="#1E2326" stroke-width="4"/><rect x="-56" y="12" width="112" height="10" fill="#A4533A"/><path d="M10 -22 L18 -2 L8 10 L16 44 M18 -2 L56 -8" stroke="#1E2326" stroke-width="3" fill="none"/></svg>Partur av fjallinum</figure>
+        <span class="arr">brotnar av<br>fjallinum →</span>
+        <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-48 20 L-40 -30 L-6 -46 L30 -36 L48 -4 L36 34 L-10 44 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"/></svg>Kantaður</figure>
+        <span class="arr">ísurin<br>flytur hann →</span>
+        <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-50 14 C-50 -24 -24 -44 6 -44 C34 -40 50 -16 46 12 C44 36 18 44 -8 44 C-30 44 -50 36 -50 14 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"/></svg>Kantarnir slítast</figure>
+        <span class="arr">vatnið fær<br>hann at rulla →</span>
+        <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-52 6 C-52 -26 -24 -38 4 -38 C34 -38 54 -22 52 6 C50 30 28 38 0 38 C-28 38 -52 30 -52 6 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"/></svg>Rundur</figure>
+      </div>
+    </article>
+
+    <article class="panel">
+      <h2>Steinarnir hjá okkum</h2>
       <div class="gallery" id="gallery"></div>
-      <p class="hint"><b>Kig på de andres sten:</b> Find en sten med huller. Find en sten med hvide streger. Find en rød sten.</p>
+      <p class="hint"><b>Hygg at steinunum hjá hinum:</b> Finn ein stein við holum. Finn ein stein við hvítum strikum. Finn ein reyðan stein. Finn ein rundan stein og ein kantaðan stein.</p>
     </article>
   </div>
 </section>
 
-<!-- ============ 3 · BOREPRØVER OG TUNNEL ============ -->
+<!-- ============ 3 · KJARNUROYNDIR OG TUNNIL ============ -->
 <section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden>
   <div class="stack">
     <article class="panel">
-      <span class="tag screen">Skærm</span>
+      <span class="tag screen">Skermur</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Vi skal bygge en tunnel gennem fjeldet. Men vi kan ikke se ind i det. Derfor borer vi og henter boreprøver op.«</p></div>
-      <h2>Bor i Jarðfríðas fjeld</h2>
-      <p class="task">Tryk på B1, B2 og B3 for at bore.</p>
-      <div class="section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Et fjeld med tre steder at bore: B1, B2 og B3"></svg></div>
+        <p><span class="who">Jarðfríða</span>»Vit skulu gera ein tunnil gjøgnum fjallið. Men vit síggja ikki inn í tað. Tí bora vit og taka kjarnuroyndir upp.«</p></div>
+      <h2>Bora í fjallið hjá Jarðfríðu</h2>
+      <p class="task">Trýst á B1, B2 og B3 fyri at bora.</p>
+      <div class="section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Eitt fjall við trimum støðum at bora: B1, B2 og B3"></svg></div>
       <div class="row">
-        <button class="btn" data-drill="B1">Bor ved B1</button>
-        <button class="btn" data-drill="B2">Bor ved B2</button>
-        <button class="btn" data-drill="B3">Bor ved B3</button>
+        <button class="btn" data-drill="B1">Bora við B1</button>
+        <button class="btn" data-drill="B2">Bora við B2</button>
+        <button class="btn" data-drill="B3">Bora við B3</button>
       </div>
       <div class="tray" id="tray" aria-live="polite"></div>
-      <div class="legend" aria-label="Hvad farverne betyder">
-        <span><i style="background:#5F7A5B"></i>grøn = jord</span>
-        <span><i style="background:#7A8086"></i>grå = hård sten</span>
-        <span><i style="background:#2E3236"></i>sort = hård sten</span>
-        <span><i style="background:#A4533A"></i>rød = blød sten</span>
+      <div class="legend" aria-label="Hvat litirnir merkja">
+        <span><i style="background:#5F7A5B"></i>grønt = mold</span>
+        <span><i style="background:#7A8086"></i>grátt = hart grót</span>
+        <span><i style="background:#2E3236"></i>svart = hart grót</span>
+        <span><i style="background:#A4533A"></i>reytt = bleytt grót</span>
       </div>
-      <p class="hint"><b>Tal sammen:</b> Er der rødt i alle tre boreprøver? Ligger det røde lige højt?</p>
+      <p class="hint"><b>Tosið saman:</b> Er reytt í øllum trimum kjarnuroyndunum? Liggur tað reyða líka høgt?</p>
     </article>
 
     <article class="panel">
-      <span class="tag screen">Skærm</span>
-      <h2>Skær fjeldet over, og find tunnelen</h2>
-      <p class="task">Hvordan tror du, fjeldet ser ud indeni? Tryk og se, om du havde ret.</p>
-      <div class="row"><button class="btn primary" id="cutBtn">Skær Jarðfríðas fjeld over</button></div>
+      <span class="tag screen">Skermur</span>
+      <h2>Sker fjallið yvir, og finn tunnilin</h2>
+      <p class="task">Hvussu heldur tú, at fjallið sær út innan í? Trýst og sí, um tú hevði rætt.</p>
+      <div class="row"><button class="btn primary" id="cutBtn">Sker fjallið hjá Jarðfríðu yvir</button></div>
       <div id="cutArea" class="stack" hidden>
-        <div class="section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjeldet skåret over, så man kan se lagene indeni"></svg></div>
+        <div class="section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjallið skorið yvir, so tú sært løgini innan í"></svg></div>
+        <div class="say malli"><svg aria-hidden="true"><use href="#malli-undr"/></svg>
+          <p><span class="who">Malli</span>»Eg var eisini einaferð partur av einum fjalli!«</p></div>
         <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-          <p>»Tunnelen skal gå gennem <b>hård sten</b>. Det røde lag er blødt. Der kan tunnelen falde sammen!«</p></div>
+          <p><span class="who">Jarðfríða</span>»Tunnilin skal ganga gjøgnum <b>hart grót</b>. Reyða lagið er bleytt. Har kann tunnilin falla saman!«</p></div>
         <div class="slider">
-          <label for="tunnel" class="task">Flyt tunnelen op og ned</label>
+          <label for="tunnel" class="task">Flyt tunnilin upp og niður</label>
           <input type="range" id="tunnel" min="0.5" max="8" step="0.5" value="4">
-          <div class="ends" aria-hidden="true"><span>⬇ længere nede</span><span>højere oppe ⬆</span></div>
+          <div class="ends" aria-hidden="true"><span>⬇ longur niðri</span><span>hægri uppi ⬆</span></div>
         </div>
-        <div class="row"><button class="btn primary" id="checkTunnel">Tjek tunnelen</button></div>
+        <div class="row"><button class="btn primary" id="checkTunnel">Kanna tunnilin</button></div>
         <div id="tunnelFeedback" class="feedback" hidden aria-live="polite"></div>
       </div>
     </article>
   </div>
 </section>
 
-<!-- ============ 4 · JERES EGET FJELD ============ -->
+<!-- ============ 4 · TYKKARA EGNA FJALL ============ -->
 <section id="phase-l4" role="tabpanel" aria-labelledby="tab-l4" hidden>
   <div class="stack">
     <article class="panel">
-      <span class="tag clay">Fjeld</span>
+      <span class="tag clay">Fjall</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Nu skal I selv være geologer! I bygger et fjeld af trolddej. Bagefter skal et andet par finde ud af, hvad der er inde i jeres fjeld.«</p></div>
-      <h2>Byg et fjeld – to og to</h2>
+        <p><span class="who">Jarðfríða</span>»Nú skulu tit sjálv vera jarðfrøðingar! Tit gera eitt fjall úr gandadeiggi. Síðan skal eitt annað par finna út av, hvat er inni í fjallinum hjá tykkum.«</p></div>
+      <h2>Gerið eitt fjall – tvey og tvey</h2>
       <ol class="steps">
-        <li>Lav 3–4 flade plader af trolddej i forskellige farver.</li>
-        <li>Læg pladerne oven på hinanden. Det er lagene i jeres fjeld.</li>
-        <li>Form det hele til et fjeld. Dæk det med et tyndt grønt lag, så ingen kan se lagene.</li>
-        <li>Sæt tre tandstikker i fjeldet: B1, B2 og B3.</li>
+        <li>Gerið 3–4 flatar plátur úr gandadeiggi í ymiskum litum.</li>
+        <li>Leggið pláturnar oman á hvørja aðra. Tað eru løgini í fjallinum hjá tykkum.</li>
+        <li>Formið alt til eitt fjall. Dekkið tað við einum tunnum, grønum lagi, so eingin sær løgini.</li>
+        <li>Setið trý tannstikkar í fjallið: B1, B2 og B3.</li>
       </ol>
-      <p class="hint"><b>Hemmeligt!</b> Fortæl ikke de andre, hvordan jeres fjeld ser ud indeni.</p>
+      <p class="hint"><b>Loyndarmál!</b> Sigið ikki hinum, hvussu fjallið hjá tykkum sær út innan í.</p>
     </article>
 
     <article class="panel">
-      <span class="tag clay">Fjeld</span>
-      <h2>Byt fjeld</h2>
-      <p class="task">Byt fjeld med et andet par. Nu skal I undersøge deres fjeld.</p>
+      <span class="tag clay">Fjall</span>
+      <h2>Býtið fjall</h2>
+      <p class="task">Býtið fjall við eitt annað par. Nú skulu tit kanna fjallið hjá teimum.</p>
     </article>
 
     <article class="panel">
-      <span class="tag clay">Fjeld</span>
-      <h2>Lav boreprøver</h2>
+      <span class="tag clay">Fjall</span>
+      <h2>Takið kjarnuroyndir</h2>
       <ol class="steps">
-        <li>Stik et sugerør lige ned ved B1. Helt ned til bordet.</li>
-        <li>Drej lidt, og træk sugerøret op.</li>
-        <li>Klip sugerøret op, og læg boreprøven ved siden af. Skriv B1 ved den.</li>
-        <li>Gør det samme ved B2 og B3.</li>
+        <li>Stingið eitt sugurrør beint niður við B1. Heilt niður á borðið.</li>
+        <li>Snarið eitt sindur, og dragið sugurrørið upp.</li>
+        <li>Klippið sugurrørið upp, og leggið kjarnuroyndina við síðuna av. Skrivið B1 við hana.</li>
+        <li>Gerið tað sama við B2 og B3.</li>
       </ol>
     </article>
 
     <article class="panel">
-      <span class="tag clay">Fjeld</span>
+      <span class="tag clay">Fjall</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p>»Kig godt på jeres boreprøver. Hvilke farver er der? Hvor ligger de?«</p></div>
-      <h2>Gæt, og tegn</h2>
-      <p class="task">Tegn, hvordan I tror, fjeldet ser ud indeni. Brug farverne fra boreprøverne.</p>
+        <p><span class="who">Jarðfríða</span>»Hyggið væl at kjarnuroyndunum. Hvørjir litir eru? Hvar liggja teir?«</p></div>
+      <h2>Gitið, og teknið</h2>
+      <p class="task">Teknið, hvussu tit halda, at fjallið sær út innan í. Brúkið litirnar úr kjarnuroyndunum.</p>
     </article>
 
     <article class="panel">
-      <span class="tag clay">Fjeld</span>
-      <h2>Skær fjeldet over</h2>
+      <span class="tag clay">Fjall</span>
+      <h2>Skerið fjallið yvir</h2>
       <ol class="steps">
-        <li>Skær fjeldet over på langs, gennem B1, B2 og B3.</li>
-        <li>Læg jeres tegning ved siden af. Passede den?</li>
-        <li>Vis det til parret, der byggede fjeldet.</li>
+        <li>Skerið fjallið yvir eftir longdini, gjøgnum B1, B2 og B3.</li>
+        <li>Leggið tekningina við síðuna av. Passaði hon?</li>
+        <li>Vísið parinum, sum gjørdi fjallið, tað.</li>
       </ol>
     </article>
 
     <article class="panel">
-      <h2>Tal sammen</h2>
+      <h2>Tosið saman</h2>
       <ul class="steps">
-        <li>Hvad passede på jeres tegning? Hvad overraskede jer?</li>
-        <li>Hvorfor borer geologer, før de bygger en tunnel?</li>
+        <li>Hvat passaði á tekningini? Hvat kom óvart á tykkum?</li>
+        <li>Hví bora jarðfrøðingar, áðrenn teir gera ein tunnil?</li>
       </ul>
       <div class="diploma">
-        <span class="eyebrow">Geoskúli</span>
-        <span class="big">I har arbejdet som geologer!</span>
-        <p>I har kigget på sten, lavet boreprøver og fundet ud af, hvad der er inde i et fjeld.</p>
+        <svg viewBox="-90 -78 180 160" aria-hidden="true"><use href="#malli"/></svg>
+        <span class="eyebrow">Jarðfeingi</span>
+        <span class="big">Tit hava arbeitt sum jarðfrøðingar!</span>
+        <p>Tit hava kannað steinar, tikið kjarnuroyndir og funnið út av, hvat er inni í einum fjalli.</p>
       </div>
     </article>
   </div>
 </section>
 
 <details class="teacher">
-  <summary>Til læreren</summary>
+  <summary>Til lærarans</summary>
 
-  <h3>Forløbet</h3>
+  <h3>Gongdin</h3>
   <div class="tablewrap">
   <table class="forloeb">
-    <thead><tr><th>Del</th><th>Skærm</th><th>Rigtige sten / fjeld</th><th>Tid</th></tr></thead>
+    <thead><tr><th>Partur</th><th>Skermur</th><th>Veruligir steinar / fjall</th><th>Tíð</th></tr></thead>
     <tbody>
-      <tr><td><b>1 · Kig på sten</b></td><td>Find 3 ting med luppen</td><td>Mærke, kigge med lup, tegne en sten</td><td>45 min</td></tr>
-      <tr><td><b>2 · Min sten</b></td><td>Læg et billede på Padlet</td><td>Finde en sten derhjemme eller ved skolen</td><td>Hjemme + 15 min</td></tr>
-      <tr><td><b>3 · Boreprøver og tunnel</b></td><td>Bor i Jarðfríðas fjeld, skær over, find tunnelen</td><td>–</td><td>30 min</td></tr>
-      <tr><td><b>4 · Jeres eget fjeld</b></td><td>–</td><td>To og to: bygge fjeld af trolddej, bytte, bore, tegne et gæt, skære over</td><td>60–90 min</td></tr>
+      <tr><td><b>1 · Kanna steinar</b></td><td>Finna trý ting við sjóneykuni</td><td>Kenna, hyggja við sjóneyku og tekna ein stein</td><td>45 min</td></tr>
+      <tr><td><b>2 · Mín steinur</b></td><td>Leggja eina mynd á Padlet</td><td>Finna ein stein heima ella við skúlan</td><td>Heima + 15 min</td></tr>
+      <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Bora í fjallið hjá Jarðfríðu, skera tað yvir og finna tunnilin</td><td>–</td><td>30 min</td></tr>
+      <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey: gera fjall úr gandadeiggi, býta, bora, tekna eitt git og skera yvir</td><td>60–90 min</td></tr>
     </tbody>
   </table>
   </div>
 
-  <h3>Trolddej</h3>
-  <p>Til ca. 4 fjelde: 4 dl hvedemel, 2 dl fint salt, 2 dl vand og 1 spsk olie. Ælt dejen, og del den i 4. Farv delene med madfarve: rød, grøn og to andre farver (fx sort og hvid/ufarvet).</p>
-  <p class=note>Lav dejen dagen før, og opbevar den i en lukket pose. Er den for klistret, så tilsæt lidt mel. Så sætter den sig ikke fast i sugerøret.</p>
+  <h3>Gandadeiggj</h3>
+  <p>Til umleið 4 fjøll: 4 dl hveitimjøl, 2 dl fínt salt, 2 dl vatn og 1 matskeið olja. Knoða deiggið, og být tað í 4. Lita partarnar við matliti: reytt, grønt og tveir aðrir litir (t.d. svart og hvítt/ólitað).</p>
+  <p class=note>Ger deiggið dagin fyri, og goym tað í einum lattum posa. Er tað ov klístrut, legg eitt sindur av mjøli afturat. So festist tað ikki í sugurrørinum.</p>
 
-  <h3>Materialer til del 4</h3>
+  <h3>Tilfar til part 4</h3>
   <ul>
-    <li>Trolddej i 4 farver – én portion pr. par</li>
-    <li>Tykke, gennemsigtige sugerør (fx til bubble tea) – 3 pr. par</li>
-    <li>Saks, plastikkniv, tandstikker med B1, B2 og B3</li>
-    <li>Bagepapir som underlag, papir og farveblyanter til tegningen</li>
+    <li>Gandadeiggj í 4 litum – ein partur til hvørt par</li>
+    <li>Tjúk, gjøgnumskygd sugurrør (t.d. til bubble tea) – 3 til hvørt par</li>
+    <li>Saks, plastkníggur og tannstikkar við B1, B2 og B3</li>
+    <li>Bakipappír undir, pappír og litblýantar til tekningina</li>
   </ul>
-  <p class=note>Bed parrene om at lægge lagene lidt skævt eller gøre ét lag tyndere i den ene side. Så viser de tre boreprøver noget forskelligt, og det bliver sjovere at gætte.</p>
+  <p class=note>Bið pørini leggja løgini eitt sindur skeiv ella gera eitt lag tynri í aðrari síðuni. So vísa tær tríggjar kjarnuroyndirnar ymiskt, og tað verður stuttligari at gita.</p>
 
-  <h3>Hvis I besøger Jarðfeingi</h3>
+  <h3>Um tit vitja Jarðfeingi</h3>
   <ul>
-    <li>Find en boreprøve med mange små huller.</li>
-    <li>Brug en rigtig lup. Kan I se hvide streger (krystaller)?</li>
-    <li>Find et rødt lag. Hvordan føles det i forhold til den grå sten?</li>
+    <li>Finnið eina kjarnuroynd við nógvum smáum holum.</li>
+    <li>Brúkið eina veruliga sjóneyku. Síggja tit hvítar strikur (krystallar)?</li>
+    <li>Finnið eitt reytt lag. Hvussu kennist tað í mun til gráa grótið?</li>
   </ul>
 
-  <h3>Klassens Padlet</h3>
-  <p>Klassens Padlet-væg vises i del 2. Slå <i>Godkend opslag</i> til i Padlet, så du ser billederne, før klassen gør. Tjek, at skolen må bruge Padlet til elever.</p>
-  <p class="note">Vil du bruge en anden væg, så sæt <code>?padlet=</code> og væggens indlejringslink (med <code>/embed/</code>) bag på sidens adresse.</p>
+  <h3>Padlet-veggurin hjá flokkinum</h3>
+  <p>Veggurin hjá flokkinum sæst í parti 2. Slá tað til í Padlet, at tú skalt góðkenna uppsløgini, so sært tú myndirnar, áðrenn flokkurin ger tað. Kanna, at skúlin hevur loyvi at brúka Padlet saman við næmingum.</p>
+  <p class="note">Vilt tú brúka ein annan vegg, so set <code>?padlet=</code> og innbyggingarleinkið hjá veggnum (við <code>/embed/</code>) aftast í adressuna á síðuni.</p>
 
-  <h3>Fagord, hvis eleverne spørger</h3>
+  <h3>Fakorð, um næmingarnir spyrja</h3>
   <ul>
-    <li><b>Små huller</b> hedder blærer. De kommer fra luftbobler i lavaen.</li>
-    <li><b>Hvide streger</b> er krystaller.</li>
-    <li><b>Hård grå og sort sten</b> er basalt. Det røde, bløde lag er tit gammel jord mellem to lavastrømme.</li>
+    <li><b>Smáu holini</b> koma av luftbløðrum í hrauninum.</li>
+    <li><b>Hvítu strikurnar</b> eru krystallar.</li>
+    <li><b>Harða gráa og svarta grótið</b> er basalt. Reyða, bleyta lagið er ofta gomul mold millum tveir hraunstreymar.</li>
   </ul>
-  <p class="note">Boreprøven og fjeldet er forenklede, fiktive eksempler inspireret af Jarðfeingis arbejde. Fagligt indhold skal tjekkes med en geolog.</p>
+  <p class="note">Kjarnuroyndin og fjallið eru einføld, uppspunnin dømi, sum arbeiðið hjá Jarðfeingi hevur givið íblástur til. Ein jarðfrøðingur skal kanna tað fakliga innihaldið.</p>
 </details>
 
 </div>
 
 <script>
 (() => {
-  // ---------- faner ----------
+  // ---------- teigar ----------
   const tabs = [...document.querySelectorAll('.phase')];
   function showPhase(id){
     tabs.forEach(t => {
@@ -428,7 +513,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   const NS = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
 
-  // ---------- 1: boreprøve og lup ----------
+  // ---------- 1: kjarnuroynd og sjóneyka ----------
   const base = document.getElementById('coreBase'), det = document.getElementById('coreDetail');
   const HOT = { huller:[150,62], krystaller:[330,92], farve:[500,70] };
   function drawCore(svg, detail){
@@ -467,9 +552,9 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   });
   box.addEventListener('pointerleave', () => { lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
   const lensMsg = {
-    huller:'Godt set! De <b>små huller</b> kommer fra luftbobler i lava.',
-    krystaller:'Flot! De <b>hvide streger</b> er krystaller. De voksede, da lavaen blev kold.',
-    farve:'Rigtigt! Den <b>røde farve</b> kan betyde blød sten. Det skal vi huske!'
+    huller:'Væl sæð! Tey <b>smáu holini</b> koma av luftbløðrum í hrauninum.',
+    krystaller:'Flott! Tær <b>hvítu strikurnar</b> eru krystallar. Teir vuksu, tá ið hraunið kólnaði.',
+    farve:'Rætt! <b>Reyði liturin</b> kann merkja, at grótið er bleytt. Tað skulu vit minnast!'
   };
   box.addEventListener('click', e => {
     const p = toView(e);
@@ -478,23 +563,23 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
         finds.add(k);
         document.querySelector(`[data-f="${k}"]`).classList.add('found');
         const fb = document.getElementById('lensFeedback'); fb.hidden = false;
-        fb.innerHTML = lensMsg[k] + (finds.size === 3 ? '<br><b>Du fandt alle 3 ting! 🎉</b>' : '');
+        fb.innerHTML = lensMsg[k] + (finds.size === 3 ? '<br><b>Tú fanst øll trý tingini! 🎉</b>' : '');
       }
     }
   });
 
-  // ---------- 3: det digitale fjeld ----------
-  const COLS = { 'grøn':'#5F7A5B', 'grå':'#7A8086', 'sort':'#2E3236', 'rød':'#A4533A' };
+  // ---------- 3: talgilda fjallið ----------
+  const COLS = { 'grønt':'#5F7A5B', 'grátt':'#7A8086', 'svart':'#2E3236', 'reytt':'#A4533A' };
   const HOLE_IDS = ['B1','B2','B3'];
   const EXAMPLE = {
-    B1:[['grøn',.5],['grå',1.5],['rød',.5],['grå',2],['sort',1.5]],
-    B2:[['grøn',.5],['grå',3],['rød',.5],['grå',3],['sort',2]],
-    B3:[['grøn',.5],['grå',1],['rød',.5],['grå',3],['sort',2]]
+    B1:[['grønt',.5],['grátt',1.5],['reytt',.5],['grátt',2],['svart',1.5]],
+    B2:[['grønt',.5],['grátt',3],['reytt',.5],['grátt',3],['svart',2]],
+    B3:[['grønt',.5],['grátt',1],['reytt',.5],['grátt',3],['svart',2]]
   };
-  const MX = { B1:150, B2:320, B3:490 }, MB = 300, MS = 25; // bund, px pr. cm
+  const MX = { B1:150, B2:320, B3:490 }, MB = 300, MS = 25; // botnur, px fyri hvønn cm
   const SURF = [[40,0],[150,6],[320,9],[490,7],[600,0]];
-  const BOUNDS = [[1.5,2,2],[3.5,5,5],[4,5.5,5.5],[5.5,8.5,6.5]]; // toppen af sort, grå, rød, grå
-  const BFILL = ['sort','grå','rød','grå'];
+  const BOUNDS = [[1.5,2,2],[3.5,5,5],[4,5.5,5.5],[5.5,8.5,6.5]]; // ovast í svarta, gráa, reyða, gráa
+  const BFILL = ['svart','grátt','reytt','grátt'];
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const drilled = new Set();
   function lin(pts, x){
@@ -524,12 +609,12 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     } else {
       el('polygon', {points:band(() => 0, surf), fill:'#8E9A86'}, svg);
     }
-    el('polygon', {points:band(x => Math.max(0, skin(x)), surf), fill:COLS['grøn']}, svg);
+    el('polygon', {points:band(x => Math.max(0, skin(x)), surf), fill:COLS['grønt']}, svg);
     el('polyline', {points:SURF.map(([x,h]) => `${x},${Y(h)}`).join(' '), fill:'none', stroke:'#1E2326', 'stroke-width':2}, svg);
     HOLE_IDS.forEach(id => {
       const x = MX[id], top = Y(surf(x));
       if (drilled.has(id)) el('line', {x1:x, y1:top, x2:x, y2:MB, stroke:'#1E2326', 'stroke-width':5, opacity: open ? .55 : 1}, svg);
-      const g = el('g', {class:'pin', tabindex: open ? -1 : 0, role: open ? 'presentation' : 'button', 'aria-label':`Bor ved ${id}`}, svg);
+      const g = el('g', {class:'pin', tabindex: open ? -1 : 0, role: open ? 'presentation' : 'button', 'aria-label':`Bora við ${id}`}, svg);
       el('line', {x1:x, y1:top, x2:x, y2:top - 30, stroke:'#1E2326', 'stroke-width':2}, g);
       el('rect', {x:x, y:top - 30, width:30, height:18, rx:3, fill:'#F2C230', stroke:'#1E2326', 'stroke-width':1.5}, g);
       const t = el('text', {x:x + 15, y:top - 17, 'text-anchor':'middle', 'font-family':'IBM Plex Mono, monospace', 'font-size':11, 'font-weight':600, fill:'#2A2100'}, g); t.textContent = id;
@@ -544,7 +629,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   function coreSvg(id){
     const layers = EXAMPLE[id], tot = layers.reduce((a, [, h]) => a + h, 0), S = 20;
     const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', `0 0 40 ${tot * S + 4}`);
-    svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', `Kerne fra ${id}: ` + layers.map(([c]) => c).join(', '));
+    svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', `Kjarnuroynd úr ${id}: ` + layers.map(([c]) => c).join(', '));
     let y = 2;
     layers.forEach(([c, h]) => { el('rect', {x:3, y, width:34, height:h * S, fill:COLS[c], stroke:'rgba(0,0,0,.3)', 'stroke-width':.8}, svg); y += h * S; });
     el('rect', {x:3, y:2, width:34, height:tot * S, fill:'none', stroke:'#1E2326', 'stroke-width':1.5, rx:3}, svg);
@@ -556,7 +641,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
       const s = document.createElement('div'); s.className = 'slot' + (drilled.has(id) ? ' on' : '');
       const b = document.createElement('b'); b.textContent = id; s.appendChild(b);
       if (drilled.has(id)) s.appendChild(coreSvg(id));
-      else { const t = document.createElement('span'); t.textContent = 'Ikke boret endnu'; s.appendChild(t); }
+      else { const t = document.createElement('span'); t.textContent = 'Ikki borað enn'; s.appendChild(t); }
       tray.appendChild(s);
     });
   }
@@ -573,14 +658,14 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   document.querySelectorAll('[data-drill]').forEach(b => b.addEventListener('click', () => drill(b.dataset.drill)));
   drawMountain(mtn, false); renderTray();
 
-  // ---------- 3: skær over og vælg tunnel ----------
+  // ---------- 3: sker yvir og vel tunnil ----------
   const cut = document.getElementById('mtnCut'), slider = document.getElementById('tunnel');
   const fb = document.getElementById('tunnelFeedback');
   const inside = H => { const xs = []; for (let x = 44; x <= 596; x += 4) if (surf(x) > H) xs.push(x); return xs; };
   function layerAt(x, H){
-    if (H >= skin(x)) return 'grøn';
+    if (H >= skin(x)) return 'grønt';
     for (let k = 0; k < BFILL.length; k++) if (H < bound(k, x)) return BFILL[k];
-    return 'grå';
+    return 'grátt';
   }
   function drawCut(){
     drawMountain(cut, true);
@@ -588,33 +673,33 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     if (!xs.length) return;
     el('line', {x1:xs[0], y1:ty, x2:xs[xs.length-1], y2:ty, stroke:'#F2C230', 'stroke-width':12, 'stroke-linecap':'round', opacity:.9}, cut);
     el('line', {x1:xs[0], y1:ty, x2:xs[xs.length-1], y2:ty, stroke:'#1E2326', 'stroke-width':2, 'stroke-dasharray':'8 6'}, cut);
-    const t = el('text', {x:xs[0] - 6, y:ty + 5, 'text-anchor':'end', 'font-family':'Baloo 2, sans-serif', 'font-weight':800, 'font-size':16, fill:'#1E2326'}, cut); t.textContent = 'tunnel';
+    const t = el('text', {x:xs[0] - 6, y:ty + 5, 'text-anchor':'end', 'font-family':'Baloo 2, sans-serif', 'font-weight':800, 'font-size':16, fill:'#1E2326'}, cut); t.textContent = 'tunnil';
   }
   document.getElementById('cutBtn').addEventListener('click', () => {
     const area = document.getElementById('cutArea'), btn = document.getElementById('cutBtn');
     area.hidden = !area.hidden;
-    btn.textContent = area.hidden ? 'Skær Jarðfríðas fjeld over' : 'Saml fjeldet igen';
+    btn.textContent = area.hidden ? 'Sker fjallið hjá Jarðfríðu yvir' : 'Set fjallið saman aftur';
     if (!area.hidden) drawCut();
   });
   slider.addEventListener('input', () => { fb.hidden = true; drawCut(); });
   document.getElementById('checkTunnel').addEventListener('click', () => {
     const H = +slider.value;
-    // tunnelen har en tykkelse, så tjek lidt over og under midten
+    // tunnilin hevur eina tjúkd, so vit kanna eitt sindur omanfyri og niðanfyri miðjuna
     const deep = inside(H).filter(x => surf(x) - H > .6).flatMap(x => [layerAt(x, H - .25), layerAt(x, H), layerAt(x, H + .25)]);
     fb.hidden = false;
-    if (deep.includes('rød')){
+    if (deep.includes('reytt')){
       fb.className = 'feedback warn';
-      fb.innerHTML = '<b>Pas på!</b> Tunnelen går gennem det <b>røde, bløde lag</b>. Der kan den falde sammen. Prøv højere oppe eller længere nede.';
+      fb.innerHTML = '<b>Ansa tær!</b> Tunnilin gongur gjøgnum <b>reyða, bleyta lagið</b>. Har kann hann falla saman. Royn hægri uppi ella longur niðri.';
     } else if (H > 6){
       fb.className = 'feedback warn';
-      fb.innerHTML = 'Tunnelen ligger <b>for højt</b>. Den er helt oppe i toppen af fjeldet. Prøv længere nede.';
+      fb.innerHTML = 'Tunnilin liggur <b>ov høgt</b>. Hann er heilt uppi í tindinum á fjallinum. Royn longur niðri.';
     } else {
       fb.className = 'feedback good';
-      fb.innerHTML = '<b>Godt valg!</b> Tunnelen går gennem <b>hård sten</b> hele vejen. 🎉';
+      fb.innerHTML = '<b>Gott val!</b> Tunnilin gongur gjøgnum <b>hart grót</b> alla leiðina. 🎉';
     }
   });
 
-  // ---------- 2: klassens galleri (Padlet) ----------
+  // ---------- 2: Padlet-veggurin hjá flokkinum ----------
   (function gallery(){
     const g = document.getElementById('gallery');
     const DEFAULT_PADLET = 'https://padlet.com/embed/s0243ctlzzvx2scmvpxs';
@@ -624,13 +709,13 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     try { const u = new URL(url); ok = u.protocol === 'https:' && /(^|\.)padlet\.(com|org)$/.test(u.hostname); } catch(e){}
     if (!ok) url = DEFAULT_PADLET;
     if (/\/embed\//.test(url)){
-      const f = document.createElement('iframe'); f.src = url; f.title = 'Klassens sten på Padlet'; f.loading = 'lazy';
+      const f = document.createElement('iframe'); f.src = url; f.title = 'Steinarnir hjá okkum á Padlet'; f.loading = 'lazy';
       f.setAttribute('frameborder', '0');
       f.setAttribute('allow', 'camera;microphone;geolocation;display-capture;clipboard-write'); g.appendChild(f);
     }
     const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
     a.className = 'btn primary'; a.style.justifySelf = 'start'; a.style.textDecoration = 'none';
-    a.textContent = 'Åbn klassens væg i et nyt vindue'; g.appendChild(a);
+    a.textContent = 'Lat vegg flokksins upp í nýggjum glugga'; g.appendChild(a);
   })();
 })();
 </script>
