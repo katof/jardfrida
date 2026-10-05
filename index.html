@@ -6,156 +6,170 @@
 <title>Jarðfríða borar ein tunnil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
-
 :root{
   color-scheme: light;
-  --ground:#FFF8E8;
-  --surface:#FFFFFF;
-  --surface-2:#FCEFC4;
-  --stone-bg:#ECEFF0;
+  --ground:#F4EEDF;
+  --grid:rgba(30,35,38,.07);
+  --surface:#FFFDF7;
+  --surface-2:#FFF3C9;
+  --stone-bg:#E6E9EA;
   --ink:#1E2326;
   --ink-soft:#4E585E;
-  --line:#EADFC0;
+  --line:#1E2326;
   --basalt:#3A3F44;
   --basalt-2:#565C62;
-  --vest:#F2C230;
-  --vest-ink:#2A2100;
-  --hivis:#D6EE1E;
+  --vest:#D6EE1E;
+  --vest-ink:#1E2326;
+  --tape:#F2DFA6;
   --jacket:#2F5562;
   --moss:#5F7A5B;
   --rust:#A4533A;
   --hat:#C8553D;
   --good:#2F7A4A;
-  --warn:#A86A00;
+  --warn:#B4531F;
   --focus:#1B6FB8;
-  --shadow:0 2px 0 rgba(30,35,38,.06), 0 8px 24px rgba(30,35,38,.06);
-  --display:"Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --hard:4px 4px 0 var(--ink);
+  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
   --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme: dark;
-    --ground:#15191B; --surface:#1F2427; --surface-2:#3A3420; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
-    --line:#3A4348; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#F2C230; --vest-ink:#2A2100;
-    --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0; --shadow:none;
+    --ground:#14181A; --grid:rgba(255,255,255,.05); --surface:#1E2427; --surface-2:#353019; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
+    --line:#E9EDEF; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#D6EE1E; --vest-ink:#1E2326; --tape:#5A4E2A;
+    --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E89A5A; --focus:#6FB2F0;
   }
 }
 :root[data-theme="dark"]{
   color-scheme: dark;
-  --ground:#15191B; --surface:#1F2427; --surface-2:#3A3420; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
-  --line:#3A4348; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#F2C230; --vest-ink:#2A2100;
-  --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E0A63A; --focus:#6FB2F0; --shadow:none;
+  --ground:#14181A; --grid:rgba(255,255,255,.05); --surface:#1E2427; --surface-2:#353019; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
+  --line:#E9EDEF; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#D6EE1E; --vest-ink:#1E2326; --tape:#5A4E2A;
+  --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E89A5A; --focus:#6FB2F0;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
-body{background:var(--ground);color:var(--ink);font:17px/1.55 var(--body);padding-inline:16px;padding-block:0 48px}
+body{
+  background-color:var(--ground);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+  color:var(--ink);font:17px/1.55 var(--body);padding-inline:16px;padding-block:0 96px;
+}
 .wrap{max-width:960px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
-h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:800}
-h2{font-size:1.6rem;font-weight:800}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,6.5vw,3.4rem);font-weight:800}
+h2{font-size:1.65rem;font-weight:800;justify-self:start;background:linear-gradient(transparent 62%,var(--vest) 62%,var(--vest) 92%,transparent 92%);padding-inline:2px}
 h3{font-size:1.2rem;font-weight:700}
 p{margin:0;max-width:65ch}
 button,input{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.proto{background:var(--vest);color:var(--vest-ink);font-size:.85rem;padding:6px 16px;margin-inline:-16px;text-align:center}
-.proto b{font-weight:700}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.proto{background:var(--ink);color:var(--ground);font:.8rem/1.4 var(--mono);padding:7px 16px;margin-inline:-16px;text-align:center}
+.proto b{font-weight:600;color:var(--vest)}
 
 /* hero */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding-block:28px 22px}
-.hero .figure{width:170px;height:auto;display:block}
-.bubble{background:var(--surface);border:2px solid var(--ink);border-radius:22px;padding:18px 20px 22px;position:relative;display:grid;gap:8px;box-shadow:var(--shadow)}
-.bubble::before{content:"";position:absolute;left:-12px;top:44px;border:10px solid transparent;border-right-color:var(--ink);border-left:0}
-.bubble p{font-size:1.1rem}
-.bubble .malli-peek{position:absolute;right:14px;bottom:-26px;width:68px;height:auto}
-.bubble p:last-of-type{padding-right:78px}
-.eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
-@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:center}.hero .figure{width:120px}.bubble::before{display:none}}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;padding-block:30px 24px}
+.hero .figure{width:175px;height:auto;display:block;filter:drop-shadow(4px 4px 0 rgba(30,35,38,.15))}
+.bubble{background:var(--surface);border:3px solid var(--ink);border-radius:6px;padding:18px 22px 22px;position:relative;display:grid;gap:10px;box-shadow:6px 6px 0 var(--ink)}
+.bubble::before{content:"";position:absolute;left:-17px;top:46px;border:14px solid transparent;border-right-color:var(--ink);border-left:0}
+.bubble::after{content:"";position:absolute;left:-11px;top:50px;border:10px solid transparent;border-right-color:var(--surface);border-left:0}
+.bubble p{font-size:1.12rem}
+.eyebrow{font:600 .75rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.psst{font:600 .85rem/1.3 var(--mono);color:var(--ink-soft);justify-self:start;background:var(--tape);padding:3px 10px;transform:rotate(-1.2deg)}
+@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:center}.hero .figure{width:120px}.bubble::before,.bubble::after{display:none}}
 
-/* faner */
-.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 22px}
-.phase{appearance:none;border:2px solid var(--line);background:var(--surface);padding:10px 8px;border-radius:16px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.05rem;line-height:1.15;color:var(--ink-soft);display:grid;gap:2px;justify-items:center;text-align:center;box-shadow:var(--shadow)}
-.phase .n{font-size:1.6rem;line-height:1}
-.phase[aria-selected="true"]{color:var(--vest-ink);background:var(--vest);border-color:var(--vest-ink)}
+/* teigar */
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 26px}
+.phase{appearance:none;border:2.5px solid var(--ink);background:var(--surface);padding:10px 8px 12px;border-radius:4px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.02rem;line-height:1.15;color:var(--ink);display:grid;gap:2px;justify-items:center;text-align:center;box-shadow:3px 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.phase .n{font:600 .85rem/1 var(--mono);color:var(--ink-soft)}
+.phase:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.phase[aria-selected="true"]{background:var(--vest);color:var(--vest-ink);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.phase[aria-selected="true"] .n{color:var(--vest-ink)}
 @media (max-width:560px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-.stack{display:grid;gap:18px}
-.panel{background:var(--surface);border-radius:18px;padding:22px;display:grid;gap:16px;border:1px solid var(--line);box-shadow:var(--shadow)}
-.say{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;background:var(--surface-2);border-radius:14px;padding:12px 14px}
-.say svg{width:52px;height:52px}
+.stack{display:grid;gap:22px}
+.panel{background:var(--surface);border-radius:4px;padding:24px 22px 22px;display:grid;gap:16px;border:2.5px solid var(--ink);box-shadow:var(--hard);position:relative}
+.say{display:grid;grid-template-columns:54px 1fr;gap:12px;align-items:center;background:var(--surface-2);border:2px solid var(--ink);border-radius:4px;padding:10px 14px 10px 10px}
+.say svg{width:54px;height:54px}
 .say p{font-size:1.05rem}
-.say .who{display:block;font-family:var(--display);font-weight:800;font-size:.9rem;line-height:1.1}
-.say.malli{background:var(--stone-bg)}
+.say .who{display:block;font:600 .72rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px}
+.say.malli{background:var(--stone-bg);border-style:dashed}
 .task{font-weight:700;font-size:1.05rem}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{appearance:none;border:2px solid var(--ink);background:var(--surface);border-radius:999px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:1.05rem}
-.btn.primary{background:var(--vest);color:var(--vest-ink);border-color:var(--vest-ink)}
-.feedback{border-radius:12px;padding:12px 14px;font-size:1.05rem;border:2px solid}
-.feedback.good{border-color:var(--good)}
-.feedback.warn{border-color:var(--warn)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{appearance:none;border:2.5px solid var(--ink);background:var(--surface);border-radius:4px;padding:9px 18px;cursor:pointer;font-weight:700;font-size:1.05rem;box-shadow:3px 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.primary{background:var(--vest);color:var(--vest-ink)}
+.feedback{border-radius:4px;padding:12px 14px;font-size:1.05rem;border:2.5px solid;background:var(--surface)}
+.feedback.good{border-color:var(--good);box-shadow:3px 3px 0 var(--good)}
+.feedback.warn{border-color:var(--warn);box-shadow:3px 3px 0 var(--warn)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:2px dashed var(--line);border-radius:999px;padding:6px 14px;font-size:1rem;color:var(--ink-soft)}
-.chip.found{border-style:solid;border-color:var(--good);color:var(--ink)}
-.chip.found::before{content:"✓ ";color:var(--good);font-weight:700}
-.tag{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px;border:1.5px solid var(--ink);justify-self:start}
-.tag.screen{background:var(--surface-2)}
-.tag.stone{background:var(--basalt-2);color:#fff;border-color:var(--basalt-2)}
-.tag.clay{background:var(--rust);color:#fff;border-color:var(--rust)}
-.steps{margin:0;padding-left:26px;display:grid;gap:8px;font-size:1.05rem}
-.steps li::marker{font-family:var(--display);font-weight:800}
-.hint{background:var(--surface-2);border-left:4px solid var(--vest);border-radius:8px;padding:10px 12px}
+.chip{border:2px dashed var(--ink-soft);border-radius:3px;padding:5px 12px;font-size:.98rem;color:var(--ink-soft);background:var(--surface)}
+.chip.found{border-style:solid;border-color:var(--ink);color:var(--ink);background:var(--vest);color:var(--vest-ink)}
+.chip.found::before{content:"✓ ";font-weight:700}
+.tag{position:absolute;top:-13px;left:18px;display:inline-flex;align-items:center;font:600 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;background:var(--tape);color:#2A2100;transform:rotate(-2deg);box-shadow:1px 1px 0 rgba(0,0,0,.15)}
+.tag.stone{background:#C9CED1}
+.tag.clay{background:#E7B49F}
+.steps{margin:0;padding-left:28px;display:grid;gap:8px;font-size:1.05rem}
+.steps li::marker{font-family:var(--mono);font-weight:600}
+.hint{background:var(--surface-2);border:2px solid var(--ink);border-left-width:8px;border-radius:3px;padding:10px 12px}
 
 /* sjóneyka */
-.core-box{position:relative;touch-action:none;cursor:none;border-radius:14px;overflow:hidden;background:var(--stone-bg);user-select:none}
+.core-box{position:relative;touch-action:none;cursor:none;border:2px solid var(--ink);border-radius:3px;overflow:hidden;background:var(--stone-bg);user-select:none}
 .core-box svg{display:block;width:100%;height:auto}
 .core-detail{position:absolute;inset:0;clip-path:circle(0 at 50% 50%)}
-.lens{position:absolute;width:110px;height:110px;border-radius:50%;border:5px solid var(--ink);box-shadow:0 0 0 2px var(--surface) inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0}
-.lens::after{content:"";position:absolute;width:44px;height:10px;background:var(--ink);border-radius:5px;right:-38px;bottom:-6px;transform:rotate(45deg)}
+.lens{position:absolute;width:118px;height:118px;border-radius:50%;border:6px solid var(--ink);box-shadow:0 0 0 2px #fff inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0}
+.lens::after{content:"";position:absolute;width:48px;height:12px;background:var(--ink);border-radius:3px;right:-42px;bottom:-8px;transform:rotate(45deg)}
 
 /* fjall */
-.section-box{border-radius:14px;overflow:hidden;background:var(--stone-bg);border:1px solid var(--line)}
+.section-box{border-radius:3px;overflow:hidden;background:var(--stone-bg);border:2px solid var(--ink)}
 .section-box svg{display:block;width:100%;height:auto}
 #mtn .pin{cursor:pointer}
 .legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:1rem}
 .legend span{display:inline-flex;align-items:center;gap:8px}
-.legend i{width:20px;height:20px;border-radius:5px;display:inline-block;border:1px solid rgba(0,0,0,.25)}
+.legend i{width:20px;height:20px;border-radius:2px;display:inline-block;border:2px solid var(--ink)}
 .tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.slot{border:2px dashed var(--line);border-radius:12px;padding:10px;display:grid;gap:6px;justify-items:center;min-height:110px;align-content:start}
-.slot.on{border-style:solid;border-color:var(--ink);background:var(--surface)}
+.slot{border:2px dashed var(--ink-soft);border-radius:3px;padding:10px;display:grid;gap:6px;justify-items:center;min-height:110px;align-content:start}
+.slot.on{border-style:solid;border-color:var(--ink);background:var(--surface);box-shadow:3px 3px 0 var(--ink)}
 .slot b{font-family:var(--mono);font-size:1.05rem}
 .slot svg{width:100%;max-width:60px;height:auto}
 .slot span{font-size:.9rem;color:var(--ink-soft);text-align:center}
 .slider{display:grid;gap:6px}
 .slider input{width:100%;height:32px;accent-color:var(--rust)}
-.slider .ends{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-soft)}
+.slider .ends{display:flex;justify-content:space-between;font:600 .85rem/1.3 var(--mono);color:var(--ink-soft)}
 
-/* Malli-søgan */
+/* søgan hjá Malla */
 .journey{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
 .journey figure{margin:0;display:grid;justify-items:center;gap:4px;font-size:.9rem;color:var(--ink-soft)}
 .journey svg{width:70px;height:56px}
-.journey .arr{font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--ink-soft);text-align:center;line-height:1.15}
+.journey .arr{font:600 .78rem/1.2 var(--mono);color:var(--ink-soft);text-align:center}
 
 /* prógv */
-.diploma{border:3px double var(--ink);border-radius:16px;padding:18px;text-align:center;display:grid;gap:8px;justify-items:center;background:var(--surface-2)}
-.diploma .big{font-family:var(--display);font-size:1.8rem;font-weight:800}
+.diploma{border:3px solid var(--ink);outline:2px solid var(--ink);outline-offset:4px;border-radius:2px;padding:20px;text-align:center;display:grid;gap:8px;justify-items:center;background:var(--surface-2);margin:6px}
+.diploma .big{font-family:var(--display);font-size:1.8rem;font-weight:800;line-height:1.1}
 .diploma svg{width:80px;height:auto}
 
 /* galleri */
 .gallery{display:grid;gap:12px}
-.gallery iframe{width:100%;height:620px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:block}
+.gallery iframe{width:100%;height:620px;border:2px solid var(--ink);border-radius:3px;background:var(--surface);display:block}
+
+/* Malli sum leiki */
+.malli-toy{position:fixed;right:18px;bottom:18px;width:72px;height:66px;padding:0;border:0;background:none;cursor:grab;touch-action:none;z-index:50;transform-origin:50% 55%;filter:drop-shadow(3px 4px 0 rgba(30,35,38,.25))}
+.malli-toy:active{cursor:grabbing}
+.malli-toy svg{width:100%;height:100%;display:block;pointer-events:none}
+.malli-quip{position:fixed;z-index:51;max-width:210px;background:var(--surface);border:2.5px solid var(--ink);border-radius:4px;padding:6px 10px;font-weight:700;font-size:.95rem;box-shadow:3px 3px 0 var(--ink);pointer-events:none}
 
 /* lærari */
-details.teacher{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;font-size:1rem;box-shadow:var(--shadow)}
-details.teacher summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.1rem}
+details.teacher{margin-top:30px;background:var(--surface);border:2.5px solid var(--ink);border-radius:4px;padding:14px 18px;font-size:1rem;box-shadow:var(--hard)}
+details.teacher summary{cursor:pointer;font-family:var(--display);font-weight:800;font-size:1.15rem}
 details.teacher h3{margin-top:18px}
-details.teacher code{font-family:var(--mono);font-size:.85rem;background:var(--surface-2);padding:1px 5px;border-radius:5px;word-break:break-all}
+details.teacher code{font-family:var(--mono);font-size:.85rem;background:var(--surface-2);padding:1px 5px;border-radius:2px;word-break:break-all}
 details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:grid;gap:4px}
 .tablewrap{overflow-x:auto}
 .forloeb{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:10px}
-.forloeb th,.forloeb td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.forloeb th,.forloeb td{border-bottom:1.5px solid var(--ink);padding:8px;text-align:left;vertical-align:top}
 .forloeb th{font-family:var(--display);font-size:.95rem}
 .note{color:var(--ink-soft);font-size:.9rem;margin-top:10px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
@@ -186,7 +200,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 <path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
 <path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
   <symbol id="malli" viewBox="-90 -78 180 160"><path d="M-78 18 C-84 -30 -40 -66 6 -64 C56 -62 86 -28 80 16 C76 52 40 70 -2 70 C-44 70 -74 52 -78 18 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-60 -18 C-50 -48 -10 -58 22 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-70 30 C-50 62 40 66 70 30 C50 52 -40 56 -70 30Z" fill="#666D73" opacity=".6"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="8" fill="#fff"/><circle cx="20" cy="-4" r="8" fill="#fff"/><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"/><circle cx="22" cy="-3" r="4.6" fill="#1E2326"/><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
-  <symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-78 18 C-84 -30 -40 -66 6 -64 C56 -62 86 -28 80 16 C76 52 40 70 -2 70 C-44 70 -74 52 -78 18 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-60 -18 C-50 -48 -10 -58 22 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-70 30 C-50 62 40 66 70 30 C50 52 -40 56 -70 30Z" fill="#666D73" opacity=".6"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="10" fill="#fff"/><circle cx="20" cy="-4" r="10" fill="#fff"/><circle cx="-20" cy="-6" r="5" fill="#1E2326"/><circle cx="20" cy="-6" r="5" fill="#1E2326"/><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"/><text x="58" y="-56" font-family="Baloo 2" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol>
+  <symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-78 18 C-84 -30 -40 -66 6 -64 C56 -62 86 -28 80 16 C76 52 40 70 -2 70 C-44 70 -74 52 -78 18 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-60 -18 C-50 -48 -10 -58 22 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><path d="M-70 30 C-50 62 40 66 70 30 C50 52 -40 56 -70 30Z" fill="#666D73" opacity=".6"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="10" fill="#fff"/><circle cx="20" cy="-4" r="10" fill="#fff"/><circle cx="-20" cy="-6" r="5" fill="#1E2326"/><circle cx="20" cy="-6" r="5" fill="#1E2326"/><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"/><text x="58" y="-56" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol>
 </svg>
 
 <div class="proto"><b>Prototypa til meting</b> · Innihald og dømi eru fyribils · Jarðfeingi og Nám skulu góðkenna tekstin</div>
@@ -238,10 +252,10 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 <path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>
   <div class="bubble">
     <span class="eyebrow">Jarðfeingi · Ein dagur hjá Jarðfríðu</span>
-    <h1>Hey, eg eri Jarðfríða!</h1>
+    <h1>Hey, eg eiti Jarðfríða!</h1>
     <p>Eg eri jarðfrøðingur og kanni steinar. Nú skulu vit gera ein tunnil gjøgnum eitt fjall. Kunnu tit hjálpa mær at finna besta staðið?</p>
     <p>Malli, steinurin í lummanum hjá mær, er eisini við.</p>
-    <svg class="malli-peek" aria-hidden="true"><use href="#malli"/></svg>
+    <span class="psst">Psst! Trýst á Malla niðri í horninum – ella kasta hann.</span>
   </div>
 </header>
 
@@ -259,7 +273,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
       <span class="tag screen">Skermur</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
         <p><span class="who">Jarðfríða</span>»Hetta er ein kjarnuroynd. Tað er ein langur steinur innan úr fjallinum. Við sjóneykuni síggi eg smálutir, sum eg annars ikki síggi.«</p></div>
-      <h2>Finn trý ting við sjóneykuni</h2>
+      <h2>Finn seks ting við sjóneykuni</h2>
       <p class="task">Flyt sjóneykuna yvir steinin. Trýst, tá ið tú finnur okkurt.</p>
       <div class="core-box" id="coreBox">
         <svg id="coreBase" viewBox="0 0 600 150" aria-hidden="true"></svg>
@@ -267,8 +281,11 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
         <div class="lens" id="lens"></div>
       </div>
       <div class="chips" id="finds">
-        <span class="chip" data-f="huller">Smá hol</span>
-        <span class="chip" data-f="krystaller">Hvítar strikur</span>
+        <span class="chip" data-f="hol">Smá hol</span>
+        <span class="chip" data-f="fylt">Fylt hol</span>
+        <span class="chip" data-f="aedr">Hvít æðr</span>
+        <span class="chip" data-f="feltspat">Ljósir krystallar</span>
+        <span class="chip" data-f="olivin">Grøn korn</span>
         <span class="chip" data-f="farve">Reyður litur</span>
       </div>
       <div id="lensFeedback" class="feedback good" hidden></div>
@@ -281,7 +298,8 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
       <h2>Nú við veruligum steinum</h2>
       <ol class="steps">
         <li>Kenn steinin. Er hann sleipur ella grovur? Tungur ella lættur?</li>
-        <li>Hygg við sjóneykuni. Finnur tú hol, hvítar strikur ella reyðan lit?</li>
+        <li>Hygg við sjóneykuni. Finnur tú hol, fylt hol, ljósar krystallar, grøn korn, hvítar æðrar ella reyðan lit?</li>
+        <li>Er steinurin eins innaní og uttaná? Ofta er uttasta lagið brúnt ella ryðlitt.</li>
         <li>Tekna steinin í loggbókina.</li>
       </ol>
       <p class="hint"><b>Gott ráð:</b> Ger steinin eitt sindur vátan. So síggja tit litirnar betur.</p>
@@ -298,7 +316,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
       <span class="tag stone">Veruligir steinar</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
         <p><span class="who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Finn ein stein, og vís flokkinum hann.«</p></div>
-      <h2>Mín egni steinur</h2>
+      <h2>Mín steinur</h2>
       <ol class="steps">
         <li>Finn ein stein við skúlan ella heima.</li>
         <li>Tak eina mynd av steininum. Bert av steininum – ikki av tær sjálvum ella øðrum.</li>
@@ -308,12 +326,12 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 
     <article class="panel">
       <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
-        <p><span class="who">Malli</span>»Ísur og vatn hava máað burturav mær, so nú eri eg rundur. Er tín steinur rundur ella kantaður?«</p></div>
+        <p><span class="who">Malli</span>»Ísur og vatn hava máað burturav mær, so nú eri eg rundur. Er tín steinur rundur ella kantutur?«</p></div>
       <h2>Søgan hjá Malla</h2>
       <div class="journey" aria-label="Søgan hjá Malla: hann brotnar av fjallinum, ísurin flytur hann, og vatnið fær hann at rulla, til hann er rundur.">
         <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><rect x="-56" y="-44" width="112" height="88" fill="#7A8086" stroke="#1E2326" stroke-width="4"/><rect x="-56" y="-44" width="112" height="22" fill="#5F7A5B" stroke="#1E2326" stroke-width="4"/><rect x="-56" y="12" width="112" height="10" fill="#A4533A"/><path d="M10 -22 L18 -2 L8 10 L16 44 M18 -2 L56 -8" stroke="#1E2326" stroke-width="3" fill="none"/></svg>Partur av fjallinum</figure>
         <span class="arr">brotnar av<br>fjallinum →</span>
-        <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-48 20 L-40 -30 L-6 -46 L30 -36 L48 -4 L36 34 L-10 44 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"/></svg>Kantaður</figure>
+        <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-48 20 L-40 -30 L-6 -46 L30 -36 L48 -4 L36 34 L-10 44 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"/></svg>Kantutur</figure>
         <span class="arr">ísurin<br>flytur hann →</span>
         <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-50 14 C-50 -24 -24 -44 6 -44 C34 -40 50 -16 46 12 C44 36 18 44 -8 44 C-30 44 -50 36 -50 14 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"/></svg>Kantarnir slítast</figure>
         <span class="arr">vatnið fær<br>hann at rulla →</span>
@@ -324,7 +342,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     <article class="panel">
       <h2>Steinarnir hjá okkum</h2>
       <div class="gallery" id="gallery"></div>
-      <p class="hint"><b>Hygg at steinunum hjá hinum:</b> Finn ein stein við holum. Finn ein stein við hvítum strikum. Finn ein reyðan stein. Finn ein rundan stein og ein kantaðan stein.</p>
+      <p class="hint"><b>Hygg at steinunum hjá hinum:</b> Finn ein stein við holum. Finn ein stein við ljósum krystallum. Finn ein reyðan stein. Finn ein rundan stein og ein kantutan stein.</p>
     </article>
   </div>
 </section>
@@ -356,11 +374,11 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 
     <article class="panel">
       <span class="tag screen">Skermur</span>
-      <h2>Sker fjallið yvir, og finn tunnilin</h2>
-      <p class="task">Hvussu heldur tú, at fjallið sær út innan í? Trýst og sí, um tú hevði rætt.</p>
-      <div class="row"><button class="btn primary" id="cutBtn">Sker fjallið hjá Jarðfríðu yvir</button></div>
+      <h2>Sker fjallið í helvt</h2>
+      <p class="task">Hvussu heldur tú, at fjallið sær út innaní? Trýst og sí, um tú hevði rætt. Finn so besta staðið til tunnilin.</p>
+      <div class="row"><button class="btn primary" id="cutBtn">Sker fjallið hjá Jarðfríðu í helvt</button></div>
       <div id="cutArea" class="stack" hidden>
-        <div class="section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjallið skorið yvir, so tú sært løgini innan í"></svg></div>
+        <div class="section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjallið skorið í helvt, so tú sært løgini innaní"></svg></div>
         <div class="say malli"><svg aria-hidden="true"><use href="#malli-undr"/></svg>
           <p><span class="who">Malli</span>»Eg var eisini einaferð partur av einum fjalli!«</p></div>
         <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
@@ -391,7 +409,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
         <li>Formið alt til eitt fjall. Dekkið tað við einum tunnum, grønum lagi, so eingin sær løgini.</li>
         <li>Setið trý tannstikkar í fjallið: B1, B2 og B3.</li>
       </ol>
-      <p class="hint"><b>Loyndarmál!</b> Sigið ikki hinum, hvussu fjallið hjá tykkum sær út innan í.</p>
+      <p class="hint"><b>Loyndarmál!</b> Sigið ikki hinum, hvussu fjallið hjá tykkum sær út innaní.</p>
     </article>
 
     <article class="panel">
@@ -416,14 +434,14 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
         <p><span class="who">Jarðfríða</span>»Hyggið væl at kjarnuroyndunum. Hvørjir litir eru? Hvar liggja teir?«</p></div>
       <h2>Gitið, og teknið</h2>
-      <p class="task">Teknið, hvussu tit halda, at fjallið sær út innan í. Brúkið litirnar úr kjarnuroyndunum.</p>
+      <p class="task">Teknið, hvussu tit halda, at fjallið sær út innaní. Brúkið litirnar úr kjarnuroyndunum.</p>
     </article>
 
     <article class="panel">
       <span class="tag clay">Fjall</span>
-      <h2>Skerið fjallið yvir</h2>
+      <h2>Skerið fjallið í helvt</h2>
       <ol class="steps">
-        <li>Skerið fjallið yvir eftir longdini, gjøgnum B1, B2 og B3.</li>
+        <li>Skerið fjallið í helvt eftir longdini, gjøgnum B1, B2 og B3.</li>
         <li>Leggið tekningina við síðuna av. Passaði hon?</li>
         <li>Vísið parinum, sum gjørdi fjallið, tað.</li>
       </ol>
@@ -449,14 +467,15 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   <summary>Til lærarans</summary>
 
   <h3>Gongdin</h3>
+  <p>Ætlað 6. flokki. Tilfarið kann eisini brúkast í 4.–5. flokki.</p>
   <div class="tablewrap">
   <table class="forloeb">
     <thead><tr><th>Partur</th><th>Skermur</th><th>Veruligir steinar / fjall</th><th>Tíð</th></tr></thead>
     <tbody>
       <tr><td><b>1 · Kanna steinar</b></td><td>Finna trý ting við sjóneykuni</td><td>Kenna, hyggja við sjóneyku og tekna ein stein</td><td>45 min</td></tr>
       <tr><td><b>2 · Mín steinur</b></td><td>Leggja eina mynd á Padlet</td><td>Finna ein stein heima ella við skúlan</td><td>Heima + 15 min</td></tr>
-      <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Bora í fjallið hjá Jarðfríðu, skera tað yvir og finna tunnilin</td><td>–</td><td>30 min</td></tr>
-      <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey: gera fjall úr gandadeiggi, býta, bora, tekna eitt git og skera yvir</td><td>60–90 min</td></tr>
+      <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Bora í fjallið hjá Jarðfríðu, skera tað í helvt og finna tunnilin</td><td>–</td><td>30 min</td></tr>
+      <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey: gera fjall úr gandadeiggi, býta, bora, tekna eitt git og skera í helvt</td><td>60–90 min</td></tr>
     </tbody>
   </table>
   </div>
@@ -487,14 +506,21 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 
   <h3>Fakorð, um næmingarnir spyrja</h3>
   <ul>
-    <li><b>Smáu holini</b> koma av luftbløðrum í hrauninum.</li>
-    <li><b>Hvítu strikurnar</b> eru krystallar.</li>
-    <li><b>Harða gráa og svarta grótið</b> er basalt. Reyða, bleyta lagið er ofta gomul mold millum tveir hraunstreymar.</li>
+    <li><b>Smá hol</b> eru gamlar luftbløður í hrauninum. Tey eita eisini blørur.</li>
+    <li><b>Fylt hol</b> eru hol, sum vatn seinni hevur fylt við ljósum mineralum, t.d. zeolittum ella kalkspati. Tey kunnu vera hvít, glassklár ella grønlig.</li>
+    <li><b>Hvítar æðrar</b> eru sprungur í grótinum, sum eru fyltar við minerali.</li>
+    <li><b>Ljósir krystallar</b> – ljósar, flatar strikur – eru oftast feltspat (plagioklas).</li>
+    <li><b>Grøn korn</b> eru ofta olivin.</li>
+    <li><b>Harða gráa og svarta grótið</b> er basalt. <b>Reyða lagið</b> millum tveir hraunstreymar er ofta gomul mold ella øska (tuff).</li>
+    <li><b>Kol:</b> Í Suðuroy liggja kolløg millum basaltløgini.</li>
   </ul>
   <p class="note">Kjarnuroyndin og fjallið eru einføld, uppspunnin dømi, sum arbeiðið hjá Jarðfeingi hevur givið íblástur til. Ein jarðfrøðingur skal kanna tað fakliga innihaldið.</p>
 </details>
 
 </div>
+
+<button class="malli-toy" id="malliToy" aria-label="Malli. Trýst fyri at lata hann hoppa."><svg viewBox="-90 -78 180 160" aria-hidden="true"><use href="#malli"/></svg></button>
+<div class="malli-quip" id="malliQuip" role="status" hidden></div>
 
 <script>
 (() => {
@@ -515,7 +541,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 
   // ---------- 1: kjarnuroynd og sjóneyka ----------
   const base = document.getElementById('coreBase'), det = document.getElementById('coreDetail');
-  const HOT = { huller:[150,62], krystaller:[330,92], farve:[500,70] };
+  const HOT = { hol:[90,62], fylt:[185,88], aedr:[238,75], feltspat:[315,70], olivin:[400,88], farve:[520,72] };
   function drawCore(svg, detail){
     const defs = el('defs', {}, svg);
     const g = el('linearGradient', {id: detail ? 'gd' : 'gb', x1:0, y1:0, x2:0, y2:1}, defs);
@@ -523,9 +549,9 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     const rg = el('linearGradient', {id: detail ? 'rd' : 'rb', x1:0, y1:0, x2:1, y2:0}, defs);
     el('stop', {offset:0, 'stop-color':'#4A5056', 'stop-opacity':0}, rg); el('stop', {offset:.35, 'stop-color': detail ? '#9A4A34' : '#5E4A46', 'stop-opacity':1}, rg); el('stop', {offset:1, 'stop-color': detail ? '#8A3F2C' : '#574643', 'stop-opacity':1}, rg);
     el('rect', {x:20, y:25, width:560, height:100, rx:50, fill:`url(#${detail?'gd':'gb'})`}, svg);
-    el('rect', {x:410, y:25, width:170, height:100, rx:50, fill:`url(#${detail?'rd':'rb'})`}, svg);
-    el('rect', {x:410, y:25, width:60, height:100, fill:`url(#${detail?'rd':'rb'})`}, svg);
-    el('path', {d:'M232 25 l8 30 l-6 22 l10 48', stroke:'#25292C', 'stroke-width':2, fill:'none'}, svg);
+    el('rect', {x:440, y:25, width:140, height:100, rx:50, fill:`url(#${detail?'rd':'rb'})`}, svg);
+    el('rect', {x:440, y:25, width:60, height:100, fill:`url(#${detail?'rd':'rb'})`}, svg);
+    el('path', {d:'M232 25 l8 30 l-6 22 l10 48', stroke: detail ? '#EDEFE8' : '#25292C', 'stroke-width': detail ? 4 : 2, fill:'none', 'stroke-linejoin':'round'}, svg);
     if (!detail){
       const r = rng(7);
       for (let i=0;i<120;i++){ const x=40+r()*520, y=35+r()*80; el('circle',{cx:x,cy:y,r:.8,fill:'#8C9398',opacity:.5},svg); }
@@ -534,16 +560,27 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     }
     const r = rng(42);
     for (let i=0;i<700;i++){ const x=30+r()*540, y=30+r()*90; if ((x<70||x>530) && (y<45||y>105)) continue; el('circle',{cx:x,cy:y,r:.6+r()*.8,fill:r()>.5?'#262A2E':'#7D858B'},svg); }
-    for (let i=0;i<26;i++){ const x=HOT.huller[0]+(r()-.5)*120, y=HOT.huller[1]+(r()-.5)*50; const rr=2+r()*4;
+    // smá hol
+    for (let i=0;i<22;i++){ const x=HOT.hol[0]+(r()-.5)*80, y=HOT.hol[1]+(r()-.5)*50; const rr=2+r()*4;
       el('ellipse',{cx:x,cy:y,rx:rr*1.3,ry:rr,fill:'#16191B',stroke:'#A9B1B6','stroke-width':.8},svg); }
-    for (let i=0;i<34;i++){ const x=HOT.krystaller[0]+(r()-.5)*150, y=HOT.krystaller[1]+(r()-.5)*44; const a=r()*180;
-      el('rect',{x:x-5,y:y-1.3,width:10+r()*6,height:2.6,fill:'#EDEFE8',transform:`rotate(${a} ${x} ${y})`,opacity:.95},svg); }
-    for (let i=0;i<14;i++){ const x=430+r()*130, y=35+r()*80; el('path',{d:`M${x} ${y} q${8+r()*10} ${-4+r()*8} ${16+r()*14} ${r()*6}`,stroke:'#D98A5E','stroke-width':1.4,fill:'none',opacity:.9},svg); }
+    // fylt hol
+    for (let i=0;i<9;i++){ const x=HOT.fylt[0]+(r()-.5)*70, y=HOT.fylt[1]+(r()-.5)*40; const rr=4+r()*4;
+      el('ellipse',{cx:x,cy:y,rx:rr*1.2,ry:rr,fill: r()>.4 ? '#F1F0E6' : '#CFE3C8',stroke:'#2A2E31','stroke-width':1.2},svg);
+      el('circle',{cx:x-rr*.3,cy:y-rr*.3,r:rr*.3,fill:'#fff',opacity:.8},svg); }
+    // ljósir krystallar (feltspat)
+    for (let i=0;i<24;i++){ const x=HOT.feltspat[0]+(r()-.5)*80, y=HOT.feltspat[1]+(r()-.5)*56; const a=r()*180;
+      el('rect',{x:x-6,y:y-1.6,width:12+r()*8,height:3.2,fill:'#EDEFE8',transform:`rotate(${a} ${x} ${y})`,opacity:.95},svg); }
+    // grøn korn (olivin)
+    for (let i=0;i<16;i++){ const x=HOT.olivin[0]+(r()-.5)*70, y=HOT.olivin[1]+(r()-.5)*40; const rr=2.2+r()*2.2;
+      el('circle',{cx:x,cy:y,r:rr,fill:'#7FA03A',stroke:'#3E5418','stroke-width':.8},svg);
+      el('circle',{cx:x-rr*.35,cy:y-rr*.35,r:rr*.35,fill:'#E4F2B0',opacity:.9},svg); }
+    // reyður litur
+    for (let i=0;i<14;i++){ const x=460+r()*110, y=35+r()*80; el('path',{d:`M${x} ${y} q${8+r()*10} ${-4+r()*8} ${16+r()*14} ${r()*6}`,stroke:'#D98A5E','stroke-width':1.4,fill:'none',opacity:.9},svg); }
   }
   drawCore(base, false); drawCore(det, true);
 
   const box = document.getElementById('coreBox'), lens = document.getElementById('lens');
-  const R = 55, finds = new Set();
+  const R = 59, finds = new Set(), TOTAL = Object.keys(HOT).length;
   function toView(e){ const b = box.getBoundingClientRect(); return { px:e.clientX-b.left, py:e.clientY-b.top, vx:(e.clientX-b.left)/b.width*600, vy:(e.clientY-b.top)/b.height*150 }; }
   box.addEventListener('pointermove', e => {
     const p = toView(e);
@@ -552,19 +589,22 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   });
   box.addEventListener('pointerleave', () => { lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
   const lensMsg = {
-    huller:'Væl sæð! Tey <b>smáu holini</b> koma av luftbløðrum í hrauninum.',
-    krystaller:'Flott! Tær <b>hvítu strikurnar</b> eru krystallar. Teir vuksu, tá ið hraunið kólnaði.',
+    hol:'Væl sæð! Tey <b>smáu holini</b> eru gamlar luftbløður. Tær vórðu fastar í hrauninum, tá ið tað kólnaði.',
+    fylt:'Flott! Hesi hol eru <b>fylt</b>. Vatn hevur runnið gjøgnum grótið og lagt ljós minerali eftir seg inni í holunum.',
+    aedr:'Rætt! Tann <b>hvíta æðrin</b> er ein sprunga, sum er fylt við minerali. Sprungur kunnu vera veikir staðir í fjallinum.',
+    feltspat:'Gott eyga! Tær <b>ljósu, flatu strikurnar</b> eru krystallar. Teir vuksu í hrauninum, áðrenn tað storknaði.',
+    olivin:'Hvussu fanst tú tey? Tey <b>grønu kornini</b> eru krystallar, sum eita olivin.',
     farve:'Rætt! <b>Reyði liturin</b> kann merkja, at grótið er bleytt. Tað skulu vit minnast!'
   };
   box.addEventListener('click', e => {
     const p = toView(e);
-    for (const [k,[hx,hy]] of Object.entries(HOT)){
-      if (Math.hypot(p.vx-hx, p.vy-hy) < 70 && !finds.has(k)){
-        finds.add(k);
-        document.querySelector(`[data-f="${k}"]`).classList.add('found');
-        const fb = document.getElementById('lensFeedback'); fb.hidden = false;
-        fb.innerHTML = lensMsg[k] + (finds.size === 3 ? '<br><b>Tú fanst øll trý tingini! 🎉</b>' : '');
-      }
+    let best = null, bd = 1e9;
+    for (const [k,[hx,hy]] of Object.entries(HOT)){ const d = Math.hypot(p.vx-hx, (p.vy-hy)*1.4); if (d < bd){ bd = d; best = k; } }
+    const fb = document.getElementById('lensFeedback');
+    if (best && bd < 50){
+      if (!finds.has(best)){ finds.add(best); document.querySelector(`[data-f="${best}"]`).classList.add('found'); }
+      fb.hidden = false;
+      fb.innerHTML = lensMsg[best] + (finds.size === TOTAL ? '<br><b>Tú fanst øll seks tingini! 🎉</b>' : ` <span style="color:var(--ink-soft)">(${finds.size} av ${TOTAL})</span>`);
     }
   });
 
@@ -658,7 +698,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   document.querySelectorAll('[data-drill]').forEach(b => b.addEventListener('click', () => drill(b.dataset.drill)));
   drawMountain(mtn, false); renderTray();
 
-  // ---------- 3: sker yvir og vel tunnil ----------
+  // ---------- 3: sker í helvt og vel tunnil ----------
   const cut = document.getElementById('mtnCut'), slider = document.getElementById('tunnel');
   const fb = document.getElementById('tunnelFeedback');
   const inside = H => { const xs = []; for (let x = 44; x <= 596; x += 4) if (surf(x) > H) xs.push(x); return xs; };
@@ -673,12 +713,12 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     if (!xs.length) return;
     el('line', {x1:xs[0], y1:ty, x2:xs[xs.length-1], y2:ty, stroke:'#F2C230', 'stroke-width':12, 'stroke-linecap':'round', opacity:.9}, cut);
     el('line', {x1:xs[0], y1:ty, x2:xs[xs.length-1], y2:ty, stroke:'#1E2326', 'stroke-width':2, 'stroke-dasharray':'8 6'}, cut);
-    const t = el('text', {x:xs[0] - 6, y:ty + 5, 'text-anchor':'end', 'font-family':'Baloo 2, sans-serif', 'font-weight':800, 'font-size':16, fill:'#1E2326'}, cut); t.textContent = 'tunnil';
+    const t = el('text', {x:xs[0] - 6, y:ty + 5, 'text-anchor':'end', 'font-family':'Bricolage Grotesque, Arial Black, sans-serif', 'font-weight':800, 'font-size':16, fill:'#1E2326'}, cut); t.textContent = 'tunnil';
   }
   document.getElementById('cutBtn').addEventListener('click', () => {
     const area = document.getElementById('cutArea'), btn = document.getElementById('cutBtn');
     area.hidden = !area.hidden;
-    btn.textContent = area.hidden ? 'Sker fjallið hjá Jarðfríðu yvir' : 'Set fjallið saman aftur';
+    btn.textContent = area.hidden ? 'Sker fjallið hjá Jarðfríðu í helvt' : 'Set fjallið saman aftur';
     if (!area.hidden) drawCut();
   });
   slider.addEventListener('input', () => { fb.hidden = true; drawCut(); });
@@ -715,7 +755,60 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     }
     const a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener';
     a.className = 'btn primary'; a.style.justifySelf = 'start'; a.style.textDecoration = 'none';
-    a.textContent = 'Lat vegg flokksins upp í nýggjum glugga'; g.appendChild(a);
+    a.textContent = 'Lat talvuna hjá flokkinum upp í nýggjum vindeyga'; g.appendChild(a);
+  })();
+
+  // ---------- Malli sum leiki ----------
+  (function malliToy(){
+    const m = document.getElementById('malliToy'), q = document.getElementById('malliQuip');
+    const W0 = 72, H0 = 66;
+    const quips = ['Ái! Ansa tær!','Eg rulli, tí eg eri rundur!','Vatnið rullaði mær í mong ár.','Kantutir steinar rulla ikki so væl!','Hoyyy!','Kasta meg aftur!','Eg eri basalt – eg toli nógv.','Svimbult…'];
+    let x, y, vx = 0, vy = 0, ang = 0, raf = 0, last = 0, drag = null, hist = [], qt;
+    function bounds(){ return [innerWidth - W0, innerHeight - H0]; }
+    function place(){
+      m.style.left = x + 'px'; m.style.top = y + 'px'; m.style.transform = `rotate(${ang}rad)`;
+      q.style.left = Math.min(innerWidth - 220, Math.max(8, x - 70)) + 'px';
+      q.style.top = (y > 70 ? y - 52 : y + H0 + 8) + 'px';
+    }
+    function init(){ if (x !== undefined) return; const b = m.getBoundingClientRect(); x = b.left; y = b.top; m.style.right = 'auto'; m.style.bottom = 'auto'; place(); }
+    function say(){ q.textContent = quips[Math.floor(Math.random() * quips.length)]; q.hidden = false; place(); clearTimeout(qt); qt = setTimeout(() => { q.hidden = true; }, 2200); }
+    function tick(now){
+      const dt = Math.min(.033, (now - last) / 1000); last = now;
+      const [W, H] = bounds();
+      if (!drag){
+        vy += 2200 * dt; x += vx * dt; y += vy * dt;
+        if (x < 0){ x = 0; vx = -vx * .6; } if (x > W){ x = W; vx = -vx * .6; }
+        if (y < 0){ y = 0; vy = -vy * .5; }
+        if (y > H){ y = H; vy = -vy * .5; vx *= .9; if (Math.abs(vy) < 80) vy = 0; }
+        ang += vx * dt / (W0 / 2);
+        if (y >= H && vy === 0){ vx *= .94; if (Math.abs(vx) < 6){ vx = 0; place(); raf = 0; return; } }
+      }
+      place(); raf = requestAnimationFrame(tick);
+    }
+    function start(){ if (!raf){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function hop(){ init(); if (reduce){ say(); return; } vy = -760; vx = (Math.random() - .5) * 600; say(); start(); }
+    m.addEventListener('pointerdown', e => {
+      init(); m.setPointerCapture(e.pointerId);
+      drag = { dx: e.clientX - x, dy: e.clientY - y, sx: e.clientX, sy: e.clientY };
+      hist = [[e.clientX, e.clientY, performance.now()]]; vx = vy = 0;
+      if (!reduce) start();
+    });
+    m.addEventListener('pointermove', e => {
+      if (!drag || reduce) return;
+      const [W, H] = bounds();
+      x = Math.max(0, Math.min(W, e.clientX - drag.dx)); y = Math.max(0, Math.min(H, e.clientY - drag.dy));
+      hist.push([e.clientX, e.clientY, performance.now()]); if (hist.length > 5) hist.shift();
+    });
+    m.addEventListener('pointerup', e => {
+      if (!drag) return;
+      const moved = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy); drag = null;
+      if (moved < 6 || reduce){ hop(); return; }
+      const a = hist[0], b = hist[hist.length - 1], d = Math.max(.016, (b[2] - a[2]) / 1000);
+      vx = Math.max(-2600, Math.min(2600, (b[0] - a[0]) / d)); vy = Math.max(-2600, Math.min(2600, (b[1] - a[1]) / d));
+      say(); start();
+    });
+    m.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hop(); } });
+    addEventListener('resize', () => { if (x === undefined) return; const [W, H] = bounds(); x = Math.min(x, W); y = Math.min(y, H); place(); });
   })();
 })();
 </script>
