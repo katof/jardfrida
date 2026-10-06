@@ -6,172 +6,170 @@
 <title>Jarðfríða borar ein tunnil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
 :root{
   color-scheme: light;
-  --ground:#F4EEDF;
-  --grid:rgba(30,35,38,.07);
-  --surface:#FFFDF7;
-  --surface-2:#FFF3C9;
-  --stone-bg:#E6E9EA;
-  --ink:#1E2326;
-  --ink-soft:#4E585E;
-  --line:#1E2326;
-  --basalt:#3A3F44;
-  --basalt-2:#565C62;
-  --vest:#D6EE1E;
-  --vest-ink:#1E2326;
-  --tape:#F2DFA6;
-  --jacket:#2F5562;
-  --moss:#5F7A5B;
-  --rust:#A4533A;
-  --hat:#C8553D;
-  --good:#2F7A4A;
-  --warn:#B4531F;
-  --focus:#1B6FB8;
-  --hard:4px 4px 0 var(--ink);
-  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --paper:#F4F1E8;
+  --surface:#FFFFFF;
+  --line:#D9D3C4;
+  --ink:#1F2428;
+  --ink-soft:#585F65;
+  --basalt:#6E747A;
+  --basalt-dark:#2E3236;
+  --tuff:#A4533A;
+  --olivine:#5E7D35;
+  --ochre:#B7821F;
+  --sea:#2A6A80;
+  --grass:#5F7A5B;
+  --tint-sea:#E3EEF1;
+  --tint-tuff:#F6E6DF;
+  --tint-ochre:#F8EED6;
+  --tint-olive:#E8EFDD;
+  --good:#3E6B2A;
+  --warn:#A4533A;
+  --focus:#1B5FA8;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
   --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme: dark;
-    --ground:#14181A; --grid:rgba(255,255,255,.05); --surface:#1E2427; --surface-2:#353019; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
-    --line:#E9EDEF; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#D6EE1E; --vest-ink:#1E2326; --tape:#5A4E2A;
-    --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E89A5A; --focus:#6FB2F0;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme: dark;
-  --ground:#14181A; --grid:rgba(255,255,255,.05); --surface:#1E2427; --surface-2:#353019; --stone-bg:#2A3034; --ink:#E9EDEF; --ink-soft:#A9B4BA;
-  --line:#E9EDEF; --basalt:#8A949B; --basalt-2:#6B747A; --vest:#D6EE1E; --vest-ink:#1E2326; --tape:#5A4E2A;
-  --moss:#8FAE8A; --rust:#D0795D; --hat:#E07A62; --good:#6CC08A; --warn:#E89A5A; --focus:#6FB2F0;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
-body{
-  background-color:var(--ground);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:24px 24px;
-  color:var(--ink);font:17px/1.55 var(--body);padding-inline:16px;padding-block:0 96px;
-}
-.wrap{max-width:960px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0;letter-spacing:-.01em}
-h1{font-size:clamp(2.1rem,6.5vw,3.4rem);font-weight:800}
-h2{font-size:1.65rem;font-weight:800;justify-self:start;text-decoration:underline;text-decoration-color:var(--vest);text-decoration-thickness:.24em;text-underline-offset:.16em;text-decoration-skip-ink:none}
-h3{font-size:1.2rem;font-weight:700}
-p{margin:0;max-width:65ch}
+body{background:var(--paper);color:var(--ink);font:17px/1.6 var(--body);padding-inline:16px;padding-block:0 96px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0;font-weight:700;letter-spacing:-.005em}
+h1{font-size:clamp(2.1rem,6vw,3.3rem);font-optical-sizing:auto}
+h2{font-size:1.55rem}
+h3{font-size:1.15rem}
+p{margin:0;max-width:66ch}
 button,input{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-.proto{background:#1E2326;color:#F4EEDF;font:.8rem/1.4 var(--mono);padding:7px 16px;margin-inline:-16px;text-align:center}
-.proto b{font-weight:600;color:#D6EE1E}
+.proto{background:var(--ink);color:var(--paper);font:.78rem/1.4 var(--mono);padding:7px 16px;margin-inline:-16px;text-align:center}
+.proto b{font-weight:600}
 
-/* hero */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;padding-block:30px 24px}
-.hero .figure{width:175px;height:auto;display:block;filter:drop-shadow(4px 4px 0 rgba(30,35,38,.15))}
-.bubble{background:var(--surface);border:3px solid var(--ink);border-radius:6px;padding:18px 22px 22px;position:relative;display:grid;gap:10px;box-shadow:6px 6px 0 var(--ink)}
-.bubble::before{content:"";position:absolute;left:-17px;top:46px;border:14px solid transparent;border-right-color:var(--ink);border-left:0}
-.bubble::after{content:"";position:absolute;left:-11px;top:50px;border:10px solid transparent;border-right-color:var(--surface);border-left:0}
-.bubble p{font-size:1.12rem}
-.eyebrow{font:600 .75rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-.psst{font:600 .85rem/1.3 var(--mono);color:#3A3320;justify-self:start;background:#F2DFA6;padding:3px 10px;transform:rotate(-1.2deg)}
-@media (max-width:560px){.hero{grid-template-columns:1fr;justify-items:center}.hero .figure{width:120px}.bubble::before,.bubble::after{display:none}}
+/* borikjarnin: dýpdarmátið við vinstru síðu */
+.borehole{position:fixed;left:18px;top:64px;bottom:24px;width:46px;display:none;z-index:5}
+.borehole .tube{position:absolute;left:0;top:0;bottom:0;width:18px;border:1.5px solid var(--ink);border-radius:9px;overflow:hidden;background:var(--surface)}
+.borehole .fill{position:absolute;left:0;right:0;top:0;height:0;background:linear-gradient(to bottom,#5F7A5B 0 4%,#7A8086 4% 34%,#A4533A 34% 40%,#7A8086 40% 74%,#2E3236 74% 100%);background-size:100% var(--h,600px);background-repeat:no-repeat}
+.borehole .ticks{position:absolute;left:24px;top:0;bottom:0;font:600 .66rem/1 var(--mono);color:var(--ink-soft)}
+.borehole .ticks span{position:absolute;left:0;transform:translateY(-50%);white-space:nowrap}
+.borehole .ticks span::before{content:"";display:inline-block;width:6px;height:1.5px;background:var(--ink-soft);margin-right:4px;vertical-align:middle}
+@media (min-width:1080px){.borehole{display:block}}
+.depthbar{position:sticky;top:0;height:5px;margin-inline:-16px;background:var(--line);z-index:6}
+.depthbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5F7A5B,#7A8086 30%,#A4533A 36%,#7A8086 42%,#2E3236)}
+@media (min-width:1080px){.depthbar{display:none}}
 
-/* teigar */
-.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 26px}
-.phase{appearance:none;border:2.5px solid var(--ink);background:var(--surface);padding:10px 8px 12px;border-radius:4px;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.02rem;line-height:1.15;color:var(--ink);display:grid;gap:2px;justify-items:center;text-align:center;box-shadow:3px 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
-.phase .n{font:600 .85rem/1 var(--mono);color:var(--ink-soft)}
-.phase:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
-.phase[aria-selected="true"]{background:var(--vest);color:var(--vest-ink);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.phase[aria-selected="true"] .n{color:var(--vest-ink)}
-@media (max-width:560px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* forsíða: kort við hæddarlinjum */
+.hero{position:relative;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;margin:26px 0 0;padding:28px 28px 0;background:var(--surface);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.hero .contours{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .text{position:relative;display:grid;gap:12px;padding-bottom:28px}
+.hero .figure{position:relative;width:170px;height:auto;display:block;margin-bottom:-6px}
+.hero p{font-size:1.1rem}
+.maplabel{position:absolute;right:12px;top:10px;font:600 .68rem/1.2 var(--mono);color:var(--ink-soft);letter-spacing:.06em;text-align:right}
+.eyebrow{font:600 .72rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
+.psst{font:600 .82rem/1.3 var(--mono);color:var(--ink);justify-self:start;border-bottom:2px solid var(--ochre);padding-bottom:2px}
+@media (max-width:620px){.maplabel{display:none}.hero .contours{opacity:.45}.hero{grid-template-columns:1fr;padding:22px 18px 0}.hero .figure{width:110px;justify-self:end;margin-top:-10px}.hero .text{padding-bottom:0}}
 
-.stack{display:grid;gap:22px}
-.panel{background:var(--surface);border-radius:4px;padding:24px 22px 22px;display:grid;gap:16px;border:2.5px solid var(--ink);box-shadow:var(--hard);position:relative}
-.say{display:grid;grid-template-columns:54px 1fr;gap:12px;align-items:center;background:var(--surface-2);border:2px solid var(--ink);border-radius:4px;padding:10px 14px 10px 10px}
-.say svg{width:54px;height:54px}
+/* teigar sum kortforklaring */
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:22px 0 24px;border:1px solid var(--line);background:var(--surface)}
+.phase{appearance:none;border:0;border-right:1px solid var(--line);background:none;padding:12px 12px 14px;cursor:pointer;font-family:var(--body);font-weight:700;font-size:1rem;line-height:1.2;color:var(--ink-soft);display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;text-align:left;position:relative}
+.phase:last-child{border-right:0}
+.phase .n{grid-row:span 2;width:28px;height:28px;display:grid;place-items:center;font:600 .85rem/1 var(--mono);color:#fff;background:var(--sw)}
+#tab-l1{--sw:var(--basalt)} #tab-l2{--sw:var(--olivine)} #tab-l3{--sw:var(--tuff)} #tab-l4{--sw:var(--ochre)}
+.phase[aria-selected="true"]{color:var(--ink);background:var(--paper)}
+.phase[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;background:var(--sw)}
+@media (max-width:640px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}.phase:nth-child(2){border-right:0}.phase:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+.stack{display:grid;gap:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:22px;display:grid;gap:16px}
+.say{display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;border-left:4px solid var(--ochre);background:var(--tint-ochre);padding:10px 14px 10px 10px}
+.say svg{width:50px;height:50px}
 .say p{font-size:1.05rem}
-.say .who{display:block;font:600 .72rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px}
-.say.malli{background:var(--stone-bg);border-style:dashed}
+.say .who{display:block;font:600 .7rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px}
+.say.malli{border-left-color:var(--basalt);background:#ECEDEC}
 .task{font-weight:700;font-size:1.05rem}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.btn{appearance:none;border:2.5px solid var(--ink);background:var(--surface);border-radius:4px;padding:9px 18px;cursor:pointer;font-weight:700;font-size:1.05rem;box-shadow:3px 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
-.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
-.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
-.btn.primary{background:var(--vest);color:var(--vest-ink)}
-.feedback{border-radius:4px;padding:12px 14px;font-size:1.05rem;border:2.5px solid;background:var(--surface)}
-.feedback.good{border-color:var(--good);box-shadow:3px 3px 0 var(--good)}
-.feedback.warn{border-color:var(--warn);box-shadow:3px 3px 0 var(--warn)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{appearance:none;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:2px;padding:9px 16px;cursor:pointer;font-weight:700;font-size:1rem}
+.btn:hover{background:var(--paper)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.primary:hover{background:#3A4147}
+.feedback{padding:12px 14px;font-size:1.05rem;border-left:4px solid}
+.feedback.good{border-color:var(--good);background:var(--tint-olive)}
+.feedback.warn{border-color:var(--warn);background:var(--tint-tuff)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:2px dashed var(--ink-soft);border-radius:3px;padding:5px 12px;font-size:.98rem;color:var(--ink-soft);background:var(--surface)}
-.chip.found{border-style:solid;border-color:var(--ink);color:var(--ink);background:var(--vest);color:var(--vest-ink)}
-.chip.found::before{content:"✓ ";font-weight:700}
-.tag{position:absolute;top:-13px;left:18px;display:inline-flex;align-items:center;font:600 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;background:#F2DFA6;color:#2A2100;transform:rotate(-2deg);box-shadow:1px 1px 0 rgba(0,0,0,.15)}
-.tag.stone{background:#C9CED1}
-.tag.clay{background:#E7B49F}
-.steps{margin:0;padding-left:28px;display:grid;gap:8px;font-size:1.05rem}
-.steps li::marker{font-family:var(--mono);font-weight:600}
-.hint{background:var(--surface-2);border:2px solid var(--ink);border-left-width:8px;border-radius:3px;padding:10px 12px}
+.chip{border:1.5px dashed var(--basalt);padding:5px 12px;font-size:.96rem;color:var(--ink-soft);background:var(--surface)}
+.chip.found{border-style:solid;border-color:var(--good);background:var(--tint-olive);color:var(--ink)}
+.chip.found::before{content:"✓ ";font-weight:700;color:var(--good)}
+.tag{justify-self:start;font:600 .68rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+.tag::before{content:"";width:10px;height:10px;background:var(--sea)}
+.tag.stone::before{background:var(--basalt)}
+.tag.clay::before{background:var(--tuff)}
+.steps{margin:0;padding-left:26px;display:grid;gap:8px;font-size:1.05rem}
+.steps li::marker{font-family:var(--mono);font-weight:600;color:var(--ink-soft)}
+.hint{border-left:4px solid var(--sea);background:var(--tint-sea);padding:10px 12px}
 
 /* sjóneyka */
-.core-box{position:relative;touch-action:none;cursor:none;border:2px solid var(--ink);border-radius:3px;overflow:hidden;background:var(--stone-bg);user-select:none}
+.core-box{position:relative;touch-action:none;cursor:none;overflow:hidden;background:#E9E6DE;user-select:none}
 .core-box svg{display:block;width:100%;height:auto}
 .core-detail{position:absolute;inset:0;clip-path:circle(0 at 50% 50%)}
-.lens{position:absolute;width:118px;height:118px;border-radius:50%;border:6px solid var(--ink);box-shadow:0 0 0 2px #fff inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0}
-.lens::after{content:"";position:absolute;width:48px;height:12px;background:var(--ink);border-radius:3px;right:-42px;bottom:-8px;transform:rotate(45deg)}
+.lens{position:absolute;width:118px;height:118px;border-radius:50%;border:5px solid var(--ink);box-shadow:0 0 0 2px #fff inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0}
+.lens::after{content:"";position:absolute;width:48px;height:11px;background:var(--ink);border-radius:2px;right:-42px;bottom:-8px;transform:rotate(45deg)}
 
 /* fjall */
-.section-box{border-radius:3px;overflow:hidden;background:var(--stone-bg);border:2px solid var(--ink)}
+.section-box{overflow:hidden;background:#EAF1F2;border:1px solid var(--line)}
 .section-box svg{display:block;width:100%;height:auto}
 #mtn .pin{cursor:pointer}
-.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:1rem}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.98rem}
 .legend span{display:inline-flex;align-items:center;gap:8px}
-.legend i{width:20px;height:20px;border-radius:2px;display:inline-block;border:2px solid var(--ink)}
+.legend i{width:18px;height:18px;display:inline-block}
 .tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.slot{border:2px dashed var(--ink-soft);border-radius:3px;padding:10px;display:grid;gap:6px;justify-items:center;min-height:110px;align-content:start}
-.slot.on{border-style:solid;border-color:var(--ink);background:var(--surface);box-shadow:3px 3px 0 var(--ink)}
-.slot b{font-family:var(--mono);font-size:1.05rem}
+.slot{border:1.5px dashed var(--basalt);padding:10px;display:grid;gap:6px;justify-items:center;min-height:110px;align-content:start}
+.slot.on{border-style:solid;border-color:var(--line);background:var(--paper)}
+.slot b{font-family:var(--mono);font-size:1rem}
 .slot svg{width:100%;max-width:60px;height:auto}
 .slot span{font-size:.9rem;color:var(--ink-soft);text-align:center}
 .slider{display:grid;gap:6px}
-.slider input{width:100%;height:32px;accent-color:var(--rust)}
-.slider .ends{display:flex;justify-content:space-between;font:600 .85rem/1.3 var(--mono);color:var(--ink-soft)}
+.slider input{width:100%;height:32px;accent-color:var(--tuff)}
+.slider .ends{display:flex;justify-content:space-between;font:600 .82rem/1.3 var(--mono);color:var(--ink-soft)}
 
 /* søgan hjá Malla */
 .journey{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
 .journey figure{margin:0;display:grid;justify-items:center;gap:4px;font-size:.9rem;color:var(--ink-soft)}
 .journey svg{width:70px;height:56px}
-.journey .arr{font:600 .78rem/1.2 var(--mono);color:var(--ink-soft);text-align:center}
+.journey .arr{font:600 .76rem/1.2 var(--mono);color:var(--ink-soft);text-align:center}
 
 /* prógv */
-.diploma{border:3px solid var(--ink);outline:2px solid var(--ink);outline-offset:4px;border-radius:2px;padding:20px;text-align:center;display:grid;gap:8px;justify-items:center;background:var(--surface-2);margin:6px}
-.diploma .big{font-family:var(--display);font-size:1.8rem;font-weight:800;line-height:1.1}
+.diploma{border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:-7px;padding:26px;text-align:center;display:grid;gap:8px;justify-items:center;background:var(--paper)}
+.diploma .big{font-family:var(--display);font-size:1.8rem;font-weight:700;line-height:1.1}
 .diploma svg{width:84px;height:72px}
 
 /* galleri */
 .gallery{display:grid;gap:12px}
-.gallery iframe{width:100%;height:620px;border:2px solid var(--ink);border-radius:3px;background:var(--surface);display:block}
+.gallery iframe{width:100%;height:620px;border:1px solid var(--line);background:var(--surface);display:block}
 
 /* Malli sum leiki */
-.malli-toy{appearance:none;-webkit-appearance:none;position:fixed;right:18px;bottom:18px;width:72px;height:66px;padding:0;border:0;background:none;cursor:grab;touch-action:none;z-index:50;transform-origin:50% 55%;filter:drop-shadow(3px 4px 0 rgba(30,35,38,.25))}
+.malli-toy{appearance:none;-webkit-appearance:none;position:fixed;right:18px;bottom:18px;width:72px;height:66px;padding:0;border:0;background:none;cursor:grab;touch-action:none;z-index:50;transform-origin:50% 55%;filter:drop-shadow(1px 4px 0 rgba(31,36,40,.18))}
 .malli-toy:active{cursor:grabbing}
 .malli-toy svg{width:100%;height:100%;display:block;pointer-events:none}
-.malli-quip{position:fixed;z-index:51;max-width:210px;background:var(--surface);border:2.5px solid var(--ink);border-radius:4px;padding:6px 10px;font-weight:700;font-size:.95rem;box-shadow:3px 3px 0 var(--ink);pointer-events:none}
+.malli-quip{position:fixed;z-index:51;max-width:210px;background:var(--ink);color:#fff;padding:6px 10px;font-weight:700;font-size:.95rem;pointer-events:none}
 
 /* lærari */
-details.teacher{margin-top:30px;background:var(--surface);border:2.5px solid var(--ink);border-radius:4px;padding:14px 18px;font-size:1rem;box-shadow:var(--hard)}
-details.teacher summary{cursor:pointer;font-family:var(--display);font-weight:800;font-size:1.15rem}
-details.teacher h3{margin-top:18px}
-details.teacher code{font-family:var(--mono);font-size:.85rem;background:var(--surface-2);padding:1px 5px;border-radius:2px;word-break:break-all}
+details.teacher{margin-top:28px;background:var(--surface);border:1px solid var(--line);padding:16px 20px;font-size:1rem}
+details.teacher summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.25rem}
+details.teacher h3{margin-top:22px}
+details.teacher p{margin-top:8px}
+details.teacher code{font-family:var(--mono);font-size:.85rem;background:var(--paper);padding:1px 5px;word-break:break-all}
 details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:grid;gap:4px}
+details.teacher dl{margin:8px 0 0;display:grid;gap:10px}
+details.teacher dt{font-weight:700}
+details.teacher dd{margin:2px 0 0}
+details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea);padding:10px 14px;margin-top:10px;display:grid;gap:4px}
 .tablewrap{overflow-x:auto}
 .forloeb{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:10px}
-.forloeb th,.forloeb td{border-bottom:1.5px solid var(--ink);padding:8px;text-align:left;vertical-align:top}
-.forloeb th{font-family:var(--display);font-size:.95rem}
-.note{color:var(--ink-soft);font-size:.9rem;margin-top:10px}
+.forloeb th,.forloeb td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}
+.forloeb th{font:600 .75rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border-bottom:2px solid var(--ink)}
+.note{color:var(--ink-soft);font-size:.92rem;margin-top:10px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -200,13 +198,24 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 <path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
 <path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
   <symbol id="malli" viewBox="-90 -78 180 160"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><clipPath id="mc1"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"/></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc1)"/><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="8" fill="#fff"/><circle cx="20" cy="-4" r="8" fill="#fff"/><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"/><circle cx="22" cy="-3" r="4.6" fill="#1E2326"/><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
-  <symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><clipPath id="mc2"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"/></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc2)"/><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="10" fill="#fff"/><circle cx="20" cy="-4" r="10" fill="#fff"/><circle cx="-20" cy="-6" r="5" fill="#1E2326"/><circle cx="20" cy="-6" r="5" fill="#1E2326"/><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"/><text x="58" y="-56" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol>
+  <symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/><clipPath id="mc2"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"/></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc2)"/><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"/><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"/><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"/><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"/><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"/><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"/><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"/><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"/><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"/><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"/><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"/><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"/><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"/><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"/><circle cx="-50" cy="-20" r="4" fill="#3C4247"/><circle cx="46" cy="-30" r="3.4" fill="#3C4247"/><circle cx="52" cy="30" r="4.4" fill="#3C4247"/><circle cx="-42" cy="42" r="3" fill="#3C4247"/><circle cx="10" cy="52" r="3.2" fill="#3C4247"/><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"/><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"/><circle cx="-20" cy="-4" r="10" fill="#fff"/><circle cx="20" cy="-4" r="10" fill="#fff"/><circle cx="-20" cy="-6" r="5" fill="#1E2326"/><circle cx="20" cy="-6" r="5" fill="#1E2326"/><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"/><text x="58" y="-56" font-family="Fraunces, Georgia, serif" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol>
 </svg>
 
 <div class="proto"><b>Prototypa til meting</b> · Innihald og dømi eru fyribils · Jarðfeingi og Nám skulu góðkenna tekstin</div>
+<div class="depthbar" aria-hidden="true"><i id="depthFill"></i></div>
+<div class="borehole" aria-hidden="true"><div class="tube"><div class="fill" id="coreFill"></div></div><div class="ticks" id="coreTicks"></div></div>
 <div class="wrap">
 
 <header class="hero">
+  <svg class="contours" viewBox="0 0 900 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#B9C7C9" stroke-width="1"><path d="M730.8 120.0 L730.4 123.0 L730.1 126.0 L729.9 129.2 L729.6 132.7 L729.1 136.5 L727.6 140.4 L724.9 144.0 L720.9 146.8 L715.9 148.4 L710.4 148.9 L705.0 148.3 L700.0 147.2 L695.4 145.8 L691.2 144.4 L687.1 143.0 L683.3 141.5 L679.7 139.6 L676.6 137.3 L674.2 134.7 L672.3 131.9 L670.7 129.0 L669.3 126.1 L667.8 123.1 L666.4 120.0 L665.4 116.6 L665.2 113.1 L666.3 109.6 L668.4 106.5 L671.6 103.8 L675.2 101.6 L678.9 99.7 L682.6 97.7 L686.4 95.7 L690.5 93.6 L695.0 91.9 L700.0 90.9 L705.2 90.8 L710.1 92.0 L714.5 94.1 L718.1 96.8 L721.0 99.7 L723.5 102.6 L725.7 105.4 L727.6 108.2 L729.2 111.0 L730.3 114.0 L730.8 117.0Z" /><path d="M774.5 120.0 L777.0 127.5 L778.9 135.7 L779.0 144.2 L776.3 152.6 L770.4 160.0 L761.5 165.6 L750.9 169.1 L739.6 170.8 L728.6 171.1 L718.4 170.9 L709.0 170.6 L700.0 170.1 L691.2 169.2 L682.7 167.7 L674.6 165.4 L667.0 162.3 L659.7 158.9 L652.3 155.3 L644.3 151.6 L635.8 147.5 L627.1 142.4 L619.4 136.0 L614.0 128.4 L612.0 120.0 L613.7 111.6 L618.5 103.8 L625.4 97.1 L632.9 91.3 L640.4 86.1 L647.5 81.1 L654.7 76.3 L662.4 71.8 L671.1 68.3 L680.5 66.1 L690.3 65.6 L700.0 66.4 L709.2 68.1 L718.0 70.1 L726.7 72.2 L735.4 74.5 L744.1 77.5 L752.1 81.4 L758.9 86.5 L764.1 92.6 L767.6 99.3 L770.0 106.1 L772.2 113.0Z" /><path d="M812.3 120.0 L819.2 131.6 L822.3 144.3 L820.4 157.0 L813.9 168.7 L803.8 179.0 L791.4 187.7 L777.8 195.1 L763.3 201.3 L748.1 206.0 L732.1 208.8 L715.8 209.1 L700.0 206.7 L685.4 202.1 L672.4 196.3 L660.7 190.3 L649.4 184.9 L637.6 180.2 L625.0 175.6 L612.1 169.9 L600.4 162.6 L591.4 153.3 L586.2 142.6 L584.9 131.2 L586.5 120.0 L589.4 109.2 L592.6 98.7 L595.5 87.9 L598.9 76.7 L603.8 65.3 L611.5 54.4 L622.3 45.0 L636.0 37.8 L651.5 33.2 L667.7 30.7 L684.0 29.8 L700.0 30.0 L715.8 31.3 L731.1 34.2 L745.2 39.1 L757.4 46.3 L766.9 55.5 L773.4 65.6 L777.9 75.7 L782.0 84.9 L787.2 93.3 L794.4 101.3 L803.2 109.9Z" /><path d="M874.2 120.0 L865.8 136.2 L854.1 150.6 L841.8 163.5 L830.2 175.7 L819.4 187.8 L808.2 200.1 L795.1 211.8 L779.2 221.6 L760.5 228.2 L740.2 231.0 L719.7 230.6 L700.0 228.0 L681.4 224.6 L663.4 221.3 L645.2 218.0 L626.7 214.1 L608.4 208.4 L591.5 200.4 L576.8 190.0 L564.8 177.8 L554.7 164.6 L545.8 150.6 L537.4 135.9 L529.8 120.0 L524.7 102.9 L524.3 85.1 L530.4 68.0 L543.6 53.1 L562.6 41.9 L585.0 34.8 L608.0 31.2 L629.4 29.4 L648.4 27.8 L665.8 25.4 L682.6 22.2 L700.0 19.1 L718.3 17.2 L737.1 17.4 L756.0 19.9 L774.4 24.5 L792.8 30.4 L811.3 37.6 L829.9 46.2 L847.7 56.8 L862.9 70.0 L873.3 85.6 L877.2 102.7Z" /><path d="M928.7 120.0 L924.8 141.9 L914.3 162.5 L899.6 181.2 L882.4 198.0 L863.4 212.8 L842.5 225.5 L819.5 235.4 L794.7 241.5 L769.3 243.9 L744.6 243.3 L721.6 241.3 L700.0 239.8 L678.6 240.3 L655.7 242.6 L630.0 245.2 L602.0 245.7 L573.8 241.9 L548.0 232.6 L527.4 218.1 L513.1 200.0 L504.3 180.0 L499.5 159.8 L496.7 139.8 L495.2 120.0 L495.5 100.1 L499.0 80.1 L507.5 60.9 L521.4 43.6 L539.9 29.0 L561.3 17.2 L583.7 7.7 L605.9 -0.7 L628.1 -8.5 L650.9 -15.7 L674.9 -21.1 L700.0 -23.1 L725.0 -20.7 L748.4 -13.9 L769.3 -3.9 L787.8 7.3 L805.5 18.2 L824.3 27.9 L845.6 37.3 L868.8 47.8 L891.9 61.1 L911.4 78.0 L924.3 98.1Z" /><path d="M897.7 120.0 L896.4 139.2 L897.4 159.2 L897.4 180.6 L893.1 202.6 L882.7 223.8 L865.9 242.9 L844.2 259.2 L819.2 273.0 L792.3 285.1 L763.6 295.9 L732.9 305.0 L700.0 310.8 L665.9 311.6 L632.6 306.3 L602.1 295.1 L575.7 279.5 L553.2 261.7 L533.3 243.5 L514.2 225.6 L495.0 207.7 L476.8 188.5 L462.2 167.2 L454.4 144.0 L455.6 120.0 L465.7 97.2 L482.5 76.8 L502.2 59.3 L521.5 43.7 L538.6 28.3 L554.0 11.9 L569.7 -5.7 L588.1 -23.5 L610.7 -39.6 L637.6 -52.4 L667.8 -61.0 L700.0 -65.7 L733.3 -67.3 L767.4 -66.4 L802.1 -62.6 L836.3 -54.9 L867.8 -42.0 L893.5 -23.3 L910.5 0.3 L917.8 26.9 L916.4 53.6 L910.0 78.3 L902.6 100.2Z" /><path d="M937.3 120.0 L935.1 142.9 L934.4 166.5 L935.3 192.2 L935.5 220.7 L931.0 251.3 L918.0 281.5 L894.6 307.9 L861.5 327.2 L821.9 338.1 L779.9 340.9 L738.7 338.0 L700.0 332.3 L663.4 325.8 L628.1 318.9 L593.5 310.5 L560.4 299.1 L530.8 283.3 L506.4 263.4 L487.8 240.6 L474.0 216.6 L463.0 192.7 L452.8 169.1 L442.9 145.1 L434.7 120.0 L431.2 93.8 L434.8 67.4 L446.8 42.3 L465.9 19.9 L489.4 0.3 L514.3 -17.6 L538.9 -35.6 L563.6 -55.0 L590.6 -75.7 L622.0 -95.6 L658.9 -111.3 L700.0 -119.4 L742.3 -117.9 L782.1 -107.0 L816.8 -88.9 L845.5 -66.7 L869.2 -43.3 L889.2 -20.2 L906.7 2.5 L921.4 25.3 L932.2 48.8 L938.0 72.8 L939.2 96.7Z" /><path d="M1052.3 120.0 L1045.3 153.7 L1033.4 186.2 L1016.0 217.0 L991.8 244.8 L960.1 267.8 L921.9 284.4 L880.3 294.0 L838.9 298.2 L800.7 300.0 L766.3 303.2 L733.8 310.2 L700.0 321.1 L662.0 333.5 L619.2 343.4 L573.3 346.5 L528.1 340.6 L487.2 325.5 L452.8 303.1 L425.0 276.3 L402.4 247.3 L383.7 217.0 L368.9 185.7 L359.5 153.2 L358.1 120.0 L366.3 87.5 L384.0 57.3 L408.6 30.6 L436.6 7.4 L464.7 -13.8 L491.5 -34.5 L518.1 -55.6 L546.9 -76.5 L580.0 -94.7 L617.8 -107.2 L658.8 -112.0 L700.0 -108.7 L739.0 -99.4 L775.0 -87.4 L809.5 -75.7 L844.8 -65.7 L882.8 -56.5 L923.4 -45.5 L964.0 -30.0 L1000.2 -8.4 L1028.2 19.3 L1045.8 51.4 L1053.2 85.6Z" /><path d="M1099.7 120.0 L1108.8 159.9 L1101.9 199.8 L1079.4 236.4 L1045.1 267.6 L1004.0 292.8 L960.5 313.0 L917.0 329.4 L873.7 342.9 L830.1 352.7 L786.0 357.8 L742.2 357.2 L700.0 351.6 L660.3 343.2 L622.4 334.7 L583.6 328.2 L541.1 323.9 L493.4 319.5 L441.8 311.2 L391.1 295.6 L347.4 270.8 L316.6 237.6 L301.3 199.1 L300.6 158.9 L310.5 120.0 L326.0 83.5 L343.6 49.3 L362.6 16.5 L384.5 -14.9 L411.6 -43.9 L445.2 -68.7 L484.8 -87.8 L527.8 -100.9 L571.7 -109.5 L614.7 -115.9 L657.0 -121.8 L700.0 -127.7 L744.8 -131.9 L791.0 -131.4 L836.4 -123.8 L877.9 -108.2 L913.2 -85.8 L942.2 -59.4 L967.4 -32.0 L992.3 -5.0 L1019.6 21.9 L1049.4 50.7 L1078.0 83.1Z" /><path d="M1138.2 120.0 L1120.3 161.0 L1087.9 197.0 L1046.1 226.2 L1001.7 249.0 L961.0 268.3 L926.9 288.0 L898.2 311.3 L870.7 339.0 L839.1 368.7 L800.0 396.4 L752.9 417.5 L700.0 429.2 L644.7 431.0 L589.8 424.7 L536.4 412.6 L484.6 396.3 L434.8 376.0 L388.8 350.5 L349.8 319.0 L321.7 281.8 L306.6 240.7 L304.1 198.6 L310.4 158.0 L320.5 120.0 L330.1 83.9 L338.0 48.1 L346.4 11.5 L359.9 -25.5 L382.7 -60.4 L416.7 -89.8 L460.3 -111.4 L509.4 -124.6 L559.3 -131.6 L607.4 -136.1 L653.5 -141.5 L700.0 -149.1 L749.3 -157.6 L802.5 -163.5 L858.2 -163.0 L913.3 -153.6 L964.2 -135.0 L1008.9 -108.8 L1047.2 -77.4 L1080.1 -42.6 L1107.9 -5.1 L1129.1 34.8 L1140.5 77.0Z" /><path d="M1124.3 120.0 L1093.5 158.4 L1065.0 192.4 L1041.6 224.8 L1022.0 257.7 L1002.0 291.7 L977.4 325.5 L945.6 357.1 L906.6 385.0 L861.6 409.0 L812.2 430.1 L758.5 449.3 L700.0 466.2 L636.3 478.2 L569.2 481.5 L503.0 472.4 L443.5 449.1 L396.1 413.3 L363.3 369.4 L343.2 322.8 L330.9 277.9 L320.4 236.5 L308.1 197.8 L294.1 159.6 L282.1 120.0 L277.6 78.8 L285.0 37.6 L305.1 -1.2 L335.7 -35.8 L372.4 -66.2 L411.2 -94.0 L450.5 -120.9 L491.3 -147.7 L536.0 -173.3 L586.1 -194.8 L641.5 -209.0 L700.0 -214.0 L758.7 -210.2 L815.8 -200.2 L871.6 -186.8 L927.5 -171.8 L984.6 -154.8 L1041.8 -133.2 L1094.5 -104.2 L1136.2 -66.6 L1160.7 -21.3 L1164.9 27.7 L1150.7 76.0Z" /><path d="M1175.4 120.0 L1161.8 165.0 L1142.1 207.8 L1114.4 247.1 L1078.7 282.0 L1037.8 312.0 L995.1 338.6 L953.4 364.6 L912.5 392.7 L869.7 423.4 L821.0 454.6 L764.2 481.3 L700.0 498.0 L632.3 500.7 L566.5 489.0 L506.7 465.7 L453.8 435.9 L405.9 404.0 L359.4 372.3 L312.2 340.4 L265.7 305.7 L224.5 265.9 L194.7 220.3 L181.4 170.6 L185.8 120.0 L205.2 71.7 L234.2 27.6 L267.7 -12.6 L302.8 -49.9 L339.7 -84.8 L380.4 -116.8 L426.7 -143.8 L478.8 -163.8 L534.4 -176.2 L590.5 -182.7 L645.4 -187.0 L700.0 -192.9 L757.3 -202.4 L820.8 -213.9 L891.6 -222.7 L967.1 -222.6 L1040.5 -208.7 L1103.9 -179.2 L1151.0 -136.3 L1179.3 -85.0 L1191.1 -30.7 L1191.3 22.5 L1185.2 72.7Z" /><path d="M1185.4 120.0 L1160.5 164.9 L1141.6 207.7 L1126.8 250.9 L1110.4 295.5 L1086.3 339.6 L1050.8 379.8 L1004.1 413.6 L949.3 439.8 L890.1 460.0 L829.1 476.8 L766.1 491.8 L700.0 504.8 L630.2 512.8 L558.2 512.1 L487.7 499.6 L423.3 475.0 L367.6 440.8 L320.6 401.1 L279.1 359.2 L239.5 316.9 L200.3 273.3 L164.0 226.4 L136.9 174.9 L126.4 120.0 L137.6 65.2 L170.6 14.9 L220.2 -27.2 L277.7 -60.6 L334.8 -87.6 L386.6 -112.2 L432.8 -138.0 L476.9 -166.2 L523.7 -195.3 L576.4 -221.7 L635.6 -242.1 L700.0 -254.8 L767.6 -260.2 L837.5 -260.0 L909.9 -255.3 L984.7 -245.3 L1059.9 -227.5 L1130.3 -198.7 L1188.2 -157.5 L1226.5 -105.1 L1241.3 -46.1 L1234.4 13.9 L1212.7 70.0Z" /><path d="M1266.2 120.0 L1254.6 174.1 L1244.0 228.0 L1230.6 282.8 L1208.2 337.3 L1171.3 387.9 L1118.5 430.0 L1052.6 460.4 L979.7 478.8 L905.9 488.1 L834.7 492.5 L766.7 495.4 L700.0 497.7 L632.9 497.6 L565.5 491.9 L499.8 478.0 L438.3 455.8 L381.8 427.2 L328.6 395.1 L275.0 361.6 L218.0 326.2 L158.0 286.3 L100.5 239.0 L54.8 182.9 L30.9 120.0 L35.3 55.2 L68.3 -5.4 L123.7 -56.8 L191.6 -97.4 L262.0 -129.0 L328.7 -155.1 L390.2 -179.1 L448.8 -202.3 L508.1 -223.2 L570.0 -239.4 L634.5 -248.8 L700.0 -251.3 L765.6 -249.0 L831.9 -244.5 L901.0 -239.4 L974.5 -232.2 L1051.5 -219.4 L1127.2 -196.5 L1193.9 -160.7 L1243.9 -112.6 L1273.1 -55.8 L1282.3 4.4 L1277.4 63.7Z" /><path d="M257.8 330.0 L256.5 332.6 L254.9 335.0 L253.3 337.2 L251.5 339.2 L249.5 341.1 L247.1 342.6 L244.4 343.9 L241.6 344.9 L238.9 345.8 L236.1 346.9 L233.2 348.2 L230.0 349.6 L226.3 350.8 L222.2 351.6 L218.0 351.5 L214.0 350.5 L210.8 348.6 L208.3 346.0 L206.7 343.2 L205.6 340.4 L204.9 337.7 L204.2 335.1 L203.8 332.6 L203.7 330.0 L204.2 327.5 L205.3 325.1 L206.9 322.9 L208.8 320.9 L210.7 319.1 L212.7 317.2 L214.7 315.2 L217.0 313.3 L219.7 311.5 L222.9 310.2 L226.4 309.6 L230.0 309.6 L233.5 310.2 L236.8 311.1 L240.1 312.0 L243.3 312.9 L246.8 313.8 L250.3 314.9 L253.7 316.5 L256.5 318.7 L258.3 321.3 L259.1 324.2 L258.8 327.2Z" /><path d="M306.5 330.0 L304.5 337.3 L300.1 343.9 L293.9 349.6 L287.0 354.4 L280.2 358.6 L274.1 362.6 L268.2 366.9 L262.2 371.3 L255.3 375.2 L247.4 378.1 L238.8 379.5 L230.0 379.1 L221.6 377.3 L213.8 374.7 L206.5 372.0 L199.3 369.4 L191.8 366.9 L184.1 364.0 L176.6 360.4 L170.0 355.7 L164.8 350.0 L161.3 343.6 L159.1 336.9 L158.0 330.0 L157.6 322.9 L158.1 315.7 L160.0 308.5 L163.8 301.7 L169.9 295.9 L178.2 291.6 L187.9 289.3 L197.8 288.7 L207.1 289.1 L215.4 289.7 L222.9 289.8 L230.0 289.0 L237.5 287.8 L245.7 286.7 L254.4 286.4 L263.2 287.5 L271.5 289.9 L279.1 293.6 L286.0 298.1 L292.3 303.3 L298.0 309.1 L302.7 315.6 L305.7 322.6Z" /><path d="M334.4 330.0 L338.9 340.6 L342.2 352.3 L342.7 364.6 L339.1 376.7 L330.8 387.3 L318.4 395.5 L303.2 400.7 L287.1 403.3 L271.6 404.3 L257.0 404.8 L243.4 405.4 L230.0 406.1 L216.4 406.3 L202.8 405.2 L189.7 402.1 L177.8 397.0 L167.6 390.2 L158.9 382.7 L151.0 374.9 L143.3 367.1 L135.8 358.9 L129.0 350.1 L123.8 340.4 L121.4 330.0 L122.2 319.5 L125.7 309.3 L131.1 299.7 L137.3 290.4 L143.7 280.9 L150.5 271.1 L158.7 261.1 L169.1 251.9 L182.3 244.7 L197.7 240.7 L214.1 240.5 L230.0 243.9 L244.3 249.6 L256.6 256.5 L267.4 263.2 L277.3 269.3 L287.0 275.0 L296.5 280.8 L305.3 287.2 L313.1 294.5 L319.5 302.6 L324.8 311.2 L329.6 320.3Z" /><path d="M364.5 330.0 L360.1 342.7 L355.7 354.9 L351.9 367.4 L348.3 380.6 L343.4 394.5 L335.5 408.2 L323.6 420.4 L307.7 429.7 L289.0 435.4 L269.0 437.9 L249.3 438.4 L230.0 438.1 L210.8 437.9 L191.0 437.8 L170.2 436.9 L149.3 433.6 L129.6 426.9 L113.0 416.7 L100.6 403.5 L92.8 388.7 L88.5 373.4 L86.7 358.4 L86.4 344.0 L87.4 330.0 L90.3 316.4 L96.1 303.4 L104.9 291.6 L116.2 281.3 L128.8 272.5 L141.1 264.2 L152.6 255.3 L163.8 245.0 L175.9 233.2 L190.6 221.0 L208.7 210.3 L230.0 203.3 L252.8 201.5 L275.2 205.1 L295.3 213.3 L312.3 224.4 L326.5 236.9 L338.6 249.6 L349.1 262.3 L357.9 275.3 L364.3 288.8 L367.6 302.7 L367.4 316.6Z" /><path d="M415.2 330.0 L416.5 348.2 L415.8 366.9 L413.0 386.1 L406.8 405.6 L395.9 424.3 L379.3 440.6 L357.5 453.0 L332.1 460.9 L305.3 464.7 L279.2 465.9 L254.2 466.1 L230.0 466.5 L205.6 467.1 L180.6 466.6 L155.5 463.3 L132.0 455.7 L112.3 443.7 L97.5 428.1 L87.7 410.9 L81.3 393.6 L76.1 377.2 L70.3 361.7 L63.5 346.2 L56.8 330.0 L52.2 312.7 L51.5 294.6 L55.4 276.4 L63.7 258.9 L75.3 242.0 L89.2 225.7 L105.3 209.6 L124.2 194.2 L146.6 180.9 L172.7 171.7 L201.3 168.5 L230.0 172.0 L256.3 181.8 L278.6 195.6 L296.7 210.8 L311.9 224.9 L326.5 236.9 L342.0 247.1 L358.8 256.8 L376.0 267.6 L391.4 280.5 L403.4 295.6 L411.2 312.3Z" /><path d="M475.0 330.0 L484.5 354.8 L484.3 380.5 L474.4 405.0 L456.7 427.0 L433.9 445.9 L408.2 462.0 L380.7 475.5 L351.7 486.1 L321.1 493.0 L289.7 495.1 L258.8 492.2 L230.0 485.2 L204.1 475.9 L180.5 466.7 L157.6 459.5 L133.0 454.4 L105.6 450.1 L76.0 444.1 L46.6 434.2 L21.2 419.3 L2.6 399.8 L-7.7 377.2 L-10.7 353.5 L-8.7 330.0 L-4.1 307.2 L1.6 284.7 L8.9 262.2 L19.5 240.0 L35.1 219.2 L56.3 201.3 L82.4 187.6 L111.6 178.1 L141.7 172.1 L171.5 168.2 L200.7 165.3 L230.0 163.4 L259.6 163.6 L288.8 167.5 L316.1 176.1 L339.6 189.4 L358.4 206.1 L373.2 224.0 L386.2 241.2 L400.3 257.2 L417.5 272.5 L437.6 288.8 L458.1 307.8Z" /></g><g fill="none" stroke="#8FA6AA" stroke-width="1.6"><path d="M928.7 120.0 L924.8 141.9 L914.3 162.5 L899.6 181.2 L882.4 198.0 L863.4 212.8 L842.5 225.5 L819.5 235.4 L794.7 241.5 L769.3 243.9 L744.6 243.3 L721.6 241.3 L700.0 239.8 L678.6 240.3 L655.7 242.6 L630.0 245.2 L602.0 245.7 L573.8 241.9 L548.0 232.6 L527.4 218.1 L513.1 200.0 L504.3 180.0 L499.5 159.8 L496.7 139.8 L495.2 120.0 L495.5 100.1 L499.0 80.1 L507.5 60.9 L521.4 43.6 L539.9 29.0 L561.3 17.2 L583.7 7.7 L605.9 -0.7 L628.1 -8.5 L650.9 -15.7 L674.9 -21.1 L700.0 -23.1 L725.0 -20.7 L748.4 -13.9 L769.3 -3.9 L787.8 7.3 L805.5 18.2 L824.3 27.9 L845.6 37.3 L868.8 47.8 L891.9 61.1 L911.4 78.0 L924.3 98.1Z"/><path d="M1099.7 120.0 L1108.8 159.9 L1101.9 199.8 L1079.4 236.4 L1045.1 267.6 L1004.0 292.8 L960.5 313.0 L917.0 329.4 L873.7 342.9 L830.1 352.7 L786.0 357.8 L742.2 357.2 L700.0 351.6 L660.3 343.2 L622.4 334.7 L583.6 328.2 L541.1 323.9 L493.4 319.5 L441.8 311.2 L391.1 295.6 L347.4 270.8 L316.6 237.6 L301.3 199.1 L300.6 158.9 L310.5 120.0 L326.0 83.5 L343.6 49.3 L362.6 16.5 L384.5 -14.9 L411.6 -43.9 L445.2 -68.7 L484.8 -87.8 L527.8 -100.9 L571.7 -109.5 L614.7 -115.9 L657.0 -121.8 L700.0 -127.7 L744.8 -131.9 L791.0 -131.4 L836.4 -123.8 L877.9 -108.2 L913.2 -85.8 L942.2 -59.4 L967.4 -32.0 L992.3 -5.0 L1019.6 21.9 L1049.4 50.7 L1078.0 83.1Z"/></g><g font-family="IBM Plex Mono, monospace" font-size="10" fill="#7C9094"><text x="880" y="300" text-anchor="end">300 m</text><text x="760" y="40">500 m</text></g><path d="M600 360 C620 300 660 260 700 210" stroke="#A4533A" stroke-width="2" stroke-dasharray="6 5" fill="none"/></svg>
+  <span class="maplabel" aria-hidden="true">Fjallið hjá Jarðfríðu<br>1 : 25 000</span>
+  <div class="text">
+    <span class="eyebrow">Jarðfeingi · Ein dagur hjá Jarðfríðu</span>
+    <h1>Hey, eg eiti Jarðfríða!</h1>
+    <p>Eg eri jarðfrøðingur og kanni grót og steinar. Nú skulu vit gera ein tunnil gjøgnum eitt fjall. Kunnu tit hjálpa mær at finna besta staðið?</p>
+    <p>Malli, steinurin í lummanum hjá mær, er eisini við.</p>
+    <span class="psst">Psst! Trýst á Malla niðri í horninum – ella kasta hann.</span>
+  </div>
   <svg class="figure" viewBox="0 0 320 630" role="img" aria-label="Tekning av jarðfrøðinginum Jarðfríðu við sjóneyku, bundnari húgvu og trygdarvesti. Steinurin Malli hyggur upp úr lummanum."><ellipse cx="150" cy="612" rx="96" ry="13" fill="#D5D9D2"/>
 <rect x="110" y="440" width="34" height="140" rx="10" fill="#3A4045"/><rect x="158" y="440" width="34" height="140" rx="10" fill="#3A4045"/>
 <path d="M98 572 Q98 556 116 556 L146 556 L146 600 L98 600 Z" fill="#6B4A32"/><path d="M154 556 L186 556 Q204 556 204 572 L204 600 L154 600 Z" fill="#6B4A32"/>
@@ -250,13 +259,6 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 <path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
 <path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
 <path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>
-  <div class="bubble">
-    <span class="eyebrow">Jarðfeingi · Ein dagur hjá Jarðfríðu</span>
-    <h1>Hey, eg eiti Jarðfríða!</h1>
-    <p>Eg eri jarðfrøðingur og kanni grót og steinar. Nú skulu vit gera ein tunnil gjøgnum eitt fjall. Kunnu tit hjálpa mær at finna besta staðið?</p>
-    <p>Malli, steinurin í lummanum hjá mær, er eisini við.</p>
-    <span class="psst">Psst! Trýst á Malla niðri í horninum – ella kasta hann.</span>
-  </div>
 </header>
 
 <nav class="phases" role="tablist" aria-label="Partarnir í gongdini">
@@ -464,58 +466,96 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
 </section>
 
 <details class="teacher">
-  <summary>Til lærarans</summary>
+  <summary>Til læraran</summary>
+
+  <p>Tilfarið er ætlað 6. flokki, men kann eisini brúkast í 4.–5. flokki. Uppgávurnar skifta millum arbeiði á skerminum og verkligt arbeiði við steinum, kjarnuroyndum og einum fjalli úr gandadeiggi.</p>
 
   <h3>Gongdin</h3>
-  <p>Ætlað 6. flokki. Tilfarið kann eisini brúkast í 4.–5. flokki.</p>
   <div class="tablewrap">
   <table class="forloeb">
-    <thead><tr><th>Partur</th><th>Skermur</th><th>Veruligir steinar / fjall</th><th>Tíð</th></tr></thead>
+    <thead><tr><th>Partur</th><th>Á skerminum</th><th>Verkligt arbeiði</th><th>Tíð</th></tr></thead>
     <tbody>
-      <tr><td><b>1 · Kanna steinar</b></td><td>Finna seks eyðkenni við sjóneykuni</td><td>Kenna eftir, kanna við sjóneyku og tekna ein stein</td><td>45 min</td></tr>
-      <tr><td><b>2 · Mín steinur</b></td><td>Leggja eina mynd á Padlet</td><td>Finna ein stein heima ella við skúlan</td><td>Heima + 15 min</td></tr>
-      <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Bora í fjallið hjá Jarðfríðu, skera tað í helvt og finna tunnilin</td><td>–</td><td>30 min</td></tr>
-      <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey: gera fjall úr gandadeiggi, býta um, bora, tekna eina meting og skera í helvt</td><td>60–90 min</td></tr>
+      <tr><td><b>1 · Kanna steinar</b></td><td>Næmingarnir kanna eina kjarnuroynd við sjóneyku og finna seks eyðkenni.</td><td>Næmingarnir kenna eftir einum steini, kanna hann við sjóneyku og tekna hann.</td><td>Uml. 45 min</td></tr>
+      <tr><td><b>2 · Mín steinur</b></td><td>Næmingarnir leggja eina mynd av sínum steini á Padlet-veggin hjá flokkinum.</td><td>Næmingarnir finna ein stein heima ella við skúlan og kanna hann.</td><td>Heima + uml. 15 min</td></tr>
+      <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Næmingarnir bora tríggjar kjarnuroyndir í fjallið hjá Jarðfríðu, meta um, hvussu løgini halda fram inni í fjallinum, og velja eina leið til tunnilin. Síðan verður fjallið skorið í helvt, so tey kunnu kanna metingina.</td><td>–</td><td>Uml. 30 min</td></tr>
+      <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey gera næmingarnir eitt fjall úr gandadeiggi. Síðan býta pørini um fjall, bora tríggjar kjarnuroyndir, tekna eina meting av løgunum inni í fjallinum og skera at enda fjallið í helvt.</td><td>60–90 min</td></tr>
     </tbody>
   </table>
   </div>
 
+  <h3>Áðrenn tit byrja</h3>
+  <p>Til part 1 er gott at hava nakrar ymiskar steinar, sum næmingarnir kunnu halda á og kanna. Hava tit sjóneykur, kunnu næmingarnir brúka tær saman við steinunum.</p>
+  <p>Til part 2 skulu næmingarnir finna ein stein, annaðhvørt heima ella nær skúlanum. Steinurin eigur at vera ein vanligur, leysur steinur, sum er rundur ella avrundaður – ikki eitt fýrkantað ella tilskorið grótpetti.</p>
+  <p>Til part 4 skal gandadeiggið helst gerast frammanundan.</p>
+
   <h3>Gandadeiggj</h3>
-  <p>Til umleið 4 fjøll: 4 dl hveitimjøl, 2 dl fínt salt, 2 dl vatn og 1 matskeið olja. Elt deiggið, og být tað í 4. Lita partarnar við matliti: reytt, grønt og tveir aðrir litir (t.d. svart og hvítt/ólitað).</p>
-  <p class=note>Ger deiggið dagin fyri, og goym tað í einum lufttættum posa. Er tað ov klístrut, legg eitt sindur av mjøli afturat. So festist tað ikki í sugurrørinum.</p>
+  <p>Henda uppskriftin er til umleið fýra fjøll:</p>
+  <ul>
+    <li>4 dl hveitimjøl</li>
+    <li>2 dl fínt salt</li>
+    <li>2 dl vatn</li>
+    <li>1 matskeið olju</li>
+  </ul>
+  <p>Elt deiggið væl og být tað í fýra partar. Lita partarnar við matliti. Brúka reytt og grønt og tveir aðrar litir, til dømis svart og hvítt ella ólitað deiggj.</p>
+  <p>Ger helst deiggið dagin fyri og goym tað í lufttættum posa. Er deiggið ov klístrut, kann eitt sindur av mjøli eltast upp í tað. Tá festist deiggið heldur ikki so lætt inni í sugurrørunum, tá ið næmingarnir bora.</p>
 
   <h3>Tilfar til part 4</h3>
+  <p>Til hvørt par skulu tit hava:</p>
   <ul>
-    <li>Gandadeiggj í 4 litum – ein partur til hvørt par</li>
-    <li>Tjúk, gjøgnumskygd sugurrør (t.d. til bubble tea) – 3 til hvørt par</li>
-    <li>Saks, plastkníggur og tannstikkar við B1, B2 og B3</li>
-    <li>Bakipappír undir, pappír og litblýantar til tekningina</li>
+    <li>gandadeiggj í fýra litum</li>
+    <li>trý tjúkk, gjøgnumskygd sugurrør, til dømis breið sugurrør til bubble tea</li>
+    <li>eina saks</li>
+    <li>ein plastknív</li>
+    <li>tríggjar tannstikkar merktir <b>B1, B2 og B3</b></li>
+    <li>bakipappír ella annað undirlag</li>
+    <li>pappír og litblýantar</li>
   </ul>
-  <p class=note>Bið pørini leggja løgini eitt sindur skák ella gera eitt lag tynri øðrumegin. So verða tær tríggjar kjarnuroyndirnar ymiskar, og tað verður stuttligari at gita.</p>
+
+  <h3>Soleiðis gera tit fjøllini</h3>
+  <p>Hvørt par byggir eitt fjall úr fleiri løgum av gandadeiggi.</p>
+  <p>Bið næmingarnar ikki leggja øll løgini heilt vatnrætt. Eitt lag kann til dømis liggja eitt sindur skák, ella vera tjykkari øðrumegin enn hinumegin. Tá verða tær tríggjar kjarnuroyndirnar ymiskar, og næmingarnir noyðast at hugsa um, hvussu løgini kunnu halda fram millum boriholini.</p>
+  <p>Tá ið fjøllini eru liðug, býta pørini um. Næmingarnir skulu sostatt kanna eitt fjall, sum teir ikki sjálvir hava bygt.</p>
+  <p>Tey bora tríggjar kjarnuroyndir við sugurrørunum og seta tannstikkarnar <b>B1, B2 og B3</b> við boriholini. Síðan hyggja tey at kjarnuroyndunum og tekna eina meting av, hvussu løgini liggja inni í fjallinum.</p>
+  <p>At enda verður fjallið skorið í helvt. Tá kunnu næmingarnir samanbera sína meting við tað, sum veruliga var inni í fjallinum.</p>
+  <p>Endamálið er ikki at gita alt rætt, men at brúka tær upplýsingar, sum kjarnuroyndirnar geva, til at gera eina grundaða meting.</p>
 
   <h3>Um tit vitja Jarðfeingi</h3>
+  <p>Um flokkurin fær høvi at vitja Jarðfeingi ella kanna veruligar kjarnuroyndir, kunnu tit leita eftir teimum somu eyðkennunum sum á skerminum.</p>
+  <p>Tit kunnu til dømis:</p>
   <ul>
-    <li>Finnið eina kjarnuroynd við nógvum smáum holum.</li>
-    <li>Brúkið eina veruliga sjóneyku. Síggja tit ljós krystall ella hvítar mineralæðrar?</li>
-    <li>Finnið eitt reytt lag. Hvussu kennist tað í mun til gráa grótið?</li>
+    <li>finna eina kjarnuroynd við nógvum smáum holum</li>
+    <li>kanna grótið við einari veruligari sjóneyku</li>
+    <li>leita eftir ljósum krystallum og hvítum mineralæðrum</li>
+    <li>finna eitt reytt ella reyðligt lag og samanbera tað við gráa grótið</li>
+    <li>hyggja eftir, hvussu ymisk løg síggja út og kennast</li>
   </ul>
+  <p>Spyrjið til dømis:</p>
+  <div class="ask">
+    <b>Hvat síggja tit?</b>
+    <b>Hvat er øðrvísi frá einum lagi til annað?</b>
+    <b>Hvat kunnu tit fáa at vita um fjallið við bara at hyggja at einari kjarnuroynd?</b>
+  </div>
 
-  <h3>Padlet-veggurin hjá flokkinum</h3>
-  <p>Veggurin hjá flokkinum sæst í parti 2. Slá tað til í Padlet, at tú skalt góðkenna uppsløgini, so sært tú myndirnar, áðrenn flokkurin ger tað. Kanna, at skúlin hevur loyvi at brúka Padlet saman við næmingum.</p>
-  <p class="note">Vilt tú brúka ein annan vegg, so set <code>?padlet=</code> og innbyggingarleinkið hjá veggnum (við <code>/embed/</code>) aftast í adressuna á síðuni.</p>
+  <h3>Padlet-veggurin</h3>
+  <p>Í parti 2 kunnu næmingarnir leggja eina mynd av sínum steini á Padlet-veggin. Veggurin er longu settur inn í tilfarið, og allir flokkar brúka sama vegg. Lærarin skal tí ikki gera ein nýggjan vegg.</p>
+  <p>Myndirnar verða góðkendar, áðrenn tær verða sjónligar á veggnum. Bið næmingarnar bert taka myndir av steininum – ikki av sær sjálvum ella øðrum – og bert skriva fornavn.</p>
+  <p>Kanna frammanundan, um skúlin hevur loyvi at brúka Padlet saman við næmingum. Er veggurin ov lítil á skerminum, kann hann latast upp í nýggjum vindeyga við knøttinum undir veggnum.</p>
 
   <h3>Fakorð, um næmingarnir spyrja</h3>
-  <ul>
-    <li><b>Smá hol (poknur):</b> Tey smáu holini eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru holini eftir í grótinum. Hesi holini verða eisini nevnd poknur.</li>
-    <li><b>Fylt hol:</b> hol, sum seinni eru fylt við mineralum. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í holunum – til dømis soðsteinar og kalsitt (kálkspatt).</li>
-    <li><b>Hvítar æðrar:</b> rivur ella sprungur í grótinum, sum seinni eru fyltar við mineralum. Rivur og sprungur kunnu ávirka, hvussu støðugt grótið er.</li>
-    <li><b>Ljós krystall</b> eru ofta feldspatt (plagioklas).</li>
-    <li><b>Grøn korn:</b> Tey grønu kornini eru olivin. Olivin kann síggjast sum grøn krystall í basaltinum.</li>
-    <li><b>Reyðligur litur</b> kann benda á veðrað grót ella royðugrót. Reyðligt tilfar millum basaltfláirnar kann vera royðugrót. Tað kann vera harðnað jørðildi (gomul mold og annað leyst tilfar), leirur ella gosøska.</li>
-    <li><b>Basalt:</b> Gráa og svarta grótið í døminum er basalt.</li>
-    <li><b>Kol:</b> Í Suðuroy finnast kolaeygu og kolløg millum basaltfláirnar.</li>
-  </ul>
-  <p class="note">Kjarnuroyndin og fjallið eru einføld, uppspunnin dømi, sum arbeiðið hjá Jarðfeingi hevur givið íblástur til. Ein jarðfrøðingur skal kanna tað fakliga innihaldið.</p>
+  <dl>
+    <dt>Smá hol (poknur)</dt><dd>Tey smáu holini eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru holini eftir í grótinum. Hesi holini verða eisini nevnd poknur.</dd>
+    <dt>Fylt hol</dt><dd>Hol, sum seinni eru fylt við mineralum. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í holunum. Tað kunnu til dømis vera soðsteinar ella kalsitt (kálkspatt).</dd>
+    <dt>Hvítar æðrar</dt><dd>Rivur ella sprungur í grótinum, sum seinni eru fyltar við mineralum. Rivur og sprungur kunnu ávirka, hvussu støðugt grótið er.</dd>
+    <dt>Ljós krystall</dt><dd>Ljós krystall í basalti eru ofta feldspatt (plagioklas).</dd>
+    <dt>Grøn korn</dt><dd>Tey grønu kornini eru olivin. Olivin kann síggjast sum grøn krystall í basaltinum.</dd>
+    <dt>Reyðligur litur</dt><dd>Reyðligur litur kann benda á veðrað grót ella royðugrót. Reyðligt tilfar millum basaltfláirnar kann vera royðugrót. Tað kann vera harðnað jørðildi (gomul mold og annað leyst tilfar), leirur ella gosøska.</dd>
+    <dt>Basalt</dt><dd>Gráa og svarta grótið í døminum er basalt.</dd>
+    <dt>Kol</dt><dd>Í Suðuroy finnast kolaeygu og kolløg millum basaltfláirnar.</dd>
+  </dl>
+
+  <h3>Viðmerking um tilfarið</h3>
+  <p>Kjarnuroyndin og fjallið hjá Jarðfríðu eru einføld, uppspunnin dømi, sum eru gjørd til undirvísing. Arbeiðið hjá Jarðfeingi og føroysk jarðfrøði hava givið íblástur til tilfarið.</p>
+  <p class="note">Áðrenn tilfarið verður tikið endaliga í nýtslu, eigur ein jarðfrøðingur at kanna tað jarðfrøðiliga innihaldið.</p>
 </details>
 
 </div>
@@ -639,7 +679,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
   }
   function drawMountain(svg, open){
     svg.innerHTML = '';
-    el('rect', {x:0, y:0, width:640, height:330, fill:'#DCE8EF'}, svg);
+    el('rect', {x:0, y:0, width:640, height:330, fill:'#EAF1F2'}, svg);
     el('line', {x1:10, y1:MB, x2:630, y2:MB, stroke:'#1E2326', 'stroke-width':2}, svg);
     if (open){
       BFILL.forEach((c, k) => {
@@ -714,7 +754,7 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     if (!xs.length) return;
     el('line', {x1:xs[0], y1:ty, x2:xs[xs.length-1], y2:ty, stroke:'#F2C230', 'stroke-width':12, 'stroke-linecap':'round', opacity:.9}, cut);
     el('line', {x1:xs[0], y1:ty, x2:xs[xs.length-1], y2:ty, stroke:'#1E2326', 'stroke-width':2, 'stroke-dasharray':'8 6'}, cut);
-    const t = el('text', {x:xs[0] - 6, y:ty + 5, 'text-anchor':'end', 'font-family':'Bricolage Grotesque, Arial Black, sans-serif', 'font-weight':800, 'font-size':16, fill:'#1E2326'}, cut); t.textContent = 'tunnil';
+    const t = el('text', {x:xs[0] - 6, y:ty + 5, 'text-anchor':'end', 'font-family':'Baloo 2, sans-serif', 'font-weight':800, 'font-size':16, fill:'#1E2326'}, cut); t.textContent = 'tunnil';
   }
   document.getElementById('cutBtn').addEventListener('click', () => {
     const area = document.getElementById('cutArea'), btn = document.getElementById('cutBtn');
@@ -810,6 +850,25 @@ details.teacher ol,details.teacher ul{margin:8px 0 0;padding-left:22px;display:g
     });
     m.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hop(); } });
     addEventListener('resize', () => { if (x === undefined) return; const [W, H] = bounds(); x = Math.min(x, W); y = Math.min(y, H); place(); });
+  })();
+
+  // ---------- dýpdarmát: síðan sum ein borikjarni ----------
+  (function depth(){
+    const fill = document.getElementById('coreFill'), bar = document.getElementById('depthFill'), ticks = document.getElementById('coreTicks');
+    const tube = fill.parentElement;
+    function build(){
+      ticks.innerHTML = ''; const H = tube.clientHeight; fill.style.setProperty('--h', H + 'px');
+      for (let m = 0; m <= 100; m += 20){ const s = document.createElement('span'); s.style.top = (m / 100 * H) + 'px'; s.textContent = m + ' m'; ticks.appendChild(s); }
+    }
+    function update(){
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const k = max > 0 ? Math.min(1, scrollY / max) : 0;
+      fill.style.height = (k * 100) + '%'; bar.style.width = (k * 100) + '%';
+    }
+    build(); update();
+    addEventListener('scroll', update, {passive:true});
+    addEventListener('resize', () => { build(); update(); });
+    document.querySelectorAll('.phase').forEach(b => b.addEventListener('click', () => setTimeout(update, 0)));
   })();
 })();
 </script>
