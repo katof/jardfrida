@@ -354,6 +354,25 @@ a.phase{text-decoration:none}
 .task-link em{font:400 .92rem/1.35 var(--body);font-style:normal;color:var(--ink-soft)}
 .task-link b{font-size:1.4rem}
 .pagehead .crumb{margin-bottom:2px}
+/* tekniflata */
+.sketch{position:relative;width:100%;border:1.5px dashed var(--basalt);background:#fff;border-radius:6px;overflow:hidden}
+.sketch canvas{display:block;width:100%;height:auto;aspect-ratio:600/720;touch-action:none;cursor:crosshair}
+.sketch canvas[data-tool="eraser"]{cursor:cell}
+.sketch-hint{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;font:700 1rem/1.3 var(--display);color:#9AA1A6;text-align:center;padding:20px}
+.tools{display:grid;gap:8px;justify-self:stretch}
+.tool-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
+.tool{appearance:none;display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--basalt);background:var(--surface);color:var(--ink);padding:5px 10px;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;border-radius:2px}
+.tool svg{width:18px;height:18px}
+.tool.icon{padding:5px 8px}
+.tool[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tool.armed{background:var(--tint-tuff);border-color:var(--tuff);color:var(--tuff)}
+.size{appearance:none;width:34px;height:34px;display:grid;place-items:center;border:1.5px solid var(--basalt);background:var(--surface);cursor:pointer;border-radius:2px;padding:0}
+.size i{display:block;border-radius:50%;background:var(--ink)}
+.size[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.tool-sep{width:1px;height:26px;background:var(--line);margin:0 4px}
+.ink{appearance:none;width:26px;height:26px;border:1.5px solid rgba(31,36,40,.35);border-radius:50%;cursor:pointer;padding:0}
+.ink[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:2px}
+#pslMe .psl-card{position:static}
 
 </style>
 </head>
@@ -1151,18 +1170,29 @@ a.phase{text-decoration:none}
               <label class="opt"><input type="checkbox" name="mGear" value="Gonguskógvar"><span>Gonguskógvar</span></label>
             </div>
           </fieldset>
-          <fieldset><legend>Húgva</legend><div class="opts swatches" data-sw="hat"></div></fieldset>
-          <fieldset><legend>Hár</legend>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="mHairStyle" value="stutt" checked><span>Stutt hár</span></label>
-              <label class="opt"><input type="radio" name="mHairStyle" value="langt"><span>Langt hár</span></label>
-            </div>
-            <div class="opts swatches" data-sw="hair"></div></fieldset>
-          <fieldset><legend>Húð</legend><div class="opts swatches" data-sw="skin"></div></fieldset>
         </form>
         <div class="psl-card" aria-live="polite">
           <span class="badge">Persónslýsing</span>
-          <svg class="psl-me" id="meArt" viewBox="-90 -112 180 190" role="img" aria-label="Tú sum jarðfrøðingur"></svg>
+          <div class="sketch">
+            <canvas id="meCanvas" width="600" height="720" aria-label="Tekniflata: tekna teg sum jarðfrøðing"></canvas>
+            <span class="sketch-hint" id="meHint" aria-hidden="true">Tekna teg sum jarðfrøðing</span>
+          </div>
+          <div class="tools" role="toolbar" aria-label="Amboð at tekna við">
+            <div class="tool-row">
+              <button type="button" class="tool" data-tool="pen" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-5L15 5l4 4L9 19z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13 7l4 4" stroke="currentColor" stroke-width="2"/></svg>Pennur</button>
+              <button type="button" class="tool" data-tool="crayon" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l3-9 6-6 6 6-6 6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M5 19l3-1" stroke="currentColor" stroke-width="2"/></svg>Litblýantur</button>
+              <button type="button" class="tool" data-tool="eraser" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16l8-8 7 7-5 5H8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11l6 6" stroke="currentColor" stroke-width="2"/></svg>Viskileður</button>
+            </div>
+            <div class="tool-row sizes" aria-label="Stødd">
+              <button type="button" class="size" data-size="3" aria-pressed="false" aria-label="1"><i style="width:5px;height:5px"></i></button>
+              <button type="button" class="size" data-size="7" aria-pressed="true" aria-label="2"><i style="width:9px;height:9px"></i></button>
+              <button type="button" class="size" data-size="16" aria-pressed="false" aria-label="3"><i style="width:15px;height:15px"></i></button>
+              <span class="tool-sep"></span>
+              <button type="button" class="tool icon" id="meUndo" aria-label="Angra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H5V3M5 7a8 8 0 1 1-1 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+              <button type="button" class="tool" id="meClear">Strika alt</button>
+            </div>
+            <div class="tool-row inks" id="meInks" aria-label="Litir"></div>
+          </div>
           <b class="psl-name" id="cmName">Navn</b>
           <span class="psl-sub">Jarðfrøðingur</span>
           <div class="psl-traits" id="cmTraits"></div>
@@ -1578,7 +1608,6 @@ a.phase{text-decoration:none}
       });
     }
     swatch($('sColours'), 'sColour', COLOURS.map(c => c[1]), COLOURS.map(c => c[0]));
-    document.querySelectorAll('[data-sw]').forEach(b => swatch(b, 'm_' + b.dataset.sw, SW[b.dataset.sw]));
 
     const val = n => (document.querySelector(`[name="${n}"]:checked`) || {}).value;
     const vals = n => [...document.querySelectorAll(`[name="${n}"]:checked`)].map(x => x.value);
@@ -1607,31 +1636,6 @@ a.phase{text-decoration:none}
         mk('path', {d:'M-16 24 Q0 36 18 24', stroke:'#1E2326', 'stroke-width':4.5, fill:'none', 'stroke-linecap':'round'}, svg);
       }
     }
-    function drawMe(svg, m){
-      svg.innerHTML = '';
-      mk('ellipse', {cx:0, cy:72, rx:62, ry:6, fill:'#1F2428', opacity:.12}, svg);
-      mk('path', {d:'M-62 72 C-62 34 -36 18 0 18 C36 18 62 34 62 72 Z', fill:'#2E5E6E'}, svg);
-      mk('path', {d:'M-30 24 L-22 72 L-8 72 L-14 22 Z M30 24 L22 72 L8 72 L14 22 Z', fill:'#D8E61E'}, svg);
-      if (m.style === 'langt') mk('path', {d:'M30 -50 C70 -48 84 -6 70 30 C64 44 54 50 46 52 C56 30 58 4 44 -20 Z', fill:m.hair}, svg);
-      mk('rect', {x:-12, y:0, width:24, height:24, fill:m.skin}, svg);
-      mk('circle', {cx:-52, cy:-22, r:10, fill:m.skin}, svg); mk('circle', {cx:52, cy:-22, r:10, fill:m.skin}, svg);
-      mk('circle', {cx:0, cy:-30, r:52, fill:m.skin}, svg);
-      if (m.style === 'langt') mk('path', {d:'M-52 -36 C-48 -64 40 -70 52 -38 C38 -50 16 -54 -4 -48 C-22 -44 -40 -40 -52 -36 Z', fill:m.hair}, svg);
-      else { mk('path', {d:'M-54 -30 C-56 -62 54 -66 54 -30 L46 -36 L40 -30 L32 -38 L22 -32 L12 -40 L2 -33 L-8 -40 L-18 -33 L-28 -39 L-38 -32 L-46 -38 Z', fill:m.hair}, svg);
-             [-1, 1].forEach(k => mk('path', {d:`M${k*50} -34 L${k*54} -12 L${k*46} -16 Z`, fill:m.hair}, svg)); }
-      mk('path', {d:'M-56 -44 C-58 -104 58 -104 56 -44 Z', fill:m.hat}, svg);
-      mk('rect', {x:-60, y:-56, width:120, height:18, rx:9, fill:m.hat}, svg);
-      mk('rect', {x:-60, y:-56, width:120, height:18, rx:9, fill:'#000', opacity:.15}, svg);
-      mk('circle', {cx:0, cy:-98, r:13, fill:'#EFE7DA'}, svg);
-      [-19, 19].forEach(x => mk('circle', {cx:x, cy:-26, r:5, fill:'#1E2326'}, svg));
-      [-32, 32].forEach(x => mk('circle', {cx:x, cy:-10, r:8, fill:'#E89A86', opacity:.5}, svg));
-      mk('path', {d:'M-17 -4 Q0 10 19 -6', stroke:'#1E2326', 'stroke-width':4, fill:'none', 'stroke-linecap':'round'}, svg);
-      if (m.gear.includes('Sjóneyka')){
-        mk('line', {x1:58, y1:-6, x2:78, y2:24, stroke:'#1E2326', 'stroke-width':6, 'stroke-linecap':'round'}, svg);
-        mk('circle', {cx:50, cy:-18, r:15, fill:'#D6E8F0', stroke:'#1E2326', 'stroke-width':5}, svg);
-      }
-      if (m.gear.includes('Loggbók')) mk('rect', {x:-74, y:30, width:24, height:30, rx:2, fill:'#A4533A', stroke:'#6E2F1E', 'stroke-width':2, transform:'rotate(-12 -62 45)'}, svg);
-    }
     function facts(dl, rows){
       dl.innerHTML = '';
       rows.filter(r => r[1]).forEach(([k, v]) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd); });
@@ -1641,7 +1645,7 @@ a.phase{text-decoration:none}
         stone: { name: $('sName').value.trim(), where: $('sWhere').value.trim(), shape: val('sShape'), colour: val('sColour'),
                  feat: vals('sFeat'), story: $('sStory').value.trim() },
         me: { name: $('mName').value.trim(), traits: vals('mTrait'), gear: vals('mGear'),
-              hat: val('m_hat'), hair: val('m_hair'), skin: val('m_skin'), style: val('mHairStyle') }
+              }
       };
     }
     function render(){
@@ -1652,7 +1656,6 @@ a.phase{text-decoration:none}
       facts($('cFacts'), [['Hvar', st.where], ['Skap', st.shape === 'kantutur' ? 'Kantutur' : 'Rundur'], ['Litur', cname],
                           ['Eyðkenni', st.feat.map(k => FEAT[k]).join(', ')]]);
       $('cStory').hidden = !st.story; $('cStory').textContent = st.story ? '»' + st.story + '«' : '';
-      drawMe($('meArt'), m);
       $('cmName').textContent = m.name || 'Navn';
       const tr = $('cmTraits'); tr.innerHTML = '';
       m.traits.forEach(t => { const s = document.createElement('span'); s.textContent = t; tr.appendChild(s); });
@@ -1669,9 +1672,62 @@ a.phase{text-decoration:none}
       $('sName').value = d.stone.name || ''; $('sWhere').value = d.stone.where || ''; $('sStory').value = d.stone.story || '';
       setR('sShape', d.stone.shape); setR('sColour', d.stone.colour); setC('sFeat', d.stone.feat);
       $('mName').value = d.me.name || ''; setC('mTrait', d.me.traits); setC('mGear', d.me.gear);
-      setR('m_hat', d.me.hat); setR('mHairStyle', d.me.style); setR('m_hair', d.me.hair); setR('m_skin', d.me.skin);
     }
     restore();
+
+    // ---------- tekniflata: tekna teg sjálva/n ----------
+    (function sketch(){
+      const cv = $('meCanvas'); if (!cv) return;
+      const ctx = cv.getContext('2d'), hint = $('meHint'), KEYD = 'jardfrida-psl-teikning-v1';
+      const INKS = ['#1E2326','#F0C4A0','#D9A27C','#A86F4C','#6E4630','#5A3A2A','#D9C27A','#C8553D','#2E5E6E','#D8E61E','#5E7D35','#B7821F','#A4533A','#7E858B','#D6E8F0','#FFFFFF'];
+      let tool = 'pen', size = 7, ink = INKS[0], drawing = false, last = null, undo = [], armed = false, dirty = false;
+      const box = $('meInks');
+      INKS.forEach((c, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'ink'; b.style.background = c;
+        b.setAttribute('aria-label', 'Litur ' + (i + 1)); b.setAttribute('aria-pressed', i ? 'false' : 'true');
+        b.addEventListener('click', () => { ink = c; if (tool === 'eraser') setTool('pen'); box.querySelectorAll('.ink').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); });
+        box.appendChild(b);
+      });
+      function setTool(t){ tool = t; document.querySelectorAll('[data-tool]').forEach(x => x.setAttribute('aria-pressed', x.dataset.tool === t ? 'true' : 'false')); cv.dataset.tool = t; }
+      document.querySelectorAll('[data-tool]').forEach(b => b.addEventListener('click', () => setTool(b.dataset.tool)));
+      document.querySelectorAll('[data-size]').forEach(b => b.addEventListener('click', () => {
+        size = +b.dataset.size; document.querySelectorAll('[data-size]').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+      }));
+      function blank(){ ctx.save(); ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, cv.width, cv.height); ctx.restore(); }
+      function save(){ try { localStorage.setItem(KEYD, cv.toDataURL('image/png')); } catch(e){} }
+      function showHint(){ hint.hidden = dirty; }
+      blank();
+      try { const d = localStorage.getItem(KEYD); if (d){ const im = new Image(); im.onload = () => { ctx.drawImage(im, 0, 0); dirty = true; showHint(); }; im.src = d; } } catch(e){}
+      const pos = e => { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * cv.width / r.width, y: (e.clientY - r.top) * cv.height / r.height }; };
+      function stroke(a, b){
+        ctx.save();
+        ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        const k = cv.width / cv.getBoundingClientRect().width;
+        if (tool === 'eraser'){ ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = size * 2.4 * k; }
+        else if (tool === 'crayon'){ ctx.strokeStyle = ink; ctx.globalAlpha = .55; ctx.lineWidth = size * 1.8 * k;
+          for (let i = 0; i < 3; i++){ const j = () => (Math.random() - .5) * size * .9 * k; ctx.beginPath(); ctx.moveTo(a.x + j(), a.y + j()); ctx.lineTo(b.x + j(), b.y + j()); ctx.lineWidth = size * (.7 + Math.random() * .6) * k; ctx.stroke(); }
+          ctx.restore(); return; }
+        else { ctx.strokeStyle = ink; ctx.lineWidth = size * k; }
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        ctx.restore();
+      }
+      cv.addEventListener('pointerdown', e => {
+        e.preventDefault(); cv.setPointerCapture(e.pointerId);
+        undo.push(ctx.getImageData(0, 0, cv.width, cv.height)); if (undo.length > 25) undo.shift();
+        drawing = true; last = pos(e); stroke(last, { x: last.x + .1, y: last.y + .1 }); dirty = true; showHint();
+      });
+      cv.addEventListener('pointermove', e => { if (!drawing) return; const p = pos(e); stroke(last, p); last = p; });
+      const end = () => { if (!drawing) return; drawing = false; save(); };
+      cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end); cv.addEventListener('pointerleave', end);
+      $('meUndo').addEventListener('click', () => { const d = undo.pop(); if (d){ ctx.putImageData(d, 0, 0); save(); } });
+      const clr = $('meClear'), clrText = clr.textContent;
+      clr.addEventListener('click', () => {
+        if (!armed){ armed = true; clr.textContent = 'Trýst aftur fyri at strika alt'; clr.classList.add('armed'); setTimeout(() => { armed = false; clr.textContent = clrText; clr.classList.remove('armed'); }, 3000); return; }
+        armed = false; clr.textContent = clrText; clr.classList.remove('armed');
+        undo.push(ctx.getImageData(0, 0, cv.width, cv.height)); blank(); dirty = false; showHint(); save();
+      });
+      setTool('pen');
+    })();
     ['stoneForm', 'meForm'].forEach(f => { $(f).addEventListener('input', render); $(f).addEventListener('change', render); $(f).addEventListener('submit', e => e.preventDefault()); });
     render();
   })();
