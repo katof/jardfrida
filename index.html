@@ -171,6 +171,182 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
 .forloeb th{font:600 .75rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border-bottom:2px solid var(--ink)}
 .note{color:var(--ink-soft);font-size:.92rem;margin-top:10px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+/* ---------- nýtt: valmynd, myndir, prentitilfar og lærarasíður ---------- */
+a{color:var(--sea)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;padding:14px 0 10px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.15rem;line-height:1.1}
+.brand svg{width:36px;height:36px;flex:none}
+.brand small{display:block;font:600 .66rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.topnav{display:flex;gap:2px 18px;flex-wrap:wrap}
+.topnav a{color:var(--ink-soft);text-decoration:none;font-weight:700;font-size:.98rem;padding:6px 0 4px;border-bottom:3px solid transparent}
+.topnav a:hover{color:var(--ink)}
+.topnav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--sea)}
+
+a.phase{text-decoration:none}
+.phase[aria-current="page"]{color:var(--ink);background:var(--paper)}
+.phase[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;background:var(--sw)}
+
+.sechead{display:grid;gap:8px;margin:40px 0 16px}
+.sechead p{color:var(--ink-soft)}
+.pagehead{display:grid;gap:10px;margin:30px 0 20px}
+
+/* forsíða: partarnir */
+.partgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--surface)}
+.partcard{display:grid;gap:8px;align-content:start;padding:16px 16px 18px;text-decoration:none;color:var(--ink);border-right:1px solid var(--line);position:relative}
+.partcard:last-child{border-right:0}
+.partcard:hover{background:var(--paper)}
+.partcard:hover::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;background:var(--sw)}
+.partcard .n{width:30px;height:30px;display:grid;place-items:center;font:600 .9rem/1 var(--mono);color:#fff;background:var(--sw)}
+.partcard b{font-family:var(--display);font-size:1.15rem;line-height:1.15}
+.partcard span{color:var(--ink-soft);font-size:.96rem;line-height:1.4}
+.partcard .time{font:600 .72rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+@media (max-width:760px){.partgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.partcard:nth-child(2){border-right:0}.partcard:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:420px){.partgrid{grid-template-columns:1fr}.partcard{border-right:0;border-bottom:1px solid var(--line)}.partcard:last-child{border-bottom:0}}
+
+/* veruligar myndir */
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;align-items:start}
+.photo{margin:0;display:grid;gap:8px;min-width:0}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);background:var(--line)}
+.photo figcaption{font-size:.95rem;line-height:1.4;color:var(--ink)}
+.photo .where{display:block;font:600 .66rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sea);margin-bottom:3px}
+.tag.field::before{background:var(--sea)}
+.fieldnote{border-left:4px solid var(--sea);background:var(--tint-sea);padding:10px 14px;font-size:1.05rem}
+.field-split{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:700px){.field-split{grid-template-columns:1fr}}
+
+/* sjóneyka á veruligari mynd */
+.zoom{position:relative;overflow:hidden;cursor:none;touch-action:none;user-select:none;border:1px solid var(--line);background:var(--line)}
+.zoom img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;pointer-events:none}
+.zlens{position:absolute;left:0;top:0;width:150px;height:150px;border-radius:50%;border:5px solid var(--ink);box-shadow:0 0 0 2px #fff inset;pointer-events:none;transform:translate(-50%,-50%);opacity:0;background-repeat:no-repeat;background-color:var(--ink)}
+.zlens::after{content:"";position:absolute;width:56px;height:12px;background:var(--ink);border-radius:2px;right:-50px;bottom:-10px;transform:rotate(45deg)}
+.zoom .hintline{position:absolute;left:10px;bottom:10px;background:var(--ink);color:#fff;font:600 .78rem/1.3 var(--mono);padding:5px 9px;pointer-events:none;transition:opacity .2s}
+.zoom.used .hintline{opacity:0}
+
+/* loggbók og kort */
+.refs{display:flex;flex-wrap:wrap;gap:10px}
+.logref{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);border:1.5px solid var(--ink);padding:6px 12px 6px 8px;font-weight:700;font-size:.95rem;background:var(--surface);line-height:1.25}
+.logref::before{content:"";flex:none;width:15px;height:19px;background:var(--paper);border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--ochre)}
+.logref:hover{background:var(--paper)}
+.logref small{display:block;font:600 .7rem/1.3 var(--mono);color:var(--ink-soft)}
+.dls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.dl{display:grid;grid-template-columns:86px minmax(0,1fr);gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);padding:16px}
+.dl img{width:86px;height:auto;border:1px solid var(--line);box-shadow:5px 5px 0 var(--line);display:block}
+.dl div{display:grid;gap:6px;justify-items:start}
+.dl b{font-family:var(--display);font-size:1.15rem;line-height:1.15}
+.dl .meta{font:600 .72rem/1.3 var(--mono);letter-spacing:.04em;color:var(--ink-soft)}
+.dl p{font-size:.95rem;line-height:1.45}
+.dl .btn{text-decoration:none;padding:6px 14px;font-size:.95rem;margin-top:4px}
+.next{display:flex;justify-content:flex-end}
+.next a{text-decoration:none}
+
+/* lærarasíður og orðalisti */
+.tpage{display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px;align-items:start}
+.subnav{display:grid;gap:2px;position:sticky;top:16px}
+.subnav a{padding:8px 12px;color:var(--ink-soft);text-decoration:none;border-left:3px solid var(--line);font-weight:700;font-size:.96rem;line-height:1.3}
+.subnav a:hover{color:var(--ink)}
+.subnav a[aria-current="page"]{border-left-color:var(--sea);color:var(--ink);background:var(--surface)}
+@media (max-width:820px){.tpage{grid-template-columns:1fr}.subnav{position:static;display:flex;flex-wrap:wrap;gap:6px}.subnav a{border:1px solid var(--line);background:var(--surface)}.subnav a[aria-current="page"]{border-color:var(--sea);box-shadow:inset 0 -3px 0 var(--sea)}}
+.doc{background:var(--surface);border:1px solid var(--line);padding:24px;display:grid;gap:12px;min-width:0;font-size:1rem}
+.doc h2{font-size:1.6rem}
+.doc h3{margin-top:16px}
+.doc ul,.doc ol{margin:0;padding-left:22px;display:grid;gap:5px;max-width:66ch}
+.doc .meta{font:600 .76rem/1.4 var(--mono);color:var(--ink-soft);letter-spacing:.04em}
+.doc blockquote{margin:0;border-left:4px solid var(--sea);background:var(--tint-sea);padding:10px 14px;max-width:70ch}
+.doc .box{border:1.5px solid var(--ink);background:var(--paper);padding:14px 16px;display:grid;gap:10px}
+.doc .box.warn{border-color:var(--tuff);background:var(--tint-tuff)}
+.doc .ask{border-left:4px solid var(--sea);background:var(--tint-sea);padding:10px 14px;display:grid;gap:4px}
+.flow{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;font:600 .82rem/1.2 var(--mono)}
+.flow span{border:1.5px solid var(--ink);padding:5px 8px;background:var(--surface)}
+.flow i{font-style:normal;color:var(--ink-soft)}
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px;list-style:none;padding:0!important}
+.uses li{border:1px solid var(--line);background:var(--paper);padding:10px 12px;display:grid;gap:2px}
+.uses li span{color:var(--ink-soft);font-size:.94rem}
+.eyg th:not(:first-child){color:#fff}
+.eyg th:nth-child(2){background:var(--basalt)} .eyg th:nth-child(3){background:var(--olivine)} .eyg th:nth-child(4){background:var(--sea)}
+.eyg td:first-child{font-weight:700;white-space:nowrap}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:0}
+.term{background:var(--surface);border:1px solid var(--line);padding:14px 16px;display:grid;gap:6px;align-content:start}
+.term dt{font-family:var(--display);font-size:1.15rem;font-weight:700;line-height:1.15}
+.term dd{margin:0;font-size:1rem}
+.tablewrap .forloeb{min-width:560px}
+.tablewrap .eyg{min-width:660px}
+
+/* gongd: kós yvir partarnar */
+.coursebar{display:grid;gap:10px;margin:22px 0 24px}
+.coursebar .phases{margin:0}
+.crumb{justify-self:start;display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.05rem}
+.crumb span{font:600 .68rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
+.crumb:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.meta-line{font:600 .78rem/1.4 var(--mono);color:var(--ink-soft);letter-spacing:.04em}
+.coursecard{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px 28px;align-items:center;padding:22px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);position:relative}
+.coursecard:hover{background:#FBFAF6}
+.coursecard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(to bottom,#5F7A5B 0 8%,#7A8086 8% 40%,#A4533A 40% 47%,#7A8086 47% 76%,#2E3236 76% 100%)}
+.cc-text{display:grid;gap:8px;padding-left:8px}
+.cc-text b{font-family:var(--display);font-size:1.7rem;line-height:1.1}
+.cc-text .meta{font:600 .76rem/1.3 var(--mono);color:var(--ink-soft)}
+.cc-parts{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.cc-parts li{display:flex;align-items:center;gap:10px;font-weight:700}
+.cc-parts .n{width:24px;height:24px;display:grid;place-items:center;font:600 .78rem/1 var(--mono);color:#fff;background:var(--sw);flex:none}
+.cc-go{grid-column:1/-1;justify-self:start;margin-left:8px}
+@media (max-width:640px){.coursecard{grid-template-columns:1fr}}
+
+/* Spyr Malla */
+.askmalli{grid-template-columns:96px minmax(0,1fr);align-items:start;margin-bottom:18px}
+.am-face{width:96px;height:86px}
+.am-body{display:grid;gap:12px;min-width:0}
+.am-q{font-size:1.08rem}
+.am-q .who,.malli-ask .who{display:block;font:600 .7rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px}
+.am-words{display:flex;flex-wrap:wrap;gap:8px}
+.am-words button{appearance:none;border:1.5px solid var(--basalt);background:var(--surface);padding:5px 12px;font:inherit;font-size:.96rem;cursor:pointer;color:var(--ink)}
+.am-words button:hover{background:var(--paper)}
+.am-words button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.am-a{border-left:4px solid var(--basalt);background:#ECEDEC;padding:10px 14px;font-size:1.02rem}
+.am-a b{display:block;font-family:var(--display);font-size:1.05rem}
+@media (max-width:520px){.askmalli{grid-template-columns:1fr}.am-face{width:72px;height:64px}}
+.malli-ask{position:fixed;z-index:52;right:16px;bottom:calc(96px + env(safe-area-inset-bottom,0px));width:min(340px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;background:var(--surface);border:1.5px solid var(--ink);box-shadow:6px 6px 0 rgba(31,36,40,.18);padding:16px;display:grid;gap:12px}
+.malli-ask .am-x{position:absolute;right:6px;top:4px;appearance:none;border:0;background:none;font-size:1.5rem;line-height:1;cursor:pointer;color:var(--ink-soft);padding:4px 8px}
+.malli-ask .am-q{padding-right:24px;font-size:1rem}
+
+/* persónslýsingar */
+.photo img.full{aspect-ratio:auto;object-fit:contain;background:#FFF6E6}
+.psl-figs figcaption{font-family:var(--display);font-weight:700;font-size:1.05rem}
+.clayfig{max-width:520px}
+.clayfig img{aspect-ratio:auto}
+.psl{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:760px){.psl{grid-template-columns:1fr}}
+.psl-form{display:grid;gap:14px}
+.psl-form label:not(.opt):not(.sw){display:grid;gap:5px;font-weight:700}
+.psl-form input:not([type]),.psl-form textarea{border:1.5px solid var(--basalt);background:var(--surface);padding:8px 10px;font:inherit;font-weight:400;border-radius:2px;width:100%;resize:vertical}
+.psl-form fieldset{border:0;margin:0;padding:0;display:grid;gap:6px;min-width:0}
+.psl-form legend{font-weight:700;padding:0;margin-bottom:6px}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{position:relative;cursor:pointer}
+.opt input,.sw input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:inline-block;border:1.5px solid var(--basalt);background:var(--surface);padding:5px 11px;font-size:.96rem}
+.opt input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.opt input:focus-visible+span,.sw input:focus-visible+span{outline:3px solid var(--focus);outline-offset:2px}
+.sw{display:grid;justify-items:center;gap:2px;cursor:pointer}
+.sw span{width:34px;height:34px;border:2px solid var(--line);display:block}
+.sw input:checked+span{border-color:var(--ink);box-shadow:0 0 0 2px var(--surface) inset,0 0 0 1px var(--ink)}
+.sw em{font-style:normal;font-size:.72rem;color:var(--ink-soft)}
+.psl-card{position:sticky;top:16px;background:#FFF6E6;border:1.5px solid #EADBB5;border-radius:10px;padding:18px;display:grid;gap:8px;justify-items:center;text-align:center}
+.psl-card .badge{justify-self:start;background:#F2C230;color:#2A2100;font:700 .66rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:4px}
+.psl-stone{width:min(220px,70%);height:auto}
+.psl-me{width:min(180px,60%);height:auto}
+.psl-name{font-family:var(--display);font-size:1.7rem;line-height:1.05;overflow-wrap:anywhere}
+.psl-sub{font:600 .76rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.psl-facts{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:4px 0 0;text-align:left;justify-self:stretch;font-size:.96rem}
+.psl-facts dt{font-weight:700}
+.psl-facts dd{margin:0;overflow-wrap:anywhere}
+.psl-story{font-style:italic;max-width:32ch;overflow-wrap:anywhere}
+.psl-traits{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.psl-traits span{background:var(--surface);border:1.5px solid #EADBB5;padding:3px 10px;font-weight:700;font-size:.92rem}
+.psl-fav{display:flex;align-items:center;gap:10px;justify-self:stretch;border-top:1.5px dashed #EADBB5;padding-top:10px;text-align:left}
+.psl-fav svg{width:58px;height:50px;flex:none}
+.psl-fav span{font:600 .7rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+.psl-fav b{display:block;font:700 1.1rem/1.2 var(--display);text-transform:none;letter-spacing:0;color:var(--ink)}
+@media (max-width:760px){.psl-card{position:static}}
+
 </style>
 </head>
 <body>
@@ -205,7 +381,28 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
 <div class="depthbar" aria-hidden="true"><i id="depthFill"></i></div>
 <div class="borehole" aria-hidden="true"><div class="tube"><div class="fill" id="coreFill"></div></div><div class="ticks" id="coreTicks"></div></div>
 <div class="wrap">
+<header class="topbar">
+  <a class="brand" href="#forsida" data-go="forsida"><svg aria-hidden="true"><use href="#jf"/></svg><span>Jarðfrøði við Jarðfríðu<small>Náttúra og tøkni</small></span></a>
+  <nav class="topnav" aria-label="Síður">
+    <a href="#forsida" data-go="forsida">Forsíða</a>
+    <a href="#tunnil" data-go="tunnil" data-group="tunnil">Jarðfríða borar ein tunnil</a>
+    <a href="#ordalisti" data-go="ordalisti">Orðalisti</a>
+    <a href="#laerari" data-go="laerari" data-group="laerari">Til læraran</a>
+    <a href="#um-tilfarid" data-go="um-tilfarid">Um tilfarið</a>
+  </nav>
+</header>
 
+<div class="coursebar" id="phasesNav" hidden>
+  <a class="crumb" href="#tunnil" data-go="tunnil"><span>Gongd</span>Jarðfríða borar ein tunnil</a>
+  <nav class="phases" aria-label="Partarnir í gongdini">
+    <a class="phase" id="tab-l1" href="#kanna-steinar" data-go="kanna-steinar"><span class="n">1</span>Kanna steinar</a>
+    <a class="phase" id="tab-l2" href="#min-steinur" data-go="min-steinur"><span class="n">2</span>Mín steinur</a>
+    <a class="phase" id="tab-l3" href="#kjarnuroyndir" data-go="kjarnuroyndir"><span class="n">3</span>Kjarnuroyndir og tunnil</a>
+    <a class="phase" id="tab-l4" href="#fjall" data-go="fjall"><span class="n">4</span>Tykkara egna fjall</a>
+  </nav>
+</div>
+
+<section class="page" id="p-forsida" data-page="forsida">
 <header class="hero">
   <svg class="contours" viewBox="0 0 900 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#B9C7C9" stroke-width="1"><path d="M730.8 120.0 L730.4 123.0 L730.1 126.0 L729.9 129.2 L729.6 132.7 L729.1 136.5 L727.6 140.4 L724.9 144.0 L720.9 146.8 L715.9 148.4 L710.4 148.9 L705.0 148.3 L700.0 147.2 L695.4 145.8 L691.2 144.4 L687.1 143.0 L683.3 141.5 L679.7 139.6 L676.6 137.3 L674.2 134.7 L672.3 131.9 L670.7 129.0 L669.3 126.1 L667.8 123.1 L666.4 120.0 L665.4 116.6 L665.2 113.1 L666.3 109.6 L668.4 106.5 L671.6 103.8 L675.2 101.6 L678.9 99.7 L682.6 97.7 L686.4 95.7 L690.5 93.6 L695.0 91.9 L700.0 90.9 L705.2 90.8 L710.1 92.0 L714.5 94.1 L718.1 96.8 L721.0 99.7 L723.5 102.6 L725.7 105.4 L727.6 108.2 L729.2 111.0 L730.3 114.0 L730.8 117.0Z" /><path d="M774.5 120.0 L777.0 127.5 L778.9 135.7 L779.0 144.2 L776.3 152.6 L770.4 160.0 L761.5 165.6 L750.9 169.1 L739.6 170.8 L728.6 171.1 L718.4 170.9 L709.0 170.6 L700.0 170.1 L691.2 169.2 L682.7 167.7 L674.6 165.4 L667.0 162.3 L659.7 158.9 L652.3 155.3 L644.3 151.6 L635.8 147.5 L627.1 142.4 L619.4 136.0 L614.0 128.4 L612.0 120.0 L613.7 111.6 L618.5 103.8 L625.4 97.1 L632.9 91.3 L640.4 86.1 L647.5 81.1 L654.7 76.3 L662.4 71.8 L671.1 68.3 L680.5 66.1 L690.3 65.6 L700.0 66.4 L709.2 68.1 L718.0 70.1 L726.7 72.2 L735.4 74.5 L744.1 77.5 L752.1 81.4 L758.9 86.5 L764.1 92.6 L767.6 99.3 L770.0 106.1 L772.2 113.0Z" /><path d="M812.3 120.0 L819.2 131.6 L822.3 144.3 L820.4 157.0 L813.9 168.7 L803.8 179.0 L791.4 187.7 L777.8 195.1 L763.3 201.3 L748.1 206.0 L732.1 208.8 L715.8 209.1 L700.0 206.7 L685.4 202.1 L672.4 196.3 L660.7 190.3 L649.4 184.9 L637.6 180.2 L625.0 175.6 L612.1 169.9 L600.4 162.6 L591.4 153.3 L586.2 142.6 L584.9 131.2 L586.5 120.0 L589.4 109.2 L592.6 98.7 L595.5 87.9 L598.9 76.7 L603.8 65.3 L611.5 54.4 L622.3 45.0 L636.0 37.8 L651.5 33.2 L667.7 30.7 L684.0 29.8 L700.0 30.0 L715.8 31.3 L731.1 34.2 L745.2 39.1 L757.4 46.3 L766.9 55.5 L773.4 65.6 L777.9 75.7 L782.0 84.9 L787.2 93.3 L794.4 101.3 L803.2 109.9Z" /><path d="M874.2 120.0 L865.8 136.2 L854.1 150.6 L841.8 163.5 L830.2 175.7 L819.4 187.8 L808.2 200.1 L795.1 211.8 L779.2 221.6 L760.5 228.2 L740.2 231.0 L719.7 230.6 L700.0 228.0 L681.4 224.6 L663.4 221.3 L645.2 218.0 L626.7 214.1 L608.4 208.4 L591.5 200.4 L576.8 190.0 L564.8 177.8 L554.7 164.6 L545.8 150.6 L537.4 135.9 L529.8 120.0 L524.7 102.9 L524.3 85.1 L530.4 68.0 L543.6 53.1 L562.6 41.9 L585.0 34.8 L608.0 31.2 L629.4 29.4 L648.4 27.8 L665.8 25.4 L682.6 22.2 L700.0 19.1 L718.3 17.2 L737.1 17.4 L756.0 19.9 L774.4 24.5 L792.8 30.4 L811.3 37.6 L829.9 46.2 L847.7 56.8 L862.9 70.0 L873.3 85.6 L877.2 102.7Z" /><path d="M928.7 120.0 L924.8 141.9 L914.3 162.5 L899.6 181.2 L882.4 198.0 L863.4 212.8 L842.5 225.5 L819.5 235.4 L794.7 241.5 L769.3 243.9 L744.6 243.3 L721.6 241.3 L700.0 239.8 L678.6 240.3 L655.7 242.6 L630.0 245.2 L602.0 245.7 L573.8 241.9 L548.0 232.6 L527.4 218.1 L513.1 200.0 L504.3 180.0 L499.5 159.8 L496.7 139.8 L495.2 120.0 L495.5 100.1 L499.0 80.1 L507.5 60.9 L521.4 43.6 L539.9 29.0 L561.3 17.2 L583.7 7.7 L605.9 -0.7 L628.1 -8.5 L650.9 -15.7 L674.9 -21.1 L700.0 -23.1 L725.0 -20.7 L748.4 -13.9 L769.3 -3.9 L787.8 7.3 L805.5 18.2 L824.3 27.9 L845.6 37.3 L868.8 47.8 L891.9 61.1 L911.4 78.0 L924.3 98.1Z" /><path d="M897.7 120.0 L896.4 139.2 L897.4 159.2 L897.4 180.6 L893.1 202.6 L882.7 223.8 L865.9 242.9 L844.2 259.2 L819.2 273.0 L792.3 285.1 L763.6 295.9 L732.9 305.0 L700.0 310.8 L665.9 311.6 L632.6 306.3 L602.1 295.1 L575.7 279.5 L553.2 261.7 L533.3 243.5 L514.2 225.6 L495.0 207.7 L476.8 188.5 L462.2 167.2 L454.4 144.0 L455.6 120.0 L465.7 97.2 L482.5 76.8 L502.2 59.3 L521.5 43.7 L538.6 28.3 L554.0 11.9 L569.7 -5.7 L588.1 -23.5 L610.7 -39.6 L637.6 -52.4 L667.8 -61.0 L700.0 -65.7 L733.3 -67.3 L767.4 -66.4 L802.1 -62.6 L836.3 -54.9 L867.8 -42.0 L893.5 -23.3 L910.5 0.3 L917.8 26.9 L916.4 53.6 L910.0 78.3 L902.6 100.2Z" /><path d="M937.3 120.0 L935.1 142.9 L934.4 166.5 L935.3 192.2 L935.5 220.7 L931.0 251.3 L918.0 281.5 L894.6 307.9 L861.5 327.2 L821.9 338.1 L779.9 340.9 L738.7 338.0 L700.0 332.3 L663.4 325.8 L628.1 318.9 L593.5 310.5 L560.4 299.1 L530.8 283.3 L506.4 263.4 L487.8 240.6 L474.0 216.6 L463.0 192.7 L452.8 169.1 L442.9 145.1 L434.7 120.0 L431.2 93.8 L434.8 67.4 L446.8 42.3 L465.9 19.9 L489.4 0.3 L514.3 -17.6 L538.9 -35.6 L563.6 -55.0 L590.6 -75.7 L622.0 -95.6 L658.9 -111.3 L700.0 -119.4 L742.3 -117.9 L782.1 -107.0 L816.8 -88.9 L845.5 -66.7 L869.2 -43.3 L889.2 -20.2 L906.7 2.5 L921.4 25.3 L932.2 48.8 L938.0 72.8 L939.2 96.7Z" /><path d="M1052.3 120.0 L1045.3 153.7 L1033.4 186.2 L1016.0 217.0 L991.8 244.8 L960.1 267.8 L921.9 284.4 L880.3 294.0 L838.9 298.2 L800.7 300.0 L766.3 303.2 L733.8 310.2 L700.0 321.1 L662.0 333.5 L619.2 343.4 L573.3 346.5 L528.1 340.6 L487.2 325.5 L452.8 303.1 L425.0 276.3 L402.4 247.3 L383.7 217.0 L368.9 185.7 L359.5 153.2 L358.1 120.0 L366.3 87.5 L384.0 57.3 L408.6 30.6 L436.6 7.4 L464.7 -13.8 L491.5 -34.5 L518.1 -55.6 L546.9 -76.5 L580.0 -94.7 L617.8 -107.2 L658.8 -112.0 L700.0 -108.7 L739.0 -99.4 L775.0 -87.4 L809.5 -75.7 L844.8 -65.7 L882.8 -56.5 L923.4 -45.5 L964.0 -30.0 L1000.2 -8.4 L1028.2 19.3 L1045.8 51.4 L1053.2 85.6Z" /><path d="M1099.7 120.0 L1108.8 159.9 L1101.9 199.8 L1079.4 236.4 L1045.1 267.6 L1004.0 292.8 L960.5 313.0 L917.0 329.4 L873.7 342.9 L830.1 352.7 L786.0 357.8 L742.2 357.2 L700.0 351.6 L660.3 343.2 L622.4 334.7 L583.6 328.2 L541.1 323.9 L493.4 319.5 L441.8 311.2 L391.1 295.6 L347.4 270.8 L316.6 237.6 L301.3 199.1 L300.6 158.9 L310.5 120.0 L326.0 83.5 L343.6 49.3 L362.6 16.5 L384.5 -14.9 L411.6 -43.9 L445.2 -68.7 L484.8 -87.8 L527.8 -100.9 L571.7 -109.5 L614.7 -115.9 L657.0 -121.8 L700.0 -127.7 L744.8 -131.9 L791.0 -131.4 L836.4 -123.8 L877.9 -108.2 L913.2 -85.8 L942.2 -59.4 L967.4 -32.0 L992.3 -5.0 L1019.6 21.9 L1049.4 50.7 L1078.0 83.1Z" /><path d="M1138.2 120.0 L1120.3 161.0 L1087.9 197.0 L1046.1 226.2 L1001.7 249.0 L961.0 268.3 L926.9 288.0 L898.2 311.3 L870.7 339.0 L839.1 368.7 L800.0 396.4 L752.9 417.5 L700.0 429.2 L644.7 431.0 L589.8 424.7 L536.4 412.6 L484.6 396.3 L434.8 376.0 L388.8 350.5 L349.8 319.0 L321.7 281.8 L306.6 240.7 L304.1 198.6 L310.4 158.0 L320.5 120.0 L330.1 83.9 L338.0 48.1 L346.4 11.5 L359.9 -25.5 L382.7 -60.4 L416.7 -89.8 L460.3 -111.4 L509.4 -124.6 L559.3 -131.6 L607.4 -136.1 L653.5 -141.5 L700.0 -149.1 L749.3 -157.6 L802.5 -163.5 L858.2 -163.0 L913.3 -153.6 L964.2 -135.0 L1008.9 -108.8 L1047.2 -77.4 L1080.1 -42.6 L1107.9 -5.1 L1129.1 34.8 L1140.5 77.0Z" /><path d="M1124.3 120.0 L1093.5 158.4 L1065.0 192.4 L1041.6 224.8 L1022.0 257.7 L1002.0 291.7 L977.4 325.5 L945.6 357.1 L906.6 385.0 L861.6 409.0 L812.2 430.1 L758.5 449.3 L700.0 466.2 L636.3 478.2 L569.2 481.5 L503.0 472.4 L443.5 449.1 L396.1 413.3 L363.3 369.4 L343.2 322.8 L330.9 277.9 L320.4 236.5 L308.1 197.8 L294.1 159.6 L282.1 120.0 L277.6 78.8 L285.0 37.6 L305.1 -1.2 L335.7 -35.8 L372.4 -66.2 L411.2 -94.0 L450.5 -120.9 L491.3 -147.7 L536.0 -173.3 L586.1 -194.8 L641.5 -209.0 L700.0 -214.0 L758.7 -210.2 L815.8 -200.2 L871.6 -186.8 L927.5 -171.8 L984.6 -154.8 L1041.8 -133.2 L1094.5 -104.2 L1136.2 -66.6 L1160.7 -21.3 L1164.9 27.7 L1150.7 76.0Z" /><path d="M1175.4 120.0 L1161.8 165.0 L1142.1 207.8 L1114.4 247.1 L1078.7 282.0 L1037.8 312.0 L995.1 338.6 L953.4 364.6 L912.5 392.7 L869.7 423.4 L821.0 454.6 L764.2 481.3 L700.0 498.0 L632.3 500.7 L566.5 489.0 L506.7 465.7 L453.8 435.9 L405.9 404.0 L359.4 372.3 L312.2 340.4 L265.7 305.7 L224.5 265.9 L194.7 220.3 L181.4 170.6 L185.8 120.0 L205.2 71.7 L234.2 27.6 L267.7 -12.6 L302.8 -49.9 L339.7 -84.8 L380.4 -116.8 L426.7 -143.8 L478.8 -163.8 L534.4 -176.2 L590.5 -182.7 L645.4 -187.0 L700.0 -192.9 L757.3 -202.4 L820.8 -213.9 L891.6 -222.7 L967.1 -222.6 L1040.5 -208.7 L1103.9 -179.2 L1151.0 -136.3 L1179.3 -85.0 L1191.1 -30.7 L1191.3 22.5 L1185.2 72.7Z" /><path d="M1185.4 120.0 L1160.5 164.9 L1141.6 207.7 L1126.8 250.9 L1110.4 295.5 L1086.3 339.6 L1050.8 379.8 L1004.1 413.6 L949.3 439.8 L890.1 460.0 L829.1 476.8 L766.1 491.8 L700.0 504.8 L630.2 512.8 L558.2 512.1 L487.7 499.6 L423.3 475.0 L367.6 440.8 L320.6 401.1 L279.1 359.2 L239.5 316.9 L200.3 273.3 L164.0 226.4 L136.9 174.9 L126.4 120.0 L137.6 65.2 L170.6 14.9 L220.2 -27.2 L277.7 -60.6 L334.8 -87.6 L386.6 -112.2 L432.8 -138.0 L476.9 -166.2 L523.7 -195.3 L576.4 -221.7 L635.6 -242.1 L700.0 -254.8 L767.6 -260.2 L837.5 -260.0 L909.9 -255.3 L984.7 -245.3 L1059.9 -227.5 L1130.3 -198.7 L1188.2 -157.5 L1226.5 -105.1 L1241.3 -46.1 L1234.4 13.9 L1212.7 70.0Z" /><path d="M1266.2 120.0 L1254.6 174.1 L1244.0 228.0 L1230.6 282.8 L1208.2 337.3 L1171.3 387.9 L1118.5 430.0 L1052.6 460.4 L979.7 478.8 L905.9 488.1 L834.7 492.5 L766.7 495.4 L700.0 497.7 L632.9 497.6 L565.5 491.9 L499.8 478.0 L438.3 455.8 L381.8 427.2 L328.6 395.1 L275.0 361.6 L218.0 326.2 L158.0 286.3 L100.5 239.0 L54.8 182.9 L30.9 120.0 L35.3 55.2 L68.3 -5.4 L123.7 -56.8 L191.6 -97.4 L262.0 -129.0 L328.7 -155.1 L390.2 -179.1 L448.8 -202.3 L508.1 -223.2 L570.0 -239.4 L634.5 -248.8 L700.0 -251.3 L765.6 -249.0 L831.9 -244.5 L901.0 -239.4 L974.5 -232.2 L1051.5 -219.4 L1127.2 -196.5 L1193.9 -160.7 L1243.9 -112.6 L1273.1 -55.8 L1282.3 4.4 L1277.4 63.7Z" /><path d="M257.8 330.0 L256.5 332.6 L254.9 335.0 L253.3 337.2 L251.5 339.2 L249.5 341.1 L247.1 342.6 L244.4 343.9 L241.6 344.9 L238.9 345.8 L236.1 346.9 L233.2 348.2 L230.0 349.6 L226.3 350.8 L222.2 351.6 L218.0 351.5 L214.0 350.5 L210.8 348.6 L208.3 346.0 L206.7 343.2 L205.6 340.4 L204.9 337.7 L204.2 335.1 L203.8 332.6 L203.7 330.0 L204.2 327.5 L205.3 325.1 L206.9 322.9 L208.8 320.9 L210.7 319.1 L212.7 317.2 L214.7 315.2 L217.0 313.3 L219.7 311.5 L222.9 310.2 L226.4 309.6 L230.0 309.6 L233.5 310.2 L236.8 311.1 L240.1 312.0 L243.3 312.9 L246.8 313.8 L250.3 314.9 L253.7 316.5 L256.5 318.7 L258.3 321.3 L259.1 324.2 L258.8 327.2Z" /><path d="M306.5 330.0 L304.5 337.3 L300.1 343.9 L293.9 349.6 L287.0 354.4 L280.2 358.6 L274.1 362.6 L268.2 366.9 L262.2 371.3 L255.3 375.2 L247.4 378.1 L238.8 379.5 L230.0 379.1 L221.6 377.3 L213.8 374.7 L206.5 372.0 L199.3 369.4 L191.8 366.9 L184.1 364.0 L176.6 360.4 L170.0 355.7 L164.8 350.0 L161.3 343.6 L159.1 336.9 L158.0 330.0 L157.6 322.9 L158.1 315.7 L160.0 308.5 L163.8 301.7 L169.9 295.9 L178.2 291.6 L187.9 289.3 L197.8 288.7 L207.1 289.1 L215.4 289.7 L222.9 289.8 L230.0 289.0 L237.5 287.8 L245.7 286.7 L254.4 286.4 L263.2 287.5 L271.5 289.9 L279.1 293.6 L286.0 298.1 L292.3 303.3 L298.0 309.1 L302.7 315.6 L305.7 322.6Z" /><path d="M334.4 330.0 L338.9 340.6 L342.2 352.3 L342.7 364.6 L339.1 376.7 L330.8 387.3 L318.4 395.5 L303.2 400.7 L287.1 403.3 L271.6 404.3 L257.0 404.8 L243.4 405.4 L230.0 406.1 L216.4 406.3 L202.8 405.2 L189.7 402.1 L177.8 397.0 L167.6 390.2 L158.9 382.7 L151.0 374.9 L143.3 367.1 L135.8 358.9 L129.0 350.1 L123.8 340.4 L121.4 330.0 L122.2 319.5 L125.7 309.3 L131.1 299.7 L137.3 290.4 L143.7 280.9 L150.5 271.1 L158.7 261.1 L169.1 251.9 L182.3 244.7 L197.7 240.7 L214.1 240.5 L230.0 243.9 L244.3 249.6 L256.6 256.5 L267.4 263.2 L277.3 269.3 L287.0 275.0 L296.5 280.8 L305.3 287.2 L313.1 294.5 L319.5 302.6 L324.8 311.2 L329.6 320.3Z" /><path d="M364.5 330.0 L360.1 342.7 L355.7 354.9 L351.9 367.4 L348.3 380.6 L343.4 394.5 L335.5 408.2 L323.6 420.4 L307.7 429.7 L289.0 435.4 L269.0 437.9 L249.3 438.4 L230.0 438.1 L210.8 437.9 L191.0 437.8 L170.2 436.9 L149.3 433.6 L129.6 426.9 L113.0 416.7 L100.6 403.5 L92.8 388.7 L88.5 373.4 L86.7 358.4 L86.4 344.0 L87.4 330.0 L90.3 316.4 L96.1 303.4 L104.9 291.6 L116.2 281.3 L128.8 272.5 L141.1 264.2 L152.6 255.3 L163.8 245.0 L175.9 233.2 L190.6 221.0 L208.7 210.3 L230.0 203.3 L252.8 201.5 L275.2 205.1 L295.3 213.3 L312.3 224.4 L326.5 236.9 L338.6 249.6 L349.1 262.3 L357.9 275.3 L364.3 288.8 L367.6 302.7 L367.4 316.6Z" /><path d="M415.2 330.0 L416.5 348.2 L415.8 366.9 L413.0 386.1 L406.8 405.6 L395.9 424.3 L379.3 440.6 L357.5 453.0 L332.1 460.9 L305.3 464.7 L279.2 465.9 L254.2 466.1 L230.0 466.5 L205.6 467.1 L180.6 466.6 L155.5 463.3 L132.0 455.7 L112.3 443.7 L97.5 428.1 L87.7 410.9 L81.3 393.6 L76.1 377.2 L70.3 361.7 L63.5 346.2 L56.8 330.0 L52.2 312.7 L51.5 294.6 L55.4 276.4 L63.7 258.9 L75.3 242.0 L89.2 225.7 L105.3 209.6 L124.2 194.2 L146.6 180.9 L172.7 171.7 L201.3 168.5 L230.0 172.0 L256.3 181.8 L278.6 195.6 L296.7 210.8 L311.9 224.9 L326.5 236.9 L342.0 247.1 L358.8 256.8 L376.0 267.6 L391.4 280.5 L403.4 295.6 L411.2 312.3Z" /><path d="M475.0 330.0 L484.5 354.8 L484.3 380.5 L474.4 405.0 L456.7 427.0 L433.9 445.9 L408.2 462.0 L380.7 475.5 L351.7 486.1 L321.1 493.0 L289.7 495.1 L258.8 492.2 L230.0 485.2 L204.1 475.9 L180.5 466.7 L157.6 459.5 L133.0 454.4 L105.6 450.1 L76.0 444.1 L46.6 434.2 L21.2 419.3 L2.6 399.8 L-7.7 377.2 L-10.7 353.5 L-8.7 330.0 L-4.1 307.2 L1.6 284.7 L8.9 262.2 L19.5 240.0 L35.1 219.2 L56.3 201.3 L82.4 187.6 L111.6 178.1 L141.7 172.1 L171.5 168.2 L200.7 165.3 L230.0 163.4 L259.6 163.6 L288.8 167.5 L316.1 176.1 L339.6 189.4 L358.4 206.1 L373.2 224.0 L386.2 241.2 L400.3 257.2 L417.5 272.5 L437.6 288.8 L458.1 307.8Z" /></g><g fill="none" stroke="#8FA6AA" stroke-width="1.6"><path d="M928.7 120.0 L924.8 141.9 L914.3 162.5 L899.6 181.2 L882.4 198.0 L863.4 212.8 L842.5 225.5 L819.5 235.4 L794.7 241.5 L769.3 243.9 L744.6 243.3 L721.6 241.3 L700.0 239.8 L678.6 240.3 L655.7 242.6 L630.0 245.2 L602.0 245.7 L573.8 241.9 L548.0 232.6 L527.4 218.1 L513.1 200.0 L504.3 180.0 L499.5 159.8 L496.7 139.8 L495.2 120.0 L495.5 100.1 L499.0 80.1 L507.5 60.9 L521.4 43.6 L539.9 29.0 L561.3 17.2 L583.7 7.7 L605.9 -0.7 L628.1 -8.5 L650.9 -15.7 L674.9 -21.1 L700.0 -23.1 L725.0 -20.7 L748.4 -13.9 L769.3 -3.9 L787.8 7.3 L805.5 18.2 L824.3 27.9 L845.6 37.3 L868.8 47.8 L891.9 61.1 L911.4 78.0 L924.3 98.1Z"/><path d="M1099.7 120.0 L1108.8 159.9 L1101.9 199.8 L1079.4 236.4 L1045.1 267.6 L1004.0 292.8 L960.5 313.0 L917.0 329.4 L873.7 342.9 L830.1 352.7 L786.0 357.8 L742.2 357.2 L700.0 351.6 L660.3 343.2 L622.4 334.7 L583.6 328.2 L541.1 323.9 L493.4 319.5 L441.8 311.2 L391.1 295.6 L347.4 270.8 L316.6 237.6 L301.3 199.1 L300.6 158.9 L310.5 120.0 L326.0 83.5 L343.6 49.3 L362.6 16.5 L384.5 -14.9 L411.6 -43.9 L445.2 -68.7 L484.8 -87.8 L527.8 -100.9 L571.7 -109.5 L614.7 -115.9 L657.0 -121.8 L700.0 -127.7 L744.8 -131.9 L791.0 -131.4 L836.4 -123.8 L877.9 -108.2 L913.2 -85.8 L942.2 -59.4 L967.4 -32.0 L992.3 -5.0 L1019.6 21.9 L1049.4 50.7 L1078.0 83.1Z"/></g><g font-family="IBM Plex Mono, monospace" font-size="10" fill="#7C9094"><text x="880" y="300" text-anchor="end">300 m</text><text x="760" y="40">500 m</text></g><path d="M600 360 C620 300 660 260 700 210" stroke="#A4533A" stroke-width="2" stroke-dasharray="6 5" fill="none"/></svg>
   <span class="maplabel" aria-hidden="true">Fjallið hjá Jarðfríðu<br>1 : 25 000</span>
@@ -260,16 +457,76 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
 <path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
 <path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>
 </header>
+<div class="sechead">
+  <span class="eyebrow">Gongdir</span>
+</div>
+<a class="coursecard" href="#tunnil" data-go="tunnil">
+  <div class="cc-text">
+    <span class="eyebrow">Gongd · 6. flokkur – eisini 4.–5. flokkur</span>
+    <b>Jarðfríða borar ein tunnil</b>
+    <p>Í skeiðinum læra næmingarnir at eygleiða grót, sum ein jarðfrøðingur ger.</p>
+    <span class="meta">4 partar · umleið 3–4 tímar</span>
+  </div>
+  <ol class="cc-parts">
+    <li style="--sw:var(--basalt)"><span class="n">1</span>Kanna steinar</li>
+    <li style="--sw:var(--olivine)"><span class="n">2</span>Mín steinur</li>
+    <li style="--sw:var(--tuff)"><span class="n">3</span>Kjarnuroyndir og tunnil</li>
+    <li style="--sw:var(--ochre)"><span class="n">4</span>Tykkara egna fjall</li>
+  </ol>
+  <span class="btn primary cc-go">Byrja →</span>
+</a>
 
-<nav class="phases" role="tablist" aria-label="Partarnir í gongdini">
-  <button class="phase" role="tab" id="tab-l1" aria-selected="true" aria-controls="phase-l1"><span class="n">1</span>Kanna steinar</button>
-  <button class="phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2"><span class="n">2</span>Mín steinur</button>
-  <button class="phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3"><span class="n">3</span>Kjarnuroyndir og tunnil</button>
-  <button class="phase" role="tab" id="tab-l4" aria-selected="false" aria-controls="phase-l4"><span class="n">4</span>Tykkara egna fjall</button>
-</nav>
+<div class="sechead">
+  <span class="eyebrow">Persónslýsing</span>
+  <h2>Jarðfríða og Malli</h2>
+</div>
+<div class="photos psl-figs">
+  <figure class="photo"><a href="myndir/personslysing-jardfrida.jpg" target="_blank" rel="noopener"><img class="full" src="myndir/personslysing-jardfrida.jpg" alt="Persónslýsing av Jarðfríðu: jarðfrøðingur hjá Jarðfeingi við sjóneyku, húgvu og vesti. Hon er forvitin, torir at ivast, samlar og skrivar alt niður." width="1600" height="1000" loading="lazy"></a><figcaption>Jarðfríða</figcaption></figure>
+  <figure class="photo"><a href="myndir/personslysing-malli.jpg" target="_blank" rel="noopener"><img class="full" src="myndir/personslysing-malli.jpg" alt="Persónslýsing av Malla: steinurin í lummanum hjá Jarðfríðu, og søgan um, hvussu hann gjørdist rundur." width="1600" height="1000" loading="lazy"></a><figcaption>Malli</figcaption></figure>
+</div>
+
+<div class="sechead">
+  <span class="eyebrow">Hjá Jarðfeingi</span>
+  <h2>Ein veruligur jarðfrøðingur</h2>
+  <p>Jarðfríða er ein tekning. Irena er jarðfrøðingur hjá Jarðfeingi. Hon kannar kjarnuroyndir á Hjalla.</p>
+</div>
+<div class="photos">
+  <figure class="photo"><img src="myndir/hjalla-04-irena-sjoneyka.jpg" alt="Irena hyggur gjøgnum eina sjóneyku at kjarnuroyndum í einum kassa." width="1400" height="1050" loading="lazy"><figcaption><span class="where">Hjalla · 18.09.2026</span>Irena kannar ein kjarna við sjóneyku</figcaption></figure>
+  <figure class="photo"><img src="myndir/hjalla-01-hollin.jpg" alt="Irena stendur við ein stabba av trækassum í eini stórari goymsluhøll við hillum." width="1400" height="1050" loading="lazy" style="object-position:30% 50%"><figcaption><span class="where">Hjalla · 18.09.2026</span>Goymsluhøllin á Hjalla við kassum frá nógvum boringum</figcaption></figure>
+</div>
+
+</section>
+<section class="page" id="p-tunnil" data-page="tunnil" hidden>
+  <div class="pagehead">
+    <span class="eyebrow">Gongd · Náttúra og tøkni</span>
+    <h1>Jarðfríða borar ein tunnil</h1>
+    <p class="meta-line">6. flokkur – eisini 4.–5. flokkur · 4 partar · umleið 3–4 tímar</p>
+    <p>Í skeiðinum læra næmingarnir at eygleiða grót, sum ein jarðfrøðingur ger. Tey fylgja Jarðfríðu og steininum Malla á skerminum og kanna veruligar steinar. Síðan bora tey í eitt fjall, gita, hvussu tað sær út innaní, og skera tað í helvt fyri at síggja, um tey høvdu rætt.</p>
+  </div>
+  <div class="sechead" style="margin-top:8px">
+    <span class="eyebrow">Gongdin</span>
+    <p>Loggbókin fylgir síðuni við Jarðfríðu. Ger tað, sum Jarðfríða sigur á skerminum – og skriva og tekna so her.</p>
+  </div>
+  <div class="partgrid">
+    <a class="partcard" href="#kanna-steinar" data-go="kanna-steinar" style="--sw:var(--basalt)"><span class="n">1</span><b>Kanna steinar</b><span>Sjóneykan og veruligir steinar</span><span class="time">Uml. 45 min</span></a>
+    <a class="partcard" href="#min-steinur" data-go="min-steinur" style="--sw:var(--olivine)"><span class="n">2</span><b>Mín steinur</b><span>Finn ein stein, og vís flokkinum hann</span><span class="time">Heima + uml. 15 min</span></a>
+    <a class="partcard" href="#kjarnuroyndir" data-go="kjarnuroyndir" style="--sw:var(--tuff)"><span class="n">3</span><b>Kjarnuroyndir og tunnil</b><span>Bora, gita og sker fjallið í helvt</span><span class="time">Uml. 30 min</span></a>
+    <a class="partcard" href="#fjall" data-go="fjall" style="--sw:var(--ochre)"><span class="n">4</span><b>Tykkara egna fjall</b><span>Gerið eitt fjall, og kannið fjallið hjá øðrum</span><span class="time">60–90 min</span></a>
+  </div>
+  <div class="sechead">
+    <span class="eyebrow">Prenta</span>
+    <h2>Loggbók, kort og lærarvegleiðing</h2>
+  </div>
+  <div class="dls">
+<article class="dl"><img src="myndir/min-loggbok-forsida.jpg" alt="Forsíðan á Mín loggbók" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 8 síður</span><b>Mín loggbók</b><p>8 síður · ein til hvønn næming</p><a class="btn primary" data-pdf="min-loggbok.pdf" href="pdf/min-loggbok.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
+<article class="dl"><img src="myndir/samanberingarkort-forsida.jpg" alt="Forsíðan á Samanberingarkortunum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 4 síður</span><b>Samanberingarkort</b><p>Prenta tey í litum, eitt sett til hvønn bólk.</p><a class="btn primary" data-pdf="samanberingarkort.pdf" href="pdf/samanberingarkort.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
+<article class="dl"><img src="myndir/laerarvegleiding-forsida.jpg" alt="Forsíðan á Lærarvegleiðingini" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 7 síður</span><b>Lærarvegleiðing</b><p>Náttúra og tøkni · 6. flokkur – eisini 4.–5. flokkur</p><a class="btn primary" data-pdf="laerarvegleiding.pdf" href="pdf/laerarvegleiding.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
+
+</div>
+</section>
 
 <!-- ============ 1 · KANNA STEINAR ============ -->
-<section id="phase-l1" role="tabpanel" aria-labelledby="tab-l1">
+<section class="page" id="phase-l1" data-page="kanna-steinar" hidden>
   <div class="stack">
     <article class="panel">
       <span class="tag screen">Skermur</span>
@@ -294,12 +551,26 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
     </article>
 
     <article class="panel">
+      <span class="tag field">Hjá Jarðfeingi</span>
+      <h2>Hygg at einum veruligum kjarna</h2>
+      <p class="task">Flyt sjóneykuna eftir myndini. Hvat sært tú?</p>
+      <div class="field-split">
+        <figure class="photo">
+          <div class="zoom" id="zoomCore"><img src="myndir/hjalla-05-kjarnar.jpg" alt="Tveir myrkir kjarnar í einum kassa. Í grótinum eru nógvir hvítir blettir." width="2000" height="1500"><div class="zlens"></div><span class="hintline" aria-hidden="true">Flyt sjóneykuna</span></div>
+          <figcaption><span class="where">Hjalla · 18.09.2026</span>Kjarnar tætt at – myrkur steinur við hvítum blettum</figcaption>
+        </figure>
+        <figure class="photo"><img src="myndir/hjalla-04-irena-sjoneyka.jpg" alt="Irena hyggur gjøgnum eina sjóneyku at kjarnuroyndum í einum kassa." width="1400" height="1050" loading="lazy"><figcaption><span class="where">Hjalla · 18.09.2026</span>Irena kannar ein kjarna við sjóneyku</figcaption></figure>
+      </div>
+    </article>
+
+
+    <article class="panel">
       <span class="tag stone">Veruligir steinar</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
         <p><span class="who">Jarðfríða</span>»Nú skulu tit hyggja at veruligum steinum. Teir kunnu tit nerta við!«</p></div>
       <h2>Nú við veruligum steinum</h2>
       <ol class="steps">
-        <li>Kenn eftir steininum. Er hann sleipur ella grovur? Tungur ella lættur?</li>
+        <li>Nerta við steinin. Er hann sleipur ella grovur? Tungur ella lættur?</li>
         <li>Hygg við sjóneykuni. Finnur tú smá hol, fylt hol, ljós krystall, grøn korn, hvítar æðrar ella reyðligan lit?</li>
         <li>Er steinurin eins innaní og uttaná? Ofta er uttasta lagið brúnt ella ryðlitt, tí grótið er veðrað.</li>
         <li>Tekna steinin í loggbókina.</li>
@@ -308,11 +579,26 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
       <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
         <p><span class="who">Malli</span>»Eg havi eisini hol og krystall. Kanst tú finna tey á mær?«</p></div>
     </article>
+
+    <article class="panel">
+      <span class="tag field">Hjá Jarðfeingi</span>
+      <h2>Irena brúkar kort</h2>
+      <div class="photos">
+        <figure class="photo"><img src="myndir/hjalla-06-prosentkort.jpg" alt="Ein hond heldur eitt svart kort við rundingum, sum hava ymiskt nógv hvítt í sær." width="1100" height="1467" loading="lazy" style="object-position:50% 62%"><figcaption><span class="where">Hjalla · 18.09.2026</span>Samanberingarkort við prosentum (1–50 %)<br>Jarðfrøðingar brúka somu sløg av kortum til at meta um, hvussu nógv krystall og hol eru í grótinum.</figcaption></figure>
+        <figure class="photo"><img src="myndir/hjalla-07-litkort.jpg" alt="Hendur halda eitt litkort við gráum og grønligum litum yvir einum kassa við kjarnuroyndum." width="1400" height="1050" loading="lazy"><figcaption><span class="where">Hjalla · 18.09.2026</span>Litkortið latið upp – yvirlagið við holum<br>Jarðfrøðingar brúka litkort til at lýsa litin á gróti.</figcaption></figure>
+      </div>
+      <div class="refs">
+        <a class="logref" data-pdf="samanberingarkort.pdf" data-page-no="1" href="pdf/samanberingarkort.pdf#page=1" target="_blank" rel="noopener"><span>Samanberingarkort<small>s. 1–2 · Litkort, krystallkort og holkort</small></span></a>
+        <a class="logref" data-pdf="min-loggbok.pdf" data-page-no="2" href="pdf/min-loggbok.pdf#page=2" target="_blank" rel="noopener"><span>Mín loggbók<small>s. 2–3 · Kanna steinar</small></span></a>
+      </div>
+    </article>
+
+    <div class="next"><a class="btn primary" href="#min-steinur" data-go="min-steinur">Víðari: 2 · Mín steinur →</a></div>
   </div>
 </section>
 
 <!-- ============ 2 · MÍN STEINUR ============ -->
-<section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden>
+<section class="page" id="phase-l2" data-page="min-steinur" hidden>
   <div class="stack">
     <article class="panel">
       <span class="tag stone">Veruligir steinar</span>
@@ -324,6 +610,7 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
         <li>Tak eina mynd av steininum. Bert av steininum – ikki av tær sjálvum ella øðrum.</li>
         <li>Legg myndina á veggin hjá flokkinum niðanfyri. Skriva fornavn títt, og hvar tú fanst steinin.</li>
       </ol>
+      <div class="refs"><a class="logref" data-pdf="min-loggbok.pdf" data-page-no="4" href="pdf/min-loggbok.pdf#page=4" target="_blank" rel="noopener"><span>Mín loggbók<small>s. 4 · Mín steinur</small></span></a></div>
     </article>
 
     <article class="panel">
@@ -339,19 +626,116 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
         <span class="arr">vatnið fær<br>steinin at rulla →</span>
         <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-52 6 C-52 -26 -24 -38 4 -38 C34 -38 54 -22 52 6 C50 30 28 38 0 38 C-28 38 -52 30 -52 6 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"/></svg>Rundur</figure>
       </div>
+      <div class="refs"><a class="logref" data-pdf="samanberingarkort.pdf" data-page-no="3" href="pdf/samanberingarkort.pdf#page=3" target="_blank" rel="noopener"><span>Samanberingarkort<small>s. 3 · Hvussu langt er steinurin komin?</small></span></a></div>
+    </article>
+
+    <article class="panel" id="pslStone">
+      <span class="tag stone">Mín steinur</span>
+      <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
+        <p><span class="who">Malli</span>»Eg havi eina persónslýsing. Ger nú eina av tínum yndissteini!«</p></div>
+      <h2>Persónslýsing av tínum steini</h2>
+      <p class="task">Vel tín yndisstein. Hygg væl at honum, og fyll út.</p>
+      <div class="psl">
+        <form class="psl-form" id="stoneForm" autocomplete="off">
+          <label>Hvat eitur steinurin?<input id="sName" maxlength="24" placeholder="t.d. Malli"></label>
+          <label>Hvar fanst tú hann?<input id="sWhere" maxlength="40" placeholder="t.d. í fjøruni"></label>
+          <fieldset><legend>Er hann rundur ella kantutur?</legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="sShape" value="rundur" checked><span>Rundur</span></label>
+              <label class="opt"><input type="radio" name="sShape" value="kantutur"><span>Kantutur</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Hvønn lit hevur hann?</legend>
+            <div class="opts swatches" id="sColours"></div>
+          </fieldset>
+          <fieldset><legend>Hvat sært tú við sjóneykuni?</legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="sFeat" value="hol"><span>Smá hol</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="fylt"><span>Fylt hol</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="krystall"><span>Ljós krystall</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="korn"><span>Grøn korn</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="aedr"><span>Hvítar æðrar</span></label>
+            </div>
+          </fieldset>
+          <label>Søgan hjá honum<textarea id="sStory" rows="3" maxlength="240" placeholder="Hvaðani kom hann?"></textarea></label>
+        </form>
+        <div class="psl-card" aria-live="polite">
+          <span class="badge">Persónslýsing</span>
+          <svg class="psl-stone" id="stoneArt" viewBox="-100 -80 200 170" role="img" aria-label="Tín steinur"></svg>
+          <b class="psl-name" id="cName">Steinurin hjá mær</b>
+          <dl class="psl-facts" id="cFacts"></dl>
+          <p class="psl-story" id="cStory" hidden></p>
+        </div>
+      </div>
+      <p class="note"><a href="myndir/personslysing-malli.jpg" target="_blank" rel="noopener">Sí persónslýsingina hjá Malla</a></p>
+    </article>
+
+    <article class="panel" id="pslMe">
+      <span class="tag stone">Jarðfrøðingur</span>
+      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+        <p><span class="who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Ger eina persónslýsing av tær sjálvum.«</p></div>
+      <h2>Persónslýsing av tær sjálvum</h2>
+      <div class="psl">
+        <form class="psl-form" id="meForm" autocomplete="off">
+          <label>Fornavn<input id="mName" maxlength="20"></label>
+          <fieldset><legend>Hvussu ert tú sum jarðfrøðingur?</legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="mTrait" value="Forvitin"><span>Forvitin</span></label>
+              <label class="opt"><input type="checkbox" name="mTrait" value="Torir at ivast"><span>Torir at ivast</span></label>
+              <label class="opt"><input type="checkbox" name="mTrait" value="Samlar"><span>Samlar</span></label>
+              <label class="opt"><input type="checkbox" name="mTrait" value="Skrivar alt niður"><span>Skrivar alt niður</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Hvat hevur tú við?</legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="mGear" value="Sjóneyka"><span>Sjóneyka</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Loggbók"><span>Loggbók</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Vestur"><span>Vestur</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Regnjakki"><span>Regnjakki</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Gonguskógvar"><span>Gonguskógvar</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Húgva</legend><div class="opts swatches" data-sw="hat"></div></fieldset>
+          <fieldset><legend>Hár</legend><div class="opts swatches" data-sw="hair"></div></fieldset>
+          <fieldset><legend>Húð</legend><div class="opts swatches" data-sw="skin"></div></fieldset>
+        </form>
+        <div class="psl-card" aria-live="polite">
+          <span class="badge">Persónslýsing</span>
+          <svg class="psl-me" id="meArt" viewBox="-90 -112 180 190" role="img" aria-label="Tú sum jarðfrøðingur"></svg>
+          <b class="psl-name" id="cmName">Navn</b>
+          <span class="psl-sub">Jarðfrøðingur</span>
+          <div class="psl-traits" id="cmTraits"></div>
+          <dl class="psl-facts" id="cmFacts"></dl>
+          <div class="psl-fav" id="cmFav" hidden><svg viewBox="-100 -80 200 170" aria-hidden="true" id="favArt"></svg><span>Yndissteinur<b id="cmFavName"></b></span></div>
+        </div>
+      </div>
+      <p class="hint">Vís flokkinum persónslýsingarnar.</p>
+      <p class="note"><a href="myndir/personslysing-jardfrida.jpg" target="_blank" rel="noopener">Sí persónslýsingina hjá Jarðfríðu</a></p>
     </article>
 
     <article class="panel">
       <h2>Steinarnir hjá okkum</h2>
       <div class="gallery" id="gallery"></div>
       <p class="hint"><b>Hygg at steinunum hjá hinum:</b> Finn ein stein við holum. Finn ein stein við ljósum krystallum. Finn ein reyðan stein. Finn ein rundan stein og ein kantutan stein.</p>
+      <p class="note">Padlet-veggurin verður ruddaður av og á.</p>
     </article>
+    <div class="next"><a class="btn primary" href="#kjarnuroyndir" data-go="kjarnuroyndir">Víðari: 3 · Kjarnuroyndir og tunnil →</a></div>
   </div>
 </section>
 
 <!-- ============ 3 · KJARNUROYNDIR OG TUNNIL ============ -->
-<section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden>
+<section class="page" id="phase-l3" data-page="kjarnuroyndir" hidden>
   <div class="stack">
+    <article class="panel">
+      <span class="tag field">Hjá Jarðfeingi</span>
+      <h2>Kjarnuroyndir á Hjalla</h2>
+      <div class="photos">
+        <figure class="photo"><img src="myndir/hjalla-01-hollin.jpg" alt="Irena stendur við ein stabba av trækassum í eini stórari goymsluhøll við hillum." width="1400" height="1050" loading="lazy" style="object-position:30% 50%"><figcaption><span class="where">Hjalla · 18.09.2026</span>Goymsluhøllin á Hjalla við kassum frá nógvum boringum</figcaption></figure>
+        <figure class="photo"><img src="myndir/hjalla-03-kassi.jpg" alt="Ein opin kassi við røðum av gráum kjarnuroyndum og einum málbandi tvørtur um." width="1100" height="1467" loading="lazy" style="object-position:50% 35%"><figcaption><span class="where">Hjalla · 18.09.2026</span>Kassi 40–42 við málbandi og dýpdarklossum</figcaption></figure>
+      </div>
+      <p class="fieldnote">Irena skrivar tað, hon sær, í ein logg. Tey, sum gera tunnilin, lesa tað seinni.</p>
+    </article>
+
     <article class="panel">
       <span class="tag screen">Skermur</span>
       <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
@@ -372,6 +756,7 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
         <span><i style="background:#A4533A"></i>reytt = royðugrót / bleytari millumløg</span>
       </div>
       <p class="hint"><b>Tosið saman:</b> Er reytt í øllum trimum kjarnuroyndunum? Liggur reyða lagið í somu hædd í øllum trimum?</p>
+      <div class="refs"><a class="logref" data-pdf="min-loggbok.pdf" data-page-no="5" href="pdf/min-loggbok.pdf#page=5" target="_blank" rel="noopener"><span>Mín loggbók<small>s. 5–6 · Kjarnuroyndir og tunnil</small></span></a></div>
     </article>
 
     <article class="panel">
@@ -394,11 +779,12 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
         <div id="tunnelFeedback" class="feedback" hidden aria-live="polite"></div>
       </div>
     </article>
+    <div class="next"><a class="btn primary" href="#fjall" data-go="fjall">Víðari: 4 · Tykkara egna fjall →</a></div>
   </div>
 </section>
 
 <!-- ============ 4 · TYKKARA EGNA FJALL ============ -->
-<section id="phase-l4" role="tabpanel" aria-labelledby="tab-l4" hidden>
+<section class="page" id="phase-l4" data-page="fjall" hidden>
   <div class="stack">
     <article class="panel">
       <span class="tag clay">Fjall</span>
@@ -412,6 +798,7 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
         <li>Setið trý tannstikkar í fjallið: B1, B2 og B3.</li>
       </ol>
       <p class="hint"><b>Loyndarmál!</b> Sigið ikki hinum, hvussu fjallið hjá tykkum sær út innaní.</p>
+      <div class="refs"><a class="logref" data-pdf="min-loggbok.pdf" data-page-no="7" href="pdf/min-loggbok.pdf#page=7" target="_blank" rel="noopener"><span>Mín loggbók<small>s. 7–8 · Tykkara egna fjall</small></span></a><a class="logref" href="#laerari-tilfar" data-go="laerari-tilfar"><span>Til læraran<small>Gandadeiggj og tilfar</small></span></a></div>
     </article>
 
     <article class="panel">
@@ -424,9 +811,9 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
       <span class="tag clay">Fjall</span>
       <h2>Takið kjarnuroyndir</h2>
       <ol class="steps">
-        <li>Stingið eitt sugurrør beint niður við B1. Heilt niður á borðið.</li>
-        <li>Snarið eitt sindur, og dragið sugurrørið upp.</li>
-        <li>Klippið sugurrørið upp, og leggið kjarnuroyndina við síðuna av. Skrivið B1 við hana.</li>
+        <li>Stingið eitt súgvirør beint niður við B1. Heilt niður á borðið.</li>
+        <li>Snarið eitt sindur, og dragið súgvirørið upp.</li>
+        <li>Klippið súgvirørið upp, og leggið kjarnuroyndina við síðuna av. Skrivið B1 við hana.</li>
         <li>Gerið tað sama við B2 og B3.</li>
       </ol>
     </article>
@@ -447,6 +834,8 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
         <li>Leggið tekningina við síðuna av. Passaði hon?</li>
         <li>Vísið parinum, sum gjørdi fjallið, tað.</li>
       </ol>
+      <figure class="photo clayfig"><img src="myndir/fjall-gandadeiggj.jpg" alt="Eitt fjall úr gandadeiggi, skorið í helvt. Innaní sæst eitt grønt lag ovast og síðan løg í bláum, reyðum, gulum og hvítum." width="639" height="421" loading="lazy"><figcaption>Eitt fjall úr gandadeiggi, skorið í helvt</figcaption></figure>
+
     </article>
 
     <article class="panel">
@@ -464,117 +853,396 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
     </article>
   </div>
 </section>
-
-<details class="teacher">
-  <summary>Til læraran</summary>
-
-  <p>Tilfarið er ætlað 6. flokki, men kann eisini brúkast í 4.–5. flokki. Uppgávurnar skifta millum arbeiði á skerminum og verkligt arbeiði við steinum, kjarnuroyndum og einum fjalli úr gandadeiggi.</p>
-
-  <h3>Gongdin</h3>
-  <div class="tablewrap">
-  <table class="forloeb">
-    <thead><tr><th>Partur</th><th>Á skerminum</th><th>Verkligt arbeiði</th><th>Tíð</th></tr></thead>
-    <tbody>
-      <tr><td><b>1 · Kanna steinar</b></td><td>Næmingarnir kanna eina kjarnuroynd við sjóneyku og finna seks eyðkenni.</td><td>Næmingarnir kenna eftir einum steini, kanna hann við sjóneyku og tekna hann.</td><td>Uml. 45 min</td></tr>
-      <tr><td><b>2 · Mín steinur</b></td><td>Næmingarnir leggja eina mynd av sínum steini á Padlet-veggin hjá flokkinum.</td><td>Næmingarnir finna ein stein heima ella við skúlan og kanna hann.</td><td>Heima + uml. 15 min</td></tr>
-      <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Næmingarnir bora tríggjar kjarnuroyndir í fjallið hjá Jarðfríðu, meta um, hvussu løgini halda fram inni í fjallinum, og velja eina leið til tunnilin. Síðan verður fjallið skorið í helvt, so tey kunnu kanna metingina.</td><td>–</td><td>Uml. 30 min</td></tr>
-      <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey gera næmingarnir eitt fjall úr gandadeiggi. Síðan býta pørini um fjall, bora tríggjar kjarnuroyndir, tekna eina meting av løgunum inni í fjallinum og skera at enda fjallið í helvt.</td><td>60–90 min</td></tr>
-    </tbody>
-  </table>
+<!-- ============ ORÐALISTI ============ -->
+<section class="page" id="p-ordalisti" data-page="ordalisti" hidden>
+  <div class="pagehead">
+    <span class="eyebrow">Orð, sum jarðfrøðingar brúka</span>
+    <h1>Orðalisti</h1>
   </div>
-
-  <h3>Áðrenn tit byrja</h3>
-  <p>Til part 1 er gott at hava nakrar ymiskar steinar, sum næmingarnir kunnu halda á og kanna. Hava tit sjóneykur, kunnu næmingarnir brúka tær saman við steinunum.</p>
-  <p>Til part 2 skulu næmingarnir finna ein stein, annaðhvørt heima ella nær skúlanum. Steinurin eigur at vera ein vanligur, leysur steinur, sum er rundur ella avrundaður – ikki eitt fýrkantað ella tilskorið grótpetti.</p>
-  <p>Til part 4 skal gandadeiggið helst gerast frammanundan.</p>
-
-  <h3>Gandadeiggj</h3>
-  <p>Henda uppskriftin er til umleið fýra fjøll:</p>
-  <ul>
-    <li>4 dl hveitimjøl</li>
-    <li>2 dl fínt salt</li>
-    <li>2 dl vatn</li>
-    <li>1 matskeið olju</li>
-  </ul>
-  <p>Elt deiggið væl og být tað í fýra partar. Lita partarnar við matliti. Brúka reytt og grønt og tveir aðrar litir, til dømis svart og hvítt ella ólitað deiggj.</p>
-  <p>Ger helst deiggið dagin fyri og goym tað í lufttættum posa. Er deiggið ov klístrut, kann eitt sindur av mjøli eltast upp í tað. Tá festist deiggið heldur ikki so lætt inni í sugurrørunum, tá ið næmingarnir bora.</p>
-
-  <h3>Tilfar til part 4</h3>
-  <p>Til hvørt par skulu tit hava:</p>
-  <ul>
-    <li>gandadeiggj í fýra litum</li>
-    <li>trý tjúkk, gjøgnumskygd sugurrør, til dømis breið sugurrør til bubble tea</li>
-    <li>eina saks</li>
-    <li>ein plastknív</li>
-    <li>tríggjar tannstikkar merktir <b>B1, B2 og B3</b></li>
-    <li>bakipappír ella annað undirlag</li>
-    <li>pappír og litblýantar</li>
-  </ul>
-
-  <h3>Soleiðis gera tit fjøllini</h3>
-  <p>Hvørt par byggir eitt fjall úr fleiri løgum av gandadeiggi.</p>
-  <p>Bið næmingarnar ikki leggja øll løgini heilt vatnrætt. Eitt lag kann til dømis liggja eitt sindur skák, ella vera tjykkari øðrumegin enn hinumegin. Tá verða tær tríggjar kjarnuroyndirnar ymiskar, og næmingarnir noyðast at hugsa um, hvussu løgini kunnu halda fram millum boriholini.</p>
-  <p>Tá ið fjøllini eru liðug, býta pørini um. Næmingarnir skulu sostatt kanna eitt fjall, sum teir ikki sjálvir hava bygt.</p>
-  <p>Tey bora tríggjar kjarnuroyndir við sugurrørunum og seta tannstikkarnar <b>B1, B2 og B3</b> við boriholini. Síðan hyggja tey at kjarnuroyndunum og tekna eina meting av, hvussu løgini liggja inni í fjallinum.</p>
-  <p>At enda verður fjallið skorið í helvt. Tá kunnu næmingarnir samanbera sína meting við tað, sum veruliga var inni í fjallinum.</p>
-  <p>Endamálið er ikki at gita alt rætt, men at brúka tær upplýsingar, sum kjarnuroyndirnar geva, til at gera eina grundaða meting.</p>
-
-  <h3>Um tit vitja Jarðfeingi</h3>
-  <p>Um flokkurin fær høvi at vitja Jarðfeingi ella kanna veruligar kjarnuroyndir, kunnu tit leita eftir teimum somu eyðkennunum sum á skerminum.</p>
-  <p>Tit kunnu til dømis:</p>
-  <ul>
-    <li>finna eina kjarnuroynd við nógvum smáum holum</li>
-    <li>kanna grótið við einari veruligari sjóneyku</li>
-    <li>leita eftir ljósum krystallum og hvítum mineralæðrum</li>
-    <li>finna eitt reytt ella reyðligt lag og samanbera tað við gráa grótið</li>
-    <li>hyggja eftir, hvussu ymisk løg síggja út og kennast</li>
-  </ul>
-  <p>Spyrjið til dømis:</p>
-  <div class="ask">
-    <b>Hvat síggja tit?</b>
-    <b>Hvat er øðrvísi frá einum lagi til annað?</b>
-    <b>Hvat kunnu tit fáa at vita um fjallið við bara at hyggja at einari kjarnuroynd?</b>
+  <div class="askmalli panel">
+    <svg class="am-face" aria-hidden="true"><use href="#malli"/></svg>
+    <div class="am-body">
+      <p class="am-q"><span class="who">Malli</span>Tú kanst eisini spyrja meg! Eg havi hol og krystall – og eina langa søgu.</p>
+      <div class="am-words" role="group" aria-label="Orð"></div>
+      <p class="am-a" aria-live="polite" hidden></p>
+    </div>
   </div>
-
-  <h3>Padlet-veggurin</h3>
-  <p>Í parti 2 kunnu næmingarnir leggja eina mynd av sínum steini á Padlet-veggin. Veggurin er longu settur inn í tilfarið, og allir flokkar brúka sama vegg. Lærarin skal tí ikki gera ein nýggjan vegg.</p>
-  <p>Myndirnar verða góðkendar, áðrenn tær verða sjónligar á veggnum. Bið næmingarnar bert taka myndir av steininum – ikki av sær sjálvum ella øðrum – og bert skriva fornavn.</p>
-  <p>Kanna frammanundan, um skúlin hevur loyvi at brúka Padlet saman við næmingum. Er veggurin ov lítil á skerminum, kann hann latast upp í nýggjum vindeyga við knøttinum undir veggnum.</p>
-
-  <h3>Fakorð, um næmingarnir spyrja</h3>
-  <dl>
-    <dt>Smá hol (poknur)</dt><dd>Tey smáu holini eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru holini eftir í grótinum. Hesi holini verða eisini nevnd poknur.</dd>
-    <dt>Fylt hol</dt><dd>Hol, sum seinni eru fylt við mineralum. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í holunum. Tað kunnu til dømis vera soðsteinar ella kalsitt (kálkspatt).</dd>
-    <dt>Hvítar æðrar</dt><dd>Rivur ella sprungur í grótinum, sum seinni eru fyltar við mineralum. Rivur og sprungur kunnu ávirka, hvussu støðugt grótið er.</dd>
-    <dt>Ljós krystall</dt><dd>Ljós krystall í basalti eru ofta feldspatt (plagioklas).</dd>
-    <dt>Grøn korn</dt><dd>Tey grønu kornini eru olivin. Olivin kann síggjast sum grøn krystall í basaltinum.</dd>
-    <dt>Reyðligur litur</dt><dd>Reyðligur litur kann benda á veðrað grót ella royðugrót. Reyðligt tilfar millum basaltfláirnar kann vera royðugrót. Tað kann vera harðnað jørðildi (gomul mold og annað leyst tilfar), leirur ella gosøska.</dd>
-    <dt>Basalt</dt><dd>Gráa og svarta grótið í døminum er basalt.</dd>
-    <dt>Kol</dt><dd>Í Suðuroy finnast kolaeygu og kolløg millum basaltfláirnar.</dd>
+  <dl class="terms" id="terms">
+    <div class="term"><dt>Smá hol (poknur)</dt><dd>Tey smáu holini eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru holini eftir í grótinum.</dd></div>
+    <div class="term"><dt>Fylt hol</dt><dd>Hol, sum seinni eru fylt við mineralum. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í holunum. Tað kunnu til dømis vera soðsteinar ella kalsitt (kálkspatt).</dd></div>
+    <div class="term"><dt>Hvítar æðrar</dt><dd>Rivur ella sprungur í grótinum, sum seinni eru fyltar við mineralum. Rivur og sprungur kunnu ávirka, hvussu støðugt grótið er.</dd></div>
+    <div class="term"><dt>Ljós krystall</dt><dd>Ljós krystall í basalti eru ofta feldspatt (plagioklas).</dd></div>
+    <div class="term"><dt>Grøn korn</dt><dd>Tey grønu kornini eru olivin. Olivin kann síggjast sum grøn krystall í basaltinum.</dd></div>
+    <div class="term"><dt>Reyðligur litur</dt><dd>Reyðligur litur kann benda á veðrað grót ella royðugrót. Reyðligt tilfar millum basaltfláirnar kann vera royðugrót. Tað kann vera harðnað jørðildi (gomul mold og annað leyst tilfar), leirur ella gosøska.</dd></div>
+    <div class="term"><dt>Basalt</dt><dd>Gráa og svarta grótið í døminum er basalt.</dd></div>
+    <div class="term"><dt>Kjarnuroynd</dt><dd>Ein langur grótstavur, sum verður boraður upp úr undirgrundini.</dd></div>
+    <div class="term"><dt>Kol</dt><dd>Í Suðuroy finnast kolaeygu og kolløg millum basaltfláirnar.</dd></div>
   </dl>
+</section>
 
-  <h3>Viðmerking um tilfarið</h3>
-  <p>Kjarnuroyndin og fjallið hjá Jarðfríðu eru einføld, uppspunnin dømi, sum eru gjørd til undirvísing. Arbeiðið hjá Jarðfeingi og føroysk jarðfrøði hava givið íblástur til tilfarið.</p>
-  <p class="note">Áðrenn tilfarið verður tikið endaliga í nýtslu, eigur ein jarðfrøðingur at kanna tað jarðfrøðiliga innihaldið.</p>
-</details>
+
+<section class="page" data-page="laerari" hidden>
+  <div class="pagehead"><span class="eyebrow">Til læraran · Jarðfríða borar ein tunnil</span></div>
+  <div class="tpage">
+<nav class="subnav" aria-label="Til læraran">
+  <a href="#laerari" data-go="laerari">Til læraran</a>
+  <a href="#laerari-namsaetlan" data-go="laerari-namsaetlan">Skeiðið og námsætlanin</a>
+  <a href="#laerari-hjalp" data-go="laerari-hjalp">Soleiðis kanst tú hjálpa</a>
+  <a href="#laerari-eygleiding" data-go="laerari-eygleiding">Hvussu eygleiða næmingarnir?</a>
+  <a href="#laerari-svar" data-go="laerari-svar">Svar og fakorð</a>
+  <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a>
+</nav>
+  <div class="doc">
+<span class="eyebrow">Lærarvegleiðing · Náttúra og tøkni</span>
+<h2>Jarðfríða borar ein tunnil</h2>
+<p class="meta">6. flokkur – eisini 4.–5. flokkur · 4 partar · umleið 3–4 tímar</p>
+<div class="refs"><a class="logref" data-pdf="laerarvegleiding.pdf" href="pdf/laerarvegleiding.pdf" target="_blank" rel="noopener"><span>Lærarvegleiðing<small>PDF · 7 síður</small></span></a></div>
+<h3>Hvat snýr skeiðið seg um?</h3>
+<p>Í skeiðinum læra næmingarnir at eygleiða grót, sum ein jarðfrøðingur ger. Tey fylgja Jarðfríðu og steininum Malla á skerminum og kanna veruligar steinar. Síðan bora tey í eitt fjall, gita, hvussu tað sær út innaní, og skera tað í helvt fyri at síggja, um tey høvdu rætt.</p>
+<p>At eygleiða er nakað, ein lærir. Børn leggja ofta merki til tað, sum er stórt og sæst væl. Tey hava brúk fyri hjálp til at síggja tað, sum ein jarðfrøðingur hyggur eftir: Tey skulu tosa saman, brúka góð amboð og fáa tíð at hyggja.</p>
+<h3>Hvat skulu næmingarnir læra?</h3>
+<p>Næmingarnir læra at</p>
+<ul>
+  <li>hyggja gjølla eftir gróti og siga frá tí við egnum orðum</li>
+  <li>finna eyðkenni í grótinum, so sum smá hol, krystall og æðrar, og samanbera við kort</li>
+  <li>skriva og tekna í eina loggbók, so onnur kunnu skilja tað, tey hava sæð</li>
+  <li>gita út frá kjarnuroyndum, kanna gitið og grundgeva fyri einum vali</li>
+  <li>greiða frá, hví jarðfrøðingar bora, og hví vit brúka modell</li>
+</ul>
+<h3>Hetta brúka vit</h3>
+<ul class="uses">
+  <li><b>Síðan við Jarðfríðu</b><span>Ein telda ella teldil til hvønn næming ella til hvørt par</span></li>
+  <li><b>Mín loggbók</b><span>8 síður · ein til hvønn næming</span></li>
+  <li><b>Sjóneykur og steinar</b><span>Helst eina sjóneyku til hvønn næming og ymsar steinar</span></li>
+  <li><b>Gandadeiggj og súgvirør</b><span>til 4. part · <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a></span></li>
+</ul>
+<p>Samanberingarkortini (4 síður) eru eitt íkast. Prenta tey í litum, eitt sett til hvønn bólk.</p>
+<h3>Soleiðis gongur skeiðið</h3>
+<p>Skeiðið hevur fýra partar. Hvør partur á síðuni hevur sínar síður í loggbókini. Næmingarnir gera tað, sum Jarðfríða sigur á skerminum, og skriva og tekna síðan í loggbókina.</p>
+<div class="tablewrap">
+<table class="forloeb">
+  <thead><tr><th>Partur</th><th>Á skerminum</th><th>Verkligt arbeiði</th><th>Loggbók</th><th>Tíð</th></tr></thead>
+  <tbody>
+    <tr><td><b>1 · Kanna steinar</b></td><td>Næmingarnir kanna eina kjarnuroynd við sjóneyku og finna seks eyðkenni.</td><td>Næmingarnir nerta við ein stein, kanna hann við sjóneyku og tekna hann.</td><td>s. 2–3</td><td>Uml. 45 min</td></tr>
+    <tr><td><b>2 · Mín steinur</b></td><td>Næmingarnir leggja eina mynd av sínum steini á Padlet-veggin hjá flokkinum.</td><td>Næmingarnir finna ein stein heima ella við skúlan og kanna hann.</td><td>s. 4</td><td>Heima + uml. 15 min</td></tr>
+    <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>Næmingarnir bora tríggjar kjarnuroyndir í fjallið hjá Jarðfríðu, meta um, hvussu løgini halda fram inni í fjallinum, og velja eina leið til tunnilin. Síðan verður fjallið skorið í helvt, so tey kunnu kanna metingina.</td><td>–</td><td>s. 5–6</td><td>Uml. 30 min</td></tr>
+    <tr><td><b>4 · Tykkara egna fjall</b></td><td>–</td><td>Tvey og tvey gera næmingarnir eitt fjall úr gandadeiggi. Síðan býta pørini um fjall, bora tríggjar kjarnuroyndir, tekna eina meting av løgunum inni í fjallinum og skera at enda fjallið í helvt.</td><td>s. 7–8</td><td>60–90 min</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="box">
+  <h3 style="margin:0">Fyrst gita – síðan skera</h3>
+  <p>Í 3. og 4. parti er raðfylgjan týdningarmikil. Næmingarnir skulu tekna sítt gitt, áðrenn tey skera fjallið. Síðan samanbera tey tekningina við tað, sum tey síggja.</p>
+  <div class="flow"><span>1 Bora</span><i>→</i><span>2 Gita og tekna</span><i>→</i><span>3 Sker í helvt</span><i>→</i><span>4 Samanber</span></div>
+  <p>Í loggbókini er gitið merkt <b>FYRST</b> og skeringin <b>SÍÐAN</b>. Á síðu 8 eru báðar tekningarnar – <i>Okkara gitt</i> og <i>Soleiðis var tað</i> – beint undir hvørjari aðrari, so næmingarnir lætt kunnu samanbera tær.</p>
+</div>
+<h3>Áðrenn tit byrja</h3>
+<p>Til 1. part er gott at hava nakrar ymiskar steinar, sum næmingarnir kunnu halda á og kanna. Hava tit sjóneykur, kunnu næmingarnir brúka tær saman við steinunum.</p>
+<p>Til 2. part skulu næmingarnir finna ein stein, annaðhvørt heima ella nær skúlanum. Steinurin eigur at vera ein vanligur, leysur steinur, sum er rundur ella avrundaður – ikki eitt fýrkantað ella tilskorið grótpetti.</p>
+<p>Til 4. part skal gandadeiggið helst gerast frammanundan.</p>
+<h3>Um tit vitja Jarðfeingi</h3>
+<p>Um flokkurin fær høvi at vitja Jarðfeingi ella kanna veruligar kjarnuroyndir, kunnu tit leita eftir teimum somu eyðkennunum sum á skerminum. Tit kunnu til dømis:</p>
+<ul>
+  <li>finna eina kjarnuroynd við nógvum smáum holum</li>
+  <li>kanna grótið við einari veruligari sjóneyku</li>
+  <li>leita eftir ljósum krystallum og hvítum mineralæðrum</li>
+  <li>finna eitt reytt ella reyðligt lag og samanbera tað við gráa grótið</li>
+  <li>hyggja eftir, hvussu ymisk løg síggja út og kennast</li>
+</ul>
+<div class="ask"><b>Spyrjið til dømis:</b><span>»Hvat síggja tit?« · »Hvat er øðrvísi frá einum lagi til annað?« · »Hvat kunnu tit fáa at vita um fjallið við bara at hyggja at einari kjarnuroynd?«</span></div>
+
+  </div>
+  </div>
+</section>
+<section class="page" data-page="laerari-namsaetlan" hidden>
+  <div class="pagehead"><span class="eyebrow">Til læraran · Jarðfríða borar ein tunnil</span></div>
+  <div class="tpage">
+<nav class="subnav" aria-label="Til læraran">
+  <a href="#laerari" data-go="laerari">Til læraran</a>
+  <a href="#laerari-namsaetlan" data-go="laerari-namsaetlan">Skeiðið og námsætlanin</a>
+  <a href="#laerari-hjalp" data-go="laerari-hjalp">Soleiðis kanst tú hjálpa</a>
+  <a href="#laerari-eygleiding" data-go="laerari-eygleiding">Hvussu eygleiða næmingarnir?</a>
+  <a href="#laerari-svar" data-go="laerari-svar">Svar og fakorð</a>
+  <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a>
+</nav>
+  <div class="doc">
+<h2>Skeiðið og námsætlanin</h2>
+<p>Skeiðið byggir á námsætlanina í náttúru og tøkni frá 4. til 6. floksstig. Tað arbeiðir mest við tveimum kjarnuøkjum: Náttúruvísindaligur arbeiðs- og hugsanarháttur og Jørðin og lívið á jørðini.</p>
+<blockquote>»Kjarnaøkið náttúruvísindaligur arbeiðs- og hugsanarháttur snýr seg um at granska, eygleiða, kanna, gera støddfrøðiligar uppsetingar (modellera) úr gerandisdegnum, samskifta og seta í frásjón.«</blockquote>
+<h3>Faklig førleikamál eftir 6. floksstig</h3>
+<p>Fýra av førleikamálunum hóska serliga væl til skeiðið:</p>
+<div class="tablewrap">
+<table class="forloeb">
+  <thead><tr><th>Førleikamál</th><th>Soleiðis arbeiða næmingarnir við tí</th><th>Partur</th></tr></thead>
+  <tbody>
+    <tr><td>at undrast, savna upplýsingar, seta spurningar og gera hypotesur, greina úrslit og finna møgulig svar</td><td>Næmingarnir gita, hvussu fjallið sær út innaní, og tekna gitið. Síðan skera tey fjallið í helvt og kanna, um tey høvdu rætt.</td><td>3·4</td></tr>
+    <tr><td>at viðgera dátur, greina vitan, skyna á keldutilfari og grundgeva fyri úrslitum</td><td>Næmingarnir samanbera tríggjar kjarnuroyndir, binda løgini saman og grundgeva fyri, hvar tunnilin skal ganga.</td><td>3</td></tr>
+    <tr><td>at samanbera modell við eygleiðingar, at lýsa bæði ítøkilig og úrtøkilig fyribrigdi og at greiða frá, hví modell verða brúkt</td><td>Fjallið úr gandadeiggi er eitt modell. Næmingarnir samanbera gitið við tað, sum tey síggja, tá ið tey skera. Tey tosa um, hví jarðfrøðingar bora: Eitt veruligt fjall kann ikki skerast í helvt.</td><td>3·4</td></tr>
+    <tr><td>at kanna og lýsa jarðfrøði og ymisk landsløg</td><td>Næmingarnir kanna basalt og finna smá hol, krystall og royðugrót. Í søguni hjá Malla síggja tey, hvussu ísur og vatn slíta steinar.</td><td>1·2·3</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Í leiðbeiningini til námsætlanina stendur eisini:</p>
+<blockquote>»Næmingarnir kunnu kanna, hvørja ávirkan tær ymsu tíðirnar hava havt á føroyska landslagið, bæði á sjógvi og landi, og hvussu landslagið er bygt upp av fláum, lindum og innskotum.«</blockquote>
+<p>Fjallið hjá Jarðfríðu er bygt upp á sama hátt: av basaltfláum við royðugrót ímillum.</p>
+<h3>Støðisførleikar</h3>
+<ul>
+  <li><b>Skriving:</b> Í loggbókini skriva og tekna næmingarnir tað, tey eygleiða. Leiðbeiningin nevnir júst »at gera samandráttir av eygleiðingum« og »at skriva niðurstøður av gjørdum kanningum«.</li>
+  <li><b>Munnligt samskifti:</b> »Tosið saman« á skerminum og í loggbókini gevur næmingunum høvi at tosa saman í smærri bólkum og at grundgeva.</li>
+  <li><b>Kt-førleikar:</b> Næmingarnir arbeiða á síðuni og leggja eina mynd av sínum steini á Padlet-veggin.</li>
+</ul>
+<p class="note">Kelda: Nám. Náttúra og tøkni 4.–6. floksstig – Leiðbeining til lærarar. <a href="https://namsaetlanir.fo/nattura-og-tokni" target="_blank" rel="noopener">namsaetlanir.fo/nattura-og-tokni</a></p>
+
+  </div>
+  </div>
+</section>
+<section class="page" data-page="laerari-hjalp" hidden>
+  <div class="pagehead"><span class="eyebrow">Til læraran · Jarðfríða borar ein tunnil</span></div>
+  <div class="tpage">
+<nav class="subnav" aria-label="Til læraran">
+  <a href="#laerari" data-go="laerari">Til læraran</a>
+  <a href="#laerari-namsaetlan" data-go="laerari-namsaetlan">Skeiðið og námsætlanin</a>
+  <a href="#laerari-hjalp" data-go="laerari-hjalp">Soleiðis kanst tú hjálpa</a>
+  <a href="#laerari-eygleiding" data-go="laerari-eygleiding">Hvussu eygleiða næmingarnir?</a>
+  <a href="#laerari-svar" data-go="laerari-svar">Svar og fakorð</a>
+  <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a>
+</nav>
+  <div class="doc">
+<h2>Soleiðis kanst tú hjálpa</h2>
+<div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+  <p><span class="who">Jarðfríða</span>Tá ið eg kanni grót, skrivi og tekni eg altíð í loggbókina. Viðhvørt giti eg skeivt – so rætti eg tað. Soleiðis arbeiða jarðfrøðingar.</p></div>
+<p>Loggbókin er ikki ein roynd. Næmingarnir skriva og tekna á sín egna hátt, og her er einki svar skeivt. Tað týdningarmikla er, at tey kunnu siga, hví tey halda, sum tey gera.</p>
+<ul>
+  <li><b>Spyr, áðrenn tú greiðir frá.</b> Byrja við »Hvat sært tú?«, »Hvar sært tú tað?« og »Hvat annað?«.</li>
+  <li><b>Gev tíð.</b> Lat næmingarnar hyggja leingi, áðrenn tit tosa um tað.</li>
+  <li><b>Peika, meðan tú tosar.</b> Orð eru ikki altíð nóg mikið. Peika á grótið, so næmingarnir síggja, hvar tey skulu hyggja.</li>
+  <li><b>Væt grótið.</b> Litirnir síggjast betur, tá ið grótið er vátt.</li>
+  <li><b>Lat fakorðini bíða.</b> Lat næmingarnar fyrst brúka síni egnu orð. Síðan kunnu tit saman finna orðini, sum jarðfrøðingar brúka (sí <a href="#ordalisti" data-go="ordalisti">Orðalisti</a>).</li>
+  <li><b>Lat tey rætta – ikki strika.</b> Bið næmingarnar rætta tekningina við einum øðrum liti, tá ið tey hava skorið fjallið í helvt. So síggja tey sjálv, hvat tey høvdu rætt, og hvat tey ikki høvdu.</li>
+  <li><b>Tað er í lagi at velja ymiskt.</b> Tveir næmingar kunnu velja hvør sítt kort til sama stein. Lat tey grundgeva fyri valinum.</li>
+  <li><b>Hjálp minni og minni.</b> Í byrjanini vísir Jarðfríða, hvussu tað verður gjørt. Seinni gera næmingarnir tað sjálv.</li>
+</ul>
+<h3>Spyr til dømis</h3>
+<div class="tablewrap">
+<table class="forloeb">
+  <thead><tr><th>Partur</th><th>Spurningar</th></tr></thead>
+  <tbody>
+    <tr><td><b>1 · Kanna steinar</b></td><td>»Hvat sært tú nú, sum tú ikki sást uttan sjóneyku?« · »Er steinurin eins innaní og uttaná?« · »Hvat undrast tú á?«</td></tr>
+    <tr><td><b>2 · Mín steinur</b></td><td>»Hvar í søguni hjá Malla er tín steinur? Hví heldur tú tað?« · »Hvar hevur tann rundasti steinurin ligið?«</td></tr>
+    <tr><td><b>3 · Kjarnuroyndir og tunnil</b></td><td>»Liggur reyða lagið í somu hædd í øllum trimum kjarnuroyndunum?« · »Hvat í kjarnuroyndunum fekk teg at velja júst hetta staðið?«</td></tr>
+    <tr><td><b>4 · Tykkara egna fjall</b></td><td>»Hvat passaði á tekningini? Hvat kom óvart á tykkum?« · »Hví bora jarðfrøðingar, áðrenn teir gera ein tunnil?«</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
+  <p><span class="who">Malli</span>Tú kanst eisini spyrja meg! Eg havi hol og krystall – og eina langa søgu.</p></div>
+
+  </div>
+  </div>
+</section>
+<section class="page" data-page="laerari-eygleiding" hidden>
+  <div class="pagehead"><span class="eyebrow">Til læraran · Jarðfríða borar ein tunnil</span></div>
+  <div class="tpage">
+<nav class="subnav" aria-label="Til læraran">
+  <a href="#laerari" data-go="laerari">Til læraran</a>
+  <a href="#laerari-namsaetlan" data-go="laerari-namsaetlan">Skeiðið og námsætlanin</a>
+  <a href="#laerari-hjalp" data-go="laerari-hjalp">Soleiðis kanst tú hjálpa</a>
+  <a href="#laerari-eygleiding" data-go="laerari-eygleiding">Hvussu eygleiða næmingarnir?</a>
+  <a href="#laerari-svar" data-go="laerari-svar">Svar og fakorð</a>
+  <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a>
+</nav>
+  <div class="doc">
+<h2>Hvussu eygleiða næmingarnir?</h2>
+<p>Talvan kann hjálpa tær at síggja, hvar næmingarnir eru, meðan tey arbeiða. Brúka hana ikki til at geva karakter.</p>
+<div class="tablewrap">
+<table class="forloeb eyg">
+  <thead><tr><th></th><th>Hyggja sum í gerandisdegnum</th><th>Eru á veg</th><th>Hyggja sum ein jarðfrøðingur</th></tr></thead>
+  <tbody>
+    <tr><td>Leggja merki til</td><td>Sigur: »Hann er gráur og pentur.«</td><td>Sær smá hol og ljós korn.</td><td>Sigur frá holum, krystallum og kornum og samanber við kortini.</td></tr>
+    <tr><td>Vænta</td><td>Gitir uttan at grundgeva: »Hann er úr fjøruni.«</td><td>»Holini eru kanska eftir gass.«</td><td>Sigur, hvussu grótið kann vera vorðið til, út frá tí, sum sæst.</td></tr>
+    <tr><td>Skriva niður</td><td>Hyggur, men skrivar og teknar einki.</td><td>Skrivar og teknar, men ikki altíð so, at onnur skilja tað.</td><td>Skrivar og teknar so greitt, at onnur kunnu brúka loggbókina.</td></tr>
+    <tr><td>Halda fast</td><td>Hyggur stutt og fer víðari.</td><td>Kemur aftur til grótið og spyr.</td><td>Samanber fleiri kjarnuroyndir og heldur fast við spurningin.</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note">Talvan byggir á Eberbach, C. &amp; Crowley, K. (2009). From everyday to scientific observation. <i>Review of Educational Research</i>, 79(1), 39–68. Ráðini um at peika og væta grótið byggja á Goodwin, C. (1994). Professional vision. <i>American Anthropologist</i>, 96(3), 606–633.</p>
+
+  </div>
+  </div>
+</section>
+<section class="page" data-page="laerari-svar" hidden>
+  <div class="pagehead"><span class="eyebrow">Til læraran · Jarðfríða borar ein tunnil</span></div>
+  <div class="tpage">
+<nav class="subnav" aria-label="Til læraran">
+  <a href="#laerari" data-go="laerari">Til læraran</a>
+  <a href="#laerari-namsaetlan" data-go="laerari-namsaetlan">Skeiðið og námsætlanin</a>
+  <a href="#laerari-hjalp" data-go="laerari-hjalp">Soleiðis kanst tú hjálpa</a>
+  <a href="#laerari-eygleiding" data-go="laerari-eygleiding">Hvussu eygleiða næmingarnir?</a>
+  <a href="#laerari-svar" data-go="laerari-svar">Svar og fakorð</a>
+  <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a>
+</nav>
+  <div class="doc">
+<h2>Svar og fakorð</h2>
+<h3>Svar</h3>
+<p><b>Fjallið hjá Jarðfríðu (3. partur).</b> Reytt er í øllum trimum kjarnuroyndunum, men ikki í somu hædd. Við B1 liggur reyða lagið umleið 3,5 cm yvir borðinum, við B2 og B3 umleið 5 cm. Lagið hallar sostatt. Á skerminum fáa næmingarnir »Gott val!«, tá ið tunnilin gongur gjøgnum gráa ella svarta basaltið niðanfyri reyða lagið alla leiðina. Liggur tunnilin í reyða laginum ella heilt uppi í tindinum, fáa tey eitt ráð um at royna aðrastaðni.</p>
+<p><b>Sorteringsspælið (samanberingarkortini s. 3).</b> Ein møgulig røð frá kantutum til rundan er D – F – A – E – B – C. Aðrar røðir kunnu eisini vera góðar, um næmingarnir kunnu grundgeva fyri teimum.</p>
+<p><b>Søgan hjá Malla.</b> Steinar, sum ísurin hevur flutt, eru ofta bert lítið avrundaðir. Heilt rundir steinar hava ofta ligið leingi í á ella í fjøru.</p>
+<p><b>Kortini og eyðkennini.</b> Her er einki rætt svar. Svarið veldst um grótið, sum næmingarnir kanna. Bið tey grundgeva fyri valinum.</p>
+<h3>Fakorð, um næmingarnir spyrja</h3>
+<p><a class="btn" href="#ordalisti" data-go="ordalisti" style="text-decoration:none;display:inline-block">Orðalisti →</a></p>
+
+  </div>
+  </div>
+</section>
+<section class="page" data-page="laerari-tilfar" hidden>
+  <div class="pagehead"><span class="eyebrow">Til læraran · Jarðfríða borar ein tunnil</span></div>
+  <div class="tpage">
+<nav class="subnav" aria-label="Til læraran">
+  <a href="#laerari" data-go="laerari">Til læraran</a>
+  <a href="#laerari-namsaetlan" data-go="laerari-namsaetlan">Skeiðið og námsætlanin</a>
+  <a href="#laerari-hjalp" data-go="laerari-hjalp">Soleiðis kanst tú hjálpa</a>
+  <a href="#laerari-eygleiding" data-go="laerari-eygleiding">Hvussu eygleiða næmingarnir?</a>
+  <a href="#laerari-svar" data-go="laerari-svar">Svar og fakorð</a>
+  <a href="#laerari-tilfar" data-go="laerari-tilfar">Loggbók og kort</a>
+</nav>
+  <div class="doc">
+<h2>Loggbók og kort</h2>
+<div class="dls">
+<article class="dl"><img src="myndir/min-loggbok-forsida.jpg" alt="Forsíðan á Mín loggbók" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 8 síður</span><b>Mín loggbók</b><p>8 síður · ein til hvønn næming</p><a class="btn primary" data-pdf="min-loggbok.pdf" href="pdf/min-loggbok.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
+<article class="dl"><img src="myndir/samanberingarkort-forsida.jpg" alt="Forsíðan á Samanberingarkortunum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 4 síður</span><b>Samanberingarkort</b><p>Prenta tey í litum, eitt sett til hvønn bólk.</p><a class="btn primary" data-pdf="samanberingarkort.pdf" href="pdf/samanberingarkort.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
+<article class="dl"><img src="myndir/laerarvegleiding-forsida.jpg" alt="Forsíðan á Lærarvegleiðingini" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 7 síður</span><b>Lærarvegleiðing</b><p>Náttúra og tøkni · 6. flokkur – eisini 4.–5. flokkur</p><a class="btn primary" data-pdf="laerarvegleiding.pdf" href="pdf/laerarvegleiding.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
+
+</div>
+<h3>Samanberingarkortini</h3>
+<p>Kortini eru eitt íkast. Tey kunnu brúkast í 1. parti, tá ið næmingarnir kanna veruligar steinar, og í 2. parti, tá ið tey leggja steinar í røð frá kantutum til rundan. Kortini hjálpa næmingunum at samanbera og at finna orð fyri tí, tey síggja.</p>
+<h3>Padlet-veggurin</h3>
+<p>Í 2. parti kunnu næmingarnir leggja eina mynd av sínum steini á Padlet-veggin. Veggurin er longu settur inn í tilfarið, og allir flokkar brúka sama vegg. Lærarin skal tí ikki gera ein nýggjan vegg.</p>
+<p><b>Padlet-veggurin verður ruddaður av og á.</b></p>
+<p>Myndirnar verða góðkendar, áðrenn tær verða sjónligar á veggnum. Bið næmingarnar bert taka myndir av steininum – ikki av sær sjálvum ella øðrum – og bert skriva fornavn.</p>
+<p>Kanna frammanundan, um skúlin hevur loyvi at brúka Padlet saman við næmingum. Er veggurin ov lítil á skerminum, kann hann latast upp í nýggjum vindeyga við knøttinum undir veggnum.</p>
+<h3>Tykkara egna fjall</h3>
+<div class="uses-wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+  <div class="box">
+    <b>Gandadeiggj</b>
+    <p>Henda uppskriftin er til umleið fýra fjøll:</p>
+    <ul><li>4 dl hveitimjøl</li><li>2 dl fínt salt</li><li>2 dl vatn</li><li>1 matskeið olju</li></ul>
+    <p>Elt deiggið væl og být tað í fýra partar. Lita partarnar við matliti. Brúka reytt og grønt og tveir aðrar litir, til dømis svart og hvítt ella ólitað deiggj.</p>
+    <p>Ger helst deiggið dagin fyri og goym tað í lufttættum posa. Er deiggið ov klístrut, kann eitt sindur av mjøli eltast upp í tað. Tá festist deiggið heldur ikki so lætt inni í súgvirørunum, tá ið næmingarnir bora.</p>
+  </div>
+  <div class="box">
+    <b>Tilfar til 4. part</b>
+    <p>Til hvørt par skulu tit hava:</p>
+    <ul><li>gandadeiggj í fýra litum</li><li>trý vanlig súgvirør, sum næmingarnir klippa ella skera sundur</li><li>eina saks</li><li>ein plastknív</li><li>tríggjar tannstikkar merktir <b>B1, B2 og B3</b></li><li>bakipappír ella annað undirlag</li><li>pappír og litblýantar</li></ul>
+  </div>
+</div>
+<h3>Soleiðis gera tit fjøllini</h3>
+      <figure class="photo clayfig"><img src="myndir/fjall-gandadeiggj.jpg" alt="Eitt fjall úr gandadeiggi, skorið í helvt. Innaní sæst eitt grønt lag ovast og síðan løg í bláum, reyðum, gulum og hvítum." width="639" height="421" loading="lazy"><figcaption>Eitt fjall úr gandadeiggi, skorið í helvt</figcaption></figure>
+
+<p>Hvørt par byggir eitt fjall úr fleiri løgum av gandadeiggi.</p>
+<p>Bið næmingarnar ikki leggja øll løgini heilt vatnrætt. Eitt lag kann til dømis liggja eitt sindur skák, ella vera tjykkari øðrumegin enn hinumegin. Tá verða tær tríggjar kjarnuroyndirnar ymiskar, og næmingarnir noyðast at hugsa um, hvussu løgini kunnu halda fram millum boriholini.</p>
+<p>Tá ið fjøllini eru liðug, býta pørini um. Næmingarnir skulu sostatt kanna eitt fjall, sum tey ikki sjálv hava bygt.</p>
+<p>Tey bora tríggjar kjarnuroyndir við súgvirørunum og seta tannstikkarnar <b>B1, B2 og B3</b> við boriholini. Síðan hyggja tey at kjarnuroyndunum og tekna eina meting av, hvussu løgini liggja inni í fjallinum.</p>
+<p>At enda verður fjallið skorið í helvt. Tá kunnu næmingarnir samanbera sína meting við tað, sum veruliga var inni í fjallinum.</p>
+<div class="flow"><span>1 Gerið fjall</span><i>→</i><span>2 Býtið um</span><i>→</i><span>3 Bora</span><i>→</i><span>4 Gita og tekna</span><i>→</i><span>5 Sker í helvt</span><i>→</i><span>6 Samanber</span></div>
+<div class="box warn"><p><b>Bíðið við at skera!</b> Ansa eftir, at pørini hava teknað sítt gitt á síðu 8 í loggbókini, áðrenn tey skera fjallið í helvt. Endamálið er ikki at gita alt rætt, men at brúka tær upplýsingar, sum kjarnuroyndirnar geva, til at gera eina grundaða meting.</p></div>
+
+  </div>
+  </div>
+</section>
+<section class="page" id="p-um" data-page="um-tilfarid" hidden>
+  <div class="pagehead"><span class="eyebrow">Jarðfrøði við Jarðfríðu</span><h1>Um tilfarið</h1></div>
+  <div class="doc">
+    <h3 style="margin:0">Viðmerking um tilfarið</h3>
+    <p>Kjarnuroyndin og fjallið hjá Jarðfríðu eru einføld, uppspunnin dømi, sum eru gjørd til undirvísing. Arbeiðið hjá Jarðfeingi og føroysk jarðfrøði hava givið íblástur til tilfarið.</p>
+    <p>Áðrenn tilfarið verður tikið endaliga í nýtslu, eigur ein jarðfrøðingur at kanna tað jarðfrøðiliga innihaldið.</p>
+    <p class="meta">Prototypa · Tekstur og innihald skulu gjøgnumlesast og góðkennast av Jarðfeingi og Námi</p>
+    <h3>Myndir</h3>
+    <p>Myndir frá Hjalla: Karina Toftegaard. Irena, jarðfrøðingur hjá Jarðfeingi, er á myndunum.</p>
+  </div>
+</section>
 
 </div>
 
 <button class="malli-toy" id="malliToy" aria-label="Malli. Trýst fyri at lata hann hoppa."><svg aria-hidden="true"><use href="#malli"/></svg></button>
 <div class="malli-quip" id="malliQuip" role="status" hidden></div>
-
+<div class="malli-ask" id="malliAsk" hidden role="dialog" aria-label="Spyr Malla">
+  <button class="am-x" id="malliAskX" aria-label="Lat aftur">×</button>
+  <p class="am-q"><span class="who">Malli</span>Tú kanst eisini spyrja meg! Eg havi hol og krystall – og eina langa søgu.</p>
+  <div class="am-words" role="group" aria-label="Orð"></div>
+  <p class="am-a" aria-live="polite" hidden></p>
+</div>
 <script>
 (() => {
   // ---------- teigar ----------
-  const tabs = [...document.querySelectorAll('.phase')];
-  function showPhase(id){
-    tabs.forEach(t => {
-      const on = t.id === id;
-      t.setAttribute('aria-selected', on);
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  // ---------- síður (valmyndin) ----------
+  const pages = [...document.querySelectorAll('[data-page]')];
+  const PARTS = ['kanna-steinar','min-steinur','kjarnuroyndir','fjall'];
+  const phasesNav = document.getElementById('phasesNav');
+  function go(id, scroll){
+    if (!pages.some(p => p.dataset.page === id)) id = 'forsida';
+    pages.forEach(p => { p.hidden = p.dataset.page !== id; });
+    phasesNav.hidden = !PARTS.includes(id);
+    document.querySelectorAll('a[data-go]').forEach(a => {
+      const on = a.dataset.go === id || (a.dataset.group === 'laerari' && id.indexOf('laerari') === 0) || (a.dataset.group === 'tunnil' && PARTS.includes(id));
+      if (on && (a.closest('.topnav') || a.closest('.subnav') || a.classList.contains('phase'))) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
     });
+    const ab = document.getElementById('malliAsk'); if (ab) ab.hidden = true;
+    if (scroll !== false) window.scrollTo(0, 0);
+    window.dispatchEvent(new Event('scroll'));
   }
-  tabs.forEach(t => t.addEventListener('click', () => showPhase(t.id)));
+  const fromHash = () => { try { return decodeURIComponent(location.hash.slice(1)); } catch(e){ return ''; } };
+  addEventListener('hashchange', () => go(fromHash()));
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-go]'); if (!a) return;
+    e.preventDefault();
+    const id = a.dataset.go;
+    try { history.pushState(null, '', '#' + id); } catch(err){}
+    go(id);
+  });
+  addEventListener('popstate', () => go(fromHash()));
+  go(fromHash(), false);
+
+  // ---------- PDF-fílurnar ----------
+  // Legg PDF-fílurnar aðrastaðni (t.d. á snar.fo)? Broyt bert hesa linjuna, t.d. til 'https://snar.fo/.../'.
+  const PDF_BASE = 'pdf/';
+  document.querySelectorAll('a[data-pdf]').forEach(a => {
+    a.href = PDF_BASE + a.dataset.pdf + (a.dataset.pageNo ? '#page=' + a.dataset.pageNo : '');
+  });
+
+  // ---------- Spyr Malla: orðalistin ----------
+  const TERMS = [...document.querySelectorAll('#terms .term')].map(t => [t.querySelector('dt').textContent, t.querySelector('dd').textContent]);
+  document.querySelectorAll('.am-words').forEach(box => {
+    const ans = box.parentElement.querySelector('.am-a');
+    TERMS.forEach(([w, d]) => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = w; b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => {
+        box.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+        ans.innerHTML = ''; const h = document.createElement('b'); h.textContent = w; ans.append(h, d); ans.hidden = false;
+      });
+      box.appendChild(b);
+    });
+  });
+  const askBox = document.getElementById('malliAsk');
+  window.openMalliAsk = () => { askBox.hidden = false; };
+  document.getElementById('malliAskX').addEventListener('click', () => { askBox.hidden = true; });
+  addEventListener('keydown', e => { if (e.key === 'Escape') askBox.hidden = true; });
+
+  // ---------- sjóneyka á veruligu myndini ----------
+  document.querySelectorAll('.zoom').forEach(z => {
+    const img = z.querySelector('img'), l = z.querySelector('.zlens'), Z = 2.6, LR = 75;
+    const move = e => {
+      const b = z.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
+      l.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
+      l.style.left = x + 'px'; l.style.top = y + 'px'; l.style.opacity = 1;
+      l.style.backgroundSize = `${b.width * Z}px ${b.height * Z}px`;
+      l.style.backgroundPosition = `${-(x * Z - LR)}px ${-(y * Z - LR)}px`;
+      z.classList.add('used');
+    };
+    z.addEventListener('pointermove', move);
+    z.addEventListener('pointerdown', move);
+    z.addEventListener('pointerleave', () => { l.style.opacity = 0; });
+  });
 
   function rng(seed){ return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
   const NS = 'http://www.w3.org/2000/svg';
@@ -803,7 +1471,7 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
   (function malliToy(){
     const m = document.getElementById('malliToy'), q = document.getElementById('malliQuip');
     const W0 = 72, H0 = 66;
-    const quips = ['Ái! Ansa tær!','Eg rulli, tí eg eri rundur!','Vatnið rullaði mær í mong ár.','Kantutir steinar rulla ikki so væl!','Hoyyy!','Kasta meg aftur!','Eg eri basalt – eg toli nógv.','Svimbult…'];
+    const quips = ['Ái! Ansa tær!','Eg rulli, tí eg eri rundur!','Vatnið skumpaði og rullaði meg í mong ár.','Kantutir steinar rulla ikki so væl!','Hoyyy!','Kasta meg aftur!','Eg eri basalt – eg toli nógv.','Svimbul…'];
     let x, y, vx = 0, vy = 0, ang = 0, raf = 0, last = 0, drag = null, hist = [], qt;
     function bounds(){ return [innerWidth - W0, innerHeight - H0]; }
     function place(){
@@ -843,13 +1511,137 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
     m.addEventListener('pointerup', e => {
       if (!drag) return;
       const moved = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy); drag = null;
-      if (moved < 6 || reduce){ hop(); return; }
+      if (moved < 6 || reduce){ hop(); window.openMalliAsk && window.openMalliAsk(); return; }
       const a = hist[0], b = hist[hist.length - 1], d = Math.max(.016, (b[2] - a[2]) / 1000);
       vx = Math.max(-2600, Math.min(2600, (b[0] - a[0]) / d)); vy = Math.max(-2600, Math.min(2600, (b[1] - a[1]) / d));
       say(); start();
     });
-    m.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hop(); } });
+    m.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hop(); window.openMalliAsk && window.openMalliAsk(); } });
     addEventListener('resize', () => { if (x === undefined) return; const [W, H] = bounds(); x = Math.min(x, W); y = Math.min(y, H); place(); });
+  })();
+
+
+  // ---------- persónslýsingar: tín steinur og tú sjálv/ur ----------
+  (function psl(){
+    const $ = id => document.getElementById(id);
+    if (!$('stoneForm')) return;
+    const KEY = 'jardfrida-psl-v1';
+    const COLOURS = [['ljósagrátt','#A9AFB3'],['myrkagrátt','#6E747A'],['svart','#33383C'],['grønligt','#7D8B6A'],['brúnligt','#8A6A52'],['reyðligt','#A4533A']];
+    const SW = {
+      hat:  ['#C8553D','#2E5E6E','#5E7D35','#B7821F'],
+      hair: ['#5A3A2A','#2A2522','#B9874E','#D9C27A'],
+      skin: ['#F0C4A0','#D9A27C','#A86F4C','#6E4630']
+    };
+    const FEAT = { hol:'smá hol', fylt:'fylt hol', krystall:'ljós krystall', korn:'grøn korn', aedr:'hvítar æðrar' };
+    const NS = 'http://www.w3.org/2000/svg';
+    const mk = (tag, a, p) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); p && p.appendChild(e); return e; };
+    let uid = 0;
+
+    function swatch(box, name, list, labels){
+      list.forEach((c, i) => {
+        const l = document.createElement('label'); l.className = 'sw';
+        const inp = document.createElement('input'); inp.type = 'radio'; inp.name = name; inp.value = c; if (!i) inp.checked = true;
+        const s = document.createElement('span'); s.style.background = c;
+        if (labels){ s.title = labels[i]; const t = document.createElement('em'); t.textContent = labels[i]; l.append(inp, s, t); }
+        else { inp.setAttribute('aria-label', name + ' ' + (i + 1)); l.append(inp, s); }
+        box.appendChild(l);
+      });
+    }
+    swatch($('sColours'), 'sColour', COLOURS.map(c => c[1]), COLOURS.map(c => c[0]));
+    document.querySelectorAll('[data-sw]').forEach(b => swatch(b, 'm_' + b.dataset.sw, SW[b.dataset.sw]));
+
+    const val = n => (document.querySelector(`[name="${n}"]:checked`) || {}).value;
+    const vals = n => [...document.querySelectorAll(`[name="${n}"]:checked`)].map(x => x.value);
+
+    function drawStone(svg, st, face){
+      svg.innerHTML = ''; const id = 'cl' + (++uid);
+      const round = 'M-82 12 C-84 -20 -60 -56 -12 -62 C40 -66 82 -40 84 4 C86 44 46 66 0 66 C-48 66 -80 46 -82 12 Z';
+      const angle = 'M-80 20 L-66 -36 L-18 -62 L42 -54 L82 -10 L66 46 L6 66 L-50 58 Z';
+      const d = st.shape === 'kantutur' ? angle : round;
+      mk('ellipse', {cx:0, cy:78, rx:70, ry:7, fill:'#1F2428', opacity:.12}, svg);
+      const cp = mk('clipPath', {id}, mk('defs', {}, svg)); mk('path', {d}, cp);
+      mk('path', {d, fill: st.colour}, svg);
+      const g = mk('g', {'clip-path':`url(#${id})`}, svg);
+      mk('path', {d:'M-90 30 C-40 58 40 58 90 30 L90 90 L-90 90 Z', fill:'#000', opacity:.12}, g);
+      mk('path', {d:'M-58 -30 C-44 -50 -10 -58 18 -56', stroke:'#fff', 'stroke-width':8, fill:'none', opacity:.18, 'stroke-linecap':'round'}, g);
+      let s = 11; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+      const f = st.feat;
+      if (f.includes('aedr')) mk('path', {d:'M-70 -10 C-30 0 -10 -24 30 -14 C50 -8 70 -20 90 -16', stroke:'#F1F0E6', 'stroke-width':4, fill:'none'}, g);
+      if (f.includes('hol')) for (let i = 0; i < 14; i++) mk('ellipse', {cx:-60 + r()*120, cy:-40 + r()*90, rx:2.4 + r()*2.4, ry:1.8 + r()*1.6, fill:'#16191B', opacity:.8}, g);
+      if (f.includes('fylt')) for (let i = 0; i < 6; i++) mk('ellipse', {cx:-60 + r()*120, cy:-40 + r()*90, rx:4 + r()*2, ry:3 + r()*2, fill:'#F1F0E6', stroke:'#2A2E31', 'stroke-width':1}, g);
+      if (f.includes('krystall')) for (let i = 0; i < 12; i++){ const x = -64 + r()*128, y = -44 + r()*96; mk('rect', {x:x-4, y:y-1.2, width:9, height:2.6, fill:'#F4F2EA', transform:`rotate(${r()*180} ${x} ${y})`}, g); }
+      if (f.includes('korn')) for (let i = 0; i < 8; i++) mk('circle', {cx:-60 + r()*120, cy:-40 + r()*90, r:2.6, fill:'#7FA03A', stroke:'#3E5418', 'stroke-width':.8}, g);
+      mk('path', {d, fill:'none', stroke:'#1E2326', 'stroke-width':5, 'stroke-linejoin':'round'}, svg);
+      if (face){
+        [-24, 22].forEach(x => { mk('circle', {cx:x, cy:-2, r:11, fill:'#fff'}, svg); mk('circle', {cx:x + 2, cy:0, r:6, fill:'#1E2326'}, svg); });
+        mk('path', {d:'M-16 24 Q0 36 18 24', stroke:'#1E2326', 'stroke-width':4.5, fill:'none', 'stroke-linecap':'round'}, svg);
+      }
+    }
+    function drawMe(svg, m){
+      svg.innerHTML = '';
+      mk('ellipse', {cx:0, cy:72, rx:62, ry:6, fill:'#1F2428', opacity:.12}, svg);
+      mk('path', {d:'M-62 72 C-62 34 -36 18 0 18 C36 18 62 34 62 72 Z', fill:'#2E5E6E'}, svg);
+      mk('path', {d:'M-30 24 L-22 72 L-8 72 L-14 22 Z M30 24 L22 72 L8 72 L14 22 Z', fill:'#D8E61E'}, svg);
+      mk('path', {d:'M30 -50 C70 -48 84 -6 70 30 C64 44 54 50 46 52 C56 30 58 4 44 -20 Z', fill:m.hair}, svg);
+      mk('rect', {x:-12, y:0, width:24, height:24, fill:m.skin}, svg);
+      mk('circle', {cx:-52, cy:-22, r:10, fill:m.skin}, svg); mk('circle', {cx:52, cy:-22, r:10, fill:m.skin}, svg);
+      mk('circle', {cx:0, cy:-30, r:52, fill:m.skin}, svg);
+      mk('path', {d:'M-52 -36 C-48 -64 40 -70 52 -38 C38 -50 16 -54 -4 -48 C-22 -44 -40 -40 -52 -36 Z', fill:m.hair}, svg);
+      mk('path', {d:'M-56 -44 C-58 -104 58 -104 56 -44 Z', fill:m.hat}, svg);
+      mk('rect', {x:-60, y:-56, width:120, height:18, rx:9, fill:m.hat}, svg);
+      mk('rect', {x:-60, y:-56, width:120, height:18, rx:9, fill:'#000', opacity:.15}, svg);
+      mk('circle', {cx:0, cy:-98, r:13, fill:'#EFE7DA'}, svg);
+      [-19, 19].forEach(x => mk('circle', {cx:x, cy:-26, r:5, fill:'#1E2326'}, svg));
+      [-32, 32].forEach(x => mk('circle', {cx:x, cy:-10, r:8, fill:'#E89A86', opacity:.5}, svg));
+      mk('path', {d:'M-17 -4 Q0 10 19 -6', stroke:'#1E2326', 'stroke-width':4, fill:'none', 'stroke-linecap':'round'}, svg);
+      if (m.gear.includes('Sjóneyka')){
+        mk('line', {x1:58, y1:-6, x2:78, y2:24, stroke:'#1E2326', 'stroke-width':6, 'stroke-linecap':'round'}, svg);
+        mk('circle', {cx:50, cy:-18, r:15, fill:'#D6E8F0', stroke:'#1E2326', 'stroke-width':5}, svg);
+      }
+      if (m.gear.includes('Loggbók')) mk('rect', {x:-74, y:30, width:24, height:30, rx:2, fill:'#A4533A', stroke:'#6E2F1E', 'stroke-width':2, transform:'rotate(-12 -62 45)'}, svg);
+    }
+    function facts(dl, rows){
+      dl.innerHTML = '';
+      rows.filter(r => r[1]).forEach(([k, v]) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); dd.textContent = v; dl.append(dt, dd); });
+    }
+    function read(){
+      return {
+        stone: { name: $('sName').value.trim(), where: $('sWhere').value.trim(), shape: val('sShape'), colour: val('sColour'),
+                 feat: vals('sFeat'), story: $('sStory').value.trim() },
+        me: { name: $('mName').value.trim(), traits: vals('mTrait'), gear: vals('mGear'),
+              hat: val('m_hat'), hair: val('m_hair'), skin: val('m_skin') }
+      };
+    }
+    function render(){
+      const { stone: st, me: m } = read();
+      const cname = (COLOURS.find(c => c[1] === st.colour) || [''])[0];
+      drawStone($('stoneArt'), st, true);
+      $('cName').textContent = st.name || 'Steinurin hjá mær';
+      facts($('cFacts'), [['Hvar', st.where], ['Skap', st.shape === 'kantutur' ? 'Kantutur' : 'Rundur'], ['Litur', cname],
+                          ['Eyðkenni', st.feat.map(k => FEAT[k]).join(', ')]]);
+      $('cStory').hidden = !st.story; $('cStory').textContent = st.story ? '»' + st.story + '«' : '';
+      drawMe($('meArt'), m);
+      $('cmName').textContent = m.name || 'Navn';
+      const tr = $('cmTraits'); tr.innerHTML = '';
+      m.traits.forEach(t => { const s = document.createElement('span'); s.textContent = t; tr.appendChild(s); });
+      facts($('cmFacts'), [['Hevur við', m.gear.join(', ')]]);
+      $('cmFav').hidden = !st.name; $('cmFavName').textContent = st.name;
+      if (st.name) drawStone($('favArt'), st, true);
+      try { localStorage.setItem(KEY, JSON.stringify(read())); } catch(e){}
+    }
+    function restore(){
+      let d; try { d = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){}
+      if (!d) return;
+      const setR = (n, v) => { const x = document.querySelector(`[name="${n}"][value="${v}"]`); if (x) x.checked = true; };
+      const setC = (n, arr) => document.querySelectorAll(`[name="${n}"]`).forEach(x => { x.checked = (arr || []).includes(x.value); });
+      $('sName').value = d.stone.name || ''; $('sWhere').value = d.stone.where || ''; $('sStory').value = d.stone.story || '';
+      setR('sShape', d.stone.shape); setR('sColour', d.stone.colour); setC('sFeat', d.stone.feat);
+      $('mName').value = d.me.name || ''; setC('mTrait', d.me.traits); setC('mGear', d.me.gear);
+      setR('m_hat', d.me.hat); setR('m_hair', d.me.hair); setR('m_skin', d.me.skin);
+    }
+    restore();
+    ['stoneForm', 'meForm'].forEach(f => { $(f).addEventListener('input', render); $(f).addEventListener('change', render); $(f).addEventListener('submit', e => e.preventDefault()); });
+    render();
   })();
 
   // ---------- dýpdarmát: síðan sum ein borikjarni ----------
@@ -868,7 +1660,6 @@ details.teacher .ask{border-left:4px solid var(--sea);background:var(--tint-sea)
     build(); update();
     addEventListener('scroll', update, {passive:true});
     addEventListener('resize', () => { build(); update(); });
-    document.querySelectorAll('.phase').forEach(b => b.addEventListener('click', () => setTimeout(update, 0)));
   })();
 })();
 </script>
