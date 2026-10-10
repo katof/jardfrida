@@ -346,6 +346,14 @@ a.phase{text-decoration:none}
 .psl-fav span{font:600 .7rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
 .psl-fav b{display:block;font:700 1.1rem/1.2 var(--display);text-transform:none;letter-spacing:0;color:var(--ink)}
 @media (max-width:760px){.psl-card{position:static}}
+.task-link{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--surface);border:1.5px solid var(--ink);padding:10px 14px;margin-top:4px}
+.task-link:hover{background:var(--paper)}
+.task-link img{width:44px;height:auto;border:1px solid var(--line);aspect-ratio:auto}
+.task-link span{display:grid;gap:2px;font-family:var(--display);font-weight:700;font-size:1.1rem;line-height:1.15}
+.task-link small{font:600 .66rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
+.task-link em{font:400 .92rem/1.35 var(--body);font-style:normal;color:var(--ink-soft)}
+.task-link b{font-size:1.4rem}
+.pagehead .crumb{margin-bottom:2px}
 
 </style>
 </head>
@@ -481,10 +489,11 @@ a.phase{text-decoration:none}
   <h2>Jarðfríða og Malli</h2>
 </div>
 <div class="photos psl-figs">
-  <figure class="photo"><a href="myndir/personslysing-jardfrida.jpg" target="_blank" rel="noopener"><img class="full" src="myndir/personslysing-jardfrida.jpg" alt="Persónslýsing av Jarðfríðu: jarðfrøðingur hjá Jarðfeingi við sjóneyku, húgvu og vesti. Hon er forvitin, torir at ivast, samlar og skrivar alt niður." width="1600" height="1000" loading="lazy"></a><figcaption>Jarðfríða</figcaption></figure>
-  <figure class="photo"><a href="myndir/personslysing-malli.jpg" target="_blank" rel="noopener"><img class="full" src="myndir/personslysing-malli.jpg" alt="Persónslýsing av Malla: steinurin í lummanum hjá Jarðfríðu, og søgan um, hvussu hann gjørdist rundur." width="1600" height="1000" loading="lazy"></a><figcaption>Malli</figcaption></figure>
+  <figure class="photo"><a href="myndir/personslysing-jardfrida.jpg" target="_blank" rel="noopener"><img class="full" src="myndir/personslysing-jardfrida.jpg" alt="Persónslýsing av Jarðfríðu: jarðfrøðingur hjá Jarðfeingi við sjóneyku, húgvu og vesti. Hon er forvitin, torir at ivast, samlar og skrivar alt niður." width="1600" height="1000" loading="lazy"></a><figcaption>Jarðfríða</figcaption>
+    <a class="task-link" href="#psl-eg" data-go="psl-eg"><img src="myndir/personslysing-eg-forsida.jpg" alt="" width="44" height="62"><span><small>Uppgáva · PDF</small>Eg eri jarðfrøðingur<em>Ger eina persónslýsing av tær sjálvum.</em></span><b>→</b></a></figure>
+  <figure class="photo"><a href="myndir/personslysing-malli.jpg" target="_blank" rel="noopener"><img class="full" src="myndir/personslysing-malli.jpg" alt="Persónslýsing av Malla: steinurin í lummanum hjá Jarðfríðu, og søgan um, hvussu hann gjørdist rundur." width="1600" height="1000" loading="lazy"></a><figcaption>Malli</figcaption>
+    <a class="task-link" href="#psl-steinur" data-go="psl-steinur"><img src="myndir/personslysing-steinur-forsida.jpg" alt="" width="44" height="62"><span><small>Uppgáva · PDF</small>Mín yndissteinur<em>Ger eina persónslýsing av tínum yndissteini.</em></span><b>→</b></a></figure>
 </div>
-
 <div class="sechead">
   <span class="eyebrow">Hjá Jarðfeingi</span>
   <h2>Ein veruligur jarðfrøðingur</h2>
@@ -522,8 +531,6 @@ a.phase{text-decoration:none}
 <article class="dl"><img src="myndir/samanberingarkort-forsida.jpg" alt="Forsíðan á Samanberingarkortunum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 4 síður</span><b>Samanberingarkort</b><p>Prenta tey í litum, eitt sett til hvønn bólk.</p><a class="btn primary" data-pdf="samanberingarkort.pdf" href="pdf/samanberingarkort.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
 <article class="dl"><img src="myndir/laerarvegleiding-forsida.jpg" alt="Forsíðan á Lærarvegleiðingini" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 7 síður</span><b>Lærarvegleiðing</b><p>Náttúra og tøkni · 6. flokkur – eisini 4.–5. flokkur</p><a class="btn primary" data-pdf="laerarvegleiding.pdf" href="pdf/laerarvegleiding.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
 
-<article class="dl"><img src="myndir/personslysing-steinur-forsida.jpg" alt="Arbeiðsblaðið Persónslýsing av steininum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 1 síða</span><b>Persónslýsing av steininum</b><p>Mín yndissteinur</p><a class="btn primary" data-pdf="personslysing-steinur.pdf" href="pdf/personslysing-steinur.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
-<article class="dl"><img src="myndir/personslysing-eg-forsida.jpg" alt="Arbeiðsblaðið Persónslýsing av tær sjálvum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 1 síða</span><b>Persónslýsing av tær sjálvum</b><p>Eg eri jarðfrøðingur</p><a class="btn primary" data-pdf="personslysing-eg.pdf" href="pdf/personslysing-eg.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
 </div>
 </section>
 
@@ -629,92 +636,6 @@ a.phase{text-decoration:none}
         <figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-52 6 C-52 -26 -24 -38 4 -38 C34 -38 54 -22 52 6 C50 30 28 38 0 38 C-28 38 -52 30 -52 6 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"/></svg>Rundur</figure>
       </div>
       <div class="refs"><a class="logref" data-pdf="samanberingarkort.pdf" data-page-no="3" href="pdf/samanberingarkort.pdf#page=3" target="_blank" rel="noopener"><span>Samanberingarkort<small>s. 3 · Hvussu langt er steinurin komin?</small></span></a></div>
-    </article>
-
-    <article class="panel" id="pslStone">
-      <span class="tag stone">Mín steinur</span>
-      <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
-        <p><span class="who">Malli</span>»Eg havi eina persónslýsing. Ger nú eina av tínum yndissteini!«</p></div>
-      <h2>Persónslýsing av tínum steini</h2>
-      <p class="task">Vel tín yndisstein. Hygg væl at honum, og fyll út.</p>
-      <div class="psl">
-        <form class="psl-form" id="stoneForm" autocomplete="off">
-          <label>Hvat eitur steinurin?<input id="sName" maxlength="24" placeholder="t.d. Malli"></label>
-          <label>Hvar fanst tú hann?<input id="sWhere" maxlength="40" placeholder="t.d. í fjøruni"></label>
-          <fieldset><legend>Er hann rundur ella kantutur?</legend>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="sShape" value="rundur" checked><span>Rundur</span></label>
-              <label class="opt"><input type="radio" name="sShape" value="kantutur"><span>Kantutur</span></label>
-            </div>
-          </fieldset>
-          <fieldset><legend>Hvønn lit hevur hann?</legend>
-            <div class="opts swatches" id="sColours"></div>
-          </fieldset>
-          <fieldset><legend>Hvat sært tú við sjóneykuni?</legend>
-            <div class="opts">
-              <label class="opt"><input type="checkbox" name="sFeat" value="hol"><span>Smá hol</span></label>
-              <label class="opt"><input type="checkbox" name="sFeat" value="fylt"><span>Fylt hol</span></label>
-              <label class="opt"><input type="checkbox" name="sFeat" value="krystall"><span>Ljós krystall</span></label>
-              <label class="opt"><input type="checkbox" name="sFeat" value="korn"><span>Grøn korn</span></label>
-              <label class="opt"><input type="checkbox" name="sFeat" value="aedr"><span>Hvítar æðrar</span></label>
-            </div>
-          </fieldset>
-          <label>Søgan hjá honum<textarea id="sStory" rows="3" maxlength="240" placeholder="Hvaðani kom hann?"></textarea></label>
-        </form>
-        <div class="psl-card" aria-live="polite">
-          <span class="badge">Persónslýsing</span>
-          <svg class="psl-stone" id="stoneArt" viewBox="-100 -80 200 170" role="img" aria-label="Tín steinur"></svg>
-          <b class="psl-name" id="cName">Steinurin hjá mær</b>
-          <dl class="psl-facts" id="cFacts"></dl>
-          <p class="psl-story" id="cStory" hidden></p>
-        </div>
-      </div>
-      <div class="refs"><a class="logref" data-pdf="personslysing-steinur.pdf" href="pdf/personslysing-steinur.pdf" target="_blank" rel="noopener"><span>Persónslýsing av steininum<small>PDF · 1 síða</small></span></a></div>
-      <p class="note"><a href="myndir/personslysing-malli.jpg" target="_blank" rel="noopener">Sí persónslýsingina hjá Malla</a></p>
-    </article>
-
-    <article class="panel" id="pslMe">
-      <span class="tag stone">Jarðfrøðingur</span>
-      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
-        <p><span class="who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Ger eina persónslýsing av tær sjálvum.«</p></div>
-      <h2>Persónslýsing av tær sjálvum</h2>
-      <div class="psl">
-        <form class="psl-form" id="meForm" autocomplete="off">
-          <label>Fornavn<input id="mName" maxlength="20"></label>
-          <fieldset><legend>Hvussu ert tú sum jarðfrøðingur?</legend>
-            <div class="opts">
-              <label class="opt"><input type="checkbox" name="mTrait" value="Forvitin"><span>Forvitin</span></label>
-              <label class="opt"><input type="checkbox" name="mTrait" value="Torir at ivast"><span>Torir at ivast</span></label>
-              <label class="opt"><input type="checkbox" name="mTrait" value="Samlar"><span>Samlar</span></label>
-              <label class="opt"><input type="checkbox" name="mTrait" value="Skrivar alt niður"><span>Skrivar alt niður</span></label>
-            </div>
-          </fieldset>
-          <fieldset><legend>Hvat hevur tú við?</legend>
-            <div class="opts">
-              <label class="opt"><input type="checkbox" name="mGear" value="Sjóneyka"><span>Sjóneyka</span></label>
-              <label class="opt"><input type="checkbox" name="mGear" value="Loggbók"><span>Loggbók</span></label>
-              <label class="opt"><input type="checkbox" name="mGear" value="Vestur"><span>Vestur</span></label>
-              <label class="opt"><input type="checkbox" name="mGear" value="Regnjakki"><span>Regnjakki</span></label>
-              <label class="opt"><input type="checkbox" name="mGear" value="Gonguskógvar"><span>Gonguskógvar</span></label>
-            </div>
-          </fieldset>
-          <fieldset><legend>Húgva</legend><div class="opts swatches" data-sw="hat"></div></fieldset>
-          <fieldset><legend>Hár</legend><div class="opts swatches" data-sw="hair"></div></fieldset>
-          <fieldset><legend>Húð</legend><div class="opts swatches" data-sw="skin"></div></fieldset>
-        </form>
-        <div class="psl-card" aria-live="polite">
-          <span class="badge">Persónslýsing</span>
-          <svg class="psl-me" id="meArt" viewBox="-90 -112 180 190" role="img" aria-label="Tú sum jarðfrøðingur"></svg>
-          <b class="psl-name" id="cmName">Navn</b>
-          <span class="psl-sub">Jarðfrøðingur</span>
-          <div class="psl-traits" id="cmTraits"></div>
-          <dl class="psl-facts" id="cmFacts"></dl>
-          <div class="psl-fav" id="cmFav" hidden><svg viewBox="-100 -80 200 170" aria-hidden="true" id="favArt"></svg><span>Yndissteinur<b id="cmFavName"></b></span></div>
-        </div>
-      </div>
-      <p class="hint">Vís flokkinum persónslýsingarnar.</p>
-      <div class="refs"><a class="logref" data-pdf="personslysing-eg.pdf" href="pdf/personslysing-eg.pdf" target="_blank" rel="noopener"><span>Persónslýsing av tær sjálvum<small>PDF · 1 síða</small></span></a></div>
-      <p class="note"><a href="myndir/personslysing-jardfrida.jpg" target="_blank" rel="noopener">Sí persónslýsingina hjá Jarðfríðu</a></p>
     </article>
 
     <article class="panel">
@@ -1116,8 +1037,6 @@ a.phase{text-decoration:none}
 <article class="dl"><img src="myndir/samanberingarkort-forsida.jpg" alt="Forsíðan á Samanberingarkortunum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 4 síður</span><b>Samanberingarkort</b><p>Prenta tey í litum, eitt sett til hvønn bólk.</p><a class="btn primary" data-pdf="samanberingarkort.pdf" href="pdf/samanberingarkort.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
 <article class="dl"><img src="myndir/laerarvegleiding-forsida.jpg" alt="Forsíðan á Lærarvegleiðingini" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 7 síður</span><b>Lærarvegleiðing</b><p>Náttúra og tøkni · 6. flokkur – eisini 4.–5. flokkur</p><a class="btn primary" data-pdf="laerarvegleiding.pdf" href="pdf/laerarvegleiding.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
 
-<article class="dl"><img src="myndir/personslysing-steinur-forsida.jpg" alt="Arbeiðsblaðið Persónslýsing av steininum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 1 síða</span><b>Persónslýsing av steininum</b><p>Mín yndissteinur</p><a class="btn primary" data-pdf="personslysing-steinur.pdf" href="pdf/personslysing-steinur.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
-<article class="dl"><img src="myndir/personslysing-eg-forsida.jpg" alt="Arbeiðsblaðið Persónslýsing av tær sjálvum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 1 síða</span><b>Persónslýsing av tær sjálvum</b><p>Eg eri jarðfrøðingur</p><a class="btn primary" data-pdf="personslysing-eg.pdf" href="pdf/personslysing-eg.pdf" target="_blank" rel="noopener">Lat upp</a></div></article>
 </div>
 <h3>Samanberingarkortini</h3>
 <p>Kortini eru eitt íkast. Tey kunnu brúkast í 1. parti, tá ið næmingarnir kanna veruligar steinar, og í 2. parti, tá ið tey leggja steinar í røð frá kantutum til rundan. Kortini hjálpa næmingunum at samanbera og at finna orð fyri tí, tey síggja.</p>
@@ -1155,6 +1074,111 @@ a.phase{text-decoration:none}
   </div>
   </div>
 </section>
+<section class="page" data-page="psl-steinur" hidden>
+  <div class="pagehead"><a class="crumb" href="#forsida" data-go="forsida"><span>Forsíða</span>Persónslýsing</a><h1>Mín yndissteinur</h1></div>
+  <div class="stack">
+    <article class="panel" id="pslStone">
+      <span class="tag stone">Mín steinur</span>
+      <div class="say malli"><svg aria-hidden="true"><use href="#malli"/></svg>
+        <p><span class="who">Malli</span>»Eg havi eina persónslýsing. Ger nú eina av tínum yndissteini!«</p></div>
+      <h2>Persónslýsing av tínum steini</h2>
+      <p class="task">Vel tín yndisstein. Hygg væl at honum, og fyll út.</p>
+      <div class="psl">
+        <form class="psl-form" id="stoneForm" autocomplete="off">
+          <label>Hvat eitur steinurin?<input id="sName" maxlength="24" placeholder="t.d. Malli"></label>
+          <label>Hvar fanst tú hann?<input id="sWhere" maxlength="40" placeholder="t.d. í fjøruni"></label>
+          <fieldset><legend>Er hann rundur ella kantutur?</legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="sShape" value="rundur" checked><span>Rundur</span></label>
+              <label class="opt"><input type="radio" name="sShape" value="kantutur"><span>Kantutur</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Hvønn lit hevur hann?</legend>
+            <div class="opts swatches" id="sColours"></div>
+          </fieldset>
+          <fieldset><legend>Hvat sært tú við sjóneykuni?</legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="sFeat" value="hol"><span>Smá hol</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="fylt"><span>Fylt hol</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="krystall"><span>Ljós krystall</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="korn"><span>Grøn korn</span></label>
+              <label class="opt"><input type="checkbox" name="sFeat" value="aedr"><span>Hvítar æðrar</span></label>
+            </div>
+          </fieldset>
+          <label>Søgan hjá honum<textarea id="sStory" rows="3" maxlength="240" placeholder="Hvaðani kom hann?"></textarea></label>
+        </form>
+        <div class="psl-card" aria-live="polite">
+          <span class="badge">Persónslýsing</span>
+          <svg class="psl-stone" id="stoneArt" viewBox="-100 -80 200 170" role="img" aria-label="Tín steinur"></svg>
+          <b class="psl-name" id="cName">Steinurin hjá mær</b>
+          <dl class="psl-facts" id="cFacts"></dl>
+          <p class="psl-story" id="cStory" hidden></p>
+        </div>
+      </div>
+      <div class="refs"><a class="logref" data-pdf="personslysing-steinur.pdf" href="pdf/personslysing-steinur.pdf" target="_blank" rel="noopener"><span>Persónslýsing av steininum<small>PDF · 1 síða</small></span></a></div>
+      <p class="note"><a href="myndir/personslysing-malli.jpg" target="_blank" rel="noopener">Sí persónslýsingina hjá Malla</a></p>
+    </article>
+
+    <div class="dls"><article class="dl"><img src="myndir/personslysing-steinur-forsida.jpg" alt="Arbeiðsblaðið Persónslýsing av steininum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 1 síða</span><b>Persónslýsing av steininum</b><p>Mín yndissteinur</p><a class="btn primary" data-pdf="personslysing-steinur.pdf" href="pdf/personslysing-steinur.pdf" target="_blank" rel="noopener">Lat upp</a></div></article></div>
+    <div class="next"><a class="btn" href="#psl-eg" data-go="psl-eg">Eg eri jarðfrøðingur →</a></div>
+  </div>
+</section>
+<section class="page" data-page="psl-eg" hidden>
+  <div class="pagehead"><a class="crumb" href="#forsida" data-go="forsida"><span>Forsíða</span>Persónslýsing</a><h1>Eg eri jarðfrøðingur</h1></div>
+  <div class="stack">
+    <article class="panel" id="pslMe">
+      <span class="tag stone">Jarðfrøðingur</span>
+      <div class="say"><svg aria-hidden="true"><use href="#jf"/></svg>
+        <p><span class="who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Ger eina persónslýsing av tær sjálvum.«</p></div>
+      <h2>Persónslýsing av tær sjálvum</h2>
+      <div class="psl">
+        <form class="psl-form" id="meForm" autocomplete="off">
+          <label>Fornavn<input id="mName" maxlength="20"></label>
+          <fieldset><legend>Hvussu ert tú sum jarðfrøðingur?</legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="mTrait" value="Forvitin"><span>Forvitin</span></label>
+              <label class="opt"><input type="checkbox" name="mTrait" value="Torir at ivast"><span>Torir at ivast</span></label>
+              <label class="opt"><input type="checkbox" name="mTrait" value="Samlar"><span>Samlar</span></label>
+              <label class="opt"><input type="checkbox" name="mTrait" value="Skrivar alt niður"><span>Skrivar alt niður</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Hvat hevur tú við?</legend>
+            <div class="opts">
+              <label class="opt"><input type="checkbox" name="mGear" value="Sjóneyka"><span>Sjóneyka</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Loggbók"><span>Loggbók</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Vestur"><span>Vestur</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Regnjakki"><span>Regnjakki</span></label>
+              <label class="opt"><input type="checkbox" name="mGear" value="Gonguskógvar"><span>Gonguskógvar</span></label>
+            </div>
+          </fieldset>
+          <fieldset><legend>Húgva</legend><div class="opts swatches" data-sw="hat"></div></fieldset>
+          <fieldset><legend>Hár</legend>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="mHairStyle" value="stutt" checked><span>Stutt hár</span></label>
+              <label class="opt"><input type="radio" name="mHairStyle" value="langt"><span>Langt hár</span></label>
+            </div>
+            <div class="opts swatches" data-sw="hair"></div></fieldset>
+          <fieldset><legend>Húð</legend><div class="opts swatches" data-sw="skin"></div></fieldset>
+        </form>
+        <div class="psl-card" aria-live="polite">
+          <span class="badge">Persónslýsing</span>
+          <svg class="psl-me" id="meArt" viewBox="-90 -112 180 190" role="img" aria-label="Tú sum jarðfrøðingur"></svg>
+          <b class="psl-name" id="cmName">Navn</b>
+          <span class="psl-sub">Jarðfrøðingur</span>
+          <div class="psl-traits" id="cmTraits"></div>
+          <dl class="psl-facts" id="cmFacts"></dl>
+          <div class="psl-fav" id="cmFav" hidden><svg viewBox="-100 -80 200 170" aria-hidden="true" id="favArt"></svg><span>Yndissteinur<b id="cmFavName"></b></span></div>
+        </div>
+      </div>
+      <p class="hint">Vís flokkinum persónslýsingarnar.</p>
+      <div class="refs"><a class="logref" data-pdf="personslysing-eg.pdf" href="pdf/personslysing-eg.pdf" target="_blank" rel="noopener"><span>Persónslýsing av tær sjálvum<small>PDF · 1 síða</small></span></a></div>
+      <p class="note"><a href="myndir/personslysing-jardfrida.jpg" target="_blank" rel="noopener">Sí persónslýsingina hjá Jarðfríðu</a></p>
+    </article>
+
+    <div class="dls"><article class="dl"><img src="myndir/personslysing-eg-forsida.jpg" alt="Arbeiðsblaðið Persónslýsing av tær sjálvum" width="86" height="122" loading="lazy"><div><span class="meta">PDF · 1 síða</span><b>Persónslýsing av tær sjálvum</b><p>Eg eri jarðfrøðingur</p><a class="btn primary" data-pdf="personslysing-eg.pdf" href="pdf/personslysing-eg.pdf" target="_blank" rel="noopener">Lat upp</a></div></article></div>
+    <div class="next"><a class="btn" href="#psl-steinur" data-go="psl-steinur">Mín yndissteinur →</a></div>
+  </div>
+</section>
 <section class="page" id="p-um" data-page="um-tilfarid" hidden>
   <div class="pagehead"><span class="eyebrow">Jarðfrøði við Jarðfríðu</span><h1>Um tilfarið</h1></div>
   <div class="doc">
@@ -1189,7 +1213,7 @@ a.phase{text-decoration:none}
     pages.forEach(p => { p.hidden = p.dataset.page !== id; });
     phasesNav.hidden = !PARTS.includes(id);
     document.querySelectorAll('a[data-go]').forEach(a => {
-      const on = a.dataset.go === id || (a.dataset.group === 'laerari' && id.indexOf('laerari') === 0) || (a.dataset.group === 'tunnil' && PARTS.includes(id));
+      const on = a.dataset.go === id || (a.dataset.group === 'laerari' && id.indexOf('laerari') === 0) || (a.dataset.group === 'tunnil' && PARTS.includes(id)) || (a.dataset.go === 'forsida' && id.indexOf('psl-') === 0);
       if (on && (a.closest('.topnav') || a.closest('.subnav') || a.classList.contains('phase'))) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
@@ -1588,11 +1612,13 @@ a.phase{text-decoration:none}
       mk('ellipse', {cx:0, cy:72, rx:62, ry:6, fill:'#1F2428', opacity:.12}, svg);
       mk('path', {d:'M-62 72 C-62 34 -36 18 0 18 C36 18 62 34 62 72 Z', fill:'#2E5E6E'}, svg);
       mk('path', {d:'M-30 24 L-22 72 L-8 72 L-14 22 Z M30 24 L22 72 L8 72 L14 22 Z', fill:'#D8E61E'}, svg);
-      mk('path', {d:'M30 -50 C70 -48 84 -6 70 30 C64 44 54 50 46 52 C56 30 58 4 44 -20 Z', fill:m.hair}, svg);
+      if (m.style === 'langt') mk('path', {d:'M30 -50 C70 -48 84 -6 70 30 C64 44 54 50 46 52 C56 30 58 4 44 -20 Z', fill:m.hair}, svg);
       mk('rect', {x:-12, y:0, width:24, height:24, fill:m.skin}, svg);
       mk('circle', {cx:-52, cy:-22, r:10, fill:m.skin}, svg); mk('circle', {cx:52, cy:-22, r:10, fill:m.skin}, svg);
       mk('circle', {cx:0, cy:-30, r:52, fill:m.skin}, svg);
-      mk('path', {d:'M-52 -36 C-48 -64 40 -70 52 -38 C38 -50 16 -54 -4 -48 C-22 -44 -40 -40 -52 -36 Z', fill:m.hair}, svg);
+      if (m.style === 'langt') mk('path', {d:'M-52 -36 C-48 -64 40 -70 52 -38 C38 -50 16 -54 -4 -48 C-22 -44 -40 -40 -52 -36 Z', fill:m.hair}, svg);
+      else { mk('path', {d:'M-54 -30 C-56 -62 54 -66 54 -30 L46 -36 L40 -30 L32 -38 L22 -32 L12 -40 L2 -33 L-8 -40 L-18 -33 L-28 -39 L-38 -32 L-46 -38 Z', fill:m.hair}, svg);
+             [-1, 1].forEach(k => mk('path', {d:`M${k*50} -34 L${k*54} -12 L${k*46} -16 Z`, fill:m.hair}, svg)); }
       mk('path', {d:'M-56 -44 C-58 -104 58 -104 56 -44 Z', fill:m.hat}, svg);
       mk('rect', {x:-60, y:-56, width:120, height:18, rx:9, fill:m.hat}, svg);
       mk('rect', {x:-60, y:-56, width:120, height:18, rx:9, fill:'#000', opacity:.15}, svg);
@@ -1615,7 +1641,7 @@ a.phase{text-decoration:none}
         stone: { name: $('sName').value.trim(), where: $('sWhere').value.trim(), shape: val('sShape'), colour: val('sColour'),
                  feat: vals('sFeat'), story: $('sStory').value.trim() },
         me: { name: $('mName').value.trim(), traits: vals('mTrait'), gear: vals('mGear'),
-              hat: val('m_hat'), hair: val('m_hair'), skin: val('m_skin') }
+              hat: val('m_hat'), hair: val('m_hair'), skin: val('m_skin'), style: val('mHairStyle') }
       };
     }
     function render(){
@@ -1643,7 +1669,7 @@ a.phase{text-decoration:none}
       $('sName').value = d.stone.name || ''; $('sWhere').value = d.stone.where || ''; $('sStory').value = d.stone.story || '';
       setR('sShape', d.stone.shape); setR('sColour', d.stone.colour); setC('sFeat', d.stone.feat);
       $('mName').value = d.me.name || ''; setC('mTrait', d.me.traits); setC('mGear', d.me.gear);
-      setR('m_hat', d.me.hat); setR('m_hair', d.me.hair); setR('m_skin', d.me.skin);
+      setR('m_hat', d.me.hat); setR('mHairStyle', d.me.style); setR('m_hair', d.me.hair); setR('m_skin', d.me.skin);
     }
     restore();
     ['stoneForm', 'meForm'].forEach(f => { $(f).addEventListener('input', render); $(f).addEventListener('change', render); $(f).addEventListener('submit', e => e.preventDefault()); });
