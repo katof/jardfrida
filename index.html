@@ -500,8 +500,8 @@ a.phase{text-decoration:none}
 .is-gongd .sort-scale{display:flex;justify-content:space-between;font:600 .72rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);border-top:2px solid var(--line);padding-top:6px;margin-top:-4px}
 .is-gongd .stone{border-style:solid;border-color:var(--line);background:linear-gradient(#FBFAF6,#EFECE3)}
 .is-gongd .stone.on{border-color:var(--ink);background:#E6E2D6}
-.core-box.held .lens::after,.zoom .zlens::after{width:64px}
-.core-box.held .lens::after{right:-56px;bottom:-14px}
+.zoom .zlens::after{width:64px}
+@media (max-width:640px){.lens{width:84px;height:84px;border-width:4px}.lens::after{width:34px;height:9px;right:-30px;bottom:-6px}}
 .endrow{justify-content:center;margin-top:8px}
 .endbtn{font-size:1.05rem;padding:12px 22px}
 .endmsg{text-align:center;font-family:var(--display);font-weight:700;font-size:1.4rem;margin:6px auto 0;max-width:none}
@@ -2120,15 +2120,14 @@ a.phase{text-decoration:none}
   drawCore(base, false); drawCore(det, true);
 
   const box = document.getElementById('coreBox'), lens = document.getElementById('lens');
-  const R = 59, finds = new Set(), TOTAL = Object.keys(HOT).length;
-  const HOLD = 46; let ptype = 'mouse';
+  let R = 59; const finds = new Set(), TOTAL = Object.keys(HOT).length;
+  const showLens = p => { R = lens.offsetWidth / 2 - 5; lens.style.left = p.px+'px'; lens.style.top = p.py+'px'; lens.style.opacity = 1; det.style.clipPath = `circle(${R}px at ${p.px}px ${p.py}px)`; };
+  const HOLD = 0; let ptype = 'mouse';
   function toView(e){ const b = box.getBoundingClientRect(), o = ptype === 'mouse' ? 0 : HOLD; const px = e.clientX-b.left-o, py = e.clientY-b.top-o; return { px, py, vx:px/b.width*600, vy:py/b.height*150 }; }
-  box.addEventListener('pointerdown', e => { ptype = e.pointerType || 'mouse'; if (ptype !== 'mouse'){ try { box.setPointerCapture(e.pointerId); } catch(err){} box.classList.add('held'); } });
+  box.addEventListener('pointerdown', e => { ptype = e.pointerType || 'mouse'; if (ptype !== 'mouse'){ try { box.setPointerCapture(e.pointerId); } catch(err){} showLens(toView(e)); } });
   box.addEventListener('pointerup', () => box.classList.remove('held'));
   box.addEventListener('pointermove', e => {
-    ptype = e.pointerType || ptype; const p = toView(e);
-    lens.style.left = p.px+'px'; lens.style.top = p.py+'px'; lens.style.opacity = 1;
-    det.style.clipPath = `circle(${R}px at ${p.px}px ${p.py}px)`;
+    ptype = e.pointerType || ptype; showLens(toView(e));
   });
   box.addEventListener('pointerleave', e => { if (e.pointerType && e.pointerType !== 'mouse') return; lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
   const lensMsg = {
