@@ -2060,7 +2060,7 @@ a.phase{text-decoration:none}
 
   // ---------- sjóneyka á veruligu myndini ----------
   document.querySelectorAll('.zoom').forEach(z => {
-    const img = z.querySelector('img'), l = z.querySelector('.zlens'), Z = 2.6, LR = 75, HOLD = 70;
+    const img = z.querySelector('img'), l = z.querySelector('.zlens'), Z = 2.6, LR = 75, HOLD = 58;
     const move = e => {
       const o = (e.pointerType && e.pointerType !== 'mouse') ? HOLD : 0;
       const b = z.getBoundingClientRect(), x = e.clientX - b.left - o, y = e.clientY - b.top - o;
@@ -2121,7 +2121,7 @@ a.phase{text-decoration:none}
 
   const box = document.getElementById('coreBox'), lens = document.getElementById('lens');
   const R = 59, finds = new Set(), TOTAL = Object.keys(HOT).length;
-  const HOLD = 58; let ptype = 'mouse';
+  const HOLD = 46; let ptype = 'mouse';
   function toView(e){ const b = box.getBoundingClientRect(), o = ptype === 'mouse' ? 0 : HOLD; const px = e.clientX-b.left-o, py = e.clientY-b.top-o; return { px, py, vx:px/b.width*600, vy:py/b.height*150 }; }
   box.addEventListener('pointerdown', e => { ptype = e.pointerType || 'mouse'; if (ptype !== 'mouse'){ try { box.setPointerCapture(e.pointerId); } catch(err){} box.classList.add('held'); } });
   box.addEventListener('pointerup', () => box.classList.remove('held'));
@@ -2130,7 +2130,7 @@ a.phase{text-decoration:none}
     lens.style.left = p.px+'px'; lens.style.top = p.py+'px'; lens.style.opacity = 1;
     det.style.clipPath = `circle(${R}px at ${p.px}px ${p.py}px)`;
   });
-  box.addEventListener('pointerleave', () => { lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
+  box.addEventListener('pointerleave', e => { if (e.pointerType && e.pointerType !== 'mouse') return; lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
   const lensMsg = {
     hol:'Væl sæð! Hetta eru <b>poknur (smá hol)</b>. Tær eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru poknurnar eftir í grótinum.',
     fylt:'Flott! Hetta eru <b>fyltar poknur</b>. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í poknunum. Basalt við nógvum fyltum poknum verður kallað mandlugrót.',
@@ -2139,8 +2139,7 @@ a.phase{text-decoration:none}
     olivin:'Hvussu fanst tú tey? Tey <b>grønu kornini</b> kunnu vera olivin. Olivin kann síggjast sum grøn krystall í basaltinum.',
     farve:'Rætt! <b>Reyðligi liturin</b> kann benda á veðrað grót ella royðugrót. Men reytt tilfar er ikki altíð royðugrót.'
   };
-  box.addEventListener('click', e => {
-    const p = toView(e);
+  function pick(p){
     let best = null, bd = 1e9;
     for (const [k,[hx,hy]] of Object.entries(HOT)){ const d = Math.hypot(p.vx-hx, (p.vy-hy)*1.4); if (d < bd){ bd = d; best = k; } }
     const fb = document.getElementById('lensFeedback');
@@ -2149,7 +2148,9 @@ a.phase{text-decoration:none}
       fb.hidden = false;
       fb.innerHTML = lensMsg[best] + (finds.size === TOTAL ? '<br><b>Tú fanst øll seks eyðkennini! 🎉</b>' : ` <span style="color:var(--ink-soft)">(${finds.size} av ${TOTAL})</span>`);
     }
-  });
+  }
+  box.addEventListener('click', e => { if (ptype === 'mouse') pick(toView(e)); });
+  box.addEventListener('pointerup', e => { if (e.pointerType && e.pointerType !== 'mouse') pick(toView(e)); });
 
   // ---------- 3: talgilda fjallið ----------
   const COLS = { 'grønt':'#5F7A5B', 'grátt':'#7A8086', 'svart':'#2E3236', 'reytt':'#A4533A' };
