@@ -23,16 +23,6 @@
 #jf-malli-widget .jf-close:focus-visible, #jf-malli-widget .jf-search:focus-visible, #jf-malli-widget .jf-clear:focus-visible, #jf-malli-widget .jf-word:focus-visible, #jf-malli-widget .jf-gloss-footer a:focus-visible { outline:3px solid #1B5FA8; outline-offset:2px; }
 @media(prefers-reduced-motion:reduce) { #jf-malli-widget .jf-rock { transition:none!important; animation:none!important; } }
 
-.jf .jf-royn { display:grid; gap:8px; margin-top:4px; max-width:400px; }
-.jf .jf-royn-hint { font-size:.92rem; color:var(--ink-soft); }
-.jf .jf-royn-hint b { color:var(--ink); }
-.jf .jf-royn-box { position:relative; overflow:hidden; background:#E8E4DC; border:1px solid var(--line); border-radius:2px; touch-action:none; cursor:none; user-select:none; }
-.jf .jf-royn-box svg { display:block; width:100%; height:auto; }
-.jf .jf-royn-detail { position:absolute; inset:0; clip-path:circle(0 at 50% 50%); }
-.jf .jf-royn-lens { position:absolute; width:92px; height:92px; border-radius:50%; border:5px solid var(--ink); box-shadow:0 0 0 2px #fff inset; pointer-events:none; transform:translate(-50%,-50%); opacity:0; transition:opacity .15s; }
-.jf .jf-royn-lens::after { content:""; position:absolute; width:38px; height:10px; right:-34px; bottom:-6px; background:var(--ink); border-radius:3px; transform:rotate(45deg); }
-.jf .jf-royn-svar { font-size:.95rem; line-height:1.45; padding:8px 12px; border-left:4px solid var(--sea); background:var(--tint-sea,#E3EEF1); color:var(--ink); }
-.jf .jf-royn-svar.jf-royn-alt { border-left-color:var(--olivine); background:var(--tint-olive,#E8EFDD); }
 </style>
 </head>
 <body class="jf-sida">
@@ -105,7 +95,7 @@
               – ella kanna, hvaðani Malli kom. Hvar vilja tit byrja?
             </p><p>
               Malli, steinurin í lummanum hjá mær, er eisini við.
-            </p><div class="jf-royn" id="jfRoyn"><p class="jf-royn-hint"><b>Royn sjálv:</b> Flyt sjóneykuna yvir steinin. Trýst, tá ið tú sært okkurt.</p><div class="jf-royn-box" id="roynBox" aria-label="Ein steinur, sum tú kanst kanna við sjóneykuni"><svg id="roynBase" viewBox="0 0 360 150" aria-hidden="true"></svg><svg id="roynDetail" class="jf-royn-detail" viewBox="0 0 360 150" aria-hidden="true"></svg><div class="jf-royn-lens" id="roynLens"></div></div><p class="jf-royn-svar" id="roynSvar" aria-live="polite" hidden></p></div></div><!-- Jarðfríða – teknað við SVG --><svg class="jf-figure" viewBox="0 0 320 630" role="img" aria-label="Jarðfríða við sjóneyku og trygdarvesti"><ellipse cx="150" cy="612" rx="96" ry="13" fill="#D5D9D2"></ellipse><!-- Bein og skógvar --><rect x="110" y="440" width="34" height="140" rx="10" fill="#3A4045"></rect><rect x="158" y="440" width="34" height="140" rx="10" fill="#3A4045"></rect><path d="M98 572 Q98 556 116 556 L146 556 L146 600 L98 600 Z" fill="#6B4A32"></path><path d="M154 556 L186 556 Q204 556 204 572 L204 600 L154 600 Z" fill="#6B4A32"></path><rect x="96" y="594" width="52" height="8" rx="3" fill="#3A2A1E"></rect><rect x="152" y="594" width="54" height="8" rx="3" fill="#3A2A1E"></rect><!-- Kroppur --><path d="M92 270 C66 300 60 360 70 410" stroke="#2F5562" stroke-width="30" fill="none" stroke-linecap="round"></path><path d="M88 262 C96 240 204 240 212 262 L224 462 C190 476 110 476 76 462 Z" fill="#2F5562"></path><path d="M90 300 C120 306 180 306 210 300 M88 340 C120 346 180 346 212 340 M86 380 C120 386 180 386 214 380 M84 420 C120 426 180 426 216 420" stroke="#264652" stroke-width="3" fill="none"></path><!-- Trygdarvestur --><path d="M118 238 L182 238 L176 268 L124 268 Z" fill="#EFE7DA"></path><path d="M122 252 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6" stroke="#A4533A" stroke-width="3" fill="none"></path><path d="M100 262 L140 270 L136 466 C120 466 106 462 96 458 Z" fill="#D6EE1E"></path><path d="M200 262 L160 270 L164 466 C180 466 194 462 204 458 Z" fill="#D6EE1E"></path><!-- Malli í lummanum --><path d="M165 434 C163 425 171 417 181 418 C191 418 198 426 196 434 Z" fill="#7E858B" stroke="#1E2326" stroke-width="1.6"></path><circle cx="176" cy="427" r="2.6" fill="#fff"></circle><circle cx="186" cy="427" r="2.6" fill="#fff"></circle><circle cx="176.6" cy="427.4" r="1.5" fill="#1E2326"></circle><circle cx="186.6" cy="427.4" r="1.5" fill="#1E2326"></circle><rect x="164" y="432" width="34" height="22" rx="4" fill="#BBD218"></rect><!-- Loggbók --><g transform="rotate(-10 70 418)"><rect x="40" y="392" width="44" height="56" rx="4" fill="#A4533A"></rect><rect x="44" y="396" width="6" height="48" fill="#8E4430"></rect><rect x="56" y="404" width="22" height="4" rx="2" fill="#F3D9C9"></rect></g><circle cx="74" cy="414" r="13" fill="#F0C4A0"></circle><!-- Armur við sjóneyku --><path d="M208 272 C236 262 248 230 246 196" stroke="#2F5562" stroke-width="30" fill="none" stroke-linecap="round"></path><line x1="252" y1="168" x2="270" y2="120" stroke="#1E2326" stroke-width="10" stroke-linecap="round"></line><circle cx="246" cy="186" r="15" fill="#F0C4A0"></circle><circle cx="276" cy="96" r="28" fill="#CFE6F2" fill-opacity=".8" stroke="#1E2326" stroke-width="8"></circle><path d="M260 86 A18 18 0 0 1 272 76" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"></path><!-- Høvur --><rect x="138" y="196" width="24" height="44" fill="#E2AE88"></rect><g transform="translate(150 150)"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"></path><circle cx="-60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="0" cy="0" r="62" fill="#F0C4A0"></circle><path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"></path><path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"></path><!-- Húgva --><path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"></path><path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"></path><rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"></rect><path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6" stroke="#EFE7DA" stroke-width="3" fill="none"></path><circle cx="0" cy="-82" r="17" fill="#EFE7DA"></circle><!-- Andlit --><circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="-22" cy="8" r="5.5" fill="#1E2326"></circle><circle cx="22" cy="8" r="5.5" fill="#1E2326"></circle><path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></g></svg></section><!-- ░░ INNIHALD BYRJAR ░░ --><!-- GONGDIR --><section id="gongdir"><div class="jf-sechead"><span class="jf-eyebrow">Gongdir</span><h2>Vel eina gongd</h2></div><!-- GONGD 1 --><a class="jf-coursecard" href="/jardfrida/gongdir/tunnil"><div class="jf-cc-text"><span class="jf-eyebrow">
+            </p></div><!-- Jarðfríða – teknað við SVG --><svg class="jf-figure" viewBox="0 0 320 630" role="img" aria-label="Jarðfríða við sjóneyku og trygdarvesti"><ellipse cx="150" cy="612" rx="96" ry="13" fill="#D5D9D2"></ellipse><!-- Bein og skógvar --><rect x="110" y="440" width="34" height="140" rx="10" fill="#3A4045"></rect><rect x="158" y="440" width="34" height="140" rx="10" fill="#3A4045"></rect><path d="M98 572 Q98 556 116 556 L146 556 L146 600 L98 600 Z" fill="#6B4A32"></path><path d="M154 556 L186 556 Q204 556 204 572 L204 600 L154 600 Z" fill="#6B4A32"></path><rect x="96" y="594" width="52" height="8" rx="3" fill="#3A2A1E"></rect><rect x="152" y="594" width="54" height="8" rx="3" fill="#3A2A1E"></rect><!-- Kroppur --><path d="M92 270 C66 300 60 360 70 410" stroke="#2F5562" stroke-width="30" fill="none" stroke-linecap="round"></path><path d="M88 262 C96 240 204 240 212 262 L224 462 C190 476 110 476 76 462 Z" fill="#2F5562"></path><path d="M90 300 C120 306 180 306 210 300 M88 340 C120 346 180 346 212 340 M86 380 C120 386 180 386 214 380 M84 420 C120 426 180 426 216 420" stroke="#264652" stroke-width="3" fill="none"></path><!-- Trygdarvestur --><path d="M118 238 L182 238 L176 268 L124 268 Z" fill="#EFE7DA"></path><path d="M122 252 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6" stroke="#A4533A" stroke-width="3" fill="none"></path><path d="M100 262 L140 270 L136 466 C120 466 106 462 96 458 Z" fill="#D6EE1E"></path><path d="M200 262 L160 270 L164 466 C180 466 194 462 204 458 Z" fill="#D6EE1E"></path><!-- Malli í lummanum --><path d="M165 434 C163 425 171 417 181 418 C191 418 198 426 196 434 Z" fill="#7E858B" stroke="#1E2326" stroke-width="1.6"></path><circle cx="176" cy="427" r="2.6" fill="#fff"></circle><circle cx="186" cy="427" r="2.6" fill="#fff"></circle><circle cx="176.6" cy="427.4" r="1.5" fill="#1E2326"></circle><circle cx="186.6" cy="427.4" r="1.5" fill="#1E2326"></circle><rect x="164" y="432" width="34" height="22" rx="4" fill="#BBD218"></rect><!-- Loggbók --><g transform="rotate(-10 70 418)"><rect x="40" y="392" width="44" height="56" rx="4" fill="#A4533A"></rect><rect x="44" y="396" width="6" height="48" fill="#8E4430"></rect><rect x="56" y="404" width="22" height="4" rx="2" fill="#F3D9C9"></rect></g><circle cx="74" cy="414" r="13" fill="#F0C4A0"></circle><!-- Armur við sjóneyku --><path d="M208 272 C236 262 248 230 246 196" stroke="#2F5562" stroke-width="30" fill="none" stroke-linecap="round"></path><line x1="252" y1="168" x2="270" y2="120" stroke="#1E2326" stroke-width="10" stroke-linecap="round"></line><circle cx="246" cy="186" r="15" fill="#F0C4A0"></circle><circle cx="276" cy="96" r="28" fill="#CFE6F2" fill-opacity=".8" stroke="#1E2326" stroke-width="8"></circle><path d="M260 86 A18 18 0 0 1 272 76" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"></path><!-- Høvur --><rect x="138" y="196" width="24" height="44" fill="#E2AE88"></rect><g transform="translate(150 150)"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"></path><circle cx="-60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="0" cy="0" r="62" fill="#F0C4A0"></circle><path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"></path><path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"></path><!-- Húgva --><path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"></path><path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"></path><rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"></rect><path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6" stroke="#EFE7DA" stroke-width="3" fill="none"></path><circle cx="0" cy="-82" r="17" fill="#EFE7DA"></circle><!-- Andlit --><circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="-22" cy="8" r="5.5" fill="#1E2326"></circle><circle cx="22" cy="8" r="5.5" fill="#1E2326"></circle><path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></g></svg></section><!-- ░░ INNIHALD BYRJAR ░░ --><!-- GONGDIR --><section id="gongdir"><div class="jf-sechead"><span class="jf-eyebrow">Gongdir</span><h2>Vel eina gongd</h2></div><!-- GONGD 1 --><a class="jf-coursecard" href="/jardfrida/gongdir/tunnil"><div class="jf-cc-text"><span class="jf-eyebrow">
                 Gongd · 6. flokkur – eisini 4.–5. flokkur
               </span><b>Jarðfríða kannar fjallið fyri ein tunnil</b><p>
                 Í skeiðinum læra næmingarnir at eygleiða grót,
@@ -154,70 +144,7 @@
             Jarðfrøðiligt innihald: Jarðfeingi
             · Myndir: Karina Toftegaard
             · Útgivið av Námi
-          </p></footer></div></div><script>
-(function () {
-  var box = document.getElementById('roynBox'), base = document.getElementById('roynBase'),
-      det = document.getElementById('roynDetail'), lens = document.getElementById('roynLens'),
-      svar = document.getElementById('roynSvar');
-  if (!box) return;
-  var NS = 'http://www.w3.org/2000/svg';
-  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
-  function rng(seed) { return function () { return (seed = (seed * 16807) % 2147483647) / 2147483647; }; }
-  var STEIN = 'M38 86 C30 60 52 30 92 22 C130 14 190 10 240 20 C292 30 332 52 334 84 C336 112 300 136 246 140 C190 144 120 142 74 128 C52 121 42 104 38 86 Z';
-  var HOT = { hol:[96,72], aedr:[188,70], olivin:[262,60], farve:[300,104] };
-  var ORD = {
-    hol:'<b>Poknur</b> – smá hol eftir gassbløðrum í grótbræðingini.',
-    aedr:'<b>Ein hvít mineralæðr</b> – ein riva, sum seinni er fylt við mineralum.',
-    olivin:'<b>Grøn korn</b> – tað kann vera olivin.',
-    farve:'<b>Reyðligur litur</b> – kann benda á veðrað grót ella royðugrót.'
-  };
-  function teikna(svg, detail) {
-    var defs = el('defs', {}, svg);
-    var cp = el('clipPath', { id: detail ? 'roynCd' : 'roynCb' }, defs);
-    el('path', { d: STEIN }, cp);
-    var g = el('linearGradient', { id: detail ? 'roynGd' : 'roynGb', x1:0, y1:0, x2:0, y2:1 }, defs);
-    el('stop', { offset:0, 'stop-color':'#6B7278' }, g); el('stop', { offset:1, 'stop-color':'#3A4045' }, g);
-    el('path', { d: STEIN, fill: 'url(#' + (detail ? 'roynGd' : 'roynGb') + ')', stroke:'#1E2326', 'stroke-width':3, 'stroke-linejoin':'round' }, svg);
-    var gg = el('g', { 'clip-path': 'url(#' + (detail ? 'roynCd' : 'roynCb') + ')' }, svg);
-    var r = rng(detail ? 42 : 7);
-    if (!detail) {
-      for (var i = 0; i < 90; i++) el('circle', { cx: 40 + r() * 290, cy: 20 + r() * 115, r: .9, fill:'#8C9398', opacity:.5 }, gg);
-      return;
-    }
-    for (var j = 0; j < 420; j++) el('circle', { cx: 40 + r() * 290, cy: 20 + r() * 115, r: .6 + r() * .8, fill: r() > .5 ? '#262A2E' : '#7D858B' }, gg);
-    for (var a = 0; a < 16; a++) { var x = HOT.hol[0] + (r() - .5) * 56, y = HOT.hol[1] + (r() - .5) * 44, rr = 2 + r() * 3.5;
-      el('ellipse', { cx:x, cy:y, rx: rr * 1.3, ry: rr, fill:'#16191B', stroke:'#A9B1B6', 'stroke-width':.8 }, gg); }
-    el('path', { d:'M172 28 l10 26 l-6 20 l12 44 l-4 18', stroke:'#EDEFE8', 'stroke-width':3.5, fill:'none', 'stroke-linejoin':'round' }, gg);
-    for (var b = 0; b < 12; b++) { var ox = HOT.olivin[0] + (r() - .5) * 50, oy = HOT.olivin[1] + (r() - .5) * 36, orr = 2.2 + r() * 2.2;
-      el('circle', { cx:ox, cy:oy, r:orr, fill:'#7FA03A', stroke:'#3E5418', 'stroke-width':.8 }, gg);
-      el('circle', { cx: ox - orr * .35, cy: oy - orr * .35, r: orr * .35, fill:'#E4F2B0', opacity:.9 }, gg); }
-    for (var c = 0; c < 12; c++) { var fx = HOT.farve[0] - 30 + r() * 60, fy = HOT.farve[1] - 22 + r() * 40;
-      el('path', { d:'M' + fx + ' ' + fy + ' q' + (8 + r() * 10) + ' ' + (-4 + r() * 8) + ' ' + (16 + r() * 14) + ' ' + (r() * 6), stroke:'#D98A5E', 'stroke-width':1.6, fill:'none', opacity:.9 }, gg); }
-  }
-  teikna(base, false); teikna(det, true);
-
-  var R = 46, funnin = {}, tal = 0, ALT = Object.keys(HOT).length;
-  function p(e) { var b = box.getBoundingClientRect(); return { px: e.clientX - b.left, py: e.clientY - b.top, vx: (e.clientX - b.left) / b.width * 360, vy: (e.clientY - b.top) / b.height * 150 }; }
-  box.addEventListener('pointermove', function (e) {
-    var q = p(e); lens.style.left = q.px + 'px'; lens.style.top = q.py + 'px'; lens.style.opacity = 1;
-    det.style.clipPath = 'circle(' + R + 'px at ' + q.px + 'px ' + q.py + 'px)';
-  });
-  box.addEventListener('pointerleave', function () { lens.style.opacity = 0; det.style.clipPath = 'circle(0 at 50% 50%)'; });
-  box.addEventListener('pointerdown', function (e) {
-    var q = p(e), best = null, bd = 1e9;
-    for (var k in HOT) { var d = Math.hypot(q.vx - HOT[k][0], (q.vy - HOT[k][1]) * 1.3); if (d < bd) { bd = d; best = k; } }
-    svar.hidden = false; svar.classList.remove('jf-royn-alt');
-    if (best && bd < 44) {
-      if (!funnin[best]) { funnin[best] = 1; tal++; }
-      if (tal === ALT) { svar.classList.add('jf-royn-alt'); svar.innerHTML = ORD[best] + ' <b>Tú fanst øll fýra!</b> Tú hyggur longu eins og ein jarðfrøðingur – vel eina gongd niðanfyri.'; }
-      else svar.innerHTML = ORD[best] + ' <span style="color:var(--ink-soft)">(' + tal + ' av ' + ALT + ')</span>';
-    } else {
-      svar.innerHTML = 'Bara basalt her. Hygg gjøllari – tað eru fýra eyðkenni at finna.';
-    }
-  });
-})();
-</script>
-<script src="/jardfrida/jf.js"></script></div></div></div><div id="c235976" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-extra-large frame-space-after-extra-large "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
+          </p></footer></div></div><script src="/jardfrida/jf.js"></script></div></div></div><div id="c235976" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-extra-large frame-space-after-extra-large "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
   JARÐFRØÐI VIÐ JARÐFRÍÐU · MALLI
   ──────────────────────────────────────────────────────────────
   Sjálvstøðugur blokkur. Hann hevur sín egna stíl og sítt egna
