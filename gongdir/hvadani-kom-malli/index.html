@@ -1,0 +1,2934 @@
+<!doctype html>
+<html lang="fo">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hvaðani kom Malli? · Jarðfríða</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+html,body{margin:0;padding:0;background:#F4F1E8}
+body.jf-sida{min-height:100vh}
+body.jf-sida .jf.jf-fyrsti{margin-top:0}
+</style>
+</head>
+<body class="jf-sida">
+<div id="page-content" class="bp-page-content main-section"><div id="c235995" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-small frame-space-after-none "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
+  JARÐFRØÐI VIÐ JARÐFRÍÐU · PROTOTYPU-LINJAN
+  ──────────────────────────────────────────────────────────────
+  FYRSTI blokkurin á hvørjari síðu.
+
+  Tá ið Jarðfeingi og Nám hava góðkent tekstin, strikar tú bert
+  hetta eina HTML-elementið – tá er linjan burtur av síðuni.
+  Botnurin skal ikki rørast.
+
+  Linjan er fixed: hon fyllir alla breiddina á síðuni og verður
+  standandi ovast, eisini tá ið tú rullar niður.
+
+  Tómi teigurin undir henni (jf-proto-rum) heldur plássið, so
+  linjan ikki fjalir tað, sum kemur undir. Hædd og skrift verða
+  sett við --jf-proto-haedd í stílinum (í jf-footer.html).
+
+  Skal linjan heldur rulla burtur saman við síðuni, so tak
+  position:fixed úr .jf-proto og strika jf-proto-rum.
+--><div class="jf jf-fyrsti"><!-- PROTOTYPA --><div class="jf-proto"><strong>Prototypa til meting</strong><span class="jf-proto-more">
+      · Innihald og dømi eru fyribils
+      · Jarðfeingi og Nám skulu góðkenna tekstin
+    </span></div><div class="jf-proto-rum" aria-hidden="true"></div></div></div></div></div><div class="jf"><style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+.jf {
+  --paper:#F4F1E8;
+  --surface:#FFFFFF;
+  --line:#D9D3C4;
+  --ink:#1F2428;
+  --ink-soft:#585F65;
+  --basalt:#6E747A;
+  --tuff:#A4533A;
+  --olivine:#5E7D35;
+  --ochre:#B7821F;
+  --sea:#2A6A80;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",monospace;
+
+  /* Justér denne, hvis TYPO3 giver luft over prototypelinjen */
+  --jf-top-gap:24px;
+
+  padding:0 16px;
+  background:var(--paper);
+  color:var(--ink);
+  font:17px/1.6 var(--body);
+  position:relative;
+  width:100%;
+}
+
+.jf,
+.jf * {
+  box-sizing:border-box;
+}
+
+/* [hidden] má vinna yvir display:grid/flex á klassunum niðanfyri.
+   Uttan hesa reglu stóðu »Sker fjallið í helvt«-økið, afturboðanir og
+   aðrir fjaldir teigar altíð opnir. */
+.jf [hidden] {
+  display:none !important;
+}
+
+/* Fyrsti blokkurin á síðuni dregur seg upp undir TYPO3-rúmdina */
+.jf-fyrsti {
+  margin-top:calc(-1 * var(--jf-top-gap));
+}
+
+/* Seinasti blokkurin á síðuni gevur rúmd niðanundir */
+.jf-seinasti {
+  padding-bottom:48px;
+}
+
+.jf a {
+  color:inherit;
+}
+
+.jf a:focus-visible {
+  outline:3px solid #1B5FA8;
+  outline-offset:3px;
+}
+
+.jf .jf-wrap {
+  max-width:900px;
+  margin:0 auto;
+}
+
+.jf h1,
+.jf h2 {
+  font-family:var(--display);
+  font-weight:700;
+  letter-spacing:-.005em;
+  line-height:1.08;
+  margin:0;
+  color:var(--ink);
+}
+
+.jf h1 {
+  font-size:clamp(2.1rem,6vw,3.3rem);
+}
+
+.jf h2 {
+  font-size:1.55rem;
+}
+
+.jf p {
+  margin:0;
+  max-width:66ch;
+  color:var(--ink);
+}
+
+/* PROTOTYPA – HELT OPPE VED KANTEN */
+
+.jf .jf-proto {
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:50;
+  background:var(--ink);
+  color:var(--paper);
+  font:400 .78rem/1.4 var(--mono);
+  padding:7px 16px;
+  text-align:center;
+}
+
+/* Heldur plássið í flogi, so linjan ikki fjalir innihaldið */
+.jf .jf-proto-rum {
+  height:var(--jf-proto-haedd,32px);
+}
+
+.jf .jf-proto strong {
+  color:inherit;
+  font-weight:600;
+}
+
+/* HØVUÐSVALMYND */
+
+.jf .jf-topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px 20px;
+  flex-wrap:wrap;
+  padding:14px 0 10px;
+  border-bottom:1px solid var(--line);
+}
+
+.jf .jf-brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font:700 1.15rem/1.1 var(--display);
+}
+
+.jf .jf-brand svg {
+  width:36px;
+  height:36px;
+  flex:none;
+}
+
+.jf .jf-brand small {
+  display:block;
+  font:600 .66rem/1.2 var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+.jf .jf-nav {
+  display:flex;
+  gap:2px 18px;
+  flex-wrap:wrap;
+}
+
+.jf .jf-nav a {
+  text-decoration:none;
+  font-weight:700;
+  font-size:.98rem;
+  color:var(--ink-soft);
+  padding:6px 0 4px;
+  border-bottom:3px solid transparent;
+}
+
+.jf .jf-nav a:hover {
+  color:var(--ink);
+}
+
+.jf .jf-nav a[aria-current="page"] {
+  color:var(--ink);
+  border-bottom-color:var(--sea);
+}
+/* ────────────────────────────────────────────────────────────
+   TYPO3 – SAMI LJÓSGULI LITUR Á ALLARI SÍDUNI
+
+   Scriptið niðast setur klassan jf-sida á <body>. Tí verða ongar
+   hvítar randir kring innihaldið, og liturin røkkur út til
+   skermkantin og heilt niður undir síðuna. Einki síðutal krevst,
+   og somu reglur virka á øllum Jarðfríðu-síðunum.
+
+   Hvítu kortini og leitifeltini verða ikki broytt.
+   ──────────────────────────────────────────────────────────── */
+
+body.jf-sida,
+body.jf-sida .body-bg,
+body.jf-sida #page-content,
+body.jf-sida #page-content > .container,
+body.jf-sida #page-content .row,
+body.jf-sida #page-content .content-wrapper,
+body.jf-sida #page-content .section,
+body.jf-sida #page-content .frame,
+body.jf-sida #page-content .frame-container,
+body.jf-sida #page-content .frame-inner {
+  background-color:#F4F1E8 !important;
+}
+
+/* Henda MÁ standa fyri seg sjálva. Kennir ein gamal kagi ikki
+   :has(), so dettur bert henda eina reglan burtur – ikki listin
+   omanfyri, sum er sjálv loysnin. */
+html:has(body.jf-sida) {
+  background-color:#F4F1E8 !important;
+}
+
+/* TYPO3 kann eisini leggja eina bakgrundsmynd aftan fyri síðuna. */
+body.jf-sida .snar-background {
+  background:#F4F1E8 !important;
+  background-image:none !important;
+}
+
+/* Ongin hvítur botnkantur undir HTML-blokkinum. */
+body.jf-sida #page-content .frame-type-html {
+  margin-bottom:0;
+  padding-bottom:0;
+}
+/* HERO – HÆDDARLINJUR */
+
+.jf .jf-hero {
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:end;
+  margin:26px 0 0;
+  padding:28px 28px 0;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+}
+
+.jf .jf-contours {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.jf .jf-hero-text {
+  position:relative;
+  display:grid;
+  gap:12px;
+  padding-bottom:28px;
+}
+
+.jf .jf-figure {
+  position:relative;
+  width:170px;
+  height:auto;
+  display:block;
+  margin-bottom:-6px;
+}
+
+.jf .jf-hero p {
+  font-size:1.1rem;
+}
+
+.jf .jf-eyebrow {
+  font:600 .72rem/1.2 var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--sea);
+}
+
+.jf .jf-maplabel {
+  position:absolute;
+  right:12px;
+  top:10px;
+  font:600 .68rem/1.2 var(--mono);
+  color:var(--ink-soft);
+  letter-spacing:.06em;
+  text-align:right;
+}
+
+.jf .jf-psst {
+  font:600 .82rem/1.3 var(--mono);
+  color:var(--ink);
+  justify-self:start;
+  border-bottom:2px solid var(--ochre);
+  padding-bottom:2px;
+}
+
+/* GONGDIR */
+
+.jf .jf-sechead {
+  display:grid;
+  gap:8px;
+  margin:40px 0 16px;
+}
+
+/* Lærarablokkurin er eitt hvítt ark eins og kortini – so endar síðan
+   ikki í berum pappírsliti. Grái kanturin skilir hann frá gongdunum. */
+.jf .jf-laerarark {
+  margin:34px 0 0;
+  padding:22px 26px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-left:5px solid var(--basalt);
+}
+
+.jf .jf-laerarark .jf-sechead {
+  margin:0;
+  max-width:64ch;
+}
+
+.jf .jf-laerarark h2 {
+  font-size:1.5rem;
+}
+
+.jf .jf-coursecard {
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:18px 28px;
+  align-items:center;
+  position:relative;
+  padding:22px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  text-decoration:none;
+  color:var(--ink);
+}
+
+.jf .jf-coursecard:hover {
+  background:#FBFAF6;
+}
+
+.jf .jf-coursecard::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:6px;
+  background:linear-gradient(
+    to bottom,
+    #5F7A5B 0 8%,
+    #7A8086 8% 40%,
+    #A4533A 40% 47%,
+    #7A8086 47% 76%,
+    #2E3236 76% 100%
+  );
+}
+
+.jf .jf-coursecard.ice::before {
+  background:linear-gradient(
+    to bottom,
+    #BFDCE6 0 30%,
+    #2A6A80 30% 42%,
+    #7A8086 42% 100%
+  );
+}
+
+.jf .jf-cc-text {
+  display:grid;
+  gap:8px;
+  padding-left:8px;
+}
+
+.jf .jf-cc-text b {
+  font:700 1.7rem/1.1 var(--display);
+}
+
+.jf .jf-cc-text .meta {
+  font:600 .76rem/1.3 var(--mono);
+  color:var(--ink-soft);
+}
+
+.jf .jf-cc-parts {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:6px;
+}
+
+.jf .jf-cc-parts li {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+
+.jf .jf-cc-parts .n {
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  flex:none;
+  font:600 .78rem/1 var(--mono);
+  color:#fff;
+  background:var(--sw);
+}
+
+.jf .jf-btn {
+  display:inline-block;
+  background:var(--ink);
+  color:#fff;
+  border:1.5px solid var(--ink);
+  padding:9px 16px;
+  border-radius:2px;
+  font:700 1rem/1.5 var(--body);
+}
+
+.jf .jf-cc-go {
+  grid-column:1/-1;
+  justify-self:start;
+  margin-left:8px;
+}
+
+.jf .jf-coursecard:hover .jf-btn {
+  background:#3A4147;
+}
+
+/* MYNDIR FRÁ JARÐFEINGI */
+
+.jf .jf-photos {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  align-items:start;
+}
+
+.jf .jf-photo {
+  margin:0;
+  display:grid;
+  gap:8px;
+  min-width:0;
+}
+
+.jf .jf-photo img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border:1px solid var(--line);
+  background:var(--line);
+}
+
+.jf .jf-photo figcaption {
+  font-size:.95rem;
+  line-height:1.4;
+}
+
+.jf .jf-where {
+  display:block;
+  font:600 .66rem/1.2 var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--sea);
+  margin-bottom:3px;
+}
+
+/* FOOTARI */
+
+.jf .jf-footer {
+  margin-top:56px;
+  border-top:3px solid var(--ink);
+  padding:28px 0 8px;
+  display:grid;
+  gap:22px;
+  font-size:.96rem;
+}
+
+.jf .jf-footer-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+
+.jf .jf-footer-col {
+  display:grid;
+  gap:6px;
+  align-content:start;
+}
+
+.jf .jf-footer-col b {
+  font:600 .68rem/1.2 var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+.jf .jf-footer-col a {
+  font-weight:700;
+  text-decoration:none;
+}
+
+.jf .jf-footer-col a:hover {
+  text-decoration:underline;
+}
+
+.jf .jf-footer-note {
+  border-top:1px solid var(--line);
+  padding-top:14px;
+  font:.74rem/1.5 var(--mono);
+  color:var(--ink-soft);
+  max-width:none;
+}
+
+/* BORIKJARNI – PROGRESSIÓN VIÐ SCROLL */
+
+/* Sjónligt á stórum skermum */
+
+.jf .jf-borehole {
+  position:fixed;
+  left:18px;
+  top:64px;
+  bottom:24px;
+  width:46px;
+  z-index:40;
+  pointer-events:none;
+  display:none;
+}
+
+.jf .jf-bore-tube {
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:18px;
+  border:1.5px solid var(--ink);
+  border-radius:9px;
+  background:var(--surface);
+  overflow:hidden;
+}
+
+.jf .jf-bore-fill {
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:0;
+  background:linear-gradient(
+    to bottom,
+    #5F7A5B 0 4%,
+    #7A8086 4% 34%,
+    #A4533A 34% 40%,
+    #7A8086 40% 74%,
+    #2E3236 74% 100%
+  );
+  background-size:100% var(--jf-bore-height,600px);
+  background-repeat:no-repeat;
+  transition:height .12s linear;
+}
+
+.jf .jf-bore-ticks {
+  position:absolute;
+  left:24px;
+  top:0;
+  bottom:0;
+  font:600 .66rem/1 var(--mono);
+  color:var(--ink-soft);
+}
+
+.jf .jf-bore-ticks span {
+  position:absolute;
+  left:0;
+  transform:translateY(-50%);
+  white-space:nowrap;
+}
+
+.jf .jf-bore-ticks span::before {
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:1.5px;
+  background:var(--ink-soft);
+  margin-right:4px;
+  vertical-align:middle;
+}
+
+@media(min-width:1080px) {
+  .jf .jf-borehole {
+    display:block;
+  }
+}
+
+/* Smal progressiónslinja á minni skermum */
+
+.jf .jf-depthbar {
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  z-index:60;
+  height:5px;
+  background:var(--line);
+  z-index:39;
+}
+
+.jf .jf-depthbar i {
+  display:block;
+  width:0;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    #5F7A5B,
+    #7A8086 30%,
+    #A4533A 36%,
+    #7A8086 42%,
+    #2E3236
+  );
+}
+
+@media(min-width:1080px) {
+  .jf .jf-depthbar {
+    display:none;
+  }
+}
+
+/* TELEFONIR */
+
+@media(max-width:640px) {
+  .jf {
+    --jf-proto-haedd:30px;
+  }
+
+  .jf .jf-proto {
+    font-size:.72rem;
+  }
+
+  .jf .jf-proto-more {
+    display:none;
+  }
+
+  .jf .jf-topbar {
+    gap:8px;
+    padding:12px 0 8px;
+  }
+
+  .jf .jf-nav {
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    scrollbar-width:none;
+    width:calc(100% + 32px);
+    margin:0 -16px;
+    padding:0 16px;
+    gap:16px;
+  }
+
+  .jf .jf-nav::-webkit-scrollbar {
+    display:none;
+  }
+
+  .jf .jf-nav a {
+    white-space:nowrap;
+    font-size:.95rem;
+  }
+
+  .jf .jf-hero {
+    display:block;
+    padding:20px 16px 18px;
+  }
+
+  .jf .jf-hero-text {
+    padding-bottom:0;
+    gap:10px;
+  }
+
+  .jf .jf-hero .jf-eyebrow,
+  .jf .jf-hero h1 {
+    padding-right:64px;
+  }
+
+  .jf .jf-hero h1 {
+    font-size:2rem;
+  }
+
+  .jf .jf-hero p {
+    font-size:1.02rem;
+  }
+
+  .jf .jf-figure {
+    position:absolute;
+    right:10px;
+    top:16px;
+    width:62px;
+    margin:0;
+  }
+
+  .jf .jf-maplabel {
+    display:none;
+  }
+
+  .jf .jf-contours {
+    opacity:.45;
+  }
+
+  .jf .jf-coursecard {
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:18px 16px 18px 20px;
+  }
+
+  .jf .jf-cc-text b {
+    font-size:1.45rem;
+  }
+
+  .jf .jf-cc-go {
+    margin-left:0;
+  }
+
+  .jf .jf-photos {
+    grid-template-columns:1fr;
+  }
+}
+
+@media(min-width:641px) and (max-width:820px) {
+  .jf .jf-figure {
+    width:118px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .jf .jf-bore-fill {
+    transition:none;
+  }
+}
+
+/* ═══ GONGDIN · TUNNILIN ═══════════════════════════════════════
+   Hesar reglur eru bert á hesi síðuni. Alt er bundið at .jf, og
+   øll klassaheitini byrja við jf-, so bootstrap í TYPO3 (.btn,
+   .row, .panel) ikki blandar seg.
+   ───────────────────────────────────────────────────────────── */
+
+.jf {
+  --sea-tint:#E7EFF2;
+  --ochre-tint:#F7EEDA;
+  --tuff-tint:#F4E5E0;
+  --olivine-tint:#EAEFE1;
+}
+
+/* ── Partabjálkin ───────────────────────────────────────────── */
+
+.jf .jf-phases {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin:26px 0 24px;
+}
+
+.jf .jf-phase {
+  appearance:none;
+  cursor:pointer;
+  position:relative;
+  display:grid;
+  gap:4px;
+  justify-items:center;
+  text-align:center;
+  padding:13px 8px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-top:4px solid var(--sw,var(--basalt));
+  border-radius:0;
+  color:var(--ink);
+  font:700 1.02rem/1.15 var(--display);
+}
+
+.jf .jf-phase .jf-n {
+  font:600 .8rem/1 var(--mono);
+  color:var(--ink-soft);
+}
+
+.jf .jf-phase:hover {
+  background:#FBFAF6;
+}
+
+.jf .jf-phase[aria-selected="true"] {
+  background:var(--ink);
+  border-color:var(--ink);
+  border-top-color:var(--sw,var(--basalt));
+  color:#fff;
+}
+
+.jf .jf-phase[aria-selected="true"] .jf-n {
+  color:var(--sw,var(--basalt));
+}
+
+@media(max-width:560px) {
+  .jf .jf-phases {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+/* ── Ørkini ─────────────────────────────────────────────────── */
+
+.jf .jf-stack {
+  display:grid;
+  gap:18px;
+}
+
+.jf .jf-panel {
+  display:grid;
+  gap:15px;
+  padding:24px 26px;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.jf .jf-panel h2 {
+  font-size:1.45rem;
+}
+
+/* Merki: hvar uppgávan hendir */
+.jf .jf-tag {
+  justify-self:start;
+  font:600 .7rem/1 var(--mono);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  padding:6px 10px;
+  color:var(--sea);
+  background:var(--sea-tint);
+}
+
+.jf .jf-tag.jf-stone {
+  color:var(--ink);
+  background:#E8E6E0;
+}
+
+.jf .jf-tag.jf-clay {
+  color:var(--tuff);
+  background:var(--tuff-tint);
+}
+
+/* ── Tá ið Jarðfríða ella Malli sigur okkurt ────────────────── */
+
+.jf .jf-say {
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:10px 14px 10px 10px;
+  background:var(--ochre-tint);
+  border-left:4px solid var(--ochre);
+}
+
+.jf .jf-say svg {
+  width:54px;
+  height:54px;
+}
+
+.jf .jf-say p {
+  font-size:1.05rem;
+}
+
+.jf .jf-say .jf-who {
+  display:block;
+  font:600 .7rem/1.2 var(--mono);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--ochre);
+  margin-bottom:2px;
+}
+
+.jf .jf-say.jf-malli {
+  background:var(--sea-tint);
+  border-left-color:var(--sea);
+}
+
+.jf .jf-say.jf-malli .jf-who {
+  color:var(--sea);
+}
+
+/* ── Uppgávutekstur, stig og ráð ────────────────────────────── */
+
+.jf .jf-task {
+  font-weight:700;
+  font-size:1.05rem;
+}
+
+.jf .jf-steps {
+  margin:0;
+  padding-left:26px;
+  display:grid;
+  gap:8px;
+  font-size:1.04rem;
+}
+
+.jf .jf-steps li::marker {
+  font-family:var(--mono);
+  font-weight:600;
+  color:var(--sea);
+}
+
+.jf .jf-hint {
+  padding:11px 14px;
+  background:var(--paper);
+  border-left:4px solid var(--basalt);
+}
+
+/* ── Knappar og rað ─────────────────────────────────────────── */
+
+.jf .jf-row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.jf .jf-btn2 {
+  appearance:none;
+  cursor:pointer;
+  padding:9px 18px;
+  background:var(--surface);
+  border:1.5px solid var(--ink);
+  border-radius:2px;
+  color:var(--ink);
+  font:700 1.03rem/1.5 var(--body);
+}
+
+.jf .jf-btn2:hover {
+  background:var(--paper);
+}
+
+.jf .jf-btn2.jf-primary {
+  background:var(--ink);
+  border-color:var(--ink);
+  color:#fff;
+}
+
+.jf .jf-btn2.jf-primary:hover {
+  background:#3A4147;
+}
+
+/* ── Afturboðan ─────────────────────────────────────────────── */
+
+.jf .jf-feedback {
+  padding:12px 14px;
+  font-size:1.04rem;
+  background:var(--paper);
+  border-left:6px solid var(--basalt);
+}
+
+.jf .jf-feedback.jf-good {
+  background:var(--olivine-tint);
+  border-left-color:var(--olivine);
+}
+
+.jf .jf-feedback.jf-warn {
+  background:var(--tuff-tint);
+  border-left-color:var(--tuff);
+}
+
+/* ── Eyðkennini, sum skulu finnast ──────────────────────────── */
+
+.jf .jf-chips {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.jf .jf-chip {
+  padding:5px 12px;
+  font-size:.96rem;
+  color:var(--ink-soft);
+  background:var(--surface);
+  border:1.5px dashed #B9AFA0;
+  border-radius:2px;
+}
+
+.jf .jf-chip.jf-found {
+  color:var(--ink);
+  background:var(--olivine-tint);
+  border-style:solid;
+  border-color:var(--olivine);
+}
+
+.jf .jf-chip.jf-found::before {
+  content:"✓ ";
+  font-weight:700;
+  color:var(--olivine);
+}
+
+/* ── Sjóneykan ──────────────────────────────────────────────── */
+
+.jf .jf-core-box {
+  position:relative;
+  overflow:hidden;
+  background:#E8E4DC;
+  border:1px solid var(--line);
+  touch-action:none;
+  cursor:none;
+  user-select:none;
+}
+
+.jf .jf-core-box svg {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.jf .jf-core-detail {
+  position:absolute;
+  inset:0;
+  clip-path:circle(0 at 50% 50%);
+}
+
+.jf .jf-lens {
+  position:absolute;
+  width:118px;
+  height:118px;
+  border-radius:50%;
+  border:6px solid var(--ink);
+  box-shadow:0 0 0 2px #fff inset;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  opacity:0;
+}
+
+.jf .jf-lens::after {
+  content:"";
+  position:absolute;
+  width:48px;
+  height:12px;
+  right:-42px;
+  bottom:-8px;
+  background:var(--ink);
+  border-radius:3px;
+  transform:rotate(45deg);
+}
+
+/* ── Fjallið og kjarnarnir ──────────────────────────────────── */
+
+.jf .jf-section-box {
+  overflow:hidden;
+  background:#E7EFE9;
+  border:1px solid var(--line);
+}
+
+.jf .jf-section-box svg {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.jf #mtn .jf-pin {
+  cursor:pointer;
+}
+
+.jf .jf-legend {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  font-size:.98rem;
+}
+
+.jf .jf-legend span {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.jf .jf-legend i {
+  width:20px;
+  height:20px;
+  display:inline-block;
+  border:1px solid rgba(0,0,0,.15);
+}
+
+.jf .jf-tray {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.jf .jf-slot {
+  display:grid;
+  gap:6px;
+  justify-items:center;
+  align-content:start;
+  min-height:110px;
+  padding:10px;
+  border:1.5px dashed #B9AFA0;
+  border-radius:2px;
+}
+
+.jf .jf-slot.jf-on {
+  border:1px solid var(--line);
+  background:var(--paper);
+}
+
+.jf .jf-slot b {
+  font:600 1.02rem/1.2 var(--mono);
+  color:var(--ink);
+}
+
+.jf .jf-slot svg {
+  width:100%;
+  max-width:60px;
+  height:auto;
+}
+
+.jf .jf-slot span {
+  font-size:.88rem;
+  color:var(--ink-soft);
+  text-align:center;
+}
+
+/* ── Tunnilin, sum flytist ──────────────────────────────────── */
+
+.jf .jf-slider {
+  display:grid;
+  gap:6px;
+}
+
+.jf .jf-slider input {
+  width:100%;
+  height:32px;
+  accent-color:var(--tuff);
+}
+
+.jf .jf-slider .jf-ends {
+  display:flex;
+  justify-content:space-between;
+  font:600 .83rem/1.3 var(--mono);
+  color:var(--ink-soft);
+}
+
+/* ── Søgan hjá Malla ────────────────────────────────────────── */
+
+.jf .jf-journey {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.jf .jf-journey figure {
+  margin:0;
+  display:grid;
+  justify-items:center;
+  gap:4px;
+  font-size:.88rem;
+  color:var(--ink-soft);
+}
+
+.jf .jf-journey svg {
+  width:70px;
+  height:56px;
+}
+
+.jf .jf-journey .jf-arr {
+  font:600 .76rem/1.2 var(--mono);
+  color:var(--sea);
+  text-align:center;
+}
+
+/* ── Prógvið ────────────────────────────────────────────────── */
+
+.jf .jf-diploma {
+  display:grid;
+  gap:8px;
+  justify-items:center;
+  text-align:center;
+  padding:24px 22px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-top:5px solid var(--ochre);
+}
+
+.jf .jf-diploma .jf-big {
+  font:700 1.7rem/1.1 var(--display);
+  color:var(--ink);
+}
+
+.jf .jf-diploma svg {
+  width:84px;
+  height:72px;
+}
+
+.jf .jf-diploma .jf-eyebrow {
+  color:var(--ochre);
+}
+
+/* ── Veggurin hjá flokkinum ─────────────────────────────────── */
+
+.jf .jf-gallery {
+  display:grid;
+  gap:12px;
+}
+
+.jf .jf-gallery iframe {
+  display:block;
+  width:100%;
+  height:620px;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+
+/* ── Malli sum leiki ────────────────────────────────────────────
+   Hesin Malli hoyrir til hesa gongdina. Hann er ikki tann sami
+   sum flótandi Malli-blokkurin (jf-malli.html) – set ikki báðar
+   á somu síðu.
+   ───────────────────────────────────────────────────────────── */
+
+.jf .jf-malli-toy {
+  appearance:none;
+  -webkit-appearance:none;
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:72px;
+  height:66px;
+  padding:0;
+  border:0;
+  background:none;
+  cursor:grab;
+  touch-action:none;
+  z-index:50;
+  transform-origin:50% 55%;
+  filter:drop-shadow(2px 5px 0 rgba(31,36,40,.2));
+}
+
+.jf .jf-malli-toy:active {
+  cursor:grabbing;
+}
+
+.jf .jf-malli-toy svg {
+  width:100%;
+  height:100%;
+  display:block;
+  pointer-events:none;
+}
+
+.jf .jf-malli-quip {
+  position:fixed;
+  z-index:51;
+  max-width:210px;
+  padding:6px 10px;
+  background:var(--ink);
+  color:#fff;
+  font:700 .94rem/1.35 var(--body);
+  pointer-events:none;
+}
+
+@media(max-width:640px) {
+  .jf .jf-malli-toy {
+    width:58px;
+    height:53px;
+    right:12px;
+    bottom:12px;
+  }
+}
+
+/* ── Lærarateigurin niðast ──────────────────────────────────── */
+
+.jf details.jf-teacher {
+  margin-top:30px;
+  padding:18px 22px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-left:5px solid var(--basalt);
+  font-size:1rem;
+}
+
+.jf details.jf-teacher summary {
+  cursor:pointer;
+  font:700 1.2rem/1.2 var(--display);
+  color:var(--ink);
+}
+
+.jf details.jf-teacher h3 {
+  font:700 1.12rem/1.2 var(--display);
+  margin-top:22px;
+}
+
+.jf details.jf-teacher p {
+  margin-top:8px;
+}
+
+.jf details.jf-teacher ol,
+.jf details.jf-teacher ul {
+  margin:8px 0 0;
+  padding-left:22px;
+  display:grid;
+  gap:4px;
+}
+
+.jf details.jf-teacher dl {
+  margin:8px 0 0;
+  display:grid;
+  gap:10px;
+}
+
+.jf details.jf-teacher dt {
+  font-weight:700;
+}
+
+.jf details.jf-teacher dd {
+  margin:2px 0 0;
+}
+
+.jf details.jf-teacher code {
+  font:.85rem/1.4 var(--mono);
+  background:var(--paper);
+  padding:1px 5px;
+  word-break:break-all;
+}
+
+.jf details.jf-teacher .jf-ask {
+  display:grid;
+  gap:4px;
+  margin-top:10px;
+  padding:10px 14px;
+  background:var(--paper);
+  border-left:4px solid var(--sea);
+}
+
+.jf .jf-tablewrap {
+  overflow-x:auto;
+}
+
+.jf .jf-forloeb {
+  width:100%;
+  border-collapse:collapse;
+  font-size:.92rem;
+  margin-top:10px;
+}
+
+.jf .jf-forloeb th,
+.jf .jf-forloeb td {
+  border-bottom:1px solid var(--line);
+  padding:9px 8px;
+  text-align:left;
+  vertical-align:top;
+}
+
+.jf .jf-forloeb th {
+  font:700 .95rem/1.2 var(--display);
+  background:var(--paper);
+}
+
+.jf .jf-note {
+  color:var(--ink-soft);
+  font-size:.92rem;
+  margin-top:10px;
+}
+
+@media(max-width:640px) {
+  .jf .jf-panel {
+    padding:18px 18px;
+  }
+
+  .jf .jf-say {
+    grid-template-columns:44px 1fr;
+  }
+
+  .jf .jf-say svg {
+    width:44px;
+    height:44px;
+  }
+
+  .jf .jf-tray {
+    grid-template-columns:1fr;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .jf *,
+  .jf *::before,
+  .jf *::after {
+    transition:none !important;
+    animation:none !important;
+  }
+}
+
+/* ── Myndir úr veruleikanum ─────────────────────────────────────
+   Teknaðu myndirnar á skerminum eru modell. Hesar myndirnar vísa
+   tað, modellið handlar um. Tær standa inni í pørtunum, har tær
+   hoyra til.
+   ───────────────────────────────────────────────────────────── */
+
+.jf .jf-foto {
+  margin:0;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.jf .jf-foto img {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.jf .jf-foto figcaption {
+  padding:12px 16px 14px;
+  border-top:1px solid var(--line);
+  font-size:.95rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+.jf .jf-foto .jf-hvar {
+  display:block;
+  font:600 .66rem/1.2 var(--mono);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--sea);
+  margin-bottom:3px;
+}
+
+/* ░░ ÚR GONGDARFORSÍÐUNI ░░ */
+
+
+/* Mono-linjan undir yvirskriftini */
+.jf .jf-metalinja {
+  font:600 .8rem/1.5 var(--mono);
+  letter-spacing:.03em;
+  color:var(--ink-soft);
+  margin:0;
+}
+/* ░░ BERT Á HESI SÍÐUNI ░░
+   Hesar reglurnar hoyra til gongdina »Hvaðani kom Malli?«. */
+
+.jf .jf-tag.jf-royn {
+  color:var(--olivine);
+  background:var(--olivine-tint);
+}
+
+/* MALLI Í SÍÐUHØVDINUM */
+
+.jf .jf-hero-malli {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 220px;
+  gap:26px;
+  align-items:center;
+}
+
+.jf .jf-malli-leikur {
+  display:grid;
+  justify-items:center;
+  gap:8px;
+}
+
+.jf .jf-malli-knappur {
+  appearance:none;
+  width:160px;
+  height:142px;
+  padding:0;
+  border:0;
+  background:none;
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  filter:drop-shadow(1px 4px 0 rgba(31,36,40,.18));
+}
+
+.jf .jf-malli-knappur svg {
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+.jf .jf-malli-knappur:focus-visible {
+  outline:3px solid #1B5FA8;
+  outline-offset:6px;
+  border-radius:50%;
+}
+
+.jf .jf-malli-knappur #malliSkap {
+  transform-origin:50% 50%;
+  transition:transform .55s cubic-bezier(.3,.8,.4,1);
+}
+
+.jf .jf-malli-bobla {
+  margin:0;
+  padding:9px 13px;
+  max-width:230px;
+  background:var(--ink);
+  color:#fff;
+  border-radius:14px;
+  font:700 .96rem/1.35 var(--body);
+  text-align:center;
+}
+
+.jf .jf-malli-stig {
+  display:grid;
+  justify-items:center;
+  gap:3px;
+  margin:0;
+  font:600 .8rem/1.4 var(--mono);
+  color:var(--ink-soft);
+  text-align:center;
+}
+
+.jf .jf-tekstknappur {
+  appearance:none;
+  border:0;
+  padding:0;
+  background:none;
+  color:var(--sea);
+  font:600 .8rem/1.4 var(--mono);
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+@media(max-width:760px) {
+  .jf .jf-hero-malli {
+    grid-template-columns:minmax(0,1fr);
+    justify-items:start;
+  }
+
+  .jf .jf-malli-leikur {
+    justify-items:start;
+  }
+
+  .jf .jf-malli-bobla {
+    text-align:left;
+  }
+}
+
+/* MYNDIR AV ROYNDUNUM */
+
+.jf .jf-mynd {
+  display:grid;
+  gap:8px;
+  justify-items:center;
+  padding:14px;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.jf .jf-mynd svg {
+  display:block;
+  width:100%;
+  max-width:420px;
+  height:auto;
+}
+
+.jf .jf-myndtekstur {
+  margin:0;
+  font-size:.92rem;
+  line-height:1.45;
+  color:var(--ink-soft);
+  text-align:center;
+}
+
+/* STEINAR Í RØÐ */
+
+.jf .jf-roed {
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:8px;
+  touch-action:none;
+}
+
+.jf .jf-plass {
+  display:grid;
+  justify-items:center;
+  align-content:start;
+  gap:2px;
+  padding:8px 4px 6px;
+  background:var(--surface);
+  border:1.5px solid var(--line);
+  border-radius:2px;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.jf .jf-plass:hover {
+  border-color:var(--basalt);
+}
+
+.jf .jf-plass .jf-nr {
+  font:600 .78rem/1 var(--mono);
+  color:var(--ink-soft);
+}
+
+.jf .jf-plass svg {
+  display:block;
+  width:100%;
+  max-width:76px;
+  height:auto;
+  pointer-events:none;
+}
+
+.jf .jf-plass.jf-dragur {
+  cursor:grabbing;
+  z-index:5;
+  border-color:var(--sea);
+  box-shadow:3px 5px 0 rgba(31,36,40,.18);
+}
+
+.jf .jf-plass.jf-yvir {
+  border-color:var(--sea);
+  background:var(--sea-tint);
+}
+
+.jf .jf-merki {
+  font:600 .78rem/1 var(--mono);
+  color:var(--sea);
+  min-height:.9em;
+}
+
+.jf .jf-flyt {
+  display:flex;
+  gap:4px;
+}
+
+.jf .jf-flyt button {
+  appearance:none;
+  width:26px;
+  height:24px;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background:var(--paper);
+  color:var(--ink);
+  font:400 1rem/1 var(--body);
+  cursor:pointer;
+}
+
+.jf .jf-flyt button:hover {
+  border-color:var(--ink);
+}
+
+.jf .jf-endar {
+  display:flex;
+  justify-content:space-between;
+  font:600 .76rem/1.2 var(--mono);
+  color:var(--sea);
+}
+
+/* SPROYTURNAR */
+
+.jf .jf-sproytur {
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  padding:14px;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.jf .jf-sproytur figure {
+  margin:0;
+  display:grid;
+  justify-items:center;
+  gap:6px;
+}
+
+.jf .jf-sproytur svg {
+  display:block;
+  width:78px;
+  height:auto;
+}
+
+.jf .jf-sproytur rect[id^="fyll"] {
+  transition:height .4s ease, y .4s ease;
+}
+
+.jf .jf-sproytur figcaption {
+  font:600 .8rem/1.2 var(--mono);
+  color:var(--ink-soft);
+}
+
+.jf .jf-matrad {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:end;
+}
+
+.jf .jf-matrad label {
+  display:grid;
+  gap:4px;
+  font:700 .96rem/1.3 var(--body);
+}
+
+.jf .jf-matrad input {
+  width:130px;
+  height:44px;
+  padding:8px 10px;
+  border:1.5px solid var(--ink);
+  border-radius:2px;
+  background:#fff;
+  color:var(--ink);
+  font:400 1rem/1.3 var(--body);
+}
+
+/* ÍSURIN ELLA VATNIÐ */
+
+.jf .jf-val {
+  display:grid;
+  gap:10px;
+}
+
+.jf .jf-valrad {
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  padding:12px 14px;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.jf .jf-valrad svg {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.jf .jf-valrad .jf-innihald {
+  display:grid;
+  gap:8px;
+}
+
+.jf .jf-valrad b.jf-steinheiti {
+  font:600 .76rem/1.2 var(--mono);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+.jf .jf-valrad p {
+  margin:0;
+  font-size:1.02rem;
+}
+
+.jf .jf-valknappar {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.jf .jf-valknappar button:disabled {
+  opacity:.45;
+  cursor:default;
+}
+
+.jf .jf-valknappar button.jf-primary:disabled {
+  opacity:1;
+}
+
+.jf .jf-valrad .jf-svar {
+  padding:10px 12px;
+  font-size:.98rem;
+  background:var(--paper);
+  border-left:6px solid var(--basalt);
+}
+
+.jf .jf-valrad .jf-svar.jf-good {
+  background:var(--olivine-tint);
+  border-left-color:var(--olivine);
+}
+
+/* TVEY Í RAÐ */
+
+.jf .jf-tvey {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.jf .jf-tvey h3 {
+  margin:0 0 6px;
+  font:700 1.1rem/1.25 var(--display);
+}
+
+/* GRÓTKORTIÐ */
+
+.jf .jf-smidja {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:20px;
+  align-items:start;
+}
+
+.jf .jf-smidja-felt {
+  display:grid;
+  gap:12px;
+}
+
+.jf .jf-skapval {
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:6px;
+}
+
+.jf .jf-skapval button {
+  appearance:none;
+  padding:4px;
+  border:1.5px solid var(--line);
+  border-radius:2px;
+  background:var(--surface);
+  cursor:pointer;
+}
+
+.jf .jf-skapval button svg {
+  display:block;
+  width:100%;
+  height:auto;
+  pointer-events:none;
+}
+
+.jf .jf-skapval button[aria-pressed="true"] {
+  border:2px solid var(--sea);
+  background:var(--sea-tint);
+}
+
+.jf .jf-litval {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.jf .jf-litval button {
+  appearance:none;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:6px 11px;
+  border:1.5px solid var(--line);
+  border-radius:2px;
+  background:var(--surface);
+  color:var(--ink);
+  font:400 .94rem/1.3 var(--body);
+  cursor:pointer;
+}
+
+.jf .jf-litval button i {
+  width:18px;
+  height:18px;
+  border:1.5px solid var(--ink);
+  border-radius:50%;
+}
+
+.jf .jf-litval button[aria-pressed="true"] {
+  border:2px solid var(--sea);
+  background:var(--sea-tint);
+}
+
+.jf .jf-smidja-felt label {
+  display:grid;
+  gap:4px;
+  font:700 .96rem/1.3 var(--body);
+}
+
+.jf .jf-smidja-felt input[type="text"] {
+  height:44px;
+  padding:8px 10px;
+  border:1.5px solid var(--ink);
+  border-radius:2px;
+  background:#fff;
+  color:var(--ink);
+  font:400 1rem/1.3 var(--body);
+}
+
+.jf .jf-fylking {
+  margin:0;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+
+.jf .jf-fylking legend {
+  padding:0 6px;
+  font:700 .92rem/1.3 var(--body);
+  color:var(--ink);
+}
+
+.jf .jf-grotkort {
+  margin:0;
+  display:grid;
+  gap:7px;
+  padding:16px 18px 18px;
+  background:var(--surface);
+  border:1.5px solid var(--ink);
+  box-shadow:5px 5px 0 rgba(31,36,40,.14);
+}
+
+.jf .jf-grotkort-hovd {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:7px;
+  border-bottom:1px solid var(--line);
+  font:600 .68rem/1.2 var(--mono);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--sea);
+}
+
+.jf .jf-grotkort svg {
+  display:block;
+  width:100%;
+  justify-self:center;
+  height:auto;
+}
+
+.jf .jf-grotkort b {
+  font:700 1.26rem/1.2 var(--display);
+}
+
+.jf .jf-grotkort p {
+  margin:0;
+  font-size:.96rem;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+
+.jf .jf-grotkort .jf-grotkort-soga {
+  padding:9px 11px;
+  background:var(--sea-tint);
+  border-left:4px solid var(--sea);
+  color:var(--ink);
+}
+
+.jf .jf-grotkort-fot {
+  font:600 .68rem/1.2 var(--mono);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+@media(max-width:760px) {
+  .jf .jf-smidja {
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  .jf .jf-roed {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .jf .jf-valrad {
+    grid-template-columns:86px minmax(0,1fr);
+    gap:10px;
+  }
+}
+
+/* LOGGBÓKARLINJAN OVAST */
+
+.jf .jf-loggbok {
+  margin:0;
+  max-width:62ch;
+  color:var(--ink-soft);
+}
+
+/* ROKNISTYKKIÐ – næmingarnir rokna sjálvir */
+
+.jf .jf-roknistykki {
+  display:grid;
+  gap:6px;
+  justify-items:center;
+  padding:16px;
+  background:var(--sea-tint);
+  border-left:6px solid var(--sea);
+}
+
+.jf .jf-rokn {
+  margin:0;
+  font:600 1.5rem/1.3 var(--mono);
+  color:var(--ink);
+  text-align:center;
+}
+
+.jf .jf-rokn .jf-tomt {
+  display:inline-block;
+  min-width:3.2ch;
+  border-bottom:3px solid var(--sea);
+  color:var(--sea);
+}
+
+.jf .jf-rokn-tekstur {
+  margin:0;
+  font-size:.98rem;
+  color:var(--ink-soft);
+  text-align:center;
+}
+
+/* VERKFØRINI TIL AT MÁLA Á STEININ */
+
+.jf .jf-verkfoeri {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.jf .jf-verkfoeri button {
+  appearance:none;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:6px 11px;
+  border:1.5px solid var(--line);
+  border-radius:2px;
+  background:var(--surface);
+  color:var(--ink);
+  font:400 .94rem/1.3 var(--body);
+  cursor:pointer;
+}
+
+.jf .jf-verkfoeri button[aria-pressed="true"] {
+  border:2px solid var(--sea);
+  background:var(--sea-tint);
+}
+
+.jf .jf-verkfoeri button i {
+  display:block;
+  width:20px;
+  height:20px;
+  border:1.5px solid var(--ink);
+  border-radius:3px;
+  background:#7E858B;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.jf .jf-verkfoeri button i.jf-i-poknur   { background-image:radial-gradient(#16191B 3.4px,transparent 3.8px); }
+.jf .jf-verkfoeri button i.jf-i-fyltar   { background-image:radial-gradient(#F1F0E6 3.4px,transparent 3.8px); }
+.jf .jf-verkfoeri button i.jf-i-olivin   { background-image:radial-gradient(#7FA03A 3.4px,transparent 3.8px); }
+.jf .jf-verkfoeri button i.jf-i-skova    { background-image:linear-gradient(45deg,transparent 44%,#EDEFE8 44%,#EDEFE8 56%,transparent 56%); }
+.jf .jf-verkfoeri button i.jf-i-aedr     { background-image:linear-gradient(62deg,transparent 38%,#F4F2E8 38%,#F4F2E8 62%,transparent 62%); }
+.jf .jf-verkfoeri button i.jf-i-krystall { background-image:linear-gradient(18deg,transparent 43%,#EDEFE8 43%,#EDEFE8 57%,transparent 57%); }
+
+.jf .jf-verkfoeri button i.jf-i-strika {
+  background:var(--paper);
+  background-image:
+    linear-gradient(45deg,transparent 44%,#B4503F 44%,#B4503F 56%,transparent 56%),
+    linear-gradient(-45deg,transparent 44%,#B4503F 44%,#B4503F 56%,transparent 56%);
+}
+
+.jf .jf-smatekstur {
+  margin:0;
+  font-size:.92rem;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+
+/* STEINURIN Á KORTINUM – her verður málað */
+
+.jf .jf-grotkort svg#gkMynd {
+  cursor:crosshair;
+  touch-action:none;
+  background:#FBFAF6;
+  border:1px dashed var(--line);
+  border-radius:2px;
+}
+</style><!-- ░░ BORIKJARNIN ░░ --><div class="jf"><!-- PROGRESSIÓN --><div class="jf-depthbar" aria-hidden="true"><i id="jf-depth-fill"></i></div><div class="jf-borehole" id="jf-borehole" aria-hidden="true"><div class="jf-bore-tube"><div class="jf-bore-fill" id="jf-bore-fill"></div></div><div class="jf-bore-ticks" id="jf-bore-ticks"></div></div></div><div class="jf jf-seinasti"><div class="jf-wrap"><!-- TOPMENU --><header class="jf-topbar"><a class="jf-brand" href="/jardfrida"><svg viewBox="-84 -104 192 196" aria-hidden="true"><circle cx="0" cy="0" r="62" fill="#F0C4A0"></circle><path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"></path><path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"></path><rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"></rect><circle cx="0" cy="-82" r="17" fill="#EFE7DA"></circle><circle cx="-22" cy="8" r="5.5" fill="#1E2326"></circle><circle cx="22" cy="8" r="5.5" fill="#1E2326"></circle><path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none"></path></svg><span>
+              Jarðfrøði við Jarðfríðu
+              <small>Náttúra og tøkni</small></span></a><nav class="jf-nav" aria-label="Síður"><a href="/jardfrida">Forsíða</a><a href="/jardfrida/gongdir" aria-current="page">Gongdir</a><a href="/jardfrida/ordalisti">Orðalisti</a><a href="/jardfrida/laerari">Til læraran</a><a href="/jardfrida/um-tilfarid">Um tilfarið</a></nav></header><!-- ░░ INNIHALD BYRJAR ░░ --><!-- Andlitið hjá Jarðfríðu og Malli – verða brúkt í talubløðrunum --><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="jf" viewBox="-84 -104 192 196"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"></path><circle cx="-60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="0" cy="0" r="62" fill="#F0C4A0"></circle><path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"></path><path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"></path><path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"></path><path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"></path><rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"></rect><path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"></path><circle cx="0" cy="-82" r="17" fill="#EFE7DA"></circle><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"></circle><circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="-40" cy="16" r="1.7" fill="#B9775A"></circle><circle cx="-33" cy="20" r="1.7" fill="#B9775A"></circle><circle cx="-44" cy="22" r="1.7" fill="#B9775A"></circle><circle cx="40" cy="16" r="1.7" fill="#B9775A"></circle><circle cx="33" cy="20" r="1.7" fill="#B9775A"></circle><circle cx="44" cy="22" r="1.7" fill="#B9775A"></circle><circle cx="-22" cy="8" r="5.5" fill="#1E2326"></circle><circle cx="22" cy="8" r="5.5" fill="#1E2326"></circle><path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></symbol><symbol id="malli" viewBox="-90 -78 180 160"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"></path><clipPath id="mc1"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"></path></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc1)"></ellipse><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"></rect><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"></rect><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"></rect><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"></rect><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"></rect><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"></rect><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"></rect><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"></rect><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"></rect><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"></rect><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"></rect><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"></rect><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"></rect><circle cx="-50" cy="-20" r="4" fill="#3C4247"></circle><circle cx="46" cy="-30" r="3.4" fill="#3C4247"></circle><circle cx="52" cy="30" r="4.4" fill="#3C4247"></circle><circle cx="-42" cy="42" r="3" fill="#3C4247"></circle><circle cx="10" cy="52" r="3.2" fill="#3C4247"></circle><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"></circle><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="-20" cy="-4" r="8" fill="#fff"></circle><circle cx="20" cy="-4" r="8" fill="#fff"></circle><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"></circle><circle cx="22" cy="-3" r="4.6" fill="#1E2326"></circle><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"></path><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></symbol><symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"></path><clipPath id="mc2"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"></path></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc2)"></ellipse><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"></rect><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"></rect><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"></rect><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"></rect><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"></rect><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"></rect><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"></rect><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"></rect><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"></rect><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"></rect><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"></rect><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"></rect><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"></rect><circle cx="-50" cy="-20" r="4" fill="#3C4247"></circle><circle cx="46" cy="-30" r="3.4" fill="#3C4247"></circle><circle cx="52" cy="30" r="4.4" fill="#3C4247"></circle><circle cx="-42" cy="42" r="3" fill="#3C4247"></circle><circle cx="10" cy="52" r="3.2" fill="#3C4247"></circle><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"></circle><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="-20" cy="-4" r="10" fill="#fff"></circle><circle cx="20" cy="-4" r="10" fill="#fff"></circle><circle cx="-20" cy="-6" r="5" fill="#1E2326"></circle><circle cx="20" cy="-6" r="5" fill="#1E2326"></circle><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"></path><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"></ellipse><text x="58" y="-56" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol></svg><header class="jf-hero jf-hero-malli"><div class="jf-hero-text"><span class="jf-eyebrow">Gongd · Náttúra og tøkni · 4.–6. floksstig</span><h1>Hvaðani kom Malli?</h1><p class="jf-metalinja">4 partar · umleið 3–4 tímar</p><p>Hey, eg eiti Malli. Eg var einaferð partur av einum fjalli – hvassur í kantinum. Nú eri eg rundur og liggi í lummanum hjá Jarðfríðu. Hvat hendi við mær á leiðini?</p><p>Í gongdini kanna tit, hvussu grót brotnar, flytur seg og broytist. At enda fara tit út at leita eftir steinum og kanna sum veruligir jarðfrøðingar.</p></div><!-- MALLI SLÍTAST – TRÝST Á HANN --><div class="jf-malli-leikur"><button id="malliHero" class="jf-malli-knappur" type="button" aria-label="Malli. Trýst á hann, og sí, hvussu hann slítst og verður rundari."><svg viewBox="-72 -64 144 128" aria-hidden="true"><g id="malliSkap"><path id="malliPath" d="" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><g id="malliDust" fill="#5C6369" opacity=".55"></g></g><g id="malliAndlit"><circle cx="-17" cy="-4" r="9" fill="#fff"></circle><circle cx="19" cy="-4" r="9" fill="#fff"></circle><circle id="malliEyga1" cx="-16" cy="-3" r="4.8" fill="#1E2326"></circle><circle id="malliEyga2" cx="20" cy="-3" r="4.8" fill="#1E2326"></circle><path d="M-28 -19 Q-18 -25 -8 -19 M10 -19 Q20 -25 30 -19" stroke="#1E2326" stroke-width="3.4" fill="none" stroke-linecap="round"></path><path id="malliMunnur" d="M-11 17 Q0 26 12 17" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></g></svg></button><p class="jf-malli-bobla" id="malliBobla" role="status">»Eg eri kantutur í dag. Hvat heldur tú hendir við mær? Trýst á meg.«</p><p class="jf-malli-stig"><span id="malliStig">Kantutur · 1 av 6</span><button class="jf-tekstknappur" id="malliAftur" type="button">Byrja av nýggjum</button></p></div></header><p class="jf-loggbok">Loggbókin fylgir síðuni. Ger tað, sum Malli og Jarðfríða siga á skerminum, og skriva og tekna so í loggbókina.</p><nav class="jf-phases" role="tablist" aria-label="Partarnir í gongdini"><button class="jf-phase" role="tab" id="tab-m1" aria-selected="true" aria-controls="phase-m1"><span class="jf-n">1</span>Hvaðani kom Malli?</button><button class="jf-phase" role="tab" id="tab-m2" aria-selected="false" aria-controls="phase-m2"><span class="jf-n">2</span>Frostið brýtur grótið</button><button class="jf-phase" role="tab" id="tab-m3" aria-selected="false" aria-controls="phase-m3"><span class="jf-n">3</span>Spor eftir ísinum</button><button class="jf-phase" role="tab" id="tab-m4" aria-selected="false" aria-controls="phase-m4"><span class="jf-n">4</span>Søgan hjá tínum steini</button></nav><!-- ============ 1 · HVAÐANI KOM MALLI? ============ --><section id="phase-m1" role="tabpanel" aria-labelledby="tab-m1"><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Søgan hjá Malla</h2><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Hetta er ein søga um, hvussu Malli kann vera vorðin rundur. Nú skulu vit kanna, hvat frost, ísur og vatn kunnu gera við grót.«</p></div><div class="jf-journey" aria-label="Søgan hjá Malla: eitt petti brotnar úr fjallinum, ísurin flytur steinin, og vatnið fær steinin at rulla, til hann er rundur."><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><rect x="-56" y="-44" width="112" height="88" fill="#7A8086" stroke="#1E2326" stroke-width="4"></rect><rect x="-56" y="-44" width="112" height="22" fill="#5F7A5B" stroke="#1E2326" stroke-width="4"></rect><rect x="-56" y="12" width="112" height="10" fill="#A4533A"></rect><path d="M10 -22 L18 -2 L8 10 L16 44 M18 -2 L56 -8" stroke="#1E2326" stroke-width="3" fill="none"></path></svg>Partur av fjallinum</figure><span class="jf-arr">frostið brýtur<br>eitt petti leyst →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-48 20 L-40 -30 L-6 -46 L30 -36 L48 -4 L36 34 L-10 44 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path></svg>Kantutur</figure><span class="jf-arr">ísurin flytur<br>steinin →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-50 14 C-50 -24 -24 -44 6 -44 C34 -40 50 -16 46 12 C44 36 18 44 -8 44 C-30 44 -50 36 -50 14 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"></path></svg>Kantarnir slítast</figure><span class="jf-arr">vatnið fær<br>steinin at rulla →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-52 6 C-52 -26 -24 -38 4 -38 C34 -38 54 -22 52 6 C50 30 28 38 0 38 C-28 38 -52 30 -52 6 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"></path></svg>Rundur</figure></div><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Ein steinur ber spor eftir tí, sum hann hevur verið út fyri. Vit kunnu lesa sporini – men vit kunnu ikki vita alt við vissu.«</p></div></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Legg steinarnar í røð</h2><p class="jf-task">Hálið steinarnar, so teir við nógvum kantum liggja fyrst, og teir, sum eru rundast, liggja síðst.</p><div class="jf-roed" id="roed"></div><div class="jf-endar" aria-hidden="true"><span>við nógvum kantum</span><span>rundast</span></div><div class="jf-row"><button class="jf-btn2 jf-primary" id="kannaRoed">Samanber við røðina hjá Jarðfríðu</button><button class="jf-btn2" id="nyRoed">Blanda umaftur</button></div><div id="roedFeedback" class="jf-feedback" hidden="" aria-live="polite"></div><p class="jf-hint"><b>Tosið saman:</b> Hví legði tú steinarnar soleiðis? Hvat heldur tú er hent við teimum, sum eru rundast?</p></article><article class="jf-panel"><span class="jf-tag jf-royn">Roynd</span><h2>Ristið steinpettini rundari</h2><p class="jf-task">Í dósini gera tit eitt lítið modell av eini á. Steinpettini skumpa hvørt annað, og kantarnir slítast av.</p><div class="jf-mynd"><svg viewBox="0 0 260 170" role="img" aria-label="Ein plastdós við loki. Inni í dósini liggur ein rúgva av kantutum steinpettum, og dust fýkur upp."><path d="M44 150 Q36 150 35 142 L28 58 H232 L225 142 Q224 150 216 150 Z" fill="#EEF1F0" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path><path d="M28 58 H232" stroke="#1E2326" stroke-width="4"></path><rect x="18" y="36" width="224" height="24" rx="6" fill="#BFD3D8" stroke="#1E2326" stroke-width="4"></rect><rect x="104" y="22" width="52" height="16" rx="5" fill="#BFD3D8" stroke="#1E2326" stroke-width="4"></rect><g stroke="#1E2326" stroke-width="3" stroke-linejoin="round"><path d="M58 136 L70 112 L96 108 L104 130 L82 142 Z" fill="#A4533A"></path><path d="M110 138 L118 116 L146 112 L156 132 L132 144 Z" fill="#9AA0A2"></path><path d="M162 140 L168 118 L196 116 L202 136 L182 146 Z" fill="#A4533A"></path><path d="M74 104 L86 86 L110 88 L112 104 L92 110 Z" fill="#5A6066"></path><path d="M124 106 L134 90 L158 92 L160 106 L140 110 Z" fill="#B4603F"></path><path d="M172 108 L184 92 L206 96 L204 110 L186 114 Z" fill="#9AA0A2"></path></g><g fill="#C9CBC4"><circle cx="70" cy="84" r="3"></circle><circle cx="120" cy="78" r="2.4"></circle><circle cx="166" cy="82" r="3.2"></circle><circle cx="196" cy="76" r="2.2"></circle><circle cx="96" cy="72" r="2"></circle><circle cx="146" cy="70" r="2.6"></circle></g><g stroke="#2A6A80" stroke-width="4" stroke-linecap="round" fill="none"><path d="M14 86 L2 78 M14 104 L2 104 M246 86 L258 78 M246 104 L258 104"></path></g></svg><p class="jf-myndtekstur">Ein góð rúgva av pettum – tey skulu kunna skumpa hvørt annað.</p></div><ol class="jf-steps"><li>Fyllið dósina góðan triðing upp við kantutum steinpettum. Takið helst petti av múrsteini ella betongi – tey eru bleytari og slítast skjótari enn basalt.</li><li>Veljið eitt petti, merkið tað, og teknið tað í loggbókina. Tað er tað, tit fylgja.</li><li>Leggið eisini tvey hørð basaltpetti í dósina. Tey eru til samanberingar.</li><li><b>Gitið fyrst:</b> Hvat halda tit hendir við kantunum, tá ið tit rista dósina?</li><li>Setið lokið væl á, og ristið dósina í tveir minuttir. Hyggið at merkta pettinum, og teknið tað.</li><li>Ristið fýra ferðir í alt. Teknið merkta pettið aftur eftir fjórðu ferð.</li><li>Hellið innihaldið út á hvítt pappír. Er dust á pappírinum? Hvat er hent við basaltinum?</li></ol><p class="jf-hint"><b>Hvat er hent við steinunum?</b> Hygg at tekningunum fyri og eftir royndina. Hvat er broytt? Hvat í royndini kann hava gjørt, at kantarnir slitnaðu?</p><p class="jf-hint"><b>Hetta er eitt modell:</b> Í dósini tekur tað minuttir. Í ánni og í fjøruni tók tað Malla sera langa tíð.</p></article></div></section><!-- ============ 2 · FROSTIÐ BRÝTUR GRÓTIÐ ============ --><section id="phase-m2" role="tabpanel" aria-labelledby="tab-m2" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-royn">Roynd</span><h2>Latið vatnið frysta í sproytuni</h2><div class="jf-mynd"><svg viewBox="0 0 260 150" role="img" aria-label="Ein sproyta uttan nál. Oddurin er tættaður við leikleiri, og sproytan er fylt við litaðum vatni."><rect x="30" y="54" width="170" height="44" rx="4" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></rect><rect x="34" y="58" width="120" height="36" fill="#9CC7D6"></rect><path d="M200 64 H222 V88 H200 Z" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></path><path d="M222 70 q16 6 0 12 q-8 4 -10 -6 q2 -10 10 -6 Z" fill="#B7821F" stroke="#1E2326" stroke-width="3.5"></path><rect x="16" y="46" width="14" height="60" rx="3" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></rect><g stroke="#1E2326" stroke-width="2.4"><path d="M60 54 V44 M90 54 V46 M120 54 V44 M150 54 V46 M180 54 V44"></path></g><text x="232" y="112" font-family="IBM Plex Mono,monospace" font-size="13" fill="#585F65" text-anchor="end">leikleir</text></svg><p class="jf-myndtekstur">Oddurin er tættaður við leikleiri, og stempulin er tikin úr.</p></div><ol class="jf-steps"><li>Fyllið eina sproytu uttan nál við køldum vatni. Hellið eitt sindur av matliti í vatnið, so vatnssúlan verður lættari at síggja.</li><li>Tættið oddin á sproytuni við leikleiri, og takið stempulin úr.</li><li><b>Gitið fyrst:</b> Verður íssúlan longri, styttri ella eins long sum vatnssúlan?</li><li>Mátið vatnssúluna við einari linjal, og skrivið longdina í loggbókina.</li><li>Setið sproytuna beint upp í frystaran, og latið hana standa, til vatnið er fryst.</li><li>Mátið íssúluna, og samanberið við gitið.</li></ol><p class="jf-hint"><b>Ansið eftir:</b> Brúkið ikki glas til vatn, sum skal frysta í einum afturlatnum íláti.</p></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Samanberið vatnssúluna og íssúluna</h2><p class="jf-task">Skrivið tykkara máting inn. Sproyturnar fyllast, og skermurin setur roknistykkið upp – svarið finna tit sjálv.</p><div class="jf-sproytur" id="sproytur"><figure><svg viewBox="0 0 90 230" aria-hidden="true"><rect x="26" y="20" width="38" height="178" rx="5" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></rect><rect id="fyllVatn" x="30" y="194" width="30" height="0" fill="#5F9FBA"></rect><path d="M38 198 H52 V212 H38 Z" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></path><path d="M45 212 q10 8 0 14 q-10 -6 0 -14 Z" fill="#B7821F" stroke="#1E2326" stroke-width="3"></path><g stroke="#1E2326" stroke-width="2" opacity=".6"><path d="M64 50 H74 M64 86 H74 M64 122 H74 M64 158 H74"></path></g></svg><figcaption>Vatn</figcaption></figure><figure><svg viewBox="0 0 90 230" aria-hidden="true"><rect x="26" y="20" width="38" height="178" rx="5" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></rect><rect id="fyllIs" x="30" y="194" width="30" height="0" fill="#CBE4EC"></rect><path d="M38 198 H52 V212 H38 Z" fill="#F7F7F4" stroke="#1E2326" stroke-width="4"></path><path d="M45 212 q10 8 0 14 q-10 -6 0 -14 Z" fill="#B7821F" stroke="#1E2326" stroke-width="3"></path><g stroke="#1E2326" stroke-width="2" opacity=".6"><path d="M64 50 H74 M64 86 H74 M64 122 H74 M64 158 H74"></path></g></svg><figcaption>Ísur</figcaption></figure></div><div class="jf-matrad"><label for="matVatn">Vatnssúlan (mm)
+          <input type="number" id="matVatn" min="1" max="400" step="1" inputmode="numeric" autocomplete="off"></label><label for="matIs">Íssúlan (mm)
+          <input type="number" id="matIs" min="1" max="400" step="1" inputmode="numeric" autocomplete="off"></label><button class="jf-btn2 jf-primary" id="roknaFrost">Vís roknistykkið</button></div><div class="jf-roknistykki" id="roknistykki" hidden=""><p class="jf-rokn"><span id="roknIs">—</span> mm <span>−</span><span id="roknVatn">—</span> mm <span>=</span><span class="jf-tomt">?</span> mm</p><p class="jf-rokn-tekstur">Roknið munin, og skrivið svarið í loggbókina.</p></div><div id="frostFeedback" class="jf-feedback" hidden="" aria-live="polite"></div><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span><b>Frá sproytuni til fjallið.</b> »Vatnið tók meira pláss, tá ið tað frysti. Hvat heldur tú kann henda, um vatnið frystir inni í einari trongari rivu í grótinum?«</p></div></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Frostið brýtur grótið</h2><div class="jf-journey" aria-label="Vatn rennur niður í eina rivu, vatnið frystir og tekur meira pláss, og eitt petti brotnar av grótinum."><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-54 -40 H54 V44 H-54 Z" fill="#7A8086" stroke="#1E2326" stroke-width="4"></path><path d="M6 -40 L12 -14 L2 6 L10 44" stroke="#1E2326" stroke-width="5" fill="none"></path><path d="M6 -40 L12 -14 L2 6 L10 44" stroke="#4E8FA8" stroke-width="2.6" fill="none"></path><circle cx="4" cy="-34" r="4" fill="#4E8FA8"></circle></svg>Vatn í rivuni</figure><span class="jf-arr">vatnið frystir og<br>fyllir meira →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-54 -40 H54 V44 H-54 Z" fill="#7A8086" stroke="#1E2326" stroke-width="4"></path><path d="M4 -40 L16 -12 L2 8 L14 44" stroke="#1E2326" stroke-width="11" fill="none"></path><path d="M4 -40 L16 -12 L2 8 L14 44" stroke="#CBE4EC" stroke-width="7" fill="none"></path></svg>Ísurin trýstir</figure><span class="jf-arr">aftur og aftur →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-54 -40 H10 L20 -10 L4 10 L18 44 H-54 Z" fill="#7A8086" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path><path d="M34 -4 L54 -14 L56 20 L38 30 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path></svg>Eitt petti brotnar av</figure></div><p class="jf-hint"><b>Tosið saman:</b> Hvat kann henda, tá ið vatn frystir inni í eini rivu í grótinum? Hví liggja ofta kantutir steinar undir hamrum?</p><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Kanska breyt eg meg leysan soleiðis! Jarðfeingi sigur »frostsprongt grót« um grót, sum er brotið niður á henda hátt.«</p></div></article></div></section><!-- ============ 3 · SPOR EFTIR ÍSINUM ============ --><section id="phase-m3" role="tabpanel" aria-labelledby="tab-m3" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-royn">Roynd</span><h2>Gníggið ísin yvir málingina</h2><div class="jf-mynd"><svg viewBox="0 0 420 232" role="img" aria-label="Eitt málað træpetti og tríggir ísterningar: ein reinur, ein við sandi og ein við grúsi. Malli hyggur upp á og undrast."><rect x="18" y="34" width="232" height="130" rx="6" fill="#E8DCC2" stroke="#1E2326" stroke-width="4"></rect><g stroke="#D9C9A6" stroke-width="3" fill="none"><path d="M30 62 H238 M30 99 H238 M30 136 H238"></path></g><text x="134" y="24" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="13" fill="#585F65">málað træpetti</text><g transform="translate(296,36)"><rect x="0" y="0" width="50" height="38" rx="6" fill="#CBE4EC" stroke="#1E2326" stroke-width="3.5"></rect><text x="58" y="24" font-family="IBM Plex Mono,monospace" font-size="12" fill="#585F65">reinur</text></g><g transform="translate(296,92)"><rect x="0" y="0" width="50" height="38" rx="6" fill="#CBE4EC" stroke="#1E2326" stroke-width="3.5"></rect><g fill="#8A7A5E"><circle cx="12" cy="12" r="2.6"></circle><circle cx="30" cy="9" r="2.2"></circle><circle cx="21" cy="24" r="2.8"></circle><circle cx="38" cy="26" r="2.4"></circle><circle cx="8" cy="29" r="2.2"></circle></g><text x="58" y="24" font-family="IBM Plex Mono,monospace" font-size="12" fill="#585F65">við sandi</text></g><g transform="translate(296,148)"><rect x="0" y="0" width="50" height="38" rx="6" fill="#CBE4EC" stroke="#1E2326" stroke-width="3.5"></rect><g fill="#5A6066" stroke="#1E2326" stroke-width="1.4"><circle cx="14" cy="14" r="5"></circle><circle cx="33" cy="12" r="4"></circle><circle cx="24" cy="27" r="4.4"></circle></g><text x="58" y="24" font-family="IBM Plex Mono,monospace" font-size="12" fill="#585F65">við grúsi</text></g><use href="#malli-undr" x="30" y="150" width="96" height="86"></use></svg><p class="jf-myndtekstur">Malli hyggur upp á. Hann veit, hvat ein ísur kann gera – men sigur einki enn.</p></div><ol class="jf-steps"><li><b>Gitið fyrst:</b> Hvat fer at henda við málingini? Teknið gitið í loggbókina.</li><li>Gníggið ein reinan ísterning fram og aftur yvir træpettið. Koma skøvur í málingina?</li><li>Trýstið ein ísterning niður í sand, og gníggið hann sama veg.</li><li>Roynið eisini at trýsta ísterningin í grús.</li><li>Kannið málingina við sjóneykuni, og teknið skøvurnar, tit síggja.</li></ol><p class="jf-hint"><b>Hvat gjørdi skøvurnar?</b> Samanberið træpettið eftir royndirnar við teimum trimum ísterningunum. Hvat gjørdi munin? Var tað ísurin sjálvur ella tilfarið, sum var í honum?</p><p class="jf-hint"><b>Brúkið klút ella vøtt</b> um ísterningin. So verða hendurnar ikki ov kaldar, og ísurin bráðnar ikki so skjótt.</p></article><article class="jf-panel"><span class="jf-tag jf-royn">Roynd</span><h2>Látið ísin skríða oman brekkuna</h2><p class="jf-task">Her gera tit eina lítla brekku og lata ein ísklump skríða oman. Kannið sjálv, hvat hendir.</p><div class="jf-mynd"><svg viewBox="0 0 320 185" role="img" aria-label="Ein djúpur bakki stendur skákur upp á eina bók og verður til eina brekku. Ovast liggur ein ísklumpur við sandi. Ein pílur vísir, hvussu hann skríður oman brekkuna, og niðast liggur ein rúgva av sandi og steinum."><path d="M8 168 H312" stroke="#C6C3B8" stroke-width="4" stroke-linecap="round"></path><rect x="18" y="128" width="74" height="18" rx="3" fill="#B7A98C" stroke="#1E2326" stroke-width="3.5"></rect><rect x="24" y="146" width="74" height="18" rx="3" fill="#C9BC9F" stroke="#1E2326" stroke-width="3.5"></rect><g transform="rotate(12 160 120)"><path d="M34 112 H286 V128 H34 Z" fill="#DCDAD2" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path><path d="M30 92 H42 V112 H30 Z" fill="#DCDAD2" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path><path d="M278 92 H290 V112 H278 Z" fill="#DCDAD2" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path><path d="M42 106 H278 V112 H42 Z" fill="#C8B68E"></path><g fill="#8A9095" stroke="#1E2326" stroke-width="2.2"><circle cx="96" cy="104" r="4"></circle><circle cx="150" cy="103" r="3.4"></circle><circle cx="196" cy="104" r="4.4"></circle></g><g transform="translate(86,86)"><rect x="-26" y="-20" width="52" height="40" rx="6" fill="#CBE4EC" stroke="#1E2326" stroke-width="4"></rect><g fill="#8A7A5E"><circle cx="-12" cy="6" r="3.2"></circle><circle cx="6" cy="-6" r="2.8"></circle><circle cx="14" cy="9" r="3.4"></circle><circle cx="-4" cy="-12" r="2.4"></circle></g></g><path d="M132 86 H188" stroke="#2A6A80" stroke-width="5" fill="none" stroke-linecap="round"></path><path d="M188 86 l-12 -7 M188 86 l-12 7" stroke="#2A6A80" stroke-width="5" fill="none" stroke-linecap="round"></path><path d="M212 106 q26 -18 54 0 Z" fill="#A89878" stroke="#1E2326" stroke-width="2.6" stroke-linejoin="round"></path><circle cx="232" cy="99" r="3.6" fill="#8A9095" stroke="#1E2326" stroke-width="2.2"></circle><circle cx="250" cy="100" r="3" fill="#8A9095" stroke="#1E2326" stroke-width="2.2"></circle></g></svg><p class="jf-myndtekstur">Brekkan: ein djúpur bakki, sum stendur á skák á einari ella tveimum bókum.</p></div><ol class="jf-steps"><li><b>Dagin fyri:</b> Fyllið eina plastdós við vatni, sandi og smásteinum, og setið hana í frystaran. Tað verður jøkulsísurin hjá tykkum.</li><li>Oysið sand og smásteinar í ein djúpan bakka, og leggið hann á skák á einari ella tveimum bókum. Nú hava tit eina brekku.</li><li><b>Gitið fyrst:</b> Hvat halda tit fer at henda? Teknið brekkuna, áðrenn tit byrja.</li><li>Takið ísklumpin úr dósini, og leggið hann ovast í brekkuna.</li><li>Skumpið ísin oman brekkuna – varliga. Hyggið eftir, hvat hann skumpar undan sær, og hvat hann dregur við sær.</li><li>Latið ísin liggja niðast, til hann er bráðnaður. Tit kunnu spreya heitt vatn úr eini spreydós á ísin.</li><li>Teknið brekkuna aftur. Hvar liggur sandurin nú? Og hvar liggja steinarnir? Gittu tit rætt frammanundan?</li></ol><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Tað, sum liggur eftir, tá ið ísurin er bráðnaður, eitur morena: blandað, leyst tilfar – grót, sandur og leirur – sum jøkulsísur hevur flutt við sær og lagt frá sær.«</p></div></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Ísurin ella vatnið?</h2><p class="jf-task"><b>Hvat kunnu sporini siga okkum?</b> Hygg at skapinum og skøvunum. Hvør frágreiðing hóskar best til sporini? Hví heldur tú tað?</p><div class="jf-val" id="sporVal"></div><div id="sporFeedback" class="jf-feedback" hidden="" aria-live="polite"></div><p class="jf-hint"><b>Minnist til:</b> Ein rundur steinur ella ein skøva er ikki í sjálvum sær prógv. Hygg eftir fleiri sporum, og grundgev fyri tí, tú heldur.</p></article></div></section><!-- ============ 4 · SØGAN HJÁ TÍNUM STEINI ============ --><section id="phase-m4" role="tabpanel" aria-labelledby="tab-m4" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-stone">Úti</span><h2>Áðrenn tit fara út</h2><p class="jf-task">Tit skulu finna <b>tríggjar ymiskar steinar</b> og lesa sporini á teimum.</p><div class="jf-tvey"><div><h3>Takið við tykkum</h3><ul class="jf-steps"><li>loggbókina og ein blýant</li><li>eina sjóneyku</li><li>eina telefon ella ein teldil til myndir</li><li>ein posa til steinin, tú vilt hava heim við</li></ul></div><div><h3>Gitið fyrst</h3><p>Hvørjar steinar halda tit, at tit fara at finna – kantutar, rundar ella steinar við skøvum? Skrivið gitið í loggbókina, áðrenn tit fara út.</p><p class="jf-hint"><b>Trygd:</b> Ansið væl eftir sjónum, ánni og ferðsluni. Steinar í fjøruni kunnu vera hálir.</p></div></div></article><article class="jf-panel"><span class="jf-tag jf-stone">Úti</span><h2>Lesið sporini á steinunum</h2><p class="jf-task">Gerið hetta við hvønn av teimum trimum steinunum. Skrivið í loggbókina, s. 6.</p><ol class="jf-steps"><li><b>Hygg:</b> Er steinurin kantutur ella rundur? Er hann slættur ella grovur?</li><li><b>Sjóneykan:</b> Síggja tit skøvur, poknur, ljós krystall ella hvítar mineralæðrar?</li><li><b>Hvar lá hann?</b> Undir einum hamri, í fjøruni, við ánna ella við vegjaðaran?</li><li><b>Metið:</b> Hvat kann vera hent við steininum – frost, ísur ella vatn? Hvørji spor stuðla metingini?</li></ol><h3>Hyggið eisini at landslagnum, har steinarnir eru</h3><p>Setið kross í loggbókina við tað, sum tit síggja nærhendis:</p><ul class="jf-steps"><li>Kantutir steinar undir einum hamara</li><li>Ein dal við skapi sum eitt U</li><li>Ein dal við skapi sum eitt V</li><li>Rundir steinar í fjøruni ella í ánni</li><li>Skøvur í føstum gróti</li></ul></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Bygg tín stein</h2><p class="jf-task">Hygg væl at tínum steini. Vel skap og lit, og tekna bara tey eyðkennini, sum tú veruliga sært. Sært tú ikki eitt ávíst eyðkenni, skalt tú ikki tekna tað. Skriva so á kortið, og tak myndina niður.</p><div class="jf-smidja"><div class="jf-smidja-felt"><fieldset class="jf-fylking"><legend>Skapið</legend><div class="jf-skapval" id="gkSkap"></div></fieldset><fieldset class="jf-fylking"><legend>Liturin á grótinum</legend><div class="jf-litval" id="gkLitur"></div></fieldset><fieldset class="jf-fylking"><legend>Mála eyðkenni á steinin</legend><div class="jf-verkfoeri" id="gkVerk"></div><p class="jf-smatekstur">Vel eitt verkføri, og trýst á steinin á kortinum. Skøvur og æðrar málar tú við at hála yvir steinin. »Strika« tekur eitt eyðkenni burtur aftur.</p><div class="jf-row"><button class="jf-btn2" type="button" id="gkReinsa">Reinsa steinin</button></div></fieldset><label for="gkNavn">Steinurin eitur
+            <input type="text" id="gkNavn" maxlength="24" placeholder="t.d. Steinunn" autocomplete="off"></label><label for="gkStad">Eg fann hann
+            <input type="text" id="gkStad" maxlength="34" placeholder="t.d. í fjøruni í Kollafirði" autocomplete="off"></label><label for="gkNavnMitt">Eg eiti
+            <input type="text" id="gkNavnMitt" maxlength="20" placeholder="fornavn" autocomplete="off"></label><fieldset class="jf-fylking"><legend>Hvat kann vera hent við steininum?</legend><div class="jf-valknappar" id="gkFerd"></div></fieldset></div><figure class="jf-grotkort" id="gkKort"><div class="jf-grotkort-hovd"><span>Okkara grótsavn</span><span>nr. —</span></div><svg viewBox="-70 -56 140 112" id="gkMynd" aria-hidden="true"></svg><b id="gkKortNavn">Steinurin hjá mær</b><p id="gkKortStad">Eg fann hann …</p><p class="jf-grotkort-soga" id="gkKortFerd">Hvat kann vera hent við steininum?</p><span class="jf-grotkort-fot" id="gkFot">Jarðfrøði við Jarðfríðu</span></figure></div><div class="jf-row"><button class="jf-btn2 jf-primary" id="gkNidur">Tak niður</button></div><p class="jf-hint" id="gkKvittan" hidden="" aria-live="polite"></p></article><article class="jf-panel"><h2>Okkara steinar</h2><p class="jf-task">»Okkara steinar« er felags veggurin hjá Jarðfríðu. Her leggja næmingar úr ymiskum skúlum myndir av teimum steinum, sum tey hava funnið – og her kunnu tit síggja steinarnar hjá hinum.</p><ol class="jf-steps"><li>Takið eina mynd av steininum. Bert av steininum – ikki av fólki.</li><li>Leggið myndina út saman við grótkortinum, sum tit tóku niður.</li><li>Skrivið stutt: hvar steinurin er funnin, hvat tit leggja merki til, og hvat tit undrast á.</li><li>Brúkið dulnevni ella bert fornavnið – ikki fulla navnið. Lærarin góðkennir uppslagið, áðrenn tað verður sjónligt hjá øðrum.</li></ol><div class="jf-gallery" id="gallery"></div><p class="jf-hint"><b>Hyggið at steinunum hjá hinum:</b> Finn ein stein við nógvum kantum. Finn ein stein við týðiligum sporum eftir slit. Hvat kunnu sporini siga okkum?</p></article><article class="jf-panel"><h2>Tosið saman at enda</h2><ul class="jf-steps"><li>Hvat helt tú fyrst – og hvat heldur tú nú?</li><li>Hvør steinur hevur týðilig spor eftir slit? Hvat kunnu sporini siga okkum um steinin?</li><li>Er nakað um ferðina hjá steininum, sum tit ikki kunnu vita við vissu?</li></ul><div class="jf-diploma"><svg aria-hidden="true"><use href="#malli"></use></svg><span class="jf-eyebrow">Jarðfeingi</span><span class="jf-big">Tit hava lisið søguna hjá einum steini!</span><p>Tit hava kannað, hvussu frost, ísur og vatn brjóta og slíta grótið – og grundgivið fyri tykkara meting.</p></div></article></div></section><details class="jf-teacher"><summary>Til læraran</summary><p>Gongdin er ætlað 4.–6. floksstigi og tekur umleið 3–4 tímar. Uppgávurnar skifta millum arbeiði á skerminum, verkligar royndir og arbeiði úti. Fær flokkurin vitjan frá GeoSkúla, er henda gongdin ein góð fyrireiking.</p><h3>Gongdin</h3><div class="jf-tablewrap"><table class="jf-forloeb"><thead><tr><th>Partur</th><th>Á skerminum</th><th>Verkligt arbeiði</th><th>Loggbók</th><th>Tíð</th></tr></thead><tbody><tr><td><b>1 · Hvaðani kom Malli?</b></td><td>Næmingarnir hoyra søguna hjá Malla og leggja steinar í røð – fyrst teir við nógvum kantum, síðst teir, sum eru rundast.</td><td>Næmingarnir rista kantutar steinpettir í eini plastdós og síggja, hvussu teir broytast.</td><td>s. 2</td><td>Uml. 45 min</td></tr><tr><td><b>2 · Frostið brýtur grótið</b></td><td>Næmingarnir skriva mátingarnar í eina talvu og samanbera vatnssúluna við íssúluna.</td><td>Næmingarnir lata vatn frysta í eini sproytu og máta, hvussu nógv súlan broytist.</td><td>s. 3</td><td>2 × uml. 20 min + tíð í frystaranum</td></tr><tr><td><b>3 · Spor eftir ísinum</b></td><td>Næmingarnir velja, hvørji spor kunnu benda á, at ísur hevur flutt ein stein, og hvørji á, at vatn hevur rullað hann.</td><td>Næmingarnir gníggja ein ísterning við og uttan sand yvir eitt málað træpetti og lata ein ísklump skríða oman eina brekku.</td><td>s. 4–5</td><td>Uml. 45–60 min + dagin fyri</td></tr><tr><td><b>4 · Søgan hjá tínum steini</b></td><td>Næmingarnir byggja sín stein á skerminum, skriva á kortið og taka myndina niður til »Okkara steinar«.</td><td>Næmingarnir leita eftir steinum nær skúlanum, kanna sporini og gera eina persónslýsing av einum steini.</td><td>s. 6–7</td><td>Uml. 60 min</td></tr></tbody></table></div><h3>Fyrst meta – síðan royna</h3><p>Í øllum pørtunum er raðfylgjan týdningarmikil: <b>Meta → Royna → Hyggja → Samanbera → Greiða frá.</b> Næmingarnir skulu gera eina grundaða meting og tekna hana, áðrenn tey royna. Lat tey rætta metingina við einum øðrum liti heldur enn at strika hana út.</p><h3>Tilfar</h3><p><b>1. partur · Ristidósin</b> – til hvønn bólk:</p><ul><li>plastdós við tøttum loki – ikki glas</li><li>ein rúgva av kantutum steinpettum: helst petti av múrsteini ella betongi</li><li>tvey hørð basaltpetti til samanberingar</li><li>hvítt pappír, sjóneyka og klokka</li></ul><p>Dósin skal vera fylt uml. ein triðing upp. Liggja bert tvey ella trý petti í, skumpa tey hvørt annað ov lítið, og tá hendir einki. Bleyt petti av múrsteini ella betongi slítast sjónliga í minuttum, meðan basalt tryggjar ikki broytist – tað er júst tað, sum ger samanberingina áhugaverda. Lat næmingarnar merkja eitt petti og fylgja tí, so broytingin verður at síggja á sama petti. Dustið á hvíta pappírinum er besta prógvið.</p><p><b>2. partur · Frost</b> – til hvønn bólk:</p><ul><li>ein sproyta uttan nál (10 ella 20 ml)</li><li>leikleir, kalt vatn, matlitur og linjal</li></ul><p><b>3. partur · Ísur og sandur</b> – til hvønn bólk:</p><ul><li>ísterningar, sandur í eini skál og grús ella smásteinar</li><li>eitt málað træpetti (umleið 15 × 7,5 cm) – ein ljósur litur vísir skøvurnar best</li><li>klútur ella vøttur og sjóneyka</li><li>ein djúpur bakki við sandi og smásteinum, og ein ella tvær bøkur at leggja hann á skák upp á</li><li>ein plastdós við vatni, sandi og smásteinum, fryst dagin fyri</li><li>ein spreydós at spreya heitt vatn úr krananum á ísin</li></ul><p><b>4. partur · Úti</b> – til hvønn næming: loggbók, blýantur og sjóneyka. Ein telefon ella ein teldil til myndir. Veljið eitt stað nær skúlanum, har ymiskir steinar eru, til dømis í fjøruni, við ánna ella fram við vegjaðaranum.</p><h3>Svar</h3><ul><li><b>Steinar í røð (1. partur).</b> Á skerminum vísa J1–J6, hvussu Jarðfríða legði steinarnar. Aðrar røðir kunnu eisini vera góðar, um næmingarnir kunnu grundgeva fyri teimum.</li><li><b>Ristidósin (1. partur).</b> Kantarnir á steinpettunum verða slitnir, og dust kemur á pappírið. Bleytir steinar slítast skjótari enn harðir.</li><li><b>Frostið (2. partur).</b> Rúmdin á vatni økist umleið 9 %, tá ið vatnið frystir. Í sproytuni sæst hetta við, at súlan verður longri. Tá ið vatn frystir í rivum og gloprum í grótinum, kann ísurin trýsta grótið sundur. Tá ið hetta hendir aftur og aftur, kann grótið spakuliga brotna sundur. Jarðfeingi nevnir úrslitið »frostsprongt grót«. Tað er ikki neyðugt, at allir bólkar fáa júst sama tal. Nýt munin sum høvi at tosa um máting, óvissu og umstøður í royndini.</li><li><b>Ísur og sandur (3. partur).</b> Í hesi royndini ger reini ísurin næstan ongar skøvur. Tá ið sandur situr fastur í ísinum, koma skøvur í málingina, og smásteinar kunnu skava djúpari. Í brekkuni flytur ísklumpurin sand og steinar við sær. Tá ið ísurin bráðnar, verður tilfarið liggjandi.</li><li><b>Ísurin ella vatnið (3. partur).</b> Steinarnir 1 og 3 eru bert lítið avrundaðir og hava skøvur. Tað kann benda á, at ísurin hevur flutt teir. Steinarnir 2 og 4 eru rundir og slættir. Tað kann benda á, at vatnið hevur rullað teir.</li><li><b>Søgan hjá tínum steini (4. partur).</b> Her er ikki bara eitt rætt svar. Ein kantutur steinur undir einum hamri kann vera frostsprongdur. Ein steinur við skøvum kann vera fluttur av ísi. Ein rundur og slættur steinur kann hava rullað leingi í á ella í fjøru. Fleiri tilgongdir kunnu hava ávirkað sama stein.</li></ul><h3>Modell og veruleiki</h3><p>Royndin við sproytuni vísir, hvussu vatn víðkar seg, tá ið tað frystir – hon vísir ikki beinleiðis, hvussu grót brotnar. Tann knýtingin ger flokkurin sjálvur, tá ið tey hugsa um, hvat hendir, um vatn frystir inni í einari trongari rivu í grótinum.</p><p>Royndirnar eru einføld modell. Ristidósin, sproytan og brekkan eru einfald modell av tilgongdum, sum í náttúruni taka sera langa tíð. Royndin við træpettinum er ein verklig roynd: næmingarnir síggja sjálvir, hvussu sandur og smásteinar í ísinum skava og brýna málingina. Træpettið er ikki eitt modell av sjálvum grótinum. Lat næmingarnar seta orð á bæði styrkir og avmarkingar við modellinum. Endamálið er ikki, at modellið skal vera ein nágreinilig eftirlíking av náttúruni, men at tað skal hjálpa teimum at skilja eina ávísa tilgongd.</p><h3>»Bygg tín stein« og »Okkara steinar«</h3><p>Í 4. parti byggja næmingarnir ein teldugjørdan stein, sum líkist teirra egna. Tey velja skap og lit og tekna sjálv tey eyðkennini, sum tey veruliga síggja: skøvur, poknur, fyltar poknur, hvítar mineralæðrar, ljós krystall og grøn korn. Endamálið er, at kortið skal vísa, hvussu veruligi steinurin sær út – tí skulu tey ikki tekna eyðkenni, sum ikki eru har. Síðan skriva tey heitið, staðið og sína egnu meting – »Hvat kann vera hent við steininum?« – á kortið. Síðan sigur einki um, hvat er hent: metingin er næmingsins, og hon kann framvegis broytast. Hetta er persónslýsingin av steininum, sum eisini stendur á arbeiðsblaðnum »Mín yndissteinur«.</p><p>Knappurin »Tak niður« goymir kortið sum eina myndafílu (PNG). Hana kunnu næmingarnir leggja á »Okkara steinar« saman við eini mynd av tí veruliga steininum, prenta út ella lata fylgja steininum í posanum.</p><p><b>Okkara steinar</b> stendur niðast í 4. parti í gongdini <em>Hvaðani kom Malli?</em>. Hetta er felags Padlet-veggurin hjá Jarðfríðu. Her kunnu næmingar úr ymiskum skúlum vísa steinar, sum tey hava funnið, og síggja steinar, sum aðrir næmingar hava lagt út.</p><p><b>Áðrenn næmingarnir kunnu brúka veggin, skal lærarin hava atgongd sum góðkennari (moderatorur).</b></p><p>Skriva til <a href="mailto:nam@nam.fo?subject=Jar%C3%B0fr%C3%AD%C3%B0a%20%E2%80%93%20moderatoratgongd">nam@nam.fo</a> og set <em>Jarðfríða – moderatoratgongd</em> sum evni. Upplýs, hvørja teldupostadressu tú brúkar til Padlet. Síðani fært tú eina innbjóðing til felagsveggin. Hevur tú ikki frammanundan eina Padlet-kontu, kanst tú stovna eina ókeypis.</p><p>Sum góðkennari kanst tú góðkenna uppsløgini hjá næmingunum. Uppsløgini verða ikki sjónlig hjá øðrum, fyrr enn tú hevur góðkent tey. Næmingarnir hava ikki tørv á egnari Padlet-kontu.</p><h3>Soleiðis brúka næmingarnir veggin</h3><p>Í 4. parti biður tú næmingarnar leggja út eina mynd av hvør sínum steini. Tey kunnu eisini leggja grótkortið, sum tey hava gjørt, við. Bið tey skriva stutt um:</p><ul><li>hvar steinurin er funnin</li><li>hvat tey leggja merki til við steininum</li><li>hvat tey undrast á</li></ul><p>Næmingarnir kunnu brúka dulnevni ella fornavn, men skulu ikki skriva sítt fulla navn ella leggja út myndir av fólki. Kanna frammanundan, um skúlin loyvir, at Padlet verður brúkt í undirvísingini.</p><h3>Fakorð, um næmingarnir spyrja</h3><dl><dt>Avrundaður</dt><dd>Ein steinur, sum hevur mist hvøssu kantarnar og er vorðin rundari.</dd><dt>Frostsprenging / frostsprongt grót</dt><dd>Tá ið vatn frystir í rivum og gloprum í grótinum, fyllir ísurin meira enn vatnið og kann trýsta grótið sundur. Jarðfeingi brúkar heitið »frostsprongt grót« um grót, sum er brotið niður á henda hátt.</dd><dt>Ísskøvur</dt><dd>Skøvur í føstum gróti, sum eru komnar, tá ið jøkulsísur við sandi og steinum hevur brýnt og skavað helluna. Skøvurnar kunnu geva ábending um, hvønn veg ísurin ferðaðist.</dd><dt>Ístíð</dt><dd>Eitt langt tíðarskeið, tá ið veðurlagið var kaldari enn nú og jøkulsísur lá yvir stórum økjum.</dd><dt>Jøkulsísur</dt><dd>Stórur ísmassi á landi, sum verður til úr kava og flytur seg spakuliga.</dd><dt>Kantutur</dt><dd>Ein steinur við hvøssum kantum.</dd><dt>Máa</dt><dd>Sandur og steinar, sum jøkulsísurin dregur við sær, kunnu máa og brýna grótið. Tá kunnu skøvur koma í helluna.</dd><dt>Modell</dt><dd>Eitt modell er ein einfaldað útgáva av onkrum, sum hendir í veruleikanum. Royndin við sproytuni vísir, hvat kann henda, tá ið vatn frystir í eini rivu. Ísklumpurin við sandi og steinum er eitt einfalt modell av, hvussu jøkulsísur kann flyta tilfar og skava undirlagið.</dd><dt>Morena</dt><dd>Blandað, leyst tilfar, t.d. grót, sandur og leirur, sum jøkulsísur hevur flutt við sær og lagt frá sær.</dd><dt>Skøvur</dt><dd>Smáar strikur ella skøvur í grótinum. Sandur og smásteinar í ísinum kunnu gera skøvur, tá ið ísurin skríður. Allar skøvur eru tó ikki ísskøvur – tí skulu næmingarnir hyggja eftir fleiri sporum og grundgeva fyri metingini.</dd><dt>Slíta</dt><dd>Tá ið steinar verða fluttir og gnadda móti hvørjum øðrum ella móti undirlagnum, verða teir slitnir. Kantarnir kunnu spakuliga verða rundari.</dd><dt>Tæra</dt><dd>Veður, vatn, frost og aðrar náttúrutilgongdir kunnu tæra grótið. Spakuliga verður grótið brotið niður.</dd><dt>Urð</dt><dd>Leyst, ofta kantut grót, sum er dottið ella skrætt niður úr brattlendi og liggur undir hamri ella øðrum brattlendi.</dd></dl><h3>Viðmerking um tilfarið</h3><p>Sproytan og brekkan eru einfald modell, sum eru gjørd til undirvísing. Arbeiðið hjá Jarðfeingi og føroysk jarðfrøði hava givið íblástur til tilfarið.</p><p class="jf-note">Áðrenn tilfarið verður tikið endaliga í nýtslu, eigur ein jarðfrøðingur at kanna tað jarðfrøðiliga innihaldið.</p></details><!-- ░░ INNIHALD ENDAR ░░ --><!-- ░░ BOTNUR ░░ --><!-- FOOTARI --><footer class="jf-footer"><div class="jf-footer-grid"><nav class="jf-footer-col" aria-label="Gongdir"><b>Gongdir</b><a href="/jardfrida/gongdir/tunnil">
+                Jarðfríða kannar fjallið fyri ein tunnil
+              </a><a href="/jardfrida/gongdir/hvadani-kom-malli">
+                Hvaðani kom Malli?
+              </a></nav><nav class="jf-footer-col" aria-label="Meira"><b>Meira</b><a href="/jardfrida/ordalisti">Orðalisti</a><a href="/jardfrida/laerari">Til læraran</a><a href="/jardfrida/um-tilfarid">Um tilfarið</a></nav><nav class="jf-footer-col" aria-label="Jarðfeingi"><b>Jarðfeingi</b><a href="https://jf.fo" target="_blank" rel="noopener">
+                jf.fo
+              </a><a href="https://jf.fo/laer-um-jardfrodi" target="_blank" rel="noopener">
+                Lær um jarðfrøði
+              </a></nav></div><p class="jf-footer-note">
+            Jarðfrøðiligt innihald: Jarðfeingi
+            · Myndir: Karina Toftegaard
+            · Útgivið av Námi
+          </p></footer></div></div><script>
+(function () {
+  // Allar Jarðfríðu-síðurnar fáa sama ljósagula bakgrund um alt TYPO3-økið.
+  document.body.classList.add('jf-sida');
+
+  var rot = document.getElementById('jf-borehole');
+  if (!rot || rot.dataset.jfKlart) return;        // bert eina ferð
+  rot.dataset.jfKlart = '1';
+
+  var fill  = document.getElementById('jf-bore-fill');
+  var bar   = document.getElementById('jf-depth-fill');
+  var ticks = document.getElementById('jf-bore-ticks');
+  var tube  = rot.querySelector('.jf-bore-tube');
+  if (!fill || !bar || !ticks || !tube) return;
+
+  var bidar = false;
+
+  function byggjaMerki() {
+    var haedd = tube.clientHeight;
+    if (!haedd) return;
+    ticks.innerHTML = '';
+    fill.style.setProperty('--jf-bore-height', haedd + 'px');
+    for (var m = 0; m <= 100; m += 20) {
+      var s = document.createElement('span');
+      s.style.top = (m / 100 * haedd) + 'px';
+      s.textContent = m + ' m';
+      ticks.appendChild(s);
+    }
+  }
+
+  function dagfora() {
+    bidar = false;
+    var longd = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    var partur = Math.max(0, Math.min(1, window.scrollY / longd));
+    fill.style.height = (partur * 100) + '%';
+    bar.style.width   = (partur * 100) + '%';
+  }
+
+  function bida() {
+    if (bidar) return;
+    bidar = true;
+    requestAnimationFrame(dagfora);
+  }
+
+  byggjaMerki();
+  dagfora();
+
+  window.addEventListener('scroll', bida, { passive:true });
+  window.addEventListener('resize', function () { byggjaMerki(); dagfora(); });
+  window.addEventListener('load',   function () { byggjaMerki(); dagfora(); });
+
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(function () { byggjaMerki(); bida(); }).observe(document.body);
+  }
+})();
+</script><script>
+
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- teigar ----------
+  const tabs = [...document.querySelectorAll('.jf-phase')];
+  function showPhase(id){
+    tabs.forEach(t => {
+      const on = t.id === id;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', () => showPhase(t.id)));
+
+  // Partakortini ovast og leinkjur uttanífrá peika á #tab-m1 … #tab-m4.
+  function uppUrLeidini(){
+    const id = (location.hash || '').replace('#','');
+    if (id && tabs.some(t => t.id === id)) showPhase(id);
+  }
+  uppUrLeidini();
+  window.addEventListener('hashchange', uppUrLeidini);
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    parent && parent.appendChild(e);
+    return e;
+  };
+
+  // Steinaskøpini. J1 er tann kantutasti, J6 tann rundasti.
+  // Tey verða brúkt bæði av Malla ovast og í røðini í 1. parti.
+  const SKOP = [
+    ['J1','M45 -4 L25 33 L-18 23 L-52 8 L-21 -25 L28 -28 Z'],
+    ['J2','M36 -4 Q36 -2 35 -0 L21 22 Q20 23 18 24 L-8 33 Q-10 33 -11 33 L-34 22 Q-36 21 -37 19 L-40 -8 Q-41 -10 -39 -11 L-15 -26 Q-13 -27 -10 -28 L28 -34 Q31 -35 31 -32 Z'],
+    ['J3','M42 -4 Q45 -1 42 5 L29 24 Q26 29 21 31 L5 37 Q-0 38 -5 37 L-23 31 Q-28 29 -31 23 L-45 4 Q-49 -2 -46 -5 L-36 -17 Q-33 -20 -28 -24 L-12 -37 Q-7 -41 -1 -37 L21 -24 Q27 -20 30 -16 Z'],
+    ['J4','M41 -7 Q47 2 43 10 L38 22 Q35 30 26 34 L13 38 Q4 41 -1 39 L-9 36 Q-15 34 -24 26 L-36 15 Q-45 7 -42 0 L-38 -9 Q-34 -15 -30 -20 L-25 -25 Q-21 -29 -12 -32 L-0 -35 Q9 -37 14 -34 L21 -29 Q26 -26 32 -18 Z'],
+    ['J5','M41 -10 Q43 -0 42 8 L42 11 Q41 19 33 25 L29 27 Q21 33 5 32 L-2 31 Q-18 30 -26 27 L-29 25 Q-37 22 -39 15 L-40 13 Q-42 6 -39 -6 L-37 -11 Q-33 -24 -23 -28 L-19 -29 Q-9 -33 -2 -33 L1 -33 Q9 -33 21 -29 L26 -28 Q39 -23 40 -14 Z'],
+    ['J6','M43 -10 Q45 -3 41 10 L41 10 Q37 23 29 27 L29 27 Q22 31 11 33 L11 33 Q-1 36 -16 30 L-16 30 Q-30 25 -36 17 L-36 17 Q-41 10 -42 1 L-42 1 Q-43 -8 -34 -19 L-34 -19 Q-25 -31 -19 -33 L-19 -33 Q-13 -34 0 -35 L0 -35 Q14 -37 27 -27 L27 -27 Q41 -17 43 -10 Z']
+  ];
+  const DOTTAR = [[-18,-12,2.8],[10,-16,2.2],[20,8,3],[-8,14,2.4],[0,-2,1.8],[-25,2,2]];
+
+  function steinMynd(skapIdx, skovur){
+    let s = '<path d="' + SKOP[skapIdx][1] + '" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"/>';
+    DOTTAR.forEach(([x,y,r]) => {
+      s += '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#5C6369" opacity=".5"/>';
+    });
+    if (skovur){
+      s += '<g stroke="#EDEFE8" stroke-width="2.2" stroke-linecap="round" opacity=".85">' +
+           '<path d="M-26 -6 L10 -16"/><path d="M-20 6 L18 -4"/><path d="M-10 18 L22 8"/></g>';
+    }
+    return s;
+  }
+
+  // ---------- MALLI OVAST: hann slítst, hvørja ferð tú trýstir ----------
+  (function malliHero(){
+    const knappur = document.getElementById('malliHero');
+    const path = document.getElementById('malliPath');
+    const skap = document.getElementById('malliSkap');
+    const dust = document.getElementById('malliDust');
+    const bobla = document.getElementById('malliBobla');
+    const stig  = document.getElementById('malliStig');
+    const aftur = document.getElementById('malliAftur');
+    const eyga1 = document.getElementById('malliEyga1');
+    const eyga2 = document.getElementById('malliEyga2');
+    const munnur = document.getElementById('malliMunnur');
+    if (!knappur || !path) return;
+
+    const TEXTIR = [
+      ['Kantutur',              '»Eg eri nýkomin úr fjallinum. Ansa tær – eg eri hvassur!«'],
+      ['Kantutur',              '»Ísurin skumpar meg. Eg rulli ikki so væl enn.«'],
+      ['Eitt sindur avrundaður','»Áit! Har fór ein kantur.«'],
+      ['Avrundaður',            '»Nú rulli eg í ánni. Tað kitlar.«'],
+      ['Næstan rundur',         '»Hvørja ferð eg skumpi ein annan stein, missi eg eitt sindur.«'],
+      ['Rundur',                '»Nú eri eg rundur! Men tað tók túsundir av árum.«']
+    ];
+    const AFTURAT = [
+      '»Rundari verði eg ikki. Royn »Byrja av nýggjum«.«',
+      '»Eg eri basalt – eg toli nógv.«',
+      '»Svimbul…«',
+      '»Hoyyy! Eg rulli burtur!«'
+    ];
+
+    const BYRJAN = '»Eg eri kantutur í dag. Hvat heldur tú hendir við mær? Trýst á meg.«';
+
+    let n = 0;          // hvat stig Malli er á
+    let snúningur = 0;  // hvussu nógv hann hevur rullað
+
+    function teikna(){
+      path.setAttribute('d', SKOP[n][1]);
+      dust.replaceChildren();
+      DOTTAR.slice(0, 3 + n).forEach(([x,y,r]) => el('circle', {cx:x, cy:y, r:r}, dust));
+      stig.textContent = TEXTIR[n][0] + ' · ' + (n+1) + ' av 6';
+      munnur.setAttribute('d', n >= 4 ? 'M-12 16 Q0 28 13 16' : 'M-11 19 Q0 24 12 19');
+    }
+
+    function rulla(){
+      snúningur += 360;
+      if (!reduce) skap.style.transform = 'rotate(' + snúningur + 'deg)';
+      if (n < 5){
+        setTimeout(() => { n++; teikna(); bobla.textContent = TEXTIR[n][1]; }, reduce ? 0 : 200);
+      } else {
+        bobla.textContent = AFTURAT[Math.floor(Math.random() * AFTURAT.length)];
+      }
+    }
+
+    knappur.addEventListener('click', rulla);
+
+    aftur.addEventListener('click', () => {
+      n = 0;
+      snúningur = 0;
+      skap.style.transform = '';
+      teikna();
+      bobla.textContent = BYRJAN;
+    });
+
+    // Eyguni fylgja músini
+    if (!reduce){
+      document.addEventListener('pointermove', e => {
+        const b = knappur.getBoundingClientRect();
+        if (!b.width) return;
+        const dx = Math.max(-1, Math.min(1, (e.clientX - (b.left + b.width/2)) / 260));
+        const dy = Math.max(-1, Math.min(1, (e.clientY - (b.top + b.height/2)) / 260));
+        eyga1.setAttribute('cx', -16 + dx * 2.6);
+        eyga2.setAttribute('cx',  20 + dx * 2.6);
+        eyga1.setAttribute('cy',  -3 + dy * 2.2);
+        eyga2.setAttribute('cy',  -3 + dy * 2.2);
+      }, {passive:true});
+    }
+
+    teikna();
+  })();
+
+  // ---------- 1: steinarnir í røð ----------
+  (function roedSteinar(){
+    const roed = document.getElementById('roed');
+    const fb   = document.getElementById('roedFeedback');
+    if (!roed) return;
+
+    let rad = [];           // skipanin, sum næmingurin hevur lagt
+    let bokstavur = {};
+    let visaMerki = false;
+
+    function blanda(){
+      rad = SKOP.map(s => s[0]);
+      do {
+        for (let i = rad.length - 1; i > 0; i--){
+          const j = Math.floor(Math.random() * (i + 1));
+          [rad[i], rad[j]] = [rad[j], rad[i]];
+        }
+      } while (rad.every((id, i) => id === SKOP[i][0]));
+      bokstavur = {};
+      rad.forEach((id, i) => { bokstavur[id] = 'ABCDEF'[i]; });
+      visaMerki = false;
+      fb.hidden = true;
+      teikna();
+    }
+
+    function flyt(fra, til){
+      if (til < 0 || til > 5 || fra === til) return;
+      const [x] = rad.splice(fra, 1);
+      rad.splice(til, 0, x);
+      fb.hidden = true;
+      teikna();
+    }
+
+    function teikna(){
+      roed.replaceChildren();
+      rad.forEach((id, i) => {
+        const idx = SKOP.findIndex(s => s[0] === id);
+        const kort = document.createElement('div');
+        kort.className = 'jf-plass';
+        kort.dataset.i = i;
+        kort.innerHTML =
+          '<span class="jf-nr">' + (i+1) + '</span>' +
+          '<svg viewBox="-60 -50 120 100" aria-hidden="true">' + steinMynd(idx, false) + '</svg>' +
+          '<span class="jf-merki">' + (visaMerki ? id : bokstavur[id]) + '</span>' +
+          '<span class="jf-flyt">' +
+            '<button type="button" data-flyt="-1" aria-label="Hála stein ' + bokstavur[id] + ' til vinstru">‹</button>' +
+            '<button type="button" data-flyt="1" aria-label="Hála stein ' + bokstavur[id] + ' til høgru">›</button>' +
+          '</span>';
+
+        kort.querySelectorAll('[data-flyt]').forEach(b => {
+          b.addEventListener('click', ev => {
+            ev.stopPropagation();
+            flyt(i, i + Number(b.dataset.flyt));
+          });
+        });
+
+        kort.addEventListener('pointerdown', ev => {
+          if (ev.target.closest('[data-flyt]')) return;
+          if (ev.button !== undefined && ev.button !== 0) return;
+          byrjaDrag(ev, i, kort);
+        });
+
+        roed.appendChild(kort);
+      });
+    }
+
+    function finnMal(x, y, midjur){
+      let best = 0, bd = Infinity;
+      midjur.forEach((m, i) => {
+        const d = Math.hypot(x - m[0], y - m[1]);
+        if (d < bd){ bd = d; best = i; }
+      });
+      return best;
+    }
+
+    function byrjaDrag(ev, fra, kort){
+      const x0 = ev.clientX, y0 = ev.clientY;
+      // Midjurnar verða mátaðar, áðrenn kortið flytur seg
+      const midjur = [...roed.children].map(k => {
+        const r = k.getBoundingClientRect();
+        return [r.left + r.width/2, r.top + r.height/2];
+      });
+      let mal = fra;
+      kort.setPointerCapture(ev.pointerId);
+      kort.classList.add('jf-dragur');
+
+      function mv(e){
+        kort.style.transform = 'translate(' + (e.clientX - x0) + 'px,' + (e.clientY - y0) + 'px)';
+        const nytt = finnMal(e.clientX, e.clientY, midjur);
+        if (nytt !== mal){
+          mal = nytt;
+          [...roed.children].forEach((k, i) => k.classList.toggle('jf-yvir', i === mal && i !== fra));
+        }
+      }
+      function upp(){
+        kort.removeEventListener('pointermove', mv);
+        kort.removeEventListener('pointerup', upp);
+        kort.removeEventListener('pointercancel', upp);
+        kort.classList.remove('jf-dragur');
+        kort.style.transform = '';
+        [...roed.children].forEach(k => k.classList.remove('jf-yvir'));
+        flyt(fra, mal);
+      }
+      kort.addEventListener('pointermove', mv);
+      kort.addEventListener('pointerup', upp);
+      kort.addEventListener('pointercancel', upp);
+    }
+
+    document.getElementById('nyRoed').addEventListener('click', blanda);
+
+    document.getElementById('kannaRoed').addEventListener('click', () => {
+      visaMerki = true;
+      teikna();
+      fb.hidden = false;
+      fb.className = 'jf-feedback';
+      fb.innerHTML = 'Soleiðis legði Jarðfríða steinarnar: <b>J1 → J6</b> – fyrst teir við nógvum kantum, ' +
+                     'síðst teir, sum eru rundast. Samanber tína røð við hesa. ' +
+                     'Hvar eru røðirnar eins, og hvar eru tær ymiskar? Hví hevur tú lagt steinarnar soleiðis?';
+    });
+
+    blanda();
+  })();
+
+  // ---------- 2: vatnssúlan og íssúlan ----------
+  (function frost(){
+    const vatn = document.getElementById('matVatn');
+    const isur = document.getElementById('matIs');
+    const fb   = document.getElementById('frostFeedback');
+    const rokn = document.getElementById('roknistykki');
+    const rIs  = document.getElementById('roknIs');
+    const rVatn= document.getElementById('roknVatn');
+    const fyllVatn = document.getElementById('fyllVatn');
+    const fyllIs   = document.getElementById('fyllIs');
+    if (!vatn || !isur) return;
+
+    const BOTNUR = 194, MEST = 168;   // sproytan í svg-inum
+
+    function fyll(stykki, longd, mest){
+      const h = Math.max(0, Math.min(MEST, longd / mest * MEST));
+      stykki.setAttribute('height', h);
+      stykki.setAttribute('y', BOTNUR - h);
+    }
+
+    function dagfor(){
+      const v = parseFloat(vatn.value), i = parseFloat(isur.value);
+      const mest = Math.max(v > 0 ? v : 0, i > 0 ? i : 0) || 1;
+      fyll(fyllVatn, v > 0 ? v : 0, mest);
+      fyll(fyllIs,   i > 0 ? i : 0, mest);
+    }
+
+    vatn.addEventListener('input', dagfor);
+    isur.addEventListener('input', dagfor);
+
+    // Síðan setur bert roknistykkið upp – næmingarnir rokna sjálvir.
+    document.getElementById('roknaFrost').addEventListener('click', () => {
+      const v = parseFloat(vatn.value), i = parseFloat(isur.value);
+      dagfor();
+
+      if (!(v > 0) || !(i > 0)){
+        rokn.hidden = true;
+        fb.hidden = false;
+        fb.className = 'jf-feedback';
+        fb.innerHTML = 'Skrivið bæði málini inn í millimetrum – fyrst vatnssúluna og síðan íssúluna.';
+        return;
+      }
+
+      fb.hidden = true;
+      rVatn.textContent = String(v);
+      rIs.textContent = String(i);
+      rokn.hidden = false;
+    });
+
+    dagfor();
+  })();
+
+  // ---------- 3: ísurin ella vatnið? ----------
+  // Hvør steinur hevur eina frágreiðing, sum sporini stuðla best – og eina
+  // viðmerking um, hví hin frágreiðingin hóskar verri. Eingin afturboðan
+  // sigur bara »rætt« ella »skeivt«.
+  const STEINAR4 = [
+    [1, 2, true,  'isur',
+     'Steinurin er bert lítið avrundaður, og skøvurnar ganga í somu ætt. Tað kann benda á, at ísurin hevur flutt hann – sandur og smásteinar í ísinum gera slíkar skøvur.',
+     'Hevði vatn rullað hann leingi, høvdu kantarnir verið meira slitnir, og skøvurnar høvdu neyvan staðið eftir.'],
+    [2, 5, false, 'vatn',
+     'Steinurin er rundur og slættur allan vegin. Tað kann benda á, at vatn hevur rullað hann leingi í á ella í fjøru.',
+     'Ísurin ber ofta steinar uttan at rulla teir, so teir halda kantarnar og fáa skøvur. Her síggja vit hvørki kantar ella skøvur.'],
+    [3, 3, true,  'isur',
+     'Kantarnir eru enn at síggja, og í yvirflatuni eru skøvur. Tað kann benda á, at ísurin hevur borið hann – hann hevur ikki rullað leingi.',
+     'Hevði hann rullað leingi í vatni, høvdu hvøssu kantarnir verið slitnir av.'],
+    [4, 5, false, 'vatn',
+     'Eingin hvassur kantur og eingin skøva. Tað kann benda á, at steinurin hevur rullað leingi í vatni.',
+     'Ísurin letur ofta skøvur eftir seg og slítur ikki kantarnar so javnt. Her finna vit onga skøvu.']
+  ];
+
+  (function sporval(){
+    const rum = document.getElementById('sporVal');
+    const fb  = document.getElementById('sporFeedback');
+    if (!rum) return;
+
+    let svarað = 0;
+
+    STEINAR4.forEach(([nr, skapIdx, skovur, svar, greining, hitt]) => {
+      const rad = document.createElement('div');
+      rad.className = 'jf-valrad';
+
+      const mynd = document.createElement('div');
+      mynd.innerHTML = '<svg viewBox="-60 -50 120 100" role="img" aria-label="Steinur ' + nr +
+                       (skovur ? ', lítið avrundaður við skøvum' : ', rundur og slættur') + '">' +
+                       steinMynd(skapIdx, skovur) + '</svg>';
+      rad.appendChild(mynd);
+
+      const innihald = document.createElement('div');
+      innihald.className = 'jf-innihald';
+      innihald.innerHTML = '<b class="jf-steinheiti">Steinur ' + nr + '</b>' +
+                           '<p>Hvat kunnu sporini á hesum steininum benda á?</p>';
+
+      const knappar = document.createElement('div');
+      knappar.className = 'jf-valknappar';
+
+      const utskrift = document.createElement('div');
+      utskrift.className = 'jf-svar';
+      utskrift.hidden = true;
+
+      [['isur','Ísurin kann hava flutt hann'],['vatn','Vatnið kann hava rullað hann']].forEach(([val, heiti]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'jf-btn2';
+        b.textContent = heiti;
+        b.addEventListener('click', () => {
+          if (!utskrift.hidden) return;
+          svarað++;
+          utskrift.hidden = false;
+          if (val === svar){
+            utskrift.className = 'jf-svar jf-good';
+            utskrift.innerHTML = '<b>Ein møgulig frágreiðing:</b> ' + greining +
+                                 ' Men vit kunnu ikki vita alla ferð hansara bara út frá skapinum.';
+          } else {
+            utskrift.className = 'jf-svar';
+            utskrift.innerHTML = '<b>Hygg aftur at sporunum.</b> ' + hitt + ' ' + greining;
+          }
+          b.classList.add('jf-primary');
+          knappar.querySelectorAll('button').forEach(x => { x.disabled = true; });
+          if (svarað === STEINAR4.length){
+            fb.hidden = false;
+            fb.className = 'jf-feedback';
+            fb.innerHTML = 'Tit hava hugt at øllum fýra steinunum. Sporini stuðla hesum frágreiðingum – men eitt spor er ein ábending, ikki eitt prógv. Fleiri náttúrutilgongdir kunnu hava ávirkað sama stein.';
+          }
+        });
+        knappar.appendChild(b);
+      });
+
+      innihald.appendChild(knappar);
+      innihald.appendChild(utskrift);
+      rad.appendChild(innihald);
+      rum.appendChild(rad);
+    });
+  })();
+
+  // ---------- 4: bygg tín stein ----------
+  const LITIR = [
+    ['grátt','#7E858B'],
+    ['dimmgrátt','#5A6066'],
+    ['næstan svart','#3C4247'],
+    ['ljósgrátt','#A3A9AD'],
+    ['reyðbrúnt','#9A5B43']
+  ];
+
+  // Verkføri: næmingurin málar sjálvur eyðkennini á steinin.
+  const VERKFOERI = [
+    ['skova',   'skøvur',             'strok'],
+    ['poknur',  'poknur (smá hol)',   'punkt'],
+    ['fyltar',  'fyltar poknur',      'punkt'],
+    ['aedr',    'hvítar mineralæðrar','strok'],
+    ['krystall','ljós krystall',      'punkt'],
+    ['olivin',  'grøn korn',          'punkt'],
+    ['strika',  'strika',             'strika']
+  ];
+
+  // Frost er ikki ein flutningsháttur á sama hátt sum vatn og jøkulsísur,
+  // tí eitur teigurin »Hvat kann vera hent við steininum?«
+  const FERDIR = [
+    ['frost','Frost','Frostið kann hava brotið hann leysan.'],
+    ['isur','Ísur','Ísur kann hava flutt hann.'],
+    ['vatn','Vatn','Vatn kann hava rullað hann.'],
+    ['ivi','Eg veit ikki enn','Eg veit ikki enn.']
+  ];
+
+  // Eitt málað eyðkenni verður til primitivur, sum bæði svg og canvas skilja
+  function eydkenniLutir(e){
+    if (e.t === 'poknur')   return [{t:'ellipse', cx:e.x, cy:e.y, rx:e.r*1.2, ry:e.r, fill:'#16191B', stroke:'#A9B1B6', w:.9}];
+    if (e.t === 'fyltar')   return [{t:'ellipse', cx:e.x, cy:e.y, rx:e.r*1.15, ry:e.r, fill:'#F1F0E6', stroke:'#2A2E31', w:1.2}];
+    if (e.t === 'krystall') return [{t:'rect', x:e.x, y:e.y, w:e.lg, h:3.6, rot:e.rot, fill:'#EDEFE8'}];
+    if (e.t === 'olivin')   return [{t:'circle', cx:e.x, cy:e.y, r:e.r, fill:'#7FA03A', stroke:'#3E5418', w:.9}];
+    if (e.t === 'skova')    return [{t:'strok', pts:e.pts, stroke:'#EDEFE8', w:2.2}];
+    if (e.t === 'aedr')     return [{t:'strok', pts:e.pts, stroke:'#F4F2E8', w:4}];
+    return [];
+  }
+
+  function steinLutir(skapIdx, litur, mal){
+    const l = [{t:'path', d:SKOP[skapIdx][1], fill:litur, stroke:'#1E2326', w:4}];
+    mal.forEach(e => eydkenniLutir(e).forEach(x => l.push(x)));
+    return l;
+  }
+
+  function svgAvLutum(lutir){
+    return lutir.map(o => {
+      if (o.t === 'path')   return '<path d="'+o.d+'" fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="'+o.w+'" stroke-linejoin="round"/>';
+      if (o.t === 'ellipse')return '<ellipse cx="'+o.cx+'" cy="'+o.cy+'" rx="'+o.rx+'" ry="'+o.ry+'" fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="'+o.w+'"/>';
+      if (o.t === 'circle') return '<circle cx="'+o.cx+'" cy="'+o.cy+'" r="'+o.r+'" fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="'+o.w+'"/>';
+      if (o.t === 'rect')   return '<rect x="'+(o.x-o.w/2)+'" y="'+(o.y-o.h/2)+'" width="'+o.w+'" height="'+o.h+'" fill="'+o.fill+'" transform="rotate('+o.rot+' '+o.x+' '+o.y+')"/>';
+      if (o.t === 'strok'){
+        const d = o.pts.map((pt,k) => (k ? 'L' : 'M') + pt[0].toFixed(1) + ' ' + pt[1].toFixed(1)).join(' ');
+        return '<path d="'+d+'" stroke="'+o.stroke+'" stroke-width="'+o.w+'" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".92"/>';
+      }
+      return '';
+    }).join('');
+  }
+
+  function teknaStein(ctx, lutir, ox, oy, skala){
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.scale(skala, skala);
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    lutir.forEach(o => {
+      ctx.beginPath();
+      if (o.t === 'path'){
+        const pa = new Path2D(o.d);
+        ctx.fillStyle = o.fill; ctx.fill(pa);
+        ctx.strokeStyle = o.stroke; ctx.lineWidth = o.w; ctx.stroke(pa);
+        return;
+      }
+      if (o.t === 'rect'){
+        ctx.save();
+        ctx.translate(o.x, o.y); ctx.rotate(o.rot * Math.PI/180);
+        ctx.fillStyle = o.fill; ctx.fillRect(-o.w/2, -o.h/2, o.w, o.h);
+        ctx.restore();
+        return;
+      }
+      if (o.t === 'ellipse') ctx.ellipse(o.cx, o.cy, o.rx, o.ry, 0, 0, Math.PI*2);
+      if (o.t === 'circle')  ctx.arc(o.cx, o.cy, o.r, 0, Math.PI*2);
+      if (o.t === 'strok')   o.pts.forEach((pt,k) => k ? ctx.lineTo(pt[0], pt[1]) : ctx.moveTo(pt[0], pt[1]));
+      if (o.fill){ ctx.fillStyle = o.fill; ctx.fill(); }
+      if (o.stroke){ ctx.strokeStyle = o.stroke; ctx.lineWidth = o.w; ctx.stroke(); }
+    });
+    ctx.restore();
+  }
+
+  (function byggStein(){
+    const navn = document.getElementById('gkNavn');
+    const stad = document.getElementById('gkStad');
+    const mitt = document.getElementById('gkNavnMitt');
+    const skapRum = document.getElementById('gkSkap');
+    const litRum = document.getElementById('gkLitur');
+    const verkRum = document.getElementById('gkVerk');
+    const ferdRum = document.getElementById('gkFerd');
+    const mynd = document.getElementById('gkMynd');
+    const kNavn = document.getElementById('gkKortNavn');
+    const kStad = document.getElementById('gkKortStad');
+    const kFerd = document.getElementById('gkKortFerd');
+    const kFot  = document.getElementById('gkFot');
+    const kvittan = document.getElementById('gkKvittan');
+    if (!navn || !skapRum) return;
+
+    let skap = 2;
+    let litur = LITIR[0][1];
+    let verk = 'poknur';
+    let ferd = null;
+    let mal = [];
+
+    // Til at kanna, um ein punktur er inni í steininum
+    const prova = document.createElement('canvas').getContext('2d');
+    let leid = new Path2D(SKOP[skap][1]);
+    function innaní(x, y){ return prova.isPointInPath(leid, x, y); }
+
+    function skapKnappar(){
+      skapRum.replaceChildren();
+      SKOP.forEach(([id], i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-pressed', String(i === skap));
+        b.setAttribute('aria-label', 'Skap ' + (i+1) + ' av 6');
+        b.innerHTML = '<svg viewBox="-60 -50 120 100" aria-hidden="true">' +
+                      svgAvLutum([{t:'path', d:SKOP[i][1], fill:'#7E858B', stroke:'#1E2326', w:5}]) + '</svg>';
+        b.addEventListener('click', () => {
+          skap = i;
+          leid = new Path2D(SKOP[skap][1]);
+          // Eyðkenni, sum nú liggja uttanfyri steinin, detta burtur
+          mal = mal.filter(e => {
+            if (e.pts){ e.pts = e.pts.filter(pt => innaní(pt[0], pt[1])); return e.pts.length > 1; }
+            return innaní(e.x, e.y);
+          });
+          skapKnappar(); dagfor();
+        });
+        skapRum.appendChild(b);
+      });
+    }
+
+    function litKnappar(){
+      litRum.replaceChildren();
+      LITIR.forEach(([heiti, kota]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-pressed', String(kota === litur));
+        b.innerHTML = '<i style="background:' + kota + '"></i>' + heiti;
+        b.addEventListener('click', () => { litur = kota; litKnappar(); dagfor(); });
+        litRum.appendChild(b);
+      });
+    }
+
+    function verkKnappar(){
+      verkRum.replaceChildren();
+      VERKFOERI.forEach(([lykil, heiti]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = (lykil === 'strika' ? 'jf-strika' : '');
+        b.setAttribute('aria-pressed', String(lykil === verk));
+        b.innerHTML = '<i class="jf-i-' + lykil + '"></i>' + heiti;
+        b.addEventListener('click', () => { verk = lykil; verkKnappar(); });
+        verkRum.appendChild(b);
+      });
+    }
+
+    function ferdKnappar(){
+      ferdRum.replaceChildren();
+      FERDIR.forEach(([lykil, heiti]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'jf-btn2' + (lykil === ferd ? ' jf-primary' : '');
+        b.setAttribute('aria-pressed', String(lykil === ferd));
+        b.textContent = heiti;
+        b.addEventListener('click', () => { ferd = (ferd === lykil ? null : lykil); ferdKnappar(); dagfor(); });
+        ferdRum.appendChild(b);
+      });
+    }
+
+    // ---- at mála á steinin ----
+    function stad2(e){
+      const r = mynd.getBoundingClientRect();
+      return [-70 + (e.clientX - r.left) / r.width * 140,
+              -56 + (e.clientY - r.top) / r.height * 112];
+    }
+
+    function nyttPunkt(x, y){
+      if (verk === 'poknur')   return {t:'poknur', x:x, y:y, r:2.6 + Math.random()*2.4};
+      if (verk === 'fyltar')   return {t:'fyltar', x:x, y:y, r:3.4 + Math.random()*2.2};
+      if (verk === 'krystall') return {t:'krystall', x:x, y:y, lg:8 + Math.random()*7, rot:Math.random()*180};
+      if (verk === 'olivin')   return {t:'olivin', x:x, y:y, r:2.2 + Math.random()*1.6};
+      return null;
+    }
+
+    function strikaVið(x, y){
+      let best = -1, bd = 11;
+      mal.forEach((e, k) => {
+        let d;
+        if (e.pts) d = Math.min.apply(null, e.pts.map(pt => Math.hypot(pt[0]-x, pt[1]-y)));
+        else d = Math.hypot(e.x-x, e.y-y);
+        if (d < bd){ bd = d; best = k; }
+      });
+      if (best >= 0){ mal.splice(best, 1); dagfor(); }
+    }
+
+    let niðri = false, strok = null, seinast = null;
+
+    mynd.addEventListener('pointerdown', e => {
+      const [x,y] = stad2(e);
+      mynd.setPointerCapture(e.pointerId);
+      niðri = true;
+      if (verk === 'strika'){ strikaVið(x, y); return; }
+      if (!innaní(x, y)) return;
+      const slag = (VERKFOERI.find(v => v[0] === verk) || [])[2];
+      if (slag === 'strok'){
+        strok = {t:verk, pts:[[x,y]]};
+        mal.push(strok);
+      } else {
+        const n = nyttPunkt(x, y);
+        if (n) mal.push(n);
+      }
+      seinast = [x,y];
+      dagfor();
+    });
+
+    mynd.addEventListener('pointermove', e => {
+      if (!niðri) return;
+      const [x,y] = stad2(e);
+      if (verk === 'strika'){ strikaVið(x, y); return; }
+      if (!innaní(x, y)) return;
+      const d = seinast ? Math.hypot(x-seinast[0], y-seinast[1]) : 99;
+      if (strok){
+        if (d < 3) return;
+        strok.pts.push([x,y]);
+      } else {
+        if (d < 9) return;
+        const n = nyttPunkt(x, y);
+        if (n) mal.push(n);
+      }
+      seinast = [x,y];
+      dagfor();
+    });
+
+    function sleppa(){
+      niðri = false;
+      if (strok && strok.pts.length < 2) mal.pop();
+      strok = null;
+      seinast = null;
+      dagfor();
+    }
+    mynd.addEventListener('pointerup', sleppa);
+    mynd.addEventListener('pointercancel', sleppa);
+
+    document.getElementById('gkReinsa').addEventListener('click', () => { mal = []; dagfor(); });
+
+    function tekstir(){
+      const f = FERDIR.find(x => x[0] === ferd);
+      return {
+        navn: navn.value.trim() || 'Steinurin hjá mær',
+        stad: stad.value.trim() ? 'Eg fann hann ' + stad.value.trim() + '.' : 'Eg fann hann …',
+        ferd: f ? f[2] : 'Hvat kann vera hent við steininum?',
+        fot:  (mitt.value.trim() ? mitt.value.trim() + ' · ' : '') + 'Jarðfrøði við Jarðfríðu'
+      };
+    }
+
+    function dagfor(){
+      mynd.innerHTML = svgAvLutum(steinLutir(skap, litur, mal));
+      const t = tekstir();
+      kNavn.textContent = t.navn;
+      kStad.textContent = t.stad;
+      kFerd.textContent = t.ferd;
+      kFot.textContent = t.fot;
+    }
+
+    [navn, stad, mitt].forEach(f => f.addEventListener('input', dagfor));
+
+    // ---- kortið sum myndafíla ----
+    function linjur(ctx, tekstur, breidd){
+      const ord = tekstur.split(' ');
+      const út = [];
+      let l = '';
+      ord.forEach(o => {
+        const royn = l ? l + ' ' + o : o;
+        if (ctx.measureText(royn).width > breidd && l){ út.push(l); l = o; }
+        else l = royn;
+      });
+      if (l) út.push(l);
+      return út;
+    }
+
+    document.getElementById('gkNidur').addEventListener('click', () => {
+      const B = 640, H = 700, c = document.createElement('canvas');
+      c.width = B; c.height = H;
+      const ctx = c.getContext('2d');
+      const t = tekstir();
+
+      ctx.fillStyle = '#F4F1E8'; ctx.fillRect(0, 0, B, H);
+      ctx.fillStyle = '#FFFFFF'; ctx.fillRect(24, 24, B-48, H-48);
+      ctx.strokeStyle = '#1F2428'; ctx.lineWidth = 3;
+      ctx.strokeRect(24, 24, B-48, H-48);
+
+      ctx.fillStyle = '#2A6A80';
+      ctx.font = '600 15px "IBM Plex Mono", monospace';
+      ctx.fillText('OKKARA GRÓTSAVN', 56, 74);
+      ctx.textAlign = 'right';
+      ctx.fillText('NR.', B-56, 74);
+      ctx.textAlign = 'left';
+      ctx.strokeStyle = '#D9D3C4'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(56, 92); ctx.lineTo(B-56, 92); ctx.stroke();
+
+      teknaStein(ctx, steinLutir(skap, litur, mal), B/2, 270, 3.1);
+
+      ctx.fillStyle = '#1F2428';
+      ctx.font = '700 38px Georgia, serif';
+      linjur(ctx, t.navn, B-120).slice(0, 2).forEach((l, i) => ctx.fillText(l, 56, 440 + i*44));
+
+      ctx.fillStyle = '#585F65';
+      ctx.font = '400 21px system-ui, sans-serif';
+      let y = 500;
+      linjur(ctx, t.stad, B-120).forEach(l => { ctx.fillText(l, 56, y); y += 30; });
+
+      y += 14;
+      const metingLinjur = linjur(ctx, t.ferd, B-150);
+      const kassaH = metingLinjur.length * 30 + 28;
+      ctx.fillStyle = '#E7EFF2'; ctx.fillRect(56, y-26, B-112, kassaH);
+      ctx.fillStyle = '#2A6A80'; ctx.fillRect(56, y-26, 6, kassaH);
+      ctx.fillStyle = '#1F2428';
+      metingLinjur.forEach(l => { ctx.fillText(l, 76, y); y += 30; });
+
+      ctx.fillStyle = '#585F65';
+      ctx.font = '600 15px "IBM Plex Mono", monospace';
+      ctx.fillText(t.fot.toUpperCase(), 56, H-62);
+
+      const navnFila = (navn.value.trim() || 'min-steinur')
+        .toLowerCase().replace(/[^a-z0-9áðíóúýæøå]+/gi, '-').replace(/^-|-$/g, '') || 'min-steinur';
+
+      c.toBlob(blob => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = navnFila + '.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+        kvittan.hidden = false;
+        kvittan.innerHTML = '<b>Kortið er tikið niður sum mynd.</b> Legg tað á »Okkara steinar« saman við eini mynd av steininum – ella prenta tað út og lat tað fylgja steininum.';
+      }, 'image/png');
+    });
+
+    skapKnappar();
+    litKnappar();
+    verkKnappar();
+    ferdKnappar();
+    dagfor();
+  })();
+
+  // ---------- 4: PADLET · »Okkara steinar« ----------
+  // Felags veggurin hjá Jarðfríðu. Nám umsitur hann, og lærarin fær
+  // góðkennaratgongd frá Námi. Skal veggurin skiftast út, so broyt
+  // bert leiðina her.
+  (function veggur(){
+    const g = document.getElementById('gallery');
+    if (!g) return;
+    const VEGGUR = 'https://padlet.com/embed/s0243ctlzzvx2scmvpxs';
+
+    const f = document.createElement('iframe');
+    f.src = VEGGUR;
+    f.title = 'Okkara steinar – felags veggurin hjá Jarðfríðu';
+    f.loading = 'lazy';
+    f.setAttribute('frameborder', '0');
+    f.setAttribute('allow', 'camera;microphone;geolocation;display-capture;clipboard-write');
+    g.appendChild(f);
+
+    const a = document.createElement('a');
+    a.href = VEGGUR.replace('/embed/', '/');
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'jf-btn2 jf-primary';
+    a.style.justifySelf = 'start';
+    a.style.textDecoration = 'none';
+    a.textContent = 'Lat »Okkara steinar« upp í nýggjum vindeyga';
+    g.appendChild(a);
+  })();
+
+})();
+
+</script></div></div>
+</body>
+</html>
