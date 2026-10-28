@@ -50,8 +50,7 @@
 .jf .jf-bolkheiti { margin:38px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--ink); }
 .jf .jf-bolkheiti:first-child { margin-top:0; }
 .jf .jf-undirheiti { margin:26px 0 12px; font:700 1.18rem/1.25 var(--display); }
-.jf .jf-foto { margin:0 0 18px; background:var(--surface); border:1px solid var(--line); }
-.jf .jf-foto figcaption { padding:12px 16px 14px; border-top:1px solid var(--line); font-size:.93rem; line-height:1.45; color:var(--ink-soft); }
+.jf .jf-foto { margin:0 0 18px; }
 @media(max-width:900px) { .jf .jf-tvidalk { grid-template-columns:minmax(0,1fr); gap:20px; } .jf .jf-undirmenu { position:static; display:flex; flex-wrap:wrap; gap:0 4px; padding:10px 12px; } .jf .jf-undirmenu a { padding:6px 10px; border-left:0; border-bottom:3px solid transparent; } .jf .jf-undirmenu a.jf-her { border-left:0; border-bottom-color:var(--sea); } .jf .jf-undirmenu .jf-bolkur { width:100%; padding:10px 10px 2px; } }
 .jf .jf-stabbi { display:grid; gap:16px; }
 .jf .jf-ark > .jf-undirheiti { margin:0; }
@@ -241,61 +240,6 @@
             Jarðfrøðiligt innihald: Jarðfeingi
             · Myndir: Karina Toftegaard
             · Útgivið av Námi
-          </p></footer></div></div><script>
-(function () {
-  // Allar Jarðfríðu-síðurnar fáa sama ljósagula bakgrund um alt TYPO3-økið.
-  document.body.classList.add('jf-sida');
-
-  var rot = document.getElementById('jf-borehole');
-  if (!rot || rot.dataset.jfKlart) return;        // bert eina ferð
-  rot.dataset.jfKlart = '1';
-
-  var fill  = document.getElementById('jf-bore-fill');
-  var bar   = document.getElementById('jf-depth-fill');
-  var ticks = document.getElementById('jf-bore-ticks');
-  var tube  = rot.querySelector('.jf-bore-tube');
-  if (!fill || !bar || !ticks || !tube) return;
-
-  var bidar = false;
-
-  function byggjaMerki() {
-    var haedd = tube.clientHeight;
-    if (!haedd) return;
-    ticks.innerHTML = '';
-    fill.style.setProperty('--jf-bore-height', haedd + 'px');
-    for (var m = 0; m <= 100; m += 20) {
-      var s = document.createElement('span');
-      s.style.top = (m / 100 * haedd) + 'px';
-      s.textContent = m + ' m';
-      ticks.appendChild(s);
-    }
-  }
-
-  function dagfora() {
-    bidar = false;
-    var longd = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    var partur = Math.max(0, Math.min(1, window.scrollY / longd));
-    fill.style.height = (partur * 100) + '%';
-    bar.style.width   = (partur * 100) + '%';
-  }
-
-  function bida() {
-    if (bidar) return;
-    bidar = true;
-    requestAnimationFrame(dagfora);
-  }
-
-  byggjaMerki();
-  dagfora();
-
-  window.addEventListener('scroll', bida, { passive:true });
-  window.addEventListener('resize', function () { byggjaMerki(); dagfora(); });
-  window.addEventListener('load',   function () { byggjaMerki(); dagfora(); });
-
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(function () { byggjaMerki(); bida(); }).observe(document.body);
-  }
-})();
-</script></div></div></div></div></div><!--TYPO3SEARCH_end--></div></div></div>
+          </p></footer></div></div><script src="/jardfrida/jf.js"></script></div></div></div></div></div><!--TYPO3SEARCH_end--></div></div></div>
 </body>
 </html>

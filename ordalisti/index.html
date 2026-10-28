@@ -104,62 +104,7 @@ body.jf-ordalisti-page #page-content .frame-type-html { margin-bottom:0; padding
             Jarðfrøðiligt innihald: Jarðfeingi
             · Myndir: Karina Toftegaard
             · Útgivið av Námi
-          </p></footer></div></div><script>
-(function () {
-  // Bara orðalistasíðan fær sama ljósagula bakgrund um alt TYPO3-økið.
-  document.body.classList.add('jf-ordalisti-page');
-
-  var rot = document.getElementById('jf-borehole');
-  if (!rot || rot.dataset.jfKlart) return;        // bert eina ferð
-  rot.dataset.jfKlart = '1';
-
-  var fill  = document.getElementById('jf-bore-fill');
-  var bar   = document.getElementById('jf-depth-fill');
-  var ticks = document.getElementById('jf-bore-ticks');
-  var tube  = rot.querySelector('.jf-bore-tube');
-  if (!fill || !bar || !ticks || !tube) return;
-
-  var bidar = false;
-
-  function byggjaMerki() {
-    var haedd = tube.clientHeight;
-    if (!haedd) return;
-    ticks.innerHTML = '';
-    fill.style.setProperty('--jf-bore-height', haedd + 'px');
-    for (var m = 0; m <= 100; m += 20) {
-      var s = document.createElement('span');
-      s.style.top = (m / 100 * haedd) + 'px';
-      s.textContent = m + ' m';
-      ticks.appendChild(s);
-    }
-  }
-
-  function dagfora() {
-    bidar = false;
-    var longd = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    var partur = Math.max(0, Math.min(1, window.scrollY / longd));
-    fill.style.height = (partur * 100) + '%';
-    bar.style.width   = (partur * 100) + '%';
-  }
-
-  function bida() {
-    if (bidar) return;
-    bidar = true;
-    requestAnimationFrame(dagfora);
-  }
-
-  byggjaMerki();
-  dagfora();
-
-  window.addEventListener('scroll', bida, { passive:true });
-  window.addEventListener('resize', function () { byggjaMerki(); dagfora(); });
-  window.addEventListener('load',   function () { byggjaMerki(); dagfora(); });
-
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(function () { byggjaMerki(); bida(); }).observe(document.body);
-  }
-})();
-</script><script>
+          </p></footer></div></div><script src="/jardfrida/jf.js"></script><script>
 (function () {
   var felt  = document.getElementById('jf-ordleit');
   var listi = document.getElementById('jf-ordlisti');

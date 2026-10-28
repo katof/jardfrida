@@ -17,6 +17,7 @@
 <meta property="og:locale" content="fo_FO">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/jardfrida/skriftir.css">
+<link rel="stylesheet" href="/jardfrida/malli.css">
 <style>
 
 
@@ -2060,6 +2061,16 @@ body.jf-sida #page-content .frame-type-html {
   border-radius:2px;
 }
 </style>
+<style>
+.jf .jf-bore-ticks span { pointer-events:auto; cursor:pointer; max-width:calc((100vw - 900px) / 2 - 64px); overflow:hidden; text-overflow:ellipsis; padding:3px 0; transition:color .15s; }
+.jf .jf-bore-ticks span:hover, .jf .jf-bore-ticks span:focus-visible { color:var(--ink); }
+.jf .jf-bore-ticks span.er-her { color:var(--ink); font-weight:700; }
+.jf .jf-bore-ticks span.er-her::before { background:var(--tuff); width:9px; height:2px; }
+/* Malli fjalir seg á síni egnu síðu */
+#jf-malli-widget.jf-fjaldur .jf-rock { bottom:calc(var(--jf-malli-nidast) - var(--jf-malli-stodd) * .66); transition:bottom .5s cubic-bezier(.3,1.4,.5,1); }
+#jf-malli-widget.jf-fjaldur .jf-rock:hover, #jf-malli-widget.jf-fjaldur .jf-rock:focus-visible, #jf-malli-widget.jf-fjaldur.jf-lúrir .jf-rock { bottom:calc(var(--jf-malli-nidast) - var(--jf-malli-stodd) * .38); }
+@media(prefers-reduced-motion:reduce){ #jf-malli-widget.jf-fjaldur .jf-rock { transition:none; } }
+</style>
 </head>
 <body class="jf-sida">
 <div id="page-content" class="bp-page-content main-section"><div id="c235995" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-small frame-space-after-none "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
@@ -2102,62 +2113,694 @@ body.jf-sida #page-content .frame-type-html {
             Jarðfrøðiligt innihald: Jarðfeingi
             · Myndir: Karina Toftegaard
             · Útgivið av Námi
-          </p></footer></div></div><script>
+          </p></footer></div></div><div id="jf-malli-widget"><!-- STEINURIN --><button id="jf-malli-rock" class="jf-rock" type="button" aria-label="Malli. Trýst fyri at síggja orðalistan. Drag fyri at kasta hann ella leggja hann í kassan." aria-haspopup="dialog" aria-expanded="false"><svg viewBox="-90 -78 180 160" aria-hidden="true"><defs><clipPath id="jf-malli-clipping"><path d="M-82 12 C-85 -1 -81 -12 -76 -22 C-71 -33 -64 -43 -54 -50 C-44 -57 -29 -60 -16 -62 C-3 -64 13 -63 26 -60 C39 -57 51 -52 60 -44 C70 -36 79 -23 83 -12 C87 -1 89 10 86 20 C84 30 78 41 68 48 C58 55 43 61 28 64 C13 67 -5 69 -20 67 C-35 65 -50 61 -60 52 C-70 43 -79 24 -82 12 Z"></path></clipPath></defs><path d="M-82 12 C-85 -1 -81 -12 -76 -22 C-71 -33 -64 -43 -54 -50 C-44 -57 -29 -60 -16 -62 C-3 -64 13 -63 26 -60 C39 -57 51 -52 60 -44 C70 -36 79 -23 83 -12 C87 -1 89 10 86 20 C84 30 78 41 68 48 C58 55 43 61 28 64 C13 67 -5 69 -20 67 C-35 65 -50 61 -60 52 C-70 43 -79 24 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><g clip-path="url(#jf-malli-clipping)"><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55"></ellipse><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"></path><g fill="#F4F1EA"><rect x="-35" y="-39" width="6" height="3" rx="1" transform="rotate(71 -32 -37)"></rect><rect x="-58" y="-8" width="9" height="3" rx="1" transform="rotate(165 -53 -7)"></rect><rect x="30" y="-27" width="6" height="3" rx="1" transform="rotate(97 33 -25)"></rect><rect x="-45" y="-39" width="10" height="3" rx="1" transform="rotate(39 -40 -37)"></rect><rect x="38" y="33" width="6" height="3" rx="1" transform="rotate(144 41 34)"></rect><rect x="26" y="38" width="5" height="3" rx="1" transform="rotate(158 29 39)"></rect><rect x="-2" y="-31" width="5" height="3" rx="1" transform="rotate(85 1 -30)"></rect><rect x="46" y="9" width="9" height="3" rx="1" transform="rotate(159 51 10)"></rect><rect x="-44" y="-18" width="5" height="3" rx="1" transform="rotate(146 -42 -17)"></rect><rect x="-60" y="15" width="8" height="3" rx="1" transform="rotate(50 -56 16)"></rect><rect x="-14" y="-29" width="6" height="3" rx="1" transform="rotate(114 -11 -27)"></rect><rect x="-58" y="-26" width="8" height="3" rx="1" transform="rotate(138 -54 -25)"></rect></g><g fill="#3C4247"><circle cx="-50" cy="-20" r="4"></circle><circle cx="46" cy="-30" r="3.4"></circle><circle cx="52" cy="30" r="4.4"></circle><circle cx="-42" cy="42" r="3"></circle><circle cx="10" cy="52" r="3.2"></circle><circle cx="-14" cy="-46" r="2.8"></circle></g></g><circle cx="-20" cy="-4" r="8" fill="#fff"></circle><circle cx="20" cy="-4" r="8" fill="#fff"></circle><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"></circle><circle cx="22" cy="-3" r="4.6" fill="#1E2326"></circle><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"></path><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></svg></button><!-- OPIN TRÆKASSI – Á BYRJUNARSTØÐUNI HJÁ MALLA --><div id="jf-malli-kassi" class="jf-kassi" aria-hidden="true"><svg viewBox="0 0 128 110" aria-hidden="true"><!-- Lokini standa opin --><path d="M23 42 L7 22 L42 14 L59 38 Z" fill="#C99561" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><path d="M69 38 L86 14 L121 22 L105 42 Z" fill="#D6A773" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><!-- Trææðrar á lokunum --><path d="M17 23 L43 20 M84 20 L111 23" stroke="#9B6A40" stroke-width="2" stroke-linecap="round"></path><!-- Myrkt hol í opna kassanum --><path d="M23 39 Q64 30 105 39 L103 58 H25 Z" fill="#3B2B23" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><!-- Síðurnar og framsíðan --><path d="M23 48 L31 99 H97 L105 48 Z" fill="#AF7748" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><path d="M24 49 L31 99 H39 L34 49 Z" fill="#855532" opacity=".65"></path><path d="M94 49 L89 99 H97 L104 49 Z" fill="#70482E" opacity=".6"></path><!-- Træplankar --><path d="M46 51 L48 96 M64 50 V97 M82 51 L80 96" fill="none" stroke="#75492D" stroke-width="2.6"></path><path d="M35 61 Q45 58 57 61 M72 83 Q81 80 91 83" fill="none" stroke="#D6A16D" stroke-width="2" opacity=".8"></path><!-- Kanturin rundan um opið --><path d="M23 47 L105 47 L103 56 H25 Z" fill="#C28A54" stroke="#29231F" stroke-width="2.5" stroke-linejoin="round"></path><!-- Navnamerki --><rect x="44" y="68" width="40" height="16" rx="2.5" fill="#EBD7AF" stroke="#64462E" stroke-width="1.8"></rect><text x="64" y="79.5" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#503B2B">Malli</text><!-- Smáir seymir --><g fill="#41362E"><circle cx="35" cy="55" r="1.6"></circle><circle cx="93" cy="55" r="1.6"></circle><circle cx="36" cy="93" r="1.6"></circle><circle cx="92" cy="93" r="1.6"></circle></g></svg><span id="jf-malli-kassi-tekst" class="jf-kassi-tekst">Legg Malla inn</span></div><!-- LÍTLI TRÆKASSIN, TÁ MALLI ER HORVIN --><button id="jf-malli-aftur" class="jf-aftur" type="button" aria-label="Lat Malla út aftur"><svg viewBox="0 0 52 44" aria-hidden="true"><path d="M8 13 L13 38 H39 L44 13 Z" fill="#AF7748" stroke="#29231F" stroke-width="2.8" stroke-linejoin="round"></path><path d="M9 13 L21 5 L26 13 L31 5 L43 13" fill="#D6A773" stroke="#29231F" stroke-width="2.8" stroke-linejoin="round"></path><path d="M24 17 V37 M32 17 V37" stroke="#75492D" stroke-width="2"></path><rect x="17" y="23" width="19" height="8" rx="1.5" fill="#EBD7AF" stroke="#64462E" stroke-width="1"></rect></svg></button><div id="jf-malli-quip" class="jf-quip" role="status" hidden=""></div><!-- ORÐALISTI --><section id="jf-malli-glossary" class="jf-glossary" role="dialog" aria-modal="false" aria-labelledby="jf-malli-title" hidden=""><div class="jf-gloss-head"><div><span class="eyebrow">Malli · Jarðfrøði</span><h2 id="jf-malli-title">Tú kanst eisini spyrja meg!</h2></div><button id="jf-malli-close" class="jf-close" type="button" aria-label="Lat aftur">×</button></div><div class="jf-search-area"><label for="jf-malli-search">Leita eftir orði</label><div class="jf-search-row"><input id="jf-malli-search" class="jf-search" type="search" placeholder="t.d. poknur, kjarni, ísur" autocomplete="off" aria-controls="jf-malli-word-list"><button id="jf-malli-clear" class="jf-clear" type="button">
+          Reinsa
+        </button></div></div><p id="jf-malli-count" class="jf-result-count" aria-live="polite"></p><div id="jf-malli-definition" class="jf-definition" aria-live="polite" hidden=""></div><div id="jf-malli-word-list" class="jf-word-list" role="group" aria-label="Jarðfrøðilig orð"></div><p id="jf-malli-empty" class="jf-no-results" hidden="">
+      Einki orð funnið. Royn eitt annað orð.
+    </p><div class="jf-gloss-footer"><button id="jf-malli-fjal" class="jf-fjal" type="button">
+        Legg Malla í kassan
+      </button><a href="/jardfrida/ordalisti">Allur orðalistin →</a></div></section></div><script>
 (function () {
-  // Allar Jarðfríðu-síðurnar fáa sama ljósagula bakgrund um alt TYPO3-økið.
-  document.body.classList.add('jf-sida');
+  const root = document.getElementById('jf-malli-widget');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
 
-  var rot = document.getElementById('jf-borehole');
-  if (!rot || rot.dataset.jfKlart) return;        // bert eina ferð
-  rot.dataset.jfKlart = '1';
+  /* Skal lítli kassin vera eftir, tá Malli er horvin?
+     false = alt horvnar, til síðan verður endurlisin. */
+  const JF_VIS_AFTUR = true;
 
-  var fill  = document.getElementById('jf-bore-fill');
-  var bar   = document.getElementById('jf-depth-fill');
-  var ticks = document.getElementById('jf-bore-ticks');
-  var tube  = rot.querySelector('.jf-bore-tube');
-  if (!fill || !bar || !ticks || !tube) return;
+  const rock = root.querySelector('#jf-malli-rock');
+  const panel = root.querySelector('#jf-malli-glossary');
+  const closeBtn = root.querySelector('#jf-malli-close');
+  const search = root.querySelector('#jf-malli-search');
+  const clearBtn = root.querySelector('#jf-malli-clear');
+  const list = root.querySelector('#jf-malli-word-list');
+  const definition = root.querySelector('#jf-malli-definition');
+  const count = root.querySelector('#jf-malli-count');
+  const empty = root.querySelector('#jf-malli-empty');
+  const quip = root.querySelector('#jf-malli-quip');
+  const kassi = root.querySelector('#jf-malli-kassi');
+  const kassiTekst = root.querySelector('#jf-malli-kassi-tekst');
+  const afturBtn = root.querySelector('#jf-malli-aftur');
+  const fjalBtn = root.querySelector('#jf-malli-fjal');
 
-  var bidar = false;
+  if (!JF_VIS_AFTUR) afturBtn.remove();
 
-  function byggjaMerki() {
-    var haedd = tube.clientHeight;
-    if (!haedd) return;
-    ticks.innerHTML = '';
-    fill.style.setProperty('--jf-bore-height', haedd + 'px');
-    for (var m = 0; m <= 100; m += 20) {
-      var s = document.createElement('span');
-      s.style.top = (m / 100 * haedd) + 'px';
-      s.textContent = m + ' m';
-      ticks.appendChild(s);
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  /* ORÐALISTIN ÚR UPPRUNALIGU PROTOTYPUNI */
+
+  const TERMS = [
+    ['Poknur (smá hol)',
+     'Poknur eru poknur í basalti. Tær eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru poknurnar eftir í grótinum.'],
+
+    ['Fyltar poknur',
+     'Poknur, sum seinni eru fyltar við mineralum. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í poknunum. Tað kunnu til dømis vera soðsteinar (zeolittar) ella kalsitt. Basalt við nógvum fyltum poknum verður kallað mandlugrót.'],
+
+    ['Hvítar mineralæðrar',
+     'Rivur ella sprungur í grótinum, sum seinni eru fyltar við mineralum. Rivur og sprungur kunnu ávirka, hvussu støðugt grótið er.'],
+
+    ['Ljós krystall',
+     'Ljós krystall í basalti eru ofta plagioklas (feldspatt).'],
+
+    ['Grøn korn',
+     'Grøn korn í basaltinum kunnu vera olivin. Olivin kann síggjast sum grøn krystall í basaltinum.'],
+
+    ['Reyðligur litur',
+     'Reyðligur litur kann benda á veðrað grót ella royðugrót. Royðugrót er legugrýti millum basaltfláirnar, ofta úr gosøsku og basaltsandi. Men reytt tilfar er ikki altíð royðugrót.'],
+
+    ['Basalt',
+     'Gráa og svarta grótið í modellinum er basalt.'],
+
+    ['Kjarni',
+     'Ein langur grótstavur, sum verður boraður upp úr undirgrundini.'],
+
+    ['Kol',
+     'Í Suðuroy finnast kolaeygu og kolløg millum basaltfláirnar.'],
+
+    ['Kjarnaboring',
+     'Jarðfrøðingar bora niður í grótið og taka ein kjarna upp. Kjarnin vísir, hvussu grótið sær út niðri í undirgrundini.'],
+
+    ['Mandlugrót',
+     'Basalt við nógvum fyltum poknum.'],
+
+    ['Royðugrót',
+     'Legugrýti millum basaltfláirnar. Royðugrót er ofta gjørt úr gosøsku og basaltsandi. Reytt tilfar er tó ikki altíð royðugrót.'],
+
+    ['Kantutur',
+     'Ein steinur við hvøssum kantum.'],
+
+    ['Avrundaður',
+     'Ein steinur, sum hevur mist kantarnar og er vorðin rundari.'],
+
+    ['Slíta',
+     'Vatn, ísur og vindur slíta grótið. Tá verða kantarnir minni, og steinurin verður rundari.'],
+
+    ['Jøkulsísur',
+     'Ísur, sum liggur yvir landinum í langa tíð og skríður spakuliga.'],
+
+    ['Ístíð',
+     'Ein long tíð, tá ið jøkulsísur lá yvir stórum pørtum av landinum.'],
+
+    ['Skøvur',
+     'Smá merki í grótinum. Sandur og steinar í ísinum kunnu gera skøvur, tá ið ísurin skríður.'],
+
+    ['Modell',
+     'Eitt modell er ein einfaldað útgáva av onkrum, sum hendir í veruleikanum. Royndin við sproytuni vísir, hvat kann henda, tá ið vatn frystir í eini rivu. Ísterningurin við sandi og steinum er eitt einfalt modell av, hvussu jøkulsísur kann flyta tilfar og máa undirlagið.'],
+
+    ['Máa',
+     'Sandur og steinar, sum jøkulsísurin dregur við sær, máa grótið. Tá kunnu skøvur koma í grótið.'],
+
+    ['Tæra',
+     'Veður, vatn, vindur og aðrar náttúrutilgongdir kunnu tæra grótið. Spakuliga verður grótið brotið niður og slitið.'],
+
+    ['Morena',
+     'Blandað, leyst tilfar, t.d. grót, sandur og leirur, sum jøkulsísur hevur flutt við sær og lagt frá sær.'],
+
+    ['Frostsprenging / frostsprongt grót',
+     'Tá ið vatn frystir í rivum og gloprum í grótinum, tekur ísurin meira pláss enn vatnið og kann trýsta grótið sundur. Jarðfeingi brúkar heitið »frostsprongt grót« um grót, sum er brotið niður á henda hátt.'],
+
+    ['Ísskøvur',
+     'Skøvur í føstum gróti, sum eru komnar, tá ið jøkulsísur við sandi og steinum hevur brýnt og skavað helluna. Skøvurnar kunnu geva ábending um, hvønn veg ísurin ferðaðist.'],
+
+    ['Urð',
+     'Leyst grót, ofta kantut, sum er dottið ella skrætt niður og liggur undir hamri ella øðrum brattlendi.']
+  ];
+
+  TERMS.sort((a,b) => a[0].localeCompare(b[0], 'fo'));
+
+  let selectedWord = null;
+
+  function normalize(text) {
+    return text.toLocaleLowerCase('fo')
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '');
+  }
+
+  function showDefinition(word, description, button) {
+    selectedWord = word;
+
+    definition.replaceChildren();
+
+    const heading = document.createElement('strong');
+    heading.textContent = word;
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = description;
+
+    definition.append(heading, paragraph);
+    definition.hidden = false;
+    definition.scrollTop = 0;
+
+    list.querySelectorAll('.jf-word').forEach(b => {
+      b.setAttribute(
+        'aria-pressed',
+        String(b === button)
+      );
+    });
+  }
+
+  const wordButtons = TERMS.map(([word, description]) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'jf-word';
+    button.textContent = word;
+    button.setAttribute('aria-pressed', 'false');
+
+    button.addEventListener('click', () => {
+      showDefinition(word, description, button);
+    });
+
+    list.appendChild(button);
+    return {button, word, description};
+  });
+
+  function filterWords() {
+    const query = normalize(search.value.trim());
+    let visible = 0;
+
+    wordButtons.forEach(item => {
+      const searchable = normalize(
+        item.word + ' ' + item.description
+      );
+
+      const matches = !query || searchable.includes(query);
+
+      item.button.hidden = !matches;
+      if (matches) visible++;
+    });
+
+    count.textContent = query
+      ? visible + ' av ' + TERMS.length + ' orðum'
+      : TERMS.length + ' orð · Vel eitt orð';
+
+    empty.hidden = visible !== 0;
+
+    list.scrollTop = 0;
+  }
+
+  search.addEventListener('input', filterWords);
+
+  clearBtn.addEventListener('click', () => {
+    search.value = '';
+    filterWords();
+    search.focus();
+  });
+
+  filterWords();
+
+  /* LATA UPP OG AFTUR */
+
+  function openGlossary() {
+    search.value = '';
+    selectedWord = null;
+    definition.hidden = true;
+
+    wordButtons.forEach(item => {
+      item.button.setAttribute('aria-pressed', 'false');
+    });
+
+    filterWords();
+
+    panel.hidden = false;
+    rock.setAttribute('aria-expanded', 'true');
+
+    search.focus({preventScroll:true});
+  }
+
+  function closeGlossary(returnFocus = false) {
+    if (panel.hidden) return;
+
+    panel.hidden = true;
+    rock.setAttribute('aria-expanded', 'false');
+
+    if (returnFocus) {
+      rock.focus({preventScroll:true});
     }
   }
 
-  function dagfora() {
-    bidar = false;
-    var longd = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    var partur = Math.max(0, Math.min(1, window.scrollY / longd));
-    fill.style.height = (partur * 100) + '%';
-    bar.style.width   = (partur * 100) + '%';
+  closeBtn.addEventListener('click', () => {
+    closeGlossary(true);
+  });
+
+  /* KLIK UTTANFYRI ORÐALISTAN = LAT AFTUR */
+  document.addEventListener('pointerdown', event => {
+    if (panel.hidden) return;
+    if (panel.contains(event.target)) return;
+    if (rock.contains(event.target)) return;
+
+    closeGlossary();
+  }, true);
+
+  /* ESC = LAT AFTUR */
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !panel.hidden) {
+      closeGlossary(true);
+    }
+  });
+
+  /* MALLI KANN KASTAST */
+
+  const QUIPS = [
+    'Ái! Ansa tær!',
+    'Eg rulli, tí eg eri rundur!',
+    'Vatnið skumpaði og rullaði meg í mong ár.',
+    'Kantutir steinar rulla ikki so væl!',
+    'Hoyyy!',
+    'Kasta meg aftur!',
+    'Eg eri basalt – eg toli nógv.',
+    'Svimbul…'
+  ];
+
+  let x, y;
+  let vx = 0, vy = 0;
+  let angle = 0;
+  let animation = 0;
+  let lastTime = 0;
+  let drag = null;
+  let history = [];
+  let ignoreClick = false;
+  let quipTimer = null;
+
+  /* Lítill margi niðast og til høgru */
+  function bounds() {
+    const styles = getComputedStyle(root);
+    const safeBottom = parseInt(styles.getPropertyValue('--jf-malli-nidast'), 10) || 20;
+    const safeRight = parseInt(styles.getPropertyValue('--jf-malli-hogra'), 10) || 24;
+
+    return [
+      Math.max(0, window.innerWidth - rock.offsetWidth - safeRight),
+      Math.max(
+        0,
+        window.innerHeight - rock.offsetHeight - safeBottom
+      )
+    ];
   }
 
-  function bida() {
-    if (bidar) return;
-    bidar = true;
-    requestAnimationFrame(dagfora);
+  function place() {
+    rock.style.left = x + 'px';
+    rock.style.top = y + 'px';
+    rock.style.transform = 'rotate(' + angle + 'rad)';
+
+    const qWidth = quip.offsetWidth || 190;
+    const qHeight = quip.offsetHeight || 36;
+
+    quip.style.left = Math.max(
+      8,
+      Math.min(window.innerWidth - qWidth - 8, x - 70)
+    ) + 'px';
+
+    quip.style.top = (
+      y > 70
+        ? y - qHeight - 12
+        : y + rock.offsetHeight + 8
+    ) + 'px';
   }
 
-  byggjaMerki();
-  dagfora();
+  function init() {
+    if (x !== undefined) return;
 
-  window.addEventListener('scroll', bida, { passive:true });
-  window.addEventListener('resize', function () { byggjaMerki(); dagfora(); });
-  window.addEventListener('load',   function () { byggjaMerki(); dagfora(); });
+    const rect = rock.getBoundingClientRect();
 
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(function () { byggjaMerki(); bida(); }).observe(document.body);
+    x = rect.left;
+    y = rect.top;
+
+    rock.style.right = 'auto';
+    rock.style.bottom = 'auto';
+
+    place();
   }
+
+  function say(text) {
+    quip.textContent = text ||
+      QUIPS[Math.floor(Math.random() * QUIPS.length)];
+
+    quip.hidden = false;
+    place();
+
+    clearTimeout(quipTimer);
+    quipTimer = setTimeout(() => {
+      quip.hidden = true;
+    }, 1800);
+  }
+
+  function tick(now) {
+    const dt = Math.min(.033, Math.max(0, (now-lastTime)/1000));
+    lastTime = now;
+
+    const [maxX,maxY] = bounds();
+
+    if (!drag) {
+      vy += 2200 * dt;
+      x += vx * dt;
+      y += vy * dt;
+
+      if (x < 0) {
+        x = 0;
+        vx = -vx * .6;
+      }
+      if (x > maxX) {
+        x = maxX;
+        vx = -vx * .6;
+      }
+      if (y < 0) {
+        y = 0;
+        vy = -vy * .5;
+      }
+      if (y > maxY) {
+        y = maxY;
+        vy = -vy * .5;
+        vx *= .9;
+
+        if (Math.abs(vy) < 80) vy = 0;
+      }
+
+      angle += vx * dt / Math.max(1,rock.offsetWidth/2);
+
+      if (y >= maxY && vy === 0) {
+        vx *= .94;
+
+        if (Math.abs(vx) < 6) {
+          vx = 0;
+          place();
+          animation = 0;
+          return;
+        }
+      }
+    }
+
+    place();
+    animation = requestAnimationFrame(tick);
+  }
+
+  function startAnimation() {
+    if (animation || reducedMotion) return;
+
+    lastTime = performance.now();
+    animation = requestAnimationFrame(tick);
+  }
+
+  function hop() {
+    init();
+
+    if (reducedMotion) return;
+
+    vy = -650;
+    vx = (Math.random()-.5)*500;
+
+    startAnimation();
+  }
+
+  /* KASSIN – VÍSA, LÝSA OG LEGGJA MALLA INN */
+
+  function visKassa(on) {
+    kassi.classList.toggle('jf-kassi--synlig', on);
+
+    if (!on) {
+      kassi.classList.remove('jf-kassi--klar');
+      kassiTekst.textContent = 'Legg Malla inn';
+    }
+  }
+
+  /* Er Malli yvir kassanum? */
+  function yvirKassa() {
+    const k = kassi.querySelector('svg').getBoundingClientRect();
+    const r = rock.getBoundingClientRect();
+
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+
+    return cx > k.left - 18 && cx < k.right + 18 &&
+           cy > k.top - 18 && cy < k.bottom + 18;
+  }
+
+  function merkKassa() {
+    const klar = yvirKassa();
+
+    kassi.classList.toggle('jf-kassi--klar', klar);
+    kassiTekst.textContent = klar ? 'Slepp hann nú!' : 'Legg Malla inn';
+  }
+
+  function fjalAlt() {
+    closeGlossary();
+
+    if (animation) {
+      cancelAnimationFrame(animation);
+      animation = 0;
+    }
+
+    clearTimeout(quipTimer);
+    quip.hidden = true;
+
+    visKassa(false);
+    root.classList.add('jf-horvin');
+  }
+
+  function leggIKassa() {
+    kassiTekst.textContent = 'Góða nátt, Malli!';
+
+    if (reducedMotion) {
+      fjalAlt();
+      return;
+    }
+
+    const k = kassi.querySelector('svg').getBoundingClientRect();
+    const r = rock.getBoundingClientRect();
+
+    const dx = (k.left + k.width / 2) - (r.left + r.width / 2);
+    const dy = (k.top + k.height * .55) - (r.top + r.height / 2);
+
+    rock.classList.add('jf-rock--inn');
+    rock.style.transition =
+      'transform .34s cubic-bezier(.4,.1,.8,.6), opacity .3s ease-in';
+    rock.style.transform =
+      'translate(' + dx + 'px,' + dy + 'px) rotate(' +
+      (angle + 1.1) + 'rad) scale(.16)';
+    rock.style.opacity = '0';
+
+    setTimeout(fjalAlt, 370);
+  }
+
+  function latUtAftur() {
+    root.classList.remove('jf-horvin');
+
+    rock.classList.remove('jf-rock--inn');
+    rock.style.transition = '';
+    rock.style.opacity = '';
+    rock.style.transform = '';
+    rock.style.left = '';
+    rock.style.top = '';
+    rock.style.right = '';
+    rock.style.bottom = '';
+
+    x = undefined;
+    y = undefined;
+    vx = 0;
+    vy = 0;
+    angle = 0;
+
+    rock.focus({preventScroll:true});
+  }
+
+  if (afturBtn) {
+    afturBtn.addEventListener('click', latUtAftur);
+  }
+
+  fjalBtn.addEventListener('click', () => {
+    init();
+    visKassa(true);
+    leggIKassa();
+  });
+
+  rock.addEventListener('pointerdown', event => {
+    if (event.button !== undefined && event.button !== 0) return;
+
+    init();
+    ignoreClick = false;
+
+    if (animation) {
+      cancelAnimationFrame(animation);
+      animation = 0;
+    }
+
+    rock.setPointerCapture(event.pointerId);
+
+    drag = {
+      dx:event.clientX-x,
+      dy:event.clientY-y,
+      sx:event.clientX,
+      sy:event.clientY
+    };
+
+    history = [
+      [event.clientX,event.clientY,performance.now()]
+    ];
+
+    vx = 0;
+    vy = 0;
+  });
+
+  rock.addEventListener('pointermove', event => {
+    if (!drag || reducedMotion) return;
+
+    const [maxX,maxY] = bounds();
+
+    x = Math.max(
+      0,
+      Math.min(maxX,event.clientX-drag.dx)
+    );
+
+    y = Math.max(
+      0,
+      Math.min(maxY,event.clientY-drag.dy)
+    );
+
+    history.push([
+      event.clientX,event.clientY,performance.now()
+    ]);
+
+    if (history.length > 5) history.shift();
+
+    place();
+
+    /* Kassin kemur fram, tá Malli veruliga verður drigin */
+    const moved = Math.hypot(
+      event.clientX-drag.sx,
+      event.clientY-drag.sy
+    );
+
+    if (moved > 8) {
+      visKassa(true);
+      merkKassa();
+    }
+  });
+
+  rock.addEventListener('pointerup', event => {
+    if (!drag) return;
+
+    const distance = Math.hypot(
+      event.clientX-drag.sx,
+      event.clientY-drag.sy
+    );
+
+    drag = null;
+
+    if (distance < 8 || reducedMotion) {
+      visKassa(false);
+      return; /* Eitt vanligt klikk verður handfarið niðanfyri */
+    }
+
+    ignoreClick = true;
+
+    /* SLEPT OMAN Í KASSAN = ALT HORVNAR */
+    if (yvirKassa()) {
+      leggIKassa();
+      return;
+    }
+
+    visKassa(false);
+
+    const first = history[0];
+    const last = history[history.length-1];
+    const duration = Math.max(
+      .016,
+      (last[2]-first[2])/1000
+    );
+
+    vx = Math.max(
+      -2600,
+      Math.min(2600,(last[0]-first[0])/duration)
+    );
+
+    vy = Math.max(
+      -2600,
+      Math.min(2600,(last[1]-first[1])/duration)
+    );
+
+    say();
+    startAnimation();
+  });
+
+  rock.addEventListener('pointercancel', () => {
+    drag = null;
+    visKassa(false);
+  });
+
+  /* VANLIGT KLIKK: LAT ORÐALISTAN UPP/AFTUR */
+  rock.addEventListener('click', event => {
+    if (ignoreClick && event.detail !== 0) {
+      ignoreClick = false;
+      return;
+    }
+
+    if (panel.hidden) {
+      openGlossary();
+      hop();
+    } else {
+      closeGlossary();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (x === undefined) return;
+
+    const [maxX,maxY] = bounds();
+    x = Math.max(0,Math.min(maxX,x));
+    y = Math.max(0,Math.min(maxY,y));
+    place();
+  });
+
 })();
-</script><script>
+</script>
+<script>
+(function () {
+  var root = document.getElementById('jf-malli-widget');
+  var rock = document.getElementById('jf-malli-rock');
+  var quip = document.getElementById('jf-malli-quip');
+  if (!root || !rock || !quip) return;
+
+  root.classList.add('jf-fjaldur');
+  rock.setAttribute('aria-label', 'Malli fjalir seg. Trýst á hann!');
+
+  var ORD = ['Finn meg!', 'Eg eri her onkustaðni…', 'Psst!', 'Hvar eri eg?'];
+  var n = 0, timer;
+
+  function sig(t) {
+    quip.textContent = t;
+    quip.hidden = false;
+    var r = rock.getBoundingClientRect();
+    quip.style.left = Math.max(8, r.left - 120) + 'px';
+    quip.style.top = (r.top - 44) + 'px';
+    setTimeout(function () { quip.hidden = true; }, 1600);
+  }
+
+  /* Lúrir fram við og við */
+  function lura() {
+    if (!root.classList.contains('jf-fjaldur')) return;
+    root.classList.add('jf-lúrir');
+    sig(ORD[n++ % ORD.length]);
+    setTimeout(function () { root.classList.remove('jf-lúrir'); }, 1500);
+    timer = setTimeout(lura, 7000 + Math.random() * 6000);
+  }
+  timer = setTimeout(lura, 2500);
+
+  /* Fyrsta ferð, tú nertir hann: »Her eri eg!« */
+  function funnin() {
+    if (!root.classList.contains('jf-fjaldur')) return;
+    clearTimeout(timer);
+    root.classList.remove('jf-fjaldur', 'jf-lúrir');
+    rock.setAttribute('aria-label', 'Malli. Trýst fyri at síggja orðalistan. Drag fyri at kasta hann.');
+    setTimeout(function () { sig('Her eri eg!'); }, 350);
+  }
+  rock.addEventListener('pointerdown', funnin, true);
+  rock.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') funnin(); }, true);
+
+  /* Kemur hann aftur úr kassanum, so fjalir hann seg ikki aftur */
+})();
+</script>
+<script src="/jardfrida/jf.js"></script><script>
 
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

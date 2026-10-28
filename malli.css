@@ -1,0 +1,55 @@
+/* Malli – orðalistin í hornið */
+#jf-malli-widget, #jf-malli-widget * { box-sizing:border-box; }
+#jf-malli-widget [hidden] { display:none!important; }
+#jf-malli-widget .jf-rock { appearance:none!important; -webkit-appearance:none!important; position:fixed; right:var(--jf-malli-hogra); bottom:var(--jf-malli-nidast); width:var(--jf-malli-stodd); height:calc(var(--jf-malli-stodd) * .92); padding:0!important; margin:0!important; border:0!important; border-radius:50%!important; background:transparent!important; box-shadow:none!important; outline:0!important; cursor:grab; touch-action:none; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent; z-index:10000; transform-origin:50% 55%; filter:drop-shadow(1px 4px 0 rgba(31,36,40,.18)); }
+#jf-malli-widget .jf-rock:active { cursor:grabbing; background:transparent!important; box-shadow:none!important; }
+#jf-malli-widget .jf-rock:focus { outline:0!important; box-shadow:none!important; border:0!important; }
+#jf-malli-widget .jf-rock:focus-visible { outline:3px solid #1B5FA8!important; outline-offset:4px!important; border-radius:50%!important; }
+#jf-malli-widget .jf-rock svg { display:block; width:100%; height:100%; pointer-events:none; }
+#jf-malli-widget .jf-quip { position:fixed; z-index:10001; max-width:230px; background:var(--ink); color:#fff; padding:10px 14px; font:700 1.02rem/1.4 var(--body); pointer-events:none; border-radius:14px; box-shadow:2px 3px 0 rgba(31,36,40,.2); }
+#jf-malli-widget .jf-glossary { position:fixed; z-index:10002; right:24px; bottom:calc(var(--jf-malli-nidast) + var(--jf-malli-stodd) * .92 + 14px); width:min(420px,calc(100vw - 32px)); height:min(525px,calc(100dvh - 215px)); min-height:190px; padding:18px; background:var(--surface); border:1.5px solid var(--ink); box-shadow:6px 6px 0 rgba(31,36,40,.16); border-radius:3px; display:flex; flex-direction:column; gap:12px; color:var(--ink); font:400 1rem/1.45 var(--body); }
+#jf-malli-widget .jf-gloss-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex:none; }
+#jf-malli-widget .jf-gloss-head .eyebrow { display:block; margin-bottom:5px; font:700 .88rem/1.3 var(--body); color:var(--sea); }
+#jf-malli-widget .jf-gloss-head h2 { margin:0!important; padding:0!important; font:700 1.48rem/1.15 var(--display)!important; color:var(--ink)!important; }
+#jf-malli-widget .jf-close { appearance:none; width:42px; height:42px; min-width:42px; display:grid; place-items:center; border:1.5px solid var(--line); border-radius:50%; padding:0; background:var(--paper); color:var(--ink); font:400 1.7rem/1 var(--body); cursor:pointer; }
+#jf-malli-widget .jf-close:hover { background:var(--ink); border-color:var(--ink); color:#fff; }
+#jf-malli-widget .jf-search-area { display:grid; gap:6px; flex:none; }
+#jf-malli-widget .jf-search-area label { font:700 .98rem/1.3 var(--body); color:var(--ink); }
+#jf-malli-widget .jf-search-row { display:flex; gap:6px; }
+#jf-malli-widget .jf-search { width:100%; min-width:0; height:44px; border:1.5px solid var(--ink); border-radius:2px; background:#fff; color:var(--ink); padding:9px 12px; font:400 1rem/1.3 var(--body); }
+#jf-malli-widget .jf-clear { appearance:none; flex:none; border:1px solid var(--line); border-radius:2px; background:var(--paper); color:var(--ink); padding:0 12px; font:700 .86rem var(--body); cursor:pointer; }
+#jf-malli-widget .jf-clear:hover { border-color:var(--ink); }
+#jf-malli-widget .jf-result-count { flex:none; margin:0; font:400 .92rem/1.3 var(--body); color:var(--ink-soft); }
+#jf-malli-widget .jf-definition { flex:none; max-height:34%; overflow-y:auto; border-left:4px solid var(--sea); background:#E3EEF1; padding:12px 14px; margin:0; color:var(--ink); }
+#jf-malli-widget .jf-definition strong { display:block; font:700 1.34rem/1.2 var(--display); margin-bottom:7px; }
+#jf-malli-widget .jf-definition p { margin:0!important; color:var(--ink)!important; font:400 1.08rem/1.55 var(--body); }
+#jf-malli-widget .jf-word-list { flex:1 1 auto; min-height:65px; overflow-y:auto; overscroll-behavior:contain; display:grid; grid-auto-rows:max-content; gap:5px; padding:0 4px 2px 0; scrollbar-width:thin; scrollbar-color:#A4A7A6 transparent; }
+#jf-malli-widget .jf-word { appearance:none; width:100%; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:11px 14px; border:1px solid var(--line); border-radius:2px; background:#FBFAF6; color:var(--ink); font:700 1.04rem/1.35 var(--body); text-align:left; cursor:pointer; }
+#jf-malli-widget .jf-word:hover { border-color:var(--basalt); background:#F0F0EC; }
+#jf-malli-widget .jf-word::after { content:"›"; font-size:1.2rem; font-weight:400; color:var(--sea); flex:none; }
+#jf-malli-widget .jf-word[aria-pressed="true"] { background:var(--ink); color:#fff; border-color:var(--ink); }
+#jf-malli-widget .jf-word[aria-pressed="true"]::after { color:#fff; }
+#jf-malli-widget .jf-no-results { margin:0; padding:12px; background:var(--paper); color:var(--ink-soft); font-size:.94rem; }
+#jf-malli-widget .jf-gloss-footer { flex:none; font-size:.92rem; border-top:1px solid var(--line); padding-top:10px; display:flex; justify-content:space-between; gap:12px; align-items:center; font-size:.88rem; }
+#jf-malli-widget .jf-gloss-footer span { color:var(--ink-soft); }
+#jf-malli-widget .jf-gloss-footer a { color:var(--sea)!important; text-decoration:none; font-weight:700; }
+#jf-malli-widget .jf-gloss-footer a:hover { text-decoration:underline; }
+#jf-malli-widget { --jf-malli-stodd:100px; --jf-malli-hogra:24px; --jf-malli-nidast:20px; --jf-kassi-stodd:118px; --paper:#F4F1E8; --surface:#FFFFFF; --line:#D9D3C4; --ink:#1F2428; --ink-soft:#585F65; --basalt:#6E747A; --sea:#2A6A80; --display:"Fraunces",Georgia,serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace; font-family:var(--body); }
+#jf-malli-widget .jf-kassi { position:fixed; right:max(8px, calc(var(--jf-malli-hogra) - (var(--jf-kassi-stodd) - var(--jf-malli-stodd)) / 2)); bottom:calc(var(--jf-malli-nidast) - 2px); width:var(--jf-kassi-stodd); z-index:9999; display:grid; justify-items:center; gap:6px; pointer-events:none; opacity:0; transform:translateY(14px) scale(.92); transition:opacity .18s ease,transform .18s ease; }
+#jf-malli-widget .jf-kassi svg { display:block; width:100%; height:auto; filter:drop-shadow(1px 4px 0 rgba(31,36,40,.16)); }
+#jf-malli-widget .jf-kassi--synlig { opacity:1; transform:none; }
+#jf-malli-widget .jf-kassi--klar { transform:scale(1.07); }
+#jf-malli-widget .jf-kassi-tekst { position:absolute; bottom:calc(100% + 6px); background:var(--ink); color:#fff; border-radius:12px; padding:5px 10px; font:700 .84rem/1.3 var(--body); white-space:nowrap; }
+#jf-malli-widget .jf-rock--inn { pointer-events:none; }
+#jf-malli-widget.jf-horvin .jf-rock, #jf-malli-widget.jf-horvin .jf-kassi, #jf-malli-widget.jf-horvin .jf-quip, #jf-malli-widget.jf-horvin .jf-glossary { display:none!important; }
+#jf-malli-widget .jf-aftur { appearance:none; display:none; position:fixed; right:calc(var(--jf-malli-hogra) + (var(--jf-malli-stodd) - 44px) / 2); bottom:calc(var(--jf-malli-nidast) + 2px); width:44px; height:38px; padding:0; border:0; background:transparent; cursor:pointer; opacity:.5; z-index:9999; }
+#jf-malli-widget.jf-horvin .jf-aftur { display:block; }
+#jf-malli-widget .jf-aftur:hover, #jf-malli-widget .jf-aftur:focus-visible { opacity:1; }
+#jf-malli-widget .jf-aftur:focus-visible { outline:3px solid #1B5FA8; outline-offset:3px; }
+#jf-malli-widget .jf-aftur svg { display:block; width:100%; height:100%; }
+#jf-malli-widget .jf-fjal { appearance:none; border:0; background:none; padding:0; color:var(--ink-soft); font:700 .88rem/1.3 var(--body); text-decoration:underline; cursor:pointer; }
+#jf-malli-widget .jf-fjal:hover { color:var(--ink); }
+#jf-malli-widget .jf-close:focus-visible, #jf-malli-widget .jf-search:focus-visible, #jf-malli-widget .jf-clear:focus-visible, #jf-malli-widget .jf-word:focus-visible, #jf-malli-widget .jf-fjal:focus-visible, #jf-malli-widget .jf-gloss-footer a:focus-visible { outline:3px solid #1B5FA8; outline-offset:2px; }
+@media(min-width:1080px) { #jf-malli-widget { --jf-malli-stodd:116px; --jf-malli-hogra:28px; --jf-malli-nidast:24px; --jf-kassi-stodd:132px; } }
+@media(max-width:640px) { #jf-malli-widget { --jf-malli-stodd:60px; --jf-malli-hogra:16px; --jf-malli-nidast:16px; --jf-kassi-stodd:86px; } #jf-malli-widget .jf-glossary { right:12px; bottom:calc(var(--jf-malli-nidast) + var(--jf-malli-stodd) * .92 + 12px); width:calc(100vw - 24px); height:min(480px,calc(100dvh - 185px)); padding:14px; gap:9px; } #jf-malli-widget .jf-gloss-head h2 { font-size:1.32rem!important; } #jf-malli-widget .jf-word { padding:9px 11px; } #jf-malli-widget .jf-kassi-tekst { font-size:.78rem; padding:4px 8px; } }
+@media(prefers-reduced-motion:reduce) { #jf-malli-widget .jf-rock, #jf-malli-widget .jf-kassi { transition:none!important; animation:none!important; } }
