@@ -1,7 +1,6 @@
 /* Jarðfrøði við Jarðfríðu – felags skript
    1) Borikjarnin til vinstru vísir dýpdina (0–100 m) og yvirlitsbarrin uppi.
-   2) Tjekt listar (.jf-avmerk) kunnu krossast av; støðan verður goymd í browsaranum.
-   3) »Far aftur til, har tú vart seinast« – ein pil, ið sendir tær aftur til staðið, tú fór frá. */
+   2) Tjekt listar (.jf-avmerk) kunnu krossast av; støðan verður goymd í browsaranum. */
 (function () {
   document.body.classList.add('jf-sida');
 
@@ -138,44 +137,4 @@
     vis(false);
   });
 
-  /* ---------- 3) Far aftur til, har tú vart seinast ---------- */
-  var SEINAST = 'jf-seinast', HOPP = 'jf-hopp';
-  var her = location.pathname.replace(/\/+$/, '') || '/';
-
-  /* Komin til síðu, ið vit fóru til frá annarstaðni: vís pil aftur */
-  var hopp = hent(HOPP);
-  if (hopp && hopp.u === her) {
-    try { localStorage.removeItem(HOPP); } catch (e) {}
-    window.addEventListener('load', function () {
-      setTimeout(function () { window.scrollTo({ top: hopp.y, behavior: 'auto' }); }, 0);
-    });
-  }
-
-  var fyrra = hent(SEINAST);
-  if (fyrra && fyrra.u && fyrra.u !== her) {
-    var pil = document.createElement('button');
-    pil.type = 'button';
-    pil.className = 'jf-seinast-pil';
-    pil.innerHTML = '<span aria-hidden="true">←</span> <span>Far aftur til, har tú vart seinast</span>';
-    pil.title = fyrra.n || fyrra.u;
-    pil.addEventListener('click', function () {
-      goym(HOPP, { u: fyrra.u, y: fyrra.y || 0 });
-      location.href = fyrra.u;
-    });
-    document.body.appendChild(pil);
-    requestAnimationFrame(function () { pil.classList.add('er-synlig'); });
-  }
-
-  /* Goym hvar tú ert, tá ið tú fert úr síðuni */
-  function goymStað() {
-    goym(SEINAST, {
-      u: her,
-      y: Math.round(window.scrollY),
-      n: (document.title || '').split(' · ')[0].slice(0, 60)
-    });
-  }
-  window.addEventListener('pagehide', goymStað);
-  document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'hidden') goymStað();
-  });
 })();

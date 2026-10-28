@@ -131,10 +131,3 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 /* ---------- Melding (toast) ---------- */
 .jf-toast { position:fixed; left:50%; bottom:20px; transform:translate(-50%, 12px); z-index:90; max-width:calc(100% - 32px); padding:10px 16px; background:var(--ink,#1E2326); color:#fff; border-radius:4px; font:500 .95rem/1.35 system-ui, sans-serif; box-shadow:0 6px 18px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; }
 .jf-toast.er-synlig { opacity:1; transform:translate(-50%, 0); }
-
-/* ---------- Far aftur til, har tú vart seinast (pil) ---------- */
-.jf-seinast-pil { position:fixed; left:16px; bottom:16px; z-index:85; display:inline-flex; align-items:center; gap:8px; max-width:calc(100% - 32px); padding:9px 14px; background:var(--surface,#FBF8F2); color:var(--ink,#1E2326); border:1.5px solid var(--ink,#1E2326); border-radius:999px; font:600 .9rem/1.2 system-ui, sans-serif; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.14); opacity:0; transform:translateY(8px); transition:opacity .25s, transform .25s; }
-.jf-seinast-pil.er-synlig { opacity:1; transform:none; }
-.jf-seinast-pil:hover, .jf-seinast-pil:focus-visible { background:var(--tint-sea,#E3EEF1); outline:none; }
-@media (max-width:640px) { .jf-seinast-pil { font-size:.85rem; } }
-@media (prefers-reduced-motion:reduce) { .jf-toast, .jf-seinast-pil { transition:none; } }
