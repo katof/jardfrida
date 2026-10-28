@@ -131,3 +131,10 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 /* ---------- Melding (toast) ---------- */
 .jf-toast { position:fixed; left:50%; bottom:20px; transform:translate(-50%, 12px); z-index:90; max-width:calc(100% - 32px); padding:10px 16px; background:var(--ink,#1E2326); color:#fff; border-radius:4px; font:500 .95rem/1.35 system-ui, sans-serif; box-shadow:0 6px 18px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; }
 .jf-toast.er-synlig { opacity:1; transform:translate(-50%, 0); }
+
+/* ---------- Ordalistin: kend orð ---------- */
+.jf .jf-ord-stat { margin-top:12px; justify-content:flex-start; }
+.jf .jf-kent-lab { display:inline-flex; align-items:center; gap:6px; margin-left:12px; font:600 .78rem/1 var(--mono); color:var(--ink-soft); cursor:pointer; vertical-align:middle; }
+.jf .jf-kent-lab input { width:16px; height:16px; margin:0; accent-color:var(--olivine); cursor:pointer; }
+.jf .jf-ord.jf-kent dt { color:var(--ink-soft); }
+.jf .jf-ord.jf-kent dt::after { content:""; }

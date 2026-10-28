@@ -137,4 +137,67 @@
     vis(false);
   });
 
+
+  /* ---------- 4) Ordalistin: »Eg kann hetta« – goymt í browsaranum ---------- */
+  var ordDl = document.getElementById('jf-ordlisti');
+  if (ordDl) {
+    var ordLykil = 'jf-ord-kent:' + location.pathname;
+    var kent = hent(ordLykil);
+    if (!kent || typeof kent !== 'object') kent = {};
+    var orðini = Array.prototype.slice.call(ordDl.querySelectorAll('.jf-ord'));
+    var statOrd = document.createElement('p');
+    statOrd.className = 'jf-tjekt-stat jf-ord-stat';
+    var statTekst = document.createElement('span');
+    var nulOrd = document.createElement('button');
+    nulOrd.type = 'button';
+    nulOrd.className = 'jf-tjekt-nulstill';
+    nulOrd.textContent = 'Byrja umaftur';
+    statOrd.appendChild(statTekst);
+    statOrd.appendChild(nulOrd);
+    ordDl.parentNode.insertBefore(statOrd, ordDl);
+
+    function ordLyklar(o) { return o.getAttribute('data-lyk') || ''; }
+
+    function ordVis(sigMelding) {
+      var k = 0;
+      orðini.forEach(function (o) {
+        var lyk = ordLyklar(o);
+        var v = !!kent[lyk];
+        if (v) k++;
+        o.classList.toggle('jf-kent', v);
+        var box = o.querySelector('input');
+        if (box) box.checked = v;
+      });
+      statTekst.textContent = k + ' av ' + orðini.length + ' eru kend';
+      if (sigMelding) melding(k === orðini.length ? 'Øll orðini eru kend! ✓' : 'Gemt í browsaranum – ' + k + ' av ' + orðini.length);
+    }
+
+    orðini.forEach(function (o) {
+      var dt = o.querySelector('dt');
+      if (!dt) return;
+      var lyk = dt.textContent.replace(/\s+/g, ' ').trim();
+      o.setAttribute('data-lyk', lyk);
+      var etiketta = document.createElement('label');
+      etiketta.className = 'jf-kent-lab';
+      var box = document.createElement('input');
+      box.type = 'checkbox';
+      etiketta.appendChild(box);
+      etiketta.appendChild(document.createTextNode(' Kent'));
+      dt.appendChild(etiketta);
+      box.addEventListener('change', function () {
+        if (box.checked) kent[lyk] = true; else delete kent[lyk];
+        goym(ordLykil, kent);
+        ordVis(true);
+      });
+    });
+
+    nulOrd.addEventListener('click', function () {
+      kent = {};
+      goym(ordLykil, kent);
+      ordVis(false);
+      melding('Listin er byrjað umaftur');
+    });
+
+    ordVis(false);
+  }
 })();
