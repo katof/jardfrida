@@ -7,6 +7,10 @@
   function goym(lykil, v) { try { localStorage.setItem(lykil, JSON.stringify(v)); return true; } catch (e) { return false; } }
   function hent(lykil) { try { return JSON.parse(localStorage.getItem(lykil)); } catch (e) { return null; } }
 
+  /* Tal við røttum bending: »Eitt av 6 gjørt« / »2 av 6 gjørd«, »1 av 25 er kent« / »2 av 25 eru kend« */
+  function gjortTekst(k, n) { return k === 1 ? 'Eitt av ' + n + ' gjørt' : k + ' av ' + n + ' gjørd'; }
+  function kentTekst(k, n)  { return k === 1 ? '1 av ' + n + ' er kent' : k + ' av ' + n + ' eru kend'; }
+
   /* ---------- Toast (melding í nedast) ---------- */
   var toastEl, toastTid;
   function melding(tekst) {
@@ -100,7 +104,7 @@
 
     function vis(sigMelding) {
       var k = teldu();
-      tekst.textContent = k + ' av ' + items.length + ' klárar';
+      tekst.textContent = gjortTekst(k, items.length);
       items.forEach(function (li, i) {
         li.classList.toggle('jf-klar', !!gjort[i]);
         var box = li.querySelector('input');
@@ -108,7 +112,7 @@
       });
       if (sigMelding) {
         if (k === items.length) melding('Allur listin er klár! ✓');
-        else melding('Goymt í kaganum – ' + k + ' av ' + items.length);
+        else melding('Goymt í kaganum – ' + gjortTekst(k, items.length));
       }
     }
 
@@ -168,8 +172,8 @@
         var box = o.querySelector('input');
         if (box) box.checked = v;
       });
-      statTekst.textContent = k + ' av ' + orðini.length + ' eru kend';
-      if (sigMelding) melding(k === orðini.length ? 'Øll orðini eru kend! ✓' : 'Goymt í kaganum – ' + k + ' av ' + orðini.length);
+      statTekst.textContent = kentTekst(k, orðini.length);
+      if (sigMelding) melding(k === orðini.length ? 'Øll orðini eru kend! ✓' : 'Goymt í kaganum – ' + kentTekst(k, orðini.length));
     }
 
     orðini.forEach(function (o) {
