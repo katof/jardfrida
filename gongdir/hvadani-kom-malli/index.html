@@ -2804,7 +2804,9 @@ body.jf-sida #page-content .frame-type-html {
   var rock = document.getElementById('jf-malli-rock');
   var quip = document.getElementById('jf-malli-quip');
   if (!root || !rock) return;
-  root.classList.add('jf-ventar');
+  var liðug = false;
+  try { liðug = localStorage.getItem('jf-malli-soga') === 'liðug'; } catch (e) {}
+  if (!liðug) root.classList.add('jf-ventar');
 
   function sig(t) {
     if (!quip) return;
@@ -2969,6 +2971,7 @@ body.jf-sida #page-content .frame-type-html {
     function farTilHornid(){
       if (n !== STIG.length - 1 || farin) return;
       farin = true;
+      try { localStorage.setItem('jf-malli-soga', 'liðug'); } catch (e) {}
       const r = knappur.getBoundingClientRect();
       knappur.classList.add('mh-farin');
       bobla.textContent = '»Nú eri eg niðri í horninum. Tú kanst draga meg og kasta meg!«';
@@ -3106,6 +3109,7 @@ body.jf-sida #page-content .frame-type-html {
 
     aftur.addEventListener('click', () => {
       clearTimeout(farTid);
+      try { localStorage.removeItem('jf-malli-soga'); } catch (e) {}
       if (farin && window.jfMalliFara) window.jfMalliFara();
       farin = false;
       knappur.classList.remove('mh-farin');
@@ -3118,7 +3122,7 @@ body.jf-sida #page-content .frame-type-html {
     });
 
     // Gassbløðrur stíga upp úr grótbræðingini, meðan hann er hraun
-    setInterval(() => { if (n === 0 && !document.hidden) blodrur(); }, 3200);
+    setInterval(() => { if (n === 0 && !farin && !document.hidden) blodrur(); }, 3200);
 
     // Eyguni fylgja músini
     if (!reduce){
@@ -3138,10 +3142,21 @@ body.jf-sida #page-content .frame-type-html {
       anim(skap, [{transform:'translateX(-56px) scaleX(.2)', opacity:.6},{transform:'none', opacity:1}], {duration:1400, easing:'cubic-bezier(.2,.7,.3,1)'});
     }
 
-    vis(0);
-    bobla.textContent = STIG[0][1];
-    renn();
-    blodrur();
+    // Hevur tú longu gjørt søguna, so er Malli framvegis niðri í horninum
+    let longuLiðug = false;
+    try { longuLiðug = localStorage.getItem('jf-malli-soga') === 'liðug'; } catch (e) {}
+    if (longuLiðug){
+      n = STIG.length - 1;
+      farin = true;
+      vis(n);
+      knappur.classList.add('mh-farin');
+      bobla.textContent = '»Nú eri eg niðri í horninum. Tú kanst draga meg og kasta meg!«';
+    } else {
+      vis(0);
+      bobla.textContent = STIG[0][1];
+      renn();
+      blodrur();
+    }
   })();
 
   // ---------- 1: steinarnir í røð ----------
