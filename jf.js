@@ -37,7 +37,7 @@
 
   /* ---------- Merkini hjá Malla ---------- */
   var MERKI = [
-    { id:'sjoneyka',     navn:'Skarpa eygað',  hvussu:'Finn øll seks eyðkennini í borikjarnanum við sjóneykuni.', gongd:'Tunnilsgongdin', farv:'#2A6A80',
+    { id:'sjoneyka',     navn:'Gløggi eygleiðarin',  hvussu:'Finn øll seks eyðkennini í borikjarnanum við sjóneykuni.', gongd:'Tunnilsgongdin', farv:'#2A6A80',
       ikon:'<circle cx="21" cy="21" r="10" fill="none" stroke="#fff" stroke-width="4"/><path d="M28 28 L37 37" stroke="#fff" stroke-width="5" stroke-linecap="round"/>' },
     { id:'tunnil',       navn:'Tunnilsbyggjari', hvussu:'Vel, hvar tunnilin skal ganga gjøgnum fjallið.', gongd:'Tunnilsgongdin', farv:'#6E747A',
       ikon:'<path d="M6 36 L18 12 L26 22 L31 15 L42 36 Z" fill="#fff"/><path d="M17 36 v-5 a5 5 0 0 1 10 0 v5 Z" fill="#6E747A"/>' },
@@ -71,7 +71,7 @@
       '</svg>';
   }
   function merkiSvg(m, fingin) { return steypSvg(m, fingin, false); }
-  function savnadTekst(tal) { return 'Tú hevur savnað ' + (tal === 1 ? 'eitt' : tal) + ' av ' + MERKI.length + ' merkjum.'; }
+  function savnadTekst(tal) { return 'Tú hevur savnað ' + tal + ' av ' + MERKI.length + ' merkjum.'; }
 
   /* Stóra premian: kemur fram, tá ið tú fært eitt gullsteyp */
   function visPremiu(m, tal) {
