@@ -43,7 +43,7 @@
       ikon:'<path d="M6 36 L18 12 L26 22 L31 15 L42 36 Z" fill="#fff"/><path d="M17 36 v-5 a5 5 0 0 1 10 0 v5 Z" fill="#6E747A"/>' },
     { id:'malli-tunnil', navn:'Malli í tunlinum', hvussu:'Far við Malla inn í tunnilin.', gongd:'Tunnilsgongdin', farv:'#A4533A',
       ikon:'<path d="M8 38 v-12 a16 16 0 0 1 32 0 v12 Z" fill="#fff"/><ellipse cx="24" cy="32" rx="8" ry="6" fill="#A4533A"/><circle cx="21.5" cy="31" r="1.4" fill="#fff"/><circle cx="26.5" cy="31" r="1.4" fill="#fff"/>' },
-    { id:'malli-funnin', navn:'Malli funnin!', hvussu:'Finn Malla, sum hevur fjalt seg.', gongd:'Hvaðani kom Malli?', farv:'#5E7D35',
+    { id:'malli-funnin', navn:'Ferðin hjá steininum', hvussu:'Fylg Malla alla leiðina frá grótbræðing til rundan stein.', gongd:'Hvaðani kom Malli?', farv:'#5E7D35',
       ikon:'<ellipse cx="24" cy="26" rx="15" ry="12" fill="#fff"/><circle cx="19" cy="24" r="2.4" fill="#5E7D35"/><circle cx="29" cy="24" r="2.4" fill="#5E7D35"/><path d="M19 30 Q24 34 29 30" stroke="#5E7D35" stroke-width="2.4" fill="none" stroke-linecap="round"/>' },
     { id:'steinakort',   navn:'Steinakortið',  hvussu:'Ger eitt kort um steinin hjá tær og tak tað niður.', gongd:'Hvaðani kom Malli?', farv:'#B7821F',
       ikon:'<rect x="9" y="11" width="30" height="26" rx="3" fill="#fff"/><ellipse cx="19" cy="22" rx="6" ry="5" fill="#B7821F"/><path d="M28 19 h7 M28 24 h7 M14 31 h21" stroke="#B7821F" stroke-width="2.4" stroke-linecap="round"/>' },

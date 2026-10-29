@@ -2103,10 +2103,15 @@ body.jf-sida #page-content .frame-type-html {
 .jf .jf-bore-ticks span:hover, .jf .jf-bore-ticks span:focus-visible { color:var(--ink); }
 .jf .jf-bore-ticks span.er-her { color:var(--ink); font-weight:700; }
 .jf .jf-bore-ticks span.er-her::before { background:var(--tuff); width:9px; height:2px; }
-/* Malli fjalir seg á síni egnu síðu */
-#jf-malli-widget.jf-fjaldur .jf-rock { bottom:calc(var(--jf-malli-nidast) - var(--jf-malli-stodd) * .66); transition:bottom .5s cubic-bezier(.3,1.4,.5,1); }
-#jf-malli-widget.jf-fjaldur .jf-rock:hover, #jf-malli-widget.jf-fjaldur .jf-rock:focus-visible, #jf-malli-widget.jf-fjaldur.jf-lúrir .jf-rock { bottom:calc(var(--jf-malli-nidast) - var(--jf-malli-stodd) * .38); }
-@media(prefers-reduced-motion:reduce){ #jf-malli-widget.jf-fjaldur .jf-rock { transition:none; } }
+/* Á hesi síðu bíðar Malli í søguni ovast – tá ið søgan er liðug, loypur hann niður í hornið */
+#jf-malli-widget.jf-ventar .jf-rock { visibility:hidden; pointer-events:none; }
+#jf-malli-widget.jf-ventar #jf-malli-quip { display:none !important; }
+#jf-malli-widget .jf-rock.jf-kemur { animation:jf-malli-pop .6s cubic-bezier(.3,1.6,.5,1); }
+@keyframes jf-malli-pop { from { transform:scale(.4); } to { transform:scale(1); } }
+.jf-malli-flyg { position:fixed; z-index:200; pointer-events:none; transform-origin:50% 50%; filter:drop-shadow(2px 5px 0 rgba(31,36,40,.2)); }
+.jf-malli-flyg svg { display:block; width:100%; height:100%; }
+.jf .jf-malli-knappur.mh-farin { visibility:hidden; }
+@media(prefers-reduced-motion:reduce){ #jf-malli-widget .jf-rock.jf-kemur { animation:none; } }
 </style>
 </head>
 <body class="jf-sida">
@@ -2792,50 +2797,63 @@ body.jf-sida #page-content .frame-type-html {
 })();
 </script>
 <script>
+/* Malli bíðar í søguni ovast á síðuni. Tá ið søgan er liðug, loypur hann
+   niður í hornið og verður til tann vanliga Malla, sum tú kanst draga og kasta. */
 (function () {
   var root = document.getElementById('jf-malli-widget');
   var rock = document.getElementById('jf-malli-rock');
   var quip = document.getElementById('jf-malli-quip');
-  if (!root || !rock || !quip) return;
-
-  root.classList.add('jf-fjaldur');
-  rock.setAttribute('aria-label', 'Malli fjalir seg. Trýst á hann!');
-
-  var ORD = ['Finn meg!', 'Eg eri her onkustaðni…', 'Psst!', 'Hvar eri eg?'];
-  var n = 0, timer;
+  if (!root || !rock) return;
+  root.classList.add('jf-ventar');
 
   function sig(t) {
+    if (!quip) return;
     quip.textContent = t;
     quip.hidden = false;
     var r = rock.getBoundingClientRect();
-    quip.style.left = Math.max(8, r.left - 120) + 'px';
+    quip.style.left = Math.max(8, Math.min(window.innerWidth - 200, r.left - 120)) + 'px';
     quip.style.top = (r.top - 44) + 'px';
-    setTimeout(function () { quip.hidden = true; }, 1600);
+    setTimeout(function () { quip.hidden = true; }, 2600);
   }
 
-  /* Lúrir fram við og við */
-  function lura() {
-    if (!root.classList.contains('jf-fjaldur')) return;
-    root.classList.add('jf-lúrir');
-    sig(ORD[n++ % ORD.length]);
-    setTimeout(function () { root.classList.remove('jf-lúrir'); }, 1500);
-    timer = setTimeout(lura, 7000 + Math.random() * 6000);
+  function vis() {
+    root.classList.remove('jf-ventar');
+    rock.classList.add('jf-kemur');
+    setTimeout(function () { rock.classList.remove('jf-kemur'); }, 700);
+    setTimeout(function () { sig('Nú kanst tú kasta meg!'); }, 450);
   }
-  timer = setTimeout(lura, 2500);
 
-  /* Fyrsta ferð, tú nertir hann: »Her eri eg!« */
-  function funnin() {
-    if (!root.classList.contains('jf-fjaldur')) return;
-    clearTimeout(timer);
-    root.classList.remove('jf-fjaldur', 'jf-lúrir');
-    rock.setAttribute('aria-label', 'Malli. Trýst fyri at síggja orðalistan. Drag fyri at kasta hann.');
-    setTimeout(function () { sig('Her eri eg!'); }, 350);
-    window.jfMerki && window.jfMerki.gev('malli-funnin');
-  }
-  rock.addEventListener('pointerdown', funnin, true);
-  rock.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') funnin(); }, true);
+  window.jfMalliKoma = function (fra) {
+    if (!root.classList.contains('jf-ventar')) return;
+    if (root.classList.contains('jf-horvin')) { root.classList.remove('jf-ventar'); return; }
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var til = rock.getBoundingClientRect();
+    if (reduce || !fra || !fra.width || !til.width || !document.body.animate) { vis(); return; }
+    var w = fra.width * .74, h = w * 160 / 180;
+    var left = fra.left + (fra.width - w) / 2, top = fra.top + (fra.height - h) / 2;
+    var f = document.createElement('div');
+    f.className = 'jf-malli-flyg';
+    f.setAttribute('aria-hidden', 'true');
+    f.innerHTML = rock.innerHTML;
+    f.style.left = left + 'px'; f.style.top = top + 'px';
+    f.style.width = w + 'px'; f.style.height = h + 'px';
+    document.body.appendChild(f);
+    var dx = (til.left + til.width / 2) - (left + w / 2);
+    var dy = (til.top + til.height / 2) - (top + h / 2);
+    var sk = til.width / w;
+    var hogd = Math.min(160, Math.max(80, Math.abs(dy) * .35));
+    var a = f.animate([
+      { transform:'translate(0,0) rotate(0deg) scale(1)' },
+      { transform:'translate(' + (dx * .45) + 'px,' + (dy * .45 - hogd) + 'px) rotate(260deg) scale(' + ((1 + sk) / 2) + ')', offset:.45 },
+      { transform:'translate(' + dx + 'px,' + dy + 'px) rotate(720deg) scale(' + sk + ')' }
+    ], { duration:1150, easing:'cubic-bezier(.45,.05,.4,1)' });
+    a.onfinish = function () { f.remove(); vis(); };
+  };
 
-  /* Kemur hann aftur úr kassanum, so fjalir hann seg ikki aftur */
+  window.jfMalliFara = function () {
+    if (quip) quip.hidden = true;
+    root.classList.add('jf-ventar');
+  };
 })();
 </script>
 <script src="/jardfrida/jf.js"></script><script>
@@ -2946,7 +2964,17 @@ body.jf-sida #page-content .frame-type-html {
       '»Hoyyy! Eg rulli burtur!«'
     ];
 
-    let n = 0, snúningur = 0, upptikin = false;
+    let n = 0, snúningur = 0, upptikin = false, farin = false, farTid = 0;
+
+    function farTilHornid(){
+      if (n !== STIG.length - 1 || farin) return;
+      farin = true;
+      const r = knappur.getBoundingClientRect();
+      knappur.classList.add('mh-farin');
+      bobla.textContent = '»Nú eri eg niðri í horninum. Tú kanst draga meg og kasta meg!«';
+      if (window.jfMalliKoma) window.jfMalliKoma(r);
+      window.jfMerki && window.jfMerki.gev('malli-funnin');
+    }
 
     function el(t, a, f){ const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (f) f.appendChild(e); return e; }
     function setSkap(d){ [path, kant, klipp, hraun].forEach(x => x.setAttribute('d', d)); }
@@ -3060,9 +3088,11 @@ body.jf-sida #page-content .frame-type-html {
       if (upptikin) return;
       upptikin = true;
       setTimeout(() => { upptikin = false; }, reduce ? 0 : 700);
+      if (farin) return;
       if (n < STIG.length - 1){
         n++;
         nyttStig();
+        if (n === STIG.length - 1){ clearTimeout(farTid); farTid = setTimeout(farTilHornid, reduce ? 1500 : 2800); }
       } else {
         bobla.textContent = AFTURAT[Math.floor(Math.random() * AFTURAT.length)];
         snúningur += 360;
@@ -3075,6 +3105,10 @@ body.jf-sida #page-content .frame-type-html {
     knappur.addEventListener('click', trýst);
 
     aftur.addEventListener('click', () => {
+      clearTimeout(farTid);
+      if (farin && window.jfMalliFara) window.jfMalliFara();
+      farin = false;
+      knappur.classList.remove('mh-farin');
       n = 0; snúningur = 0;
       skap.style.transform = '';
       vis(0);
