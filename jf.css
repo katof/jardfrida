@@ -128,10 +128,6 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 .jf .jf-tjekt-nulstill { font:inherit; color:var(--ink); background:none; border:1px solid var(--line); border-radius:3px; padding:4px 10px; cursor:pointer; }
 .jf .jf-tjekt-nulstill:hover { border-color:var(--ink-soft); }
 
-/* ---------- Melding (toast) ---------- */
-.jf-toast { position:fixed; left:50%; bottom:20px; transform:translate(-50%, 12px); z-index:90; max-width:calc(100% - 32px); padding:10px 16px; background:var(--ink,#1E2326); color:#fff; border-radius:4px; font:500 .95rem/1.35 system-ui, sans-serif; box-shadow:0 6px 18px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; }
-.jf-toast.er-synlig { opacity:1; transform:translate(-50%, 0); }
-
 /* ---------- Ordalistin: kend orð ---------- */
 .jf .jf-ord-stat { margin-top:12px; justify-content:flex-start; }
 .jf .jf-kent-lab { display:inline-flex; align-items:center; gap:6px; margin-left:12px; font:600 .78rem/1 var(--mono); color:var(--ink-soft); cursor:pointer; vertical-align:middle; }
@@ -150,30 +146,6 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 .jf .jf-merki-kort.er-fingið b { color:var(--ink); }
 .jf .jf-merki-stat { margin-top:14px; justify-content:flex-start; }
 
-/* ---------- Premian: gullsteyp ---------- */
-.jf-premia, .jf-premia * { box-sizing:border-box; }
-.jf-premia { position:fixed; inset:0; z-index:120; display:grid; place-items:center; padding:16px; background:rgba(30,35,38,.55); opacity:0; transition:opacity .25s; }
-.jf-premia.er-synlig { opacity:1; }
-.jf-premia-kort { position:relative; width:min(380px, 100%); padding:24px 22px 20px; text-align:center; background:#FFF8DF; color:#1E2326; border:3px solid #1E2326; border-radius:6px; box-shadow:6px 6px 0 #B8860B; transform:scale(.85) translateY(12px); transition:transform .35s cubic-bezier(.3,1.5,.5,1); font-family:"Atkinson Hyperlegible",system-ui,sans-serif; }
-.jf-premia.er-synlig .jf-premia-kort { transform:none; }
-.jf-premia-kort .jf-steyp-stort { width:132px; height:132px; display:block; margin:-4px auto 4px; animation:jf-steyp-hopp 1.2s ease-out .25s 1 both; }
-.jf-premia-yvir { margin:0; font:700 .82rem/1.2 "IBM Plex Mono",monospace; letter-spacing:.06em; text-transform:uppercase; color:#8A6508; }
-.jf-premia-kort h2 { margin:6px 0 6px; font:700 1.9rem/1.1 "Fraunces",Georgia,serif; color:#1E2326; }
-.jf-premia-hvi { margin:0 0 10px; font-size:1rem; line-height:1.4; }
-.jf-premia-tal { margin:0 0 16px; font-weight:700; font-size:.95rem; }
-.jf-premia-knappar { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
-.jf-premia-knappar a, .jf-premia-knappar button { font:700 1rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; padding:11px 16px; border:2px solid #1E2326; border-radius:3px; cursor:pointer; text-decoration:none; }
-.jf-premia-sí { background:#F2C230; color:#1E2326; }
-.jf-premia-aftur { background:#1E2326; color:#fff; }
-.jf-premia-knappar a:focus-visible, .jf-premia-knappar button:focus-visible { outline:3px solid #2A6A80; outline-offset:2px; }
-.jf-premia-glitur { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
-.jf-premia-glitur i { position:absolute; top:-12px; left:var(--x); width:9px; height:14px; background:#F2C230; border-radius:2px; transform:rotate(var(--r)); animation:jf-glitur 2.2s ease-in var(--d) 1 both; }
-.jf-premia-glitur i:nth-child(3n) { background:#2A6A80; }
-.jf-premia-glitur i:nth-child(4n) { background:#A4533A; }
-.jf-premia-glitur i:nth-child(5n) { background:#5E7D35; }
-@keyframes jf-glitur { to { transform:translateY(105vh) rotate(calc(var(--r) + 540deg)); opacity:.7; } }
-@keyframes jf-steyp-hopp { 0% { transform:scale(.4) rotate(-12deg); } 55% { transform:scale(1.12) rotate(4deg); } 100% { transform:none; } }
-@media (prefers-reduced-motion:reduce) { .jf-premia, .jf-premia-kort { transition:none; } .jf-premia-kort .jf-steyp-stort, .jf-premia-glitur i { animation:none; } .jf-premia-glitur { display:none; } }
 /* Ikki vunnin merki: týðiliga gráligari, so tey ikki síggja út sum vunnin */
 .jf .jf-merki-kort:not(.er-fingið) { background:#F1EEE6; border-style:dashed; }
 .jf .jf-merki-kort:not(.er-fingið) b,
