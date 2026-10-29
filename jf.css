@@ -39,6 +39,7 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 .jf .jf-coursecard:hover { background:#FBFAF6; }
 .jf .jf-coursecard::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:linear-gradient( to bottom, #5F7A5B 0 8%, #7A8086 8% 40%, #A4533A 40% 47%, #7A8086 47% 76%, #2E3236 76% 100% ); }
 .jf .jf-coursecard.eld::before { background:linear-gradient( to bottom, #F28C28 0 14%, #7A8086 14% 38%, #A4533A 38% 46%, #4F555B 46% 72%, #A4533A 72% 78%, #7A8086 78% 100% ); }
+.jf .jf-coursecard.is::before { background:linear-gradient( to bottom, #F4FAFC 0 18%, #8FC3D6 18% 34%, #7A8086 34% 62%, #4F555B 62% 84%, #2A6A80 84% 100% ); }
 .jf .jf-coursecard.ice::before { background:linear-gradient( to bottom, #BFDCE6 0 30%, #2A6A80 30% 42%, #7A8086 42% 100% ); }
 .jf .jf-cc-text { display:grid; gap:8px; padding-left:8px; }
 .jf .jf-cc-text b { font:700 1.7rem/1.1 var(--display); }
