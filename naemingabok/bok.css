@@ -1,0 +1,142 @@
+@page { size:A4; margin:14mm 15mm 18mm; }
+:root { --ink:#1F2428; --soft:#585F65; --line:#CFC8B8; --paper:#F7F3EA; --sea:#2A6A80; --olive:#5E7D35; --tuff:#A4533A; --ochre:#B7821F; }
+* { box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+html { background:#fff; }
+body { margin:0; color:var(--ink); font:11.5pt/1.5 "Atkinson Hyperlegible", system-ui, sans-serif; background:#fff; }
+@media screen { body { max-width:180mm; margin:10mm auto; } }
+h1, h2, h3 { font-family:"Fraunces", Georgia, serif; line-height:1.15; margin:0; }
+p { margin:0 0 2.5mm; }
+img { max-width:100%; display:block; }
+
+/* Forsíða */
+.forsida { height:264mm; padding:22mm 16mm; border-radius:6mm; display:flex; flex-direction:column; break-after:page;
+  background:linear-gradient(to bottom, #F4F1E8 0 64%, #7A8086 64% 71%, #A4533A 71% 73.5%, #656B71 73.5% 85%, #4F555B 85% 100%); }
+.forsida .kap-nr { color:var(--sea); }
+.forsida h1 { font-size:40pt; margin:8mm 0 3mm; }
+.forsida .undir { font:700 20pt "Fraunces", serif; color:var(--tuff); }
+.forsida-figurar { display:flex; align-items:flex-end; gap:8mm; margin-top:12mm; }
+.fs-jf { width:62mm; height:66mm; }
+.fs-malli { width:40mm; height:36mm; }
+.forsida-navn { margin-top:auto; display:grid; gap:5mm; }
+.forsida-navn div { display:flex; gap:4mm; align-items:flex-end; color:#fff; font-weight:700; font-size:13pt; }
+.forsida-navn span { flex:1; border-bottom:1.5px solid #fff; height:8mm; }
+
+.kap-nr, .partur span { font:600 9pt/1 "IBM Plex Mono", monospace; letter-spacing:.09em; text-transform:uppercase; }
+
+/* Inngangur */
+.inngangur { break-after:page; }
+.inngangur h2 { font-size:24pt; margin-bottom:5mm; }
+.inngangur h3 { font-size:15pt; margin:7mm 0 3mm; }
+.tekn { display:grid; gap:2.5mm; }
+.tekn div { display:flex; gap:3mm; align-items:center; }
+.innihald { margin:0; padding-left:6mm; }
+.innihald li { margin-bottom:3mm; }
+.innihald b { display:block; font-size:12.5pt; }
+.innihald span { color:var(--soft); font-size:10pt; }
+
+/* Kapittul */
+.kapittul { break-before:page; break-after:page; height:262mm; display:flex; flex-direction:column; padding:18mm 14mm;
+  border-radius:6mm; background:var(--paper); border-top:10mm solid var(--k); }
+.kapittul .kap-nr { color:var(--k); }
+.kapittul h1 { font-size:34pt; margin:6mm 0 5mm; }
+.kapittul p { font-size:14pt; line-height:1.5; max-width:150mm; }
+.kap-mynd { margin-top:auto; }
+.kap-mynd img { max-height:110mm; margin:0 auto; }
+
+/* Partur */
+.partur { break-before:page; margin:0 0 5mm; padding-bottom:3mm; border-bottom:2.5px solid var(--ink); }
+.partur span { color:var(--sea); }
+.partur h2 { font-size:24pt; margin-top:2mm; }
+
+/* Bólkar */
+.bolkur { border:1.5px solid var(--line); border-radius:3mm; padding:4mm 5mm 4.5mm; margin:0 0 5mm; break-inside:avoid; background:#fff; }
+.bolkur h3 { font-size:15pt; margin:2mm 0 3mm; }
+.merki { display:inline-block; padding:1.2mm 2.6mm; border-radius:1.2mm; font:700 8pt/1 "IBM Plex Mono", monospace; letter-spacing:.08em; text-transform:uppercase; color:#fff; }
+.merki-les { background:var(--sea); }
+.merki-uppgava { background:var(--ochre); }
+.merki-roynd { background:var(--olive); }
+.merki-uti { background:#3E6E52; }
+.merki-tosid-saman { background:var(--tuff); }
+.bolkur .tala { margin-top:3mm; }
+
+/* Talubløðrur */
+.tala { display:flex; gap:4mm; align-items:flex-start; margin:0 0 5mm; break-inside:avoid; }
+.tala svg { flex:0 0 16mm; width:16mm; height:16mm; }
+.tala p { margin:0; padding:3mm 4mm; border-radius:3mm; background:#F5EBD6; font-size:11.5pt; }
+.tala-malli p { background:#E3EEF1; }
+.tala b { display:block; font:600 8pt "IBM Plex Mono", monospace; letter-spacing:.08em; text-transform:uppercase; color:var(--ochre); margin-bottom:1mm; }
+.tala-malli b { color:var(--sea); }
+
+/* Listar */
+.stig, .punkt { margin:0 0 3mm; padding-left:6mm; }
+.stig li, .punkt li { margin-bottom:1.6mm; }
+.kross { list-style:none; margin:0 0 3mm; padding:0; display:grid; gap:2mm; }
+.kross li { display:flex; gap:3mm; align-items:flex-start; }
+.kross i { flex:0 0 4.6mm; height:4.6mm; border:1.6px solid var(--ink); border-radius:1mm; margin-top:.6mm; }
+.kross.tvikolonna { grid-template-columns:1fr 1fr; }
+.kross.linja { display:flex; flex-wrap:wrap; gap:3mm 8mm; }
+.rad { padding:2.5mm 3.5mm; background:var(--paper); border-radius:2mm; font-size:10.5pt; }
+
+/* Skriva og tekna */
+.spurn { font-weight:700; margin-top:3mm; }
+.linjur { display:grid; margin-bottom:3mm; }
+.linjur span { height:9mm; border-bottom:1.2px solid #9AA0A6; }
+.ramma { position:relative; border:1.6px dashed #8A9095; border-radius:2.5mm; margin:2mm 0 3mm; background:#fff; }
+.ramma span { position:absolute; left:3mm; top:2mm; font-size:9pt; color:var(--soft); }
+.felt { display:flex; align-items:flex-end; gap:3mm; margin-bottom:1mm; }
+.felt b { white-space:nowrap; font-size:10.5pt; }
+.felt .linjur { flex:1; margin:0; }
+.felt .linjur span { height:8mm; }
+.tvey { display:grid; grid-template-columns:1fr 1fr; gap:5mm; align-items:start; }
+
+/* Myndir */
+.mynd { margin:2mm auto 4mm; break-inside:avoid; }
+.mynd img { width:100%; border-radius:2mm; border:1px solid var(--line); }
+.mynd figcaption { font-size:9.5pt; color:var(--soft); margin-top:1.5mm; }
+.tekniflata img { border:2px solid var(--ink); }
+.trý { display:grid; grid-template-columns:repeat(3, 1fr); gap:4mm; margin-bottom:3mm; }
+.trý figure { margin:0; }
+.trý img { width:100%; border:1px solid var(--line); border-radius:2mm; }
+.trý figcaption { font-size:9.5pt; margin-top:1.5mm; }
+.trý.stórar { grid-template-columns:1fr; }
+.trý.stórar figure { display:grid; grid-template-columns:95mm 1fr; gap:4mm; align-items:center; }
+.litir { display:flex; flex-wrap:wrap; gap:2mm 5mm; font-size:10pt; margin:1mm 0 3mm; }
+.litir i { display:inline-block; width:4mm; height:4mm; border:1px solid var(--ink); margin-right:1.5mm; vertical-align:-.5mm; }
+
+/* Søgan hjá Malla */
+.soga { display:grid; grid-template-columns:repeat(3, 1fr); gap:4mm; }
+.soga figure { margin:0; border:1px solid var(--line); border-radius:2mm; padding:2mm; break-inside:avoid; }
+.soga img { width:100%; height:30mm; object-fit:contain; }
+.soga figcaption { font-size:9pt; line-height:1.35; }
+.soga figcaption b { display:block; font-size:9.5pt; margin-bottom:.8mm; }
+
+/* Steinar */
+.steinar { display:grid; grid-template-columns:repeat(6, 1fr); gap:3mm; margin:2mm 0 3mm; }
+.stein { margin:0; text-align:center; }
+.stein svg { width:100%; height:auto; }
+.stein b { font-size:13pt; }
+.rodfelt { display:flex; align-items:center; gap:2.5mm; font-size:9.5pt; color:var(--soft); margin-bottom:2mm; }
+.rodfelt i { width:11mm; height:11mm; border:1.6px solid var(--ink); border-radius:1.5mm; }
+.rokn { display:flex; flex-wrap:wrap; align-items:center; gap:2.5mm; margin:3mm 0; font-weight:700; }
+.rokn i { width:22mm; height:9mm; border:1.6px solid var(--ink); border-radius:1.5mm; }
+.spor { display:grid; grid-template-columns:34mm 1fr; gap:4mm; align-items:center; margin-bottom:3mm; }
+.spor svg { width:100%; height:auto; }
+.spor .kross { margin:1mm 0; }
+.spor-talva { width:100%; border-collapse:collapse; font-size:10pt; }
+.spor-talva th, .spor-talva td { border:1.2px solid #9AA0A6; padding:2mm; text-align:left; vertical-align:top; }
+.spor-talva tbody td { height:16mm; }
+.spor-talva tbody th { width:42mm; }
+.grotkort { border:3px solid var(--ink); border-radius:3mm; padding:4mm; max-width:120mm; margin:0 auto; }
+.gk-hovd { display:flex; justify-content:space-between; font:600 9pt "IBM Plex Mono", monospace; color:var(--sea); border-bottom:1px solid var(--line); padding-bottom:2mm; margin-bottom:2mm; }
+.ordbanki { padding:2mm 3mm; border:1.5px solid var(--ink); border-radius:2mm; font-weight:700; margin-bottom:2mm; font-size:10.5pt; }
+.bokst { display:grid; gap:2.5mm; margin:2mm 0 3mm; }
+.bokst div { display:flex; gap:3mm; align-items:flex-start; }
+.bokst i { flex:0 0 9mm; height:9mm; border:1.6px solid var(--ink); border-radius:1.5mm; }
+.markkort svg { width:100%; height:auto; border:1px solid var(--line); margin-bottom:2mm; }
+.markkort b { display:block; margin-bottom:2mm; font-size:10.5pt; }
+
+/* Orðalisti */
+.ordalisti dl { columns:2; column-gap:8mm; margin:0; }
+.ordalisti dl div { break-inside:avoid; margin-bottom:3mm; }
+.ordalisti dt { font:700 11pt "Fraunces", serif; }
+.ordalisti dd { margin:0; font-size:10pt; }
