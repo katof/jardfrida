@@ -37,17 +37,17 @@
 
   /* ---------- Merkini hjá Malla ---------- */
   var MERKI = [
-    { id:'sjoneyka',     navn:'Skarpa eygað',  hvussu:'Finn øll seks eyðkennini í kjarnanum við sjóneykuni.', gongd:'Tunnilsgongdin', farv:'#2A6A80',
+    { id:'sjoneyka',     navn:'Skarpa eygað',  hvussu:'Finn øll seks eyðkennini í borikjarnanum við sjóneykuni.', gongd:'Tunnilsgongdin', farv:'#2A6A80',
       ikon:'<circle cx="21" cy="21" r="10" fill="none" stroke="#fff" stroke-width="4"/><path d="M28 28 L37 37" stroke="#fff" stroke-width="5" stroke-linecap="round"/>' },
-    { id:'tunnil',       navn:'Tunnilsbyggjari', hvussu:'Vel eina góða leið fyri tunnilin gjøgnum fjallið.', gongd:'Tunnilsgongdin', farv:'#6E747A',
+    { id:'tunnil',       navn:'Tunnilsbyggjari', hvussu:'Vel, hvar tunnilin skal ganga gjøgnum fjallið.', gongd:'Tunnilsgongdin', farv:'#6E747A',
       ikon:'<path d="M6 36 L18 12 L26 22 L31 15 L42 36 Z" fill="#fff"/><path d="M17 36 v-5 a5 5 0 0 1 10 0 v5 Z" fill="#6E747A"/>' },
     { id:'malli-tunnil', navn:'Malli í tunlinum', hvussu:'Far við Malla inn í tunnilin.', gongd:'Tunnilsgongdin', farv:'#A4533A',
       ikon:'<path d="M8 38 v-12 a16 16 0 0 1 32 0 v12 Z" fill="#fff"/><ellipse cx="24" cy="32" rx="8" ry="6" fill="#A4533A"/><circle cx="21.5" cy="31" r="1.4" fill="#fff"/><circle cx="26.5" cy="31" r="1.4" fill="#fff"/>' },
-    { id:'malli-funnin', navn:'Malli funnin', hvussu:'Finn Malla, har hann fjalir seg.', gongd:'Hvaðani kom Malli?', farv:'#5E7D35',
+    { id:'malli-funnin', navn:'Malli funnin!', hvussu:'Finn Malla, sum hevur fjalt seg.', gongd:'Hvaðani kom Malli?', farv:'#5E7D35',
       ikon:'<ellipse cx="24" cy="26" rx="15" ry="12" fill="#fff"/><circle cx="19" cy="24" r="2.4" fill="#5E7D35"/><circle cx="29" cy="24" r="2.4" fill="#5E7D35"/><path d="M19 30 Q24 34 29 30" stroke="#5E7D35" stroke-width="2.4" fill="none" stroke-linecap="round"/>' },
-    { id:'steinakort',   navn:'Steinakortið',  hvussu:'Ger eitt kort um tín stein og tak tað niður.', gongd:'Hvaðani kom Malli?', farv:'#B7821F',
+    { id:'steinakort',   navn:'Steinakortið',  hvussu:'Ger eitt kort um steinin hjá tær og tak tað niður.', gongd:'Hvaðani kom Malli?', farv:'#B7821F',
       ikon:'<rect x="9" y="11" width="30" height="26" rx="3" fill="#fff"/><ellipse cx="19" cy="22" rx="6" ry="5" fill="#B7821F"/><path d="M28 19 h7 M28 24 h7 M14 31 h21" stroke="#B7821F" stroke-width="2.4" stroke-linecap="round"/>' },
-    { id:'ord',          navn:'Orðasavnarin',  hvussu:'Kryss øll orðini av í orðalistanum.', gongd:'Orðalistin', farv:'#2E3236',
+    { id:'ord',          navn:'Orðasnillingur', hvussu:'Set kross við øll orðini í orðalistanum.', gongd:'Orðalistin', farv:'#2E3236',
       ikon:'<path d="M10 13 h11 a3 3 0 0 1 3 3 v21 a3 3 0 0 0 -3 -3 h-11 Z M38 13 h-11 a3 3 0 0 0 -3 3 v21 a3 3 0 0 1 3 -3 h11 Z" fill="#fff"/>' }
   ];
   var MERKILYKIL = 'jf-merki';
@@ -71,6 +71,7 @@
       '</svg>';
   }
   function merkiSvg(m, fingin) { return steypSvg(m, fingin, false); }
+  function savnadTekst(tal) { return 'Tú hevur savnað ' + (tal === 1 ? 'eitt' : tal) + ' av ' + MERKI.length + ' merkjum.'; }
 
   /* Stóra premian: kemur fram, tá ið tú fært eitt gullsteyp */
   function visPremiu(m, tal) {
@@ -85,12 +86,12 @@
       '<div class="jf-premia-glitur" aria-hidden="true">' + gl + '</div>' +
       '<div class="jf-premia-kort" role="dialog" aria-modal="true" aria-labelledby="jfPremiaHeiti">' +
         steypSvg(m, true, true) +
-        '<p class="jf-premia-yvir">Tú fekst eitt gullsteyp!</p>' +
+        '<p class="jf-premia-yvir">Tú fekst eitt merki!</p>' +
         '<h2 id="jfPremiaHeiti">' + m.navn + '</h2>' +
         '<p class="jf-premia-hvi">' + m.hvussu + '</p>' +
-        '<p class="jf-premia-tal">' + (tal === MERKI.length ? 'Nú hevur tú øll ' + MERKI.length + '! Tú ert ein veruligur jarðfrøðingur.' : (tal === 1 ? 'Tú hevur savnað eitt av ' + MERKI.length + '.' : 'Tú hevur savnað ' + tal + ' av ' + MERKI.length + '.')) + '</p>' +
+        '<p class="jf-premia-tal">' + (tal === MERKI.length ? 'Nú hevur tú øll ' + MERKI.length + ' merkini! Tú ert ein veruligur jarðfrøðingur.' : savnadTekst(tal)) + '</p>' +
         '<div class="jf-premia-knappar">' +
-          (aForsidu ? '' : '<a class="jf-premia-sí" href="/jardfrida/#merki">Sí øll gullsteypini</a>') +
+          (aForsidu ? '' : '<a class="jf-premia-sí" href="/jardfrida/#merki">Sí øll merkini</a>') +
           '<button type="button" class="jf-premia-aftur">Halt fram</button>' +
         '</div>' +
       '</div>';
@@ -111,15 +112,14 @@
     MERKI.forEach(function (m) {
       var f = !!mitt[m.id]; if (f) tal++;
       html += '<li class="jf-merki-kort' + (f ? ' er-fingið' : '') + '">' + merkiSvg(m, f) +
-        '<div><b>' + (f ? m.navn : 'Enn ikki vunnið') + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + '</small></div></li>';
+        '<div><b>' + m.navn + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + (f ? '' : ' · Enn ikki lært') + '</small></div></li>';
     });
     html += '</ul><p class="jf-tjekt-stat jf-merki-stat"><span>' +
-      (tal === 1 ? 'Tú hevur savnað eitt av ' + MERKI.length : 'Tú hevur savnað ' + tal + ' av ' + MERKI.length) +
-      (tal === MERKI.length ? ' – øll! 🏆' : '') + '</span>' +
-      (tal ? '<button type="button" class="jf-tjekt-nulstill" id="jf-merki-nul">Strika gullsteypini</button>' : '') + '</p>';
+      savnadTekst(tal) + (tal === MERKI.length ? ' 🏆' : '') + '</span>' +
+      (tal ? '<button type="button" class="jf-tjekt-nulstill" id="jf-merki-nul">Strika øll merkini</button>' : '') + '</p>';
     stad.innerHTML = html;
     var nul = document.getElementById('jf-merki-nul');
-    if (nul) nul.addEventListener('click', function () { goym(MERKILYKIL, {}); teknaMerki(); melding('Øll gullsteypini eru strikað'); });
+    if (nul) nul.addEventListener('click', function () { goym(MERKILYKIL, {}); teknaMerki(); melding('Øll merkini eru strikað'); });
   }
   window.jfMerki = {
     gev: function (id) {
