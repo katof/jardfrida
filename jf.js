@@ -112,7 +112,7 @@
     MERKI.forEach(function (m) {
       var f = !!mitt[m.id]; if (f) tal++;
       html += '<li class="jf-merki-kort' + (f ? ' er-fingið' : '') + '">' + merkiSvg(m, f) +
-        '<div><b>' + m.navn + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + (f ? '' : ' · Enn ikki lært') + '</small></div></li>';
+        '<div><b>' + m.navn + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + '</small>' + (f ? '<em class="jf-merki-status er-vunnid">✓ Vunnið</em>' : '<em class="jf-merki-status ikki-vunnid">Enn ikki lært</em>') + '</div></li>';
     });
     html += '</ul><p class="jf-tjekt-stat jf-merki-stat"><span>' +
       savnadTekst(tal) + (tal === MERKI.length ? ' 🏆' : '') + '</span>' +

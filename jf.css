@@ -174,3 +174,11 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 @keyframes jf-glitur { to { transform:translateY(105vh) rotate(calc(var(--r) + 540deg)); opacity:.7; } }
 @keyframes jf-steyp-hopp { 0% { transform:scale(.4) rotate(-12deg); } 55% { transform:scale(1.12) rotate(4deg); } 100% { transform:none; } }
 @media (prefers-reduced-motion:reduce) { .jf-premia, .jf-premia-kort { transition:none; } .jf-premia-kort .jf-steyp-stort, .jf-premia-glitur i { animation:none; } .jf-premia-glitur { display:none; } }
+/* Ikki vunnin merki: týðiliga gráligari, so tey ikki síggja út sum vunnin */
+.jf .jf-merki-kort:not(.er-fingið) { background:#F1EEE6; border-style:dashed; }
+.jf .jf-merki-kort:not(.er-fingið) b,
+.jf .jf-merki-kort:not(.er-fingið) span { color:var(--ink-soft); }
+.jf .jf-merki-kort:not(.er-fingið) svg { opacity:.75; }
+.jf .jf-merki-kort .jf-merki-status { display:inline-block; margin-top:6px; padding:2px 7px; font:700 .7rem/1.3 var(--mono); letter-spacing:.04em; text-transform:uppercase; border-radius:2px; }
+.jf .jf-merki-kort .jf-merki-status.er-vunnid { background:#F2C230; color:#1E2326; }
+.jf .jf-merki-kort .jf-merki-status.ikki-vunnid { background:#E2DED5; color:#585F65; }
