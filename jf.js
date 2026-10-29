@@ -182,7 +182,7 @@
       var box = document.createElement('input');
       box.type = 'checkbox';
       etiketta.appendChild(box);
-      etiketta.appendChild(document.createTextNode(' Kent'));
+      etiketta.appendChild(document.createTextNode(' Eg kenni orðið'));
       dt.appendChild(etiketta);
       box.addEventListener('change', function () {
         if (box.checked) kent[lyk] = true; else delete kent[lyk];
