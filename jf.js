@@ -89,7 +89,7 @@
         '<p class="jf-premia-yvir">Tú fekst eitt merki!</p>' +
         '<h2 id="jfPremiaHeiti">' + m.navn + '</h2>' +
         '<p class="jf-premia-hvi">' + m.hvussu + '</p>' +
-        '<p class="jf-premia-tal">' + (tal === MERKI.length ? 'Nú hevur tú øll ' + MERKI.length + ' merkini! Tú ert ein veruligur jarðfrøðingur.' : savnadTekst(tal)) + '</p>' +
+        '<p class="jf-premia-tal">' + (tal === MERKI.length ? 'Nú hevur tú savnað øll seks merkini! Tú ert ein rættur jarðfrøðingur!' : savnadTekst(tal)) + '</p>' +
         '<div class="jf-premia-knappar">' +
           (aForsidu ? '' : '<a class="jf-premia-sí" href="/jardfrida/#merki">Sí øll merkini</a>') +
           '<button type="button" class="jf-premia-aftur">Halt fram</button>' +
