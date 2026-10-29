@@ -108,7 +108,7 @@
       });
       if (sigMelding) {
         if (k === items.length) melding('Allur listin er klár! ✓');
-        else melding('Gemt í browsaranum – ' + k + ' av ' + items.length);
+        else melding('Goymt í kaganum – ' + k + ' av ' + items.length);
       }
     }
 
@@ -169,7 +169,7 @@
         if (box) box.checked = v;
       });
       statTekst.textContent = k + ' av ' + orðini.length + ' eru kend';
-      if (sigMelding) melding(k === orðini.length ? 'Øll orðini eru kend! ✓' : 'Gemt í browsaranum – ' + k + ' av ' + orðini.length);
+      if (sigMelding) melding(k === orðini.length ? 'Øll orðini eru kend! ✓' : 'Goymt í kaganum – ' + k + ' av ' + orðini.length);
     }
 
     orðini.forEach(function (o) {
