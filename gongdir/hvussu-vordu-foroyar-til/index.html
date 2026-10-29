@@ -1,0 +1,1407 @@
+<!doctype html>
+<html lang="fo">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hvussu vórðu Føroyar til?</title>
+<meta name="description" content="Hvussu vórðu Føroyar til? – næmingarnir læra um pláturnar, eldgosini, lagkøkuna, royðugrót og gongir, og fara út á geostøð.">
+<link rel="icon" href="/jardfrida/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jarðfrøði við Jarðfríðu">
+<meta property="og:title" content="Hvussu vórðu Føroyar til?">
+<meta property="og:description" content="Hvussu vórðu Føroyar til? – næmingarnir læra um pláturnar, eldgosini, lagkøkuna, royðugrót og gongir, og fara út á geostøð.">
+<meta property="og:url" content="https://katof.github.io/jardfrida/gongdir/hvussu-vordu-foroyar-til">
+<meta property="og:image" content="https://katof.github.io/jardfrida/myndir/og-jardfrida.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fo_FO">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/jardfrida/skriftir.css">
+<link rel="stylesheet" href="/jardfrida/jf.css">
+<link rel="stylesheet" href="/jardfrida/malli.css">
+<style>
+.jf [hidden] { display:none !important; }
+.jf { --sea-tint:#E7EFF2; --ochre-tint:#F7EEDA; --tuff-tint:#F4E5E0; --olivine-tint:#EAEFE1; }
+.jf .jf-phases { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:26px 0 24px; }
+.jf .jf-phase { appearance:none; cursor:pointer; position:relative; display:grid; gap:4px; justify-items:center; text-align:center; padding:13px 8px; background:var(--surface); border:1px solid var(--line); border-top:4px solid var(--sw,var(--basalt)); border-radius:0; color:var(--ink); font:700 1.02rem/1.15 var(--display); }
+.jf .jf-phase .jf-n { font:600 .8rem/1 var(--mono); color:var(--ink-soft); }
+.jf .jf-phase:hover { background:#FBFAF6; }
+.jf .jf-phase[aria-selected="true"] { background:var(--ink); border-color:var(--ink); border-top-color:var(--sw,var(--basalt)); color:#fff; }
+.jf .jf-phase[aria-selected="true"] .jf-n { color:var(--sw,var(--basalt)); }
+@media(max-width:560px) { .jf .jf-phases { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.jf .jf-stack { display:grid; gap:18px; }
+.jf .jf-panel { display:grid; gap:15px; padding:24px 26px; background:var(--surface); border:1px solid var(--line); }
+.jf .jf-panel h2 { font-size:1.45rem; }
+.jf .jf-tag { justify-self:start; font:600 .7rem/1 var(--mono); letter-spacing:.09em; text-transform:uppercase; padding:6px 10px; color:var(--sea); background:var(--sea-tint); }
+.jf .jf-tag.jf-stone { color:var(--ink); background:#E8E6E0; }
+.jf .jf-tag.jf-clay { color:var(--tuff); background:var(--tuff-tint); }
+.jf .jf-say { display:grid; grid-template-columns:54px 1fr; gap:12px; align-items:center; padding:10px 14px 10px 10px; background:var(--ochre-tint); border-left:4px solid var(--ochre); }
+.jf .jf-say svg { width:54px; height:54px; }
+.jf .jf-say p { font-size:1.05rem; }
+.jf .jf-say .jf-who { display:block; font:600 .7rem/1.2 var(--mono); letter-spacing:.09em; text-transform:uppercase; color:var(--ochre); margin-bottom:2px; }
+.jf .jf-say.jf-malli { background:var(--sea-tint); border-left-color:var(--sea); }
+.jf .jf-say.jf-malli .jf-who { color:var(--sea); }
+.jf .jf-task { font-weight:700; font-size:1.05rem; }
+.jf .jf-steps { margin:0; padding-left:26px; display:grid; gap:8px; font-size:1.04rem; }
+.jf .jf-steps li::marker { font-family:var(--mono); font-weight:600; color:var(--sea); }
+.jf .jf-hint { padding:11px 14px; background:var(--paper); border-left:4px solid var(--basalt); }
+.jf .jf-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.jf .jf-btn2 { appearance:none; cursor:pointer; padding:9px 18px; background:var(--surface); border:1.5px solid var(--ink); border-radius:2px; color:var(--ink); font:700 1.03rem/1.5 var(--body); }
+.jf .jf-btn2:hover { background:var(--paper); }
+.jf .jf-btn2.jf-primary { background:var(--ink); border-color:var(--ink); color:#fff; }
+.jf .jf-btn2.jf-primary:hover { background:#3A4147; }
+.jf .jf-feedback { padding:12px 14px; font-size:1.04rem; background:var(--paper); border-left:6px solid var(--basalt); }
+.jf .jf-feedback.jf-good { background:var(--olivine-tint); border-left-color:var(--olivine); }
+.jf .jf-feedback.jf-warn { background:var(--tuff-tint); border-left-color:var(--tuff); }
+.jf .jf-chips { display:flex; gap:8px; flex-wrap:wrap; }
+.jf .jf-chip { padding:5px 12px; font-size:.96rem; color:var(--ink-soft); background:var(--surface); border:1.5px dashed #B9AFA0; border-radius:2px; }
+.jf .jf-chip.jf-found { color:var(--ink); background:var(--olivine-tint); border-style:solid; border-color:var(--olivine); }
+.jf .jf-chip.jf-found::before { content:"✓ "; font-weight:700; color:var(--olivine); }
+.jf .jf-core-box { position:relative; overflow:hidden; background:#E8E4DC; border:1px solid var(--line); touch-action:none; cursor:none; user-select:none; }
+.jf .jf-core-box svg { display:block; width:100%; height:auto; }
+.jf .jf-core-detail { position:absolute; inset:0; clip-path:circle(0 at 50% 50%); }
+.jf .jf-lens { position:absolute; width:118px; height:118px; border-radius:50%; border:6px solid var(--ink); box-shadow:0 0 0 2px #fff inset; pointer-events:none; transform:translate(-50%,-50%); opacity:0; }
+.jf .jf-lens::after { content:""; position:absolute; width:48px; height:12px; right:-42px; bottom:-8px; background:var(--ink); border-radius:3px; transform:rotate(45deg); }
+.jf .jf-section-box { overflow:hidden; background:#E7EFE9; border:1px solid var(--line); }
+.jf .jf-section-box svg { display:block; width:100%; height:auto; }
+.jf #mtn .jf-pin { cursor:pointer; }
+.jf .jf-legend { display:flex; flex-wrap:wrap; gap:10px 18px; font-size:.98rem; }
+.jf .jf-legend span { display:inline-flex; align-items:center; gap:8px; }
+.jf .jf-legend i { width:20px; height:20px; display:inline-block; border:1px solid rgba(0,0,0,.15); }
+.jf .jf-tray { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.jf .jf-slot { display:grid; gap:6px; justify-items:center; align-content:start; min-height:110px; padding:10px; border:1.5px dashed #B9AFA0; border-radius:2px; }
+.jf .jf-slot.jf-on { border:1px solid var(--line); background:var(--paper); }
+.jf .jf-slot b { font:600 1.02rem/1.2 var(--mono); color:var(--ink); }
+.jf .jf-slot svg { width:100%; max-width:60px; height:auto; }
+.jf .jf-slot span { font-size:.88rem; color:var(--ink-soft); text-align:center; }
+.jf .jf-slider { display:grid; gap:6px; }
+.jf .jf-slider input { width:100%; height:32px; accent-color:var(--tuff); }
+.jf .jf-slider .jf-ends { display:flex; justify-content:space-between; font:600 .83rem/1.3 var(--mono); color:var(--ink-soft); }
+.jf .jf-journey { display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; }
+.jf .jf-journey figure { margin:0; display:grid; justify-items:center; gap:4px; font-size:.88rem; color:var(--ink-soft); }
+.jf .jf-journey svg { width:70px; height:56px; }
+.jf .jf-journey .jf-arr { font:600 .76rem/1.2 var(--mono); color:var(--sea); text-align:center; }
+.jf .jf-diploma { display:grid; gap:8px; justify-items:center; text-align:center; padding:24px 22px; background:var(--paper); border:1px solid var(--line); border-top:5px solid var(--ochre); }
+.jf .jf-diploma .jf-big { font:700 1.7rem/1.1 var(--display); color:var(--ink); }
+.jf .jf-diploma svg { width:84px; height:72px; }
+.jf .jf-diploma .jf-eyebrow { color:var(--ochre); }
+.jf .jf-gallery { display:grid; gap:12px; }
+.jf .jf-gallery iframe { display:block; width:100%; height:620px; border:1px solid var(--line); background:var(--surface); }
+.jf details.jf-teacher { margin-top:30px; padding:18px 22px; background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--basalt); font-size:1rem; }
+.jf details.jf-teacher summary { cursor:pointer; font:700 1.2rem/1.2 var(--display); color:var(--ink); }
+.jf details.jf-teacher h3 { font:700 1.12rem/1.2 var(--display); margin-top:22px; }
+.jf details.jf-teacher p { margin-top:8px; }
+.jf details.jf-teacher ol, .jf details.jf-teacher ul { margin:8px 0 0; padding-left:22px; display:grid; gap:4px; }
+.jf details.jf-teacher dl { margin:8px 0 0; display:grid; gap:10px; }
+.jf details.jf-teacher dt { font-weight:700; }
+.jf details.jf-teacher dd { margin:2px 0 0; }
+.jf details.jf-teacher code { font:.85rem/1.4 var(--mono); background:var(--paper); padding:1px 5px; word-break:break-all; }
+.jf details.jf-teacher .jf-ask { display:grid; gap:4px; margin-top:10px; padding:10px 14px; background:var(--paper); border-left:4px solid var(--sea); }
+.jf .jf-tablewrap { overflow-x:auto; }
+.jf .jf-forloeb { width:100%; border-collapse:collapse; font-size:.92rem; margin-top:10px; }
+.jf .jf-forloeb th, .jf .jf-forloeb td { border-bottom:1px solid var(--line); padding:9px 8px; text-align:left; vertical-align:top; }
+.jf .jf-forloeb th { font:700 .95rem/1.2 var(--display); background:var(--paper); }
+.jf .jf-note { color:var(--ink-soft); font-size:.92rem; margin-top:10px; }
+@media(max-width:640px) { .jf .jf-panel { padding:18px 18px; } .jf .jf-say { grid-template-columns:44px 1fr; } .jf .jf-say svg { width:44px; height:44px; } .jf .jf-tray { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .jf *, .jf *::before, .jf *::after { transition:none !important; animation:none !important; } }
+
+.jf .jf-say svg.jf-andlit-pop { animation:jfAndlit .38s cubic-bezier(.3,1.5,.5,1); }
+@keyframes jfAndlit { 0%{transform:scale(.86) rotate(-4deg)} 60%{transform:scale(1.08) rotate(3deg)} 100%{transform:none} }
+@media(prefers-reduced-motion:reduce){ .jf .jf-say svg.jf-andlit-pop { animation:none; } }
+/* LAGKØKAN */
+.jf .jf-lk-box svg { display:block; width:100%; height:auto; background:#EAF2F4; }
+.jf .jf-lk-tal { font:600 .85rem/1.3 var(--mono); color:var(--ink-soft); margin-left:auto; }
+.jf .jf-btn2[disabled] { opacity:.4; cursor:not-allowed; }
+.jf .jf-tekstknappur.jf-lk-aftur { appearance:none; border:0; background:none; padding:0; color:var(--sea); font:600 .85rem/1.4 var(--mono); text-decoration:underline; cursor:pointer; }
+.jf .jf-lk-kelda { margin:0; font-size:.85rem; color:var(--ink-soft); }
+#lagkaka .lk-lag { transition:fill 1.6s ease; }
+#lagkaka .lk-pokk { transition:opacity 1s ease 1.2s; }
+#lagkaka .lk-plantur > * { transform-box:fill-box; transform-origin:50% 100%; animation:lk-vaks .9s cubic-bezier(.3,1.4,.5,1) both; }
+@keyframes lk-vaks { from { transform:scale(0); } to { transform:scale(1); } }
+#lagkaka .lk-plantur.lk-burt { opacity:0; transition:opacity .6s ease; }
+#lagkaka .lk-royd { animation:lk-inn .8s ease both; }
+@keyframes lk-inn { from { opacity:0; } to { opacity:1; } }
+#lagkaka .lk-hit { fill:transparent; cursor:pointer; }
+#lagkaka .lk-hit:hover { fill:rgba(242,194,48,.18); }
+#lagkaka .lk-hit.lk-valt { fill:rgba(242,194,48,.35); stroke:#C99A12; stroke-width:3; }
+#lagkaka .lk-hit.lk-rætt { fill:rgba(255,255,255,.08); stroke:#8DBA5A; stroke-width:2; stroke-dasharray:5 4; cursor:default; }
+#lagkaka .lk-hit.lk-skeivt { fill:rgba(180,80,63,.35); stroke:#B4503F; stroke-width:3; }
+#lagkaka .lk-band { stroke:#5E7D35; stroke-width:3; stroke-dasharray:6 5; fill:none; animation:lk-inn .5s ease both; }
+@media(prefers-reduced-motion:reduce){ #lagkaka .lk-plantur > *, #lagkaka .lk-royd, #lagkaka .lk-band { animation:none; } #lagkaka .lk-lag, #lagkaka .lk-pokk { transition:none; } }
+/* HVUSSU VÓRÐU FØROYAR TIL? */
+.jf .jf-tag.jf-royn { color:var(--olivine); background:var(--olivine-tint); }
+.jf .jf-jord { display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:20px; align-items:center; }
+.jf .jf-jord svg { width:100%; height:auto; display:block; }
+.jf .jf-jord-lag { cursor:pointer; transition:filter .15s; }
+.jf .jf-jord-lag:hover, .jf .jf-jord-lag:focus-visible { filter:brightness(1.12); outline:none; }
+.jf .jf-jord-lag.er-valt { stroke:#F2C230; stroke-width:4; }
+.jf .jf-jord-tekstur { padding:14px 16px; background:var(--paper); border-left:6px solid var(--tuff); min-height:120px; }
+.jf .jf-jord-tekstur b { font:700 1.2rem/1.2 var(--display); }
+.jf .jf-jord-tekstur p { margin:6px 0 0; }
+.jf .jf-flyt-label { display:grid; grid-template-columns:1fr; gap:6px; font-weight:700; }
+.jf .jf-flyt-label input { width:100%; accent-color:var(--tuff); }
+.jf .jf-flyt-km { font:600 .95rem/1.3 var(--mono); color:var(--tuff); }
+.jf .jf-tal-inn { width:6.5em; padding:6px 8px; font:inherit; border:1.5px solid var(--ink); border-radius:2px; }
+.jf .jf-val { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; }
+.jf .jf-mark-kort { display:grid; gap:8px; padding:12px; background:var(--paper); border:1px solid var(--line); }
+.jf .jf-mark-kort svg { width:100%; height:auto; display:block; border:1px solid var(--line); }
+.jf .jf-mark-kort p { margin:0; font-weight:700; }
+.jf .jf-rod { list-style:none; margin:0; padding:0; display:grid; gap:6px; max-width:420px; counter-reset:rod; }
+.jf .jf-rod li { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 12px; background:var(--surface); border:1.5px solid var(--ink); border-radius:2px; font-weight:700; }
+.jf .jf-rod-flyt { display:flex; gap:4px; }
+.jf .jf-rod-flyt button { appearance:none; width:34px; height:30px; border:1.5px solid var(--ink); background:var(--paper); border-radius:2px; cursor:pointer; font-size:.8rem; }
+.jf .jf-rod li:first-child::after { content:"yngst"; font:600 .7rem/1 var(--mono); color:var(--ink-soft); margin-left:auto; margin-right:8px; order:1; }
+.jf .jf-rod li:last-child::after { content:"elst"; font:600 .7rem/1 var(--mono); color:var(--ink-soft); margin-left:auto; margin-right:8px; order:1; }
+.jf .jf-rod li .jf-rod-flyt { order:2; }
+.jf .jf-lego { display:flex; flex-wrap:wrap; gap:18px; }
+.jf .jf-lego figure { margin:0; text-align:center; }
+.jf .jf-lego svg { width:150px; height:auto; display:block; }
+.jf .jf-lego figcaption { font-size:.9rem; font-weight:700; }
+.jf .jf-sortera { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; }
+.jf .jf-sort-kort { display:grid; gap:8px; padding:10px 12px; background:var(--paper); border:1px solid var(--line); }
+.jf .jf-sort-kort.er-rætt { background:var(--olivine-tint); border-color:var(--olivine); }
+@media(max-width:640px){ .jf .jf-jord { grid-template-columns:1fr; } }
+.jf .jf-btn2.jf-primary[disabled] { opacity:1; cursor:default; }
+</style>
+</head>
+<body class="jf-sida">
+<div id="page-content" class="bp-page-content main-section"><div class="container {$page.theme.pageBg}"><div class="row"><!--TYPO3SEARCH_begin--><div class="content-wrapper col-md-12"><div class="section section-default"><div id="c235996" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-small frame-space-after-none "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
+  JARÐFRØÐI VIÐ JARÐFRÍÐU · PROTOTYPU-LINJAN
+  ──────────────────────────────────────────────────────────────
+  FYRSTI blokkurin á hvørjari síðu.
+
+  Tá ið Jarðfeingi og Nám hava góðkent tekstin, strikar tú bert
+  hetta eina HTML-elementið – tá er linjan burtur av síðuni.
+  Botnurin skal ikki rørast.
+
+  Linjan er fixed: hon fyllir alla breiddina á síðuni og verður
+  standandi ovast, eisini tá ið tú rullar niður.
+
+  Tómi teigurin undir henni (jf-proto-rum) heldur plássið, so
+  linjan ikki fjalir tað, sum kemur undir. Hædd og skrift verða
+  sett við --jf-proto-haedd í stílinum (í jf-footer.html).
+
+  Skal linjan heldur rulla burtur saman við síðuni, so tak
+  position:fixed úr .jf-proto og strika jf-proto-rum.
+--><div class="jf jf-fyrsti"><!-- PROTOTYPA --><div class="jf-proto"><strong>Prototypa til meting</strong><span class="jf-proto-more">
+      · Innihald og dømi eru fyribils
+      · Jarðfeingi og Nám skulu góðkenna tekstin
+    </span></div><div class="jf-proto-rum" aria-hidden="true"></div></div></div></div></div><div id="c235993" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-extra-large frame-space-after-none "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
+  ═══════════════════════════════════════════════════════════════
+  JARÐFRØÐI VIÐ JARÐFRÍÐU · GONGD 3 · HVUSSU VÓRÐU FØROYAR TIL?
+  ═══════════════════════════════════════════════════════════════
+
+  Gongdin »Hvussu vórðu Føroyar til?« Byggir á GeoSkúla-tilfarið hjá Jarðfeingi.
+  Ein fíla, ein HTML-blokkur: stílur, borikjarni, menu, síðuhøvd,
+  fýra partar, lærarateigur og botnur.
+
+  TVEY SCRIPT eru niðast. Tað fyrra koyrir borikjarnan í vinstru
+  síðu. Tað seinna koyrir gongdina sjálva: sjóneykuna, boringina,
+  snið gjøgnum fjallið og tunnilin. Bæði skulu vera við.
+
+  PADLET: Felagsveggurin Okkara steinar er settur í scriptinum –
+  leita eftir DEFAULT_PADLET niðast.
+
+  Øll klassaheitini byrja við jf-, so bootstrap í TYPO3 (.btn,
+  .row, .panel) ikki blandar seg.
+
+  Í menuini stendur aria-current="page" á Gongdir.
+
+  Brúkar tú ikki prototypu-linjuna, so set klassan jf-fyrsti á
+  fyrsta <div class="jf"> her niðanfyri.
+
+  SÍÐULITURIN: Scriptið niðast setur sjálvt klassan jf-sida á body,
+  so ljósaguli bakgrundsliturin eisini røkkur út til skermkantin og
+  heilt niður undir síðuna í TYPO3. Einki síðutal krevst.
+--><!-- ░░ BORIKJARNIN ░░ --><div class="jf"><!-- PROGRESSIÓN --><div class="jf-depthbar" aria-hidden="true"><i id="jf-depth-fill"></i></div><div class="jf-borehole" id="jf-borehole" aria-hidden="true"><div class="jf-bore-tube"><div class="jf-bore-fill" id="jf-bore-fill"></div></div><div class="jf-bore-ticks" id="jf-bore-ticks"></div></div></div><div class="jf jf-seinasti"><div class="jf-wrap"><!-- TOPMENU --><header class="jf-topbar"><a class="jf-brand" href="/jardfrida"><svg viewBox="-84 -104 192 196" aria-hidden="true"><circle cx="0" cy="0" r="62" fill="#F0C4A0"></circle><path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"></path><path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"></path><rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"></rect><circle cx="0" cy="-82" r="17" fill="#EFE7DA"></circle><circle cx="-22" cy="8" r="5.5" fill="#1E2326"></circle><circle cx="22" cy="8" r="5.5" fill="#1E2326"></circle><path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none"></path></svg><span>
+              Jarðfrøði við Jarðfríðu
+              <small>Náttúra og tøkni</small></span></a><nav class="jf-nav" aria-label="Síður"><a href="/jardfrida">Forsíða</a><a href="/jardfrida/gongdir" aria-current="page">Gongdir</a><a href="/jardfrida/ordalisti">Orðalisti</a><a href="/jardfrida/laerari">Til læraran</a><a href="/jardfrida/um-tilfarid">Um tilfarið</a></nav></header><!-- ░░ INNIHALD BYRJAR ░░ --><header class="jf-hero"><div class="jf-hero-text"><span class="jf-eyebrow">Gongd · Náttúra og tøkni · 6.–7. flokksstig</span><h1>Hvussu vórðu Føroyar til?</h1><p>Føroyar eru bygdar av risastórum eldgosum fyri meira enn 50 milliónum árum. Kom við og síggj, hvussu landið varð til – lag fyri lag, eins og ein lagkøka.</p><p>Malli, steinurin í lummanum hjá mær, er eisini við. Hann er eisini úr basalti.</p></div></header><!-- Andlitið hjá Jarðfríðu og Malli – verða brúkt í talubløðrunum --><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="jf-forvitin" viewBox="-84 -104 192 196"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"/>
+<circle cx="-60" cy="10" r="11" fill="#E2AE88"/><circle cx="60" cy="10" r="11" fill="#E2AE88"/>
+<circle cx="0" cy="0" r="62" fill="#F0C4A0"/>
+<path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"/>
+<path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"/>
+<path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"/>
+<rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"/>
+<path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"/>
+<circle cx="0" cy="-82" r="17" fill="#EFE7DA"/><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"/>
+<circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"/><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"/>
+<circle cx="-40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="-33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="-44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="-22" cy="8" r="5" fill="#1E2326"/>
+<path d="M-32 -6 Q-22 -10 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M10 -22 Q24 -32 38 -22" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<ellipse cx="-2" cy="36" rx="7" ry="8" fill="#1E2326"/>
+<line x1="40" y1="28" x2="74" y2="70" stroke="#1E2326" stroke-width="10" stroke-linecap="round"/>
+<circle cx="24" cy="6" r="26" fill="#fff"/><circle cx="26" cy="8" r="12" fill="#1E2326"/><circle cx="30" cy="3" r="4" fill="#fff"/>
+<circle cx="24" cy="6" r="26" fill="#CFE6F2" fill-opacity=".45" stroke="#1E2326" stroke-width="7"/>
+<path d="M8 -6 A18 18 0 0 1 20 -14" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/>
+<circle cx="78" cy="74" r="13" fill="#F0C4A0"/></symbol><symbol id="jf-ivast" viewBox="-84 -104 192 196"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"/>
+<circle cx="-60" cy="10" r="11" fill="#E2AE88"/><circle cx="60" cy="10" r="11" fill="#E2AE88"/>
+<circle cx="0" cy="0" r="62" fill="#F0C4A0"/>
+<path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"/>
+<path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"/>
+<path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"/>
+<rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"/>
+<path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"/>
+<circle cx="0" cy="-82" r="17" fill="#EFE7DA"/><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"/>
+<circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"/><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"/>
+<circle cx="-40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="-33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="-44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="-18" cy="6" r="5.5" fill="#1E2326"/><circle cx="26" cy="6" r="5.5" fill="#1E2326"/>
+<path d="M-34 -2 Q-24 -12 -12 -12" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M12 -12 Q24 -14 34 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M-16 36 Q-8 30 0 36 Q8 42 16 36" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M-6 70 C-6 56 20 52 26 62 C30 70 22 80 10 80" fill="#E2AE88"/><circle cx="12" cy="66" r="13" fill="#F0C4A0"/>
+<text x="70" y="-46" font-family="Baloo 2, sans-serif" font-weight="800" font-size="58" fill="#C8553D">?</text></symbol><symbol id="jf-aha" viewBox="-84 -104 192 196"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"/>
+<circle cx="-60" cy="10" r="11" fill="#E2AE88"/><circle cx="60" cy="10" r="11" fill="#E2AE88"/>
+<circle cx="0" cy="0" r="62" fill="#F0C4A0"/>
+<path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"/>
+<path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"/>
+<path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"/>
+<rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"/>
+<path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"/>
+<circle cx="0" cy="-82" r="17" fill="#EFE7DA"/><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"/>
+<circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"/><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"/>
+<circle cx="-40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="-33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="-44" cy="22" r="1.7" fill="#B9775A"/>
+<circle cx="40" cy="16" r="1.7" fill="#B9775A"/>
+<circle cx="33" cy="20" r="1.7" fill="#B9775A"/>
+<circle cx="44" cy="22" r="1.7" fill="#B9775A"/>
+<path d="M-32 10 Q-22 -2 -12 10" stroke="#1E2326" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<path d="M12 10 Q22 -2 32 10" stroke="#1E2326" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<path d="M-32 -12 Q-22 -20 -12 -14" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M12 -14 Q22 -20 32 -12" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M-24 24 Q0 60 24 24 Z" fill="#1E2326"/><path d="M-12 40 Q0 50 12 40 Q0 36 -12 40Z" fill="#D9776A"/>
+<path d="M84 -58 l6 14 l14 6 l-14 6 l-6 14 l-6 -14 l-14 -6 l14 -6 Z" fill="#F2C230"/>
+<path d="M-86 -40 l4 9 l9 4 l-9 4 l-4 9 l-4 -9 l-9 -4 l9 -4 Z" fill="#F2C230"/></symbol><symbol id="jf" viewBox="-84 -104 192 196"><path d="M38 -28 C78 -30 104 10 92 52 C86 72 70 86 62 92 C70 70 74 46 58 22 Z" fill="#5A3A2A"></path><circle cx="-60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="60" cy="10" r="11" fill="#E2AE88"></circle><circle cx="0" cy="0" r="62" fill="#F0C4A0"></circle><path d="M-60 -6 C-56 -40 46 -48 60 -8 C44 -22 18 -26 -4 -20 C-26 -14 -46 -10 -60 -6 Z" fill="#5A3A2A"></path><path d="M44 -16 C54 -4 52 12 46 22" stroke="#5A3A2A" stroke-width="5" fill="none" stroke-linecap="round"></path><path d="M-66 -16 C-68 -86 68 -86 66 -16 Z" fill="#C8553D"></path><path d="M-40 -60 L-40 -22 M-20 -70 L-20 -22 M0 -73 L0 -22 M20 -70 L20 -22 M40 -60 L40 -22" stroke="#A8442F" stroke-width="3" opacity=".6"></path><rect x="-70" y="-30" width="140" height="22" rx="11" fill="#A8442F"></rect><path d="M-60 -19 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6" stroke="#EFE7DA" stroke-width="3" fill="none" stroke-linejoin="round"></path><circle cx="0" cy="-82" r="17" fill="#EFE7DA"></circle><circle cx="-5" cy="-87" r="5" fill="#fff" opacity=".7"></circle><circle cx="-36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="36" cy="26" r="10" fill="#E89A86" opacity=".55"></circle><circle cx="-40" cy="16" r="1.7" fill="#B9775A"></circle><circle cx="-33" cy="20" r="1.7" fill="#B9775A"></circle><circle cx="-44" cy="22" r="1.7" fill="#B9775A"></circle><circle cx="40" cy="16" r="1.7" fill="#B9775A"></circle><circle cx="33" cy="20" r="1.7" fill="#B9775A"></circle><circle cx="44" cy="22" r="1.7" fill="#B9775A"></circle><circle cx="-22" cy="8" r="5.5" fill="#1E2326"></circle><circle cx="22" cy="8" r="5.5" fill="#1E2326"></circle><path d="M-32 -6 Q-22 -12 -12 -6" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M12 -9 Q22 -17 32 -10" stroke="#5A3A2A" stroke-width="4" fill="none" stroke-linecap="round"></path><path d="M-20 30 Q0 46 22 28" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></symbol><symbol id="malli" viewBox="-90 -78 180 160"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"></path><clipPath id="mc1"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"></path></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc1)"></ellipse><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"></rect><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"></rect><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"></rect><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"></rect><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"></rect><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"></rect><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"></rect><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"></rect><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"></rect><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"></rect><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"></rect><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"></rect><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"></rect><circle cx="-50" cy="-20" r="4" fill="#3C4247"></circle><circle cx="46" cy="-30" r="3.4" fill="#3C4247"></circle><circle cx="52" cy="30" r="4.4" fill="#3C4247"></circle><circle cx="-42" cy="42" r="3" fill="#3C4247"></circle><circle cx="10" cy="52" r="3.2" fill="#3C4247"></circle><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"></circle><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="-20" cy="-4" r="8" fill="#fff"></circle><circle cx="20" cy="-4" r="8" fill="#fff"></circle><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"></circle><circle cx="22" cy="-3" r="4.6" fill="#1E2326"></circle><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"></path><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></symbol><symbol id="malli-undr" viewBox="-90 -100 200 180"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"></path><clipPath id="mc2"><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z"></path></clipPath><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55" clip-path="url(#mc2)"></ellipse><path d="M-82 12 C-84.7 -0.3 -80.7 -11.7 -76 -22 C-71.3 -32.3 -64.0 -43.3 -54 -50 C-44.0 -56.7 -29.3 -60.3 -16 -62 C-2.7 -63.7 13.3 -63.0 26 -60 C38.7 -57.0 50.5 -52.0 60 -44 C69.5 -36.0 78.7 -22.7 83 -12 C87.3 -1.3 88.5 10.0 86 20 C83.5 30.0 77.7 40.7 68 48 C58.3 55.3 42.7 60.8 28 64 C13.3 67.2 -5.3 69.0 -20 67 C-34.7 65.0 -49.7 61.2 -60 52 C-70.3 42.8 -79.3 24.3 -82 12 Z" fill="none" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><rect x="-35.6" y="-38.9" width="5.8" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(71 -32.7 -37.5)"></rect><rect x="-58.3" y="-8.4" width="9.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(165 -53.8 -7.0)"></rect><rect x="29.7" y="-26.8" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(97 32.9 -25.4)"></rect><rect x="-45.4" y="-38.6" width="9.6" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(39 -40.6 -37.2)"></rect><rect x="37.8" y="32.9" width="6.0" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(144 40.8 34.3)"></rect><rect x="26.0" y="37.8" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(158 28.8 39.2)"></rect><rect x="-2.0" y="-31.3" width="5.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(85 0.7 -29.9)"></rect><rect x="46.1" y="9.0" width="9.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(159 50.7 10.4)"></rect><rect x="-44.6" y="-18.3" width="5.2" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(146 -42.0 -16.9)"></rect><rect x="-60.1" y="14.5" width="7.7" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(50 -56.3 15.9)"></rect><rect x="-14.0" y="-28.7" width="6.4" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(114 -10.8 -27.3)"></rect><rect x="-58.4" y="-26.1" width="8.1" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(138 -54.4 -24.7)"></rect><rect x="-44.2" y="-2.6" width="8.5" height="2.8" rx="1.2" fill="#F4F1EA" transform="rotate(8 -40.0 -1.2)"></rect><circle cx="-50" cy="-20" r="4" fill="#3C4247"></circle><circle cx="46" cy="-30" r="3.4" fill="#3C4247"></circle><circle cx="52" cy="30" r="4.4" fill="#3C4247"></circle><circle cx="-42" cy="42" r="3" fill="#3C4247"></circle><circle cx="10" cy="52" r="3.2" fill="#3C4247"></circle><circle cx="-14" cy="-46" r="2.8" fill="#3C4247"></circle><circle cx="-26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="26" cy="0" r="9" fill="#2A2E31" opacity=".18"></circle><circle cx="-20" cy="-4" r="10" fill="#fff"></circle><circle cx="20" cy="-4" r="10" fill="#fff"></circle><circle cx="-20" cy="-6" r="5" fill="#1E2326"></circle><circle cx="20" cy="-6" r="5" fill="#1E2326"></circle><path d="M-32 -26 Q-20 -36 -8 -28 M8 -28 Q20 -36 32 -26" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"></path><ellipse cx="0" cy="22" rx="7" ry="9" fill="#1E2326"></ellipse><text x="58" y="-56" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="52" fill="#C8553D">?</text></symbol></svg><nav class="jf-phases" role="tablist" aria-label="Partarnir í gongdini"><button class="jf-phase" role="tab" id="tab-l1" aria-selected="true" aria-controls="phase-l1"><span class="jf-n">1</span>Jørðin og pláturnar</button><button class="jf-phase" role="tab" id="tab-l2" aria-selected="false" aria-controls="phase-l2"><span class="jf-n">2</span>Eldgos og lagkøkan</button><button class="jf-phase" role="tab" id="tab-l3" aria-selected="false" aria-controls="phase-l3"><span class="jf-n">3</span>Pausur, royðugrót og gongir</button><button class="jf-phase" role="tab" id="tab-l4" aria-selected="false" aria-controls="phase-l4"><span class="jf-n">4</span>Úti á geostøðum</button></nav><!-- ============ 1 · JØRÐIN OG PLÁTURNAR ============ --><section id="phase-l1" role="tabpanel" aria-labelledby="tab-l1"><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Jørðin er umleið 4,6 milliardir ára gomul. Áðrenn vit hyggja at Føroyum, skulu vit vita, hvussu jørðin sjálv er bygd.«</p></div><h2>Inni í jørðini</h2><p class="jf-task">Trýst á løgini í jørðini, og les, hvat tey eita.</p><div class="jf-jord"><svg id="jfJord" viewBox="0 0 320 320" role="img" aria-label="Eitt snitt gjøgnum jørðina við skorpuni, kápuni, uttara og innara kjarnanum"></svg><div class="jf-jord-tekstur" id="jfJordTekstur" aria-live="polite"><b>Trýst á eitt lag</b><p>Jørðin er deild upp í løg – nakað sum ein ferskja við steini í miðjuni.</p></div></div><p class="jf-hint"><b>Visti tú?</b> Frá yvirflatanum og inn í miðjuna á jørðini eru umleið 6.371 km. Innari kjarnin er heitari enn 5.500 °C.</p></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Londini flyta seg</h2><p>Skorpan á jørðini er brotin sundur í fleiri stór pettir. Tey kallast <b>plátur</b>. Pláturnar liggja omaná kápuni og flyta seg sera spakuliga. Hitin inni í jørðini fær kápuna at røra seg – heitt tilfar stígur upp, kólnar og søkkur niður aftur.</p><p>Tá ið pláturnar flyta seg, kunnu tær <b>fara sundur</b>, <b>stoyta saman</b> ella <b>fara framvið hvør aðrari</b>. Tað kann geva jarðskjálvtar og eldgos.</p><h3>Føroyar og Grønland</h3><p class="jf-task">Drag í rennuna, og síggj, hvussu Føroyar og Grønland eru flutt hvør frá aðrari.</p><div class="jf-section-box"><svg id="jfFlyt" viewBox="0 0 640 220" role="img" aria-label="Grønland og Føroyar, sum flyta seg hvør frá aðrari"></svg></div><label class="jf-flyt-label" for="jfFlytRenna"><span id="jfFlytTid">Fyri umleið 60 milliónum árum</span><input type="range" id="jfFlytRenna" min="0" max="100" value="0" step="1"><span class="jf-flyt-km" id="jfFlytKm">umleið 100 km</span></label><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Fyrr var bert umleið 100 km til Grønlands – tað kundi tú súkklað! Í dag flyta Føroyar og Grønland seg umleið 2 cm frá hvørjum øðrum um árið.«</p></div></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Rokna sjálv/ur</h2><p class="jf-task">Føroyar og Grønland flyta seg umleið <b>2 cm</b> frá hvørjum øðrum um árið. Um tú verður 100 ár gomul/gamal – hvussu langt eru tey so flutt?</p><div class="jf-row"><label for="jfRokn">Mítt svar: <input type="number" id="jfRokn" min="0" step="1" inputmode="numeric" class="jf-tal-inn"> cm</label><button class="jf-btn2 jf-primary" type="button" id="jfRoknKn">Kanna</button></div><div id="jfRoknFb" class="jf-feedback" hidden aria-live="polite"></div></article><article class="jf-panel"><span class="jf-tag jf-royn">Roynd</span><h2>Kakudeiggj á pannuni</h2><p class="jf-task">Lærarin vísir. Hygg eftir, hvat hendir við deiggjinum, tá ið tað verður heitt.</p><ol class="jf-steps"><li>Smyr eitt tunt lag av kakudeiggi út á eina pannu.</li><li>Hita pannuna varliga.</li><li>Hygg eftir: Byrjar deiggið at flyta seg? Kemur riva í tað, og fer tað sundur?</li><li>Samanber við pláturnar á jørðini. Hvat er pannan? Hvat er deiggið?</li></ol><p class="jf-hint"><b>Trygd:</b> Bert vaksin hita pannuna. Pannan verður sera heit.</p></article><article class="jf-panel"><h2>Tosið saman</h2><ul class="jf-steps"><li>Á einum korti frá fyri 68 milliónum árum er einki Ísland. Hví?</li><li>Hvar á jørðini halda tit, at pláturnar fara sundur í dag?</li></ul></article></div></section><!-- ============ 2 · ELDGOS OG LAGKØKAN ============ --><section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Føroyar eru bygdar av risastórum eldgosum fyri umleið 60–55 milliónum árum. Eingi eldgos á jørðini í dag eru líka stór. Tá ið landið var ungt, var tað eitt risastórt, flatt land.«</p></div><h2>Lag omaná lag</h2><p>Hygg at einum fjalli í Føroyum. Í berginum sært tú ofta strípur. Hvør strípa er ein <b>lavaflá</b> – eitt lag av grótbræðing, sum er runnið út og storknað til basalt. Lag omaná lag – eins og ein lagkøka.</p><p class="jf-hint"><b>Visti tú?</b> Ígjøgnum tíðina eru Føroyar koppaðar eitt sindur vestureftir. Tí halla løgini nakað niður ímóti havinum – tað sæst væl í Mykinesi.</p></article><article class="jf-panel" id="lagkakaPanel"><span class="jf-tag jf-screen">Skermur</span><h2>Lagkøkan – soleiðis vórðu Føroyar til</h2><p class="jf-task">Bygg Føroyar lag fyri lag. Síðan skerið tit eina vík og finna løgini, sum passa saman.</p><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p id="lkTala" aria-live="polite"><span class="jf-who">Jarðfríða</span><span id="lkTekstur">»Fyri umleið 60 milliónum árum vóru eingar Føroyar. Trýst á »Eldgos«, og bygg landið lag fyri lag – eins og eina lagkøku.«</span></p></div><div class="jf-section-box jf-lk-box"><svg id="lagkaka" viewBox="0 0 640 330" role="img" aria-label="Eitt snitt gjøgnum landið, har tú byggir løg av basalti og royðugróti"></svg></div><div class="jf-row" id="lkKnappar"><button class="jf-btn2 jf-primary" type="button" id="lkEldgos">🌋 Eldgos</button><button class="jf-btn2" type="button" id="lkPausa" disabled>🌿 Pausa</button><button class="jf-btn2" type="button" id="lkVik" hidden>🌊 Skera eina vík</button><button class="jf-btn2" type="button" id="lkGongKn" hidden>Ein gong</button><span class="jf-lk-tal" id="lkTal">0 løg</span></div><div class="jf-row" id="lkSpurn" hidden><button class="jf-btn2" type="button" data-lk-svar="eldri">Gongin er eldri</button><button class="jf-btn2" type="button" data-lk-svar="yngri">Gongin er yngri</button></div><div id="lkFeedback" class="jf-feedback" hidden aria-live="polite"></div><div class="jf-row"><button class="jf-tekstknappur jf-lk-aftur" type="button" id="lkAftur">Byrja umaftur</button></div><p class="jf-hint"><b>Tosið saman:</b> Hvussu kunnu tit síggja, at ein pausa millum tvey eldgos var long? Hvar í kjarnunum sóu tit reytt?</p><p class="jf-lk-kelda">Byggir á GeoSkúla-tilfarið hjá Jarðfeingi.</p></article><article class="jf-panel"><span class="jf-tag jf-royn">Roynd</span><h2>Bakið tykkara egnu lagkøku</h2><p class="jf-task">Tvey og tvey gera tit eitt land úr gandadeiggi – lag fyri lag.</p><ol class="jf-steps"><li>Rullið gandadeiggið út í flatar flákar. Grátt ella svart er basalt. Ein tunnur reyður fláki er royðugrót.</li><li>Leggið flákarnar omaná hvønn annan. Avgerið sjálv, hvar tað skal vera ein long pausa (reytt lag), og hvar pausan var stutt.</li><li>Skerið eina vík beint niður ígjøgnum lagkøkuna við einum knívi.</li><li>Hyggið at báðum síðunum. Passa løgini saman?</li><li>Teknið lagkøkuna í loggbókina, og skrivið, hvat hvørt lag er.</li></ol></article></div></section><!-- ============ 3 · PAUSUR, ROYÐUGRÓT OG GONGIR ============ --><section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Ímynda tær, at tú stóðst her fyri nógvum milliónum árum. Tá var heitt og fuktigt, og rundan um teg vuksu stór trø og plantur – eisini sløg, sum vit ikki finna í Føroyum í dag.«</p></div><h2>Eldgos og frumskógur</h2><p>Ímillum eldgosini vóru pausur. Var pausan long, fingu plantur og trø frið at vaksa. Tá ið næsta eldgosið kom, varð alt grivið. Nú síggja vit tað sum reyð løg millum lavafláirnar – <b>royðugrót</b>. Í royðugrótinum kunnu vit finna <b>steinrenningar</b> (fossil) av plantum.</p><p class="jf-task">Hvat siga mørkini millum løgini? Vel tað rætta svarið.</p><div class="jf-val" id="jfMarkVal"></div><div id="jfMarkFb" class="jf-feedback" hidden aria-live="polite"></div></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Lava upp á tvørs?</h2><p>Onkuntíð sært tú eina strípu, sum gongur á skrá ella beint upp ígjøgnum løgini. Tað sær út, sum um okkurt hevur brotið seg upp ígjøgnum bergið – og tað er júst tað, sum er hent! Grótbræðing hevur trýst seg upp ígjøgnum eina rivu og storknað til basalt. Hetta kallast ein <b>gong</b>.</p><h3>Hvat kom fyrst?</h3><p class="jf-task">Set tingini í røð – tað elsta niðast og tað yngsta ovast.</p><ol class="jf-rod" id="jfRod" aria-live="polite"></ol><div class="jf-row"><button class="jf-btn2 jf-primary" type="button" id="jfRodKn">Kanna røðina</button></div><div id="jfRodFb" class="jf-feedback" hidden aria-live="polite"></div></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Mineral eru sum legoklossar</h2><p>Grót er sett saman av ymiskum <b>mineralum</b>. Hugsa tær eitt mineral sum ein legoklossa í einum liti. Eitt grót er sum eitt hús úr legoklossum í fleiri litum.</p><div class="jf-lego" aria-hidden="true"><figure><svg viewBox="0 0 120 70"><rect x="20" y="20" width="80" height="40" rx="3" fill="#C8553D" stroke="#1E2326" stroke-width="3"/><rect x="30" y="10" width="16" height="12" rx="2" fill="#C8553D" stroke="#1E2326" stroke-width="3"/><rect x="74" y="10" width="16" height="12" rx="2" fill="#C8553D" stroke="#1E2326" stroke-width="3"/></svg><figcaption>Mineral = ein litur</figcaption></figure><figure><svg viewBox="0 0 120 70"><g stroke="#1E2326" stroke-width="2.5"><rect x="10" y="38" width="34" height="22" fill="#4F555B"/><rect x="44" y="38" width="34" height="22" fill="#EDEFE8"/><rect x="78" y="38" width="32" height="22" fill="#7FA03A"/><rect x="26" y="16" width="34" height="22" fill="#EDEFE8"/><rect x="60" y="16" width="34" height="22" fill="#4F555B"/></g></svg><figcaption>Grót = fleiri litir saman</figcaption></figure></div><p class="jf-task">Er hetta eitt mineral ella eitt grót?</p><div class="jf-sortera" id="jfSort"></div><div id="jfSortFb" class="jf-feedback" hidden aria-live="polite"></div></article><article class="jf-panel"><h2>Tosið saman</h2><ul class="jf-steps"><li>Hvussu kunnu tit síggja, at ein pausa millum tvey eldgos var long?</li><li>Hví er ein gong yngri enn løgini rundan um hana?</li><li>Hava tit sæð reytt grót ella eina gong nær skúlanum?</li></ul></article></div></section><!-- ============ 4 · ÚTI Á GEOSTØÐUM ============ --><section id="phase-l4" role="tabpanel" aria-labelledby="tab-l4" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-stone">Úti</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Nú skulu tit út og síggja søguna í landslagnum sjálv. Tit skulu til trý geostøð.«</p></div><h2>Áðrenn tit fara út</h2><div class="jf-tvey"><div><h3>Takið við tykkum</h3><ul class="jf-steps"><li>loggbókina og ein blýant</li><li>eina telefon ella ein teldil til myndir</li><li>hjálm og góðar skógvar</li></ul></div><div><h3>Trygd</h3><p class="jf-hint"><b>Farið ongantíð nær bergveggjum</b> uttan hjálm og trygdarskógvar. Vaksin skulu altíð vera við. Spyrjið altíð um loyvi, um økið er privat.</p></div></div></article><article class="jf-panel"><span class="jf-tag jf-stone">Úti · Stað 1</span><h2>Upprunalandslag</h2><p class="jf-task">Finnið eitt stað, har tit síggja fjallasíðurnar á báðum síðum av eini vík ella einum dali.</p><ol class="jf-steps"><li>Finnið hamrar ella løg, sum passa saman á báðum síðum.</li><li>Ímyndið tykkum, at tað einaferð var púra flatt ímillum síðurnar – og at eingin vík var.</li><li>Takið eina mynd, og teknið í loggbókina, hvar løgini passa saman.</li></ol><p class="jf-hint"><b>Dømi:</b> Í Klaksvík kunnu tit standa við Tekniska skúla og síggja báðar síðurnar av Borðoyarvík.</p></article><article class="jf-panel"><span class="jf-tag jf-stone">Úti · Stað 2</span><h2>Gosfløturnar</h2><p class="jf-task">Finnið ein bergvegg, har tit síggja fleiri lavafláir (gosfløtur).</p><ol class="jf-steps"><li>Teknið eina skitsu av vegginum. Vísið týðiliga, hvar mørkini millum lavafláirnar eru.</li><li>Síggja tit royðugrót ímillum? Ikki altíð – onkuntíð var pausan ov stutt til, at nakað kundi vaksa.</li><li>Peikið á eitt mark, og greiðið frá, hvat tað merkir.</li></ol></article><article class="jf-panel"><span class="jf-tag jf-stone">Úti · Stað 3</span><h2>Ein gong</h2><p class="jf-task">Finnið eina gong – eina strípu, sum skerst upp ígjøgnum løgini.</p><ol class="jf-steps"><li>Vísið, hvar gongin er.</li><li>Er gongin eldri ella yngri enn grótið rundan um hana?</li><li>Teknið eina skitsu av gongini og grótinum rundan um. Skrivið, hvat er eldri, og hvat er yngri.</li></ol></article><article class="jf-panel"><h2>Tosið saman</h2><ul class="jf-steps"><li>Hvat sóu tit úti, sum tit eisini sóu í lagkøkuni?</li><li>Hvat kom óvart á tykkum?</li></ul><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Nú vita tit, hvussu landið varð til. Men hvat hendi so, tá ið eldgosini sløknaðu? Tað er ein onnur søga – um ís!«</p></div></article></div></section><details class="jf-teacher"><summary>Til læraran</summary><p>Gongdin byggir á GeoSkúla-tilfarið hjá Jarðfeingi (Dagur 1 – <i>Hvussu eru Føroyar bygdar upp</i>). Uppgávurnar skifta millum arbeiði á skerminum, royndir og arbeiði úti.</p><h3>Gongdin</h3><div class="jf-tablewrap"><table class="jf-forloeb"><thead><tr><th>Partur</th><th>Á skerminum</th><th>Verkligt arbeiði</th><th>Tíð</th></tr></thead><tbody><tr><td><b>1 · Jørðin og pláturnar</b></td><td>Løgini í jørðini, pláturnar, Føroyar og Grønland, rokna avstandin.</td><td>Lærarin vísir kakudeiggj á pannu.</td><td>Uml. 45 min</td></tr><tr><td><b>2 · Eldgos og lagkøkan</b></td><td>Næmingarnir byggja Føroyar lag fyri lag, skera eina vík og finna løgini, sum passa saman.</td><td>Ein lagkøka úr gandadeiggi.</td><td>Uml. 45 min</td></tr><tr><td><b>3 · Pausur, royðugrót og gongir</b></td><td>Hvat siga mørkini? Hvat kom fyrst? Mineral ella grót?</td><td>–</td><td>Uml. 30 min</td></tr><tr><td><b>4 · Úti á geostøðum</b></td><td>–</td><td>Trý geostøð: upprunalandslag, gosfløtur og gong.</td><td>Uml. 1–2 tímar</td></tr></tbody></table></div><h3>Tilfar</h3><ul class="jf-steps"><li>kakudeiggj og ein panna (partur 1)</li><li>gandadeiggj í gráum, svørtum og reyðum og ein knívur (partur 2)</li><li>hjálmar og góðir skógvar (partur 4)</li></ul><p class="jf-note">Áðrenn tilfarið verður tikið endaliga í nýtslu, eigur ein jarðfrøðingur at kanna tað jarðfrøðiliga innihaldið.</p></details><!-- ░░ INNIHALD ENDAR ░░ --><!-- ░░ BOTNUR ░░ --><!-- FOOTARI --><footer class="jf-footer"><div class="jf-footer-grid"><nav class="jf-footer-col" aria-label="Gongdir"><b>Gongdir</b><a href="/jardfrida/gongdir/tunnil">
+                Jarðfríða kannar fjallið fyri ein tunnil
+              </a><a href="/jardfrida/gongdir/hvadani-kom-malli">
+                Hvaðani kom Malli?
+              </a><a href="/jardfrida/gongdir/hvussu-vordu-foroyar-til">
+                Hvussu vórðu Føroyar til?
+              </a></nav><nav class="jf-footer-col" aria-label="Meira"><b>Meira</b><a href="/jardfrida/ordalisti">Orðalisti</a><a href="/jardfrida/laerari">Til læraran</a><a href="/jardfrida/um-tilfarid">Um tilfarið</a></nav><nav class="jf-footer-col" aria-label="Jarðfeingi"><b>Jarðfeingi</b><a href="https://jf.fo" target="_blank" rel="noopener">
+                jf.fo
+              </a><a href="https://jf.fo/laer-um-jardfrodi" target="_blank" rel="noopener">
+                Lær um jarðfrøði
+              </a></nav></div><p class="jf-footer-note">
+            Jarðfrøðiligt innihald: Jarðfeingi
+            · Myndir: Karina Toftegaard
+            · Útgivið av Námi
+          </p></footer></div></div>
+
+<script src="/jardfrida/jf.js"></script><script>
+(() => {
+  // ---------- teigar ----------
+  const tabs = [...document.querySelectorAll('.jf-phase')];
+  function showPhase(id){
+    tabs.forEach(t => {
+      const on = t.id === id;
+      t.setAttribute('aria-selected', on);
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', () => showPhase(t.id)));
+  function uppUrLeidini(){
+    const id = (location.hash || '').replace('#','');
+    if (id && tabs.some(t => t.id === id)) showPhase(id);
+  }
+  uppUrLeidini();
+  window.addEventListener('hashchange', uppUrLeidini);
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+
+  // ---------- 1a: løgini í jørðini ----------
+  (function jord(){
+    const svg = document.getElementById('jfJord'), box = document.getElementById('jfJordTekstur');
+    if (!svg) return;
+    const LOG = [
+      ['Skorpan', 150, '#7A8086', 'Ovasta lagið. Tað er har, vit búgva. Skorpan er tunn – nakað sum skalið á einum eggi.'],
+      ['Kápan', 140, '#C0391F', 'Mittasta lagið. Tað er fast, men seigt, og kann flyta seg spakuliga yvir milliónir av árum.'],
+      ['Uttari kjarnin', 82, '#F28C28', 'Eitt flótandi lag rundan um innara kjarnan.'],
+      ['Innari kjarnin', 42, '#FFD36E', 'Inni í miðjuni. Hann er fastur og sera heitur – heitari enn 5.500 °C – og er úr jarni og nikkili.']
+    ];
+    const cx = 160, cy = 160;
+    // Ein fjórðingur er skorin burtur, so vit síggja inn
+    const g = el('g', {}, svg);
+    LOG.forEach(([navn, r, litur, tekst], i) => {
+      const p = el('path', {d:'M' + cx + ' ' + cy + ' L' + cx + ' ' + (cy - r) + ' A' + r + ' ' + r + ' 0 1 0 ' + (cx + r) + ' ' + cy + ' Z', fill:litur, stroke:'#1E2326', 'stroke-width':2.5, 'class':'jf-jord-lag', tabindex:0, role:'button', 'aria-label':navn}, g);
+      const kv = el('path', {d:'M' + cx + ' ' + cy + ' L' + (cx + r) + ' ' + cy + ' A' + r + ' ' + r + ' 0 0 0 ' + cx + ' ' + (cy - r) + ' Z', fill:litur, opacity:.55, stroke:'#1E2326', 'stroke-width':1.5, 'class':'jf-jord-lag', tabindex:-1}, g);
+      const vel = () => {
+        svg.querySelectorAll('.jf-jord-lag').forEach(x => x.classList.remove('er-valt'));
+        p.classList.add('er-valt'); kv.classList.add('er-valt');
+        box.innerHTML = '<b>' + navn + '</b><p>' + tekst + '</p>';
+      };
+      [p, kv].forEach(x => { x.addEventListener('click', vel); x.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); vel(); } }); });
+    });
+    // Skorpan er so tunn, at hon næstan ikki sæst – ein tjúkk linja ytst
+    el('circle', {cx, cy, r:150, fill:'none', stroke:'#1E2326', 'stroke-width':3, 'pointer-events':'none'}, svg);
+  })();
+
+  // ---------- 1b: Føroyar og Grønland flyta seg ----------
+  (function flyt(){
+    const svg = document.getElementById('jfFlyt'), renna = document.getElementById('jfFlytRenna');
+    if (!svg || !renna) return;
+    const tid = document.getElementById('jfFlytTid'), km = document.getElementById('jfFlytKm');
+    el('rect', {x:0, y:0, width:640, height:220, fill:'#CFE3EA'}, svg);
+    const gr = el('g', {}, svg), fo = el('g', {}, svg), lina = el('g', {}, svg);
+    el('path', {d:'M0 20 L150 10 L190 60 L175 120 L200 170 L150 210 L0 215 Z', fill:'#E8E4DC', stroke:'#1E2326', 'stroke-width':2.5}, gr);
+    el('text', {x:70, y:118, 'text-anchor':'middle', 'font-size':16, 'font-weight':700, fill:'#1E2326', 'font-family':'Atkinson Hyperlegible, sans-serif'}, gr).textContent = 'Grønland';
+    [[0,0,7],[14,10,5],[6,22,6],[-8,16,4],[20,-6,4]].forEach(([x,y,r]) => el('circle', {cx:x, cy:y, r, fill:'#7E9A5B', stroke:'#1E2326', 'stroke-width':1.5}, fo));
+    el('text', {x:6, y:46, 'text-anchor':'middle', 'font-size':15, 'font-weight':700, fill:'#1E2326', 'font-family':'Atkinson Hyperlegible, sans-serif'}, fo).textContent = 'Føroyar';
+    const pil = el('path', {d:'', stroke:'#C0391F', 'stroke-width':2.5, 'stroke-dasharray':'6 5', fill:'none'}, lina);
+    function dagfor(){
+      const v = +renna.value / 100;
+      const x = 228 + v * 370;
+      fo.setAttribute('transform', 'translate(' + x.toFixed(0) + ' 104)');
+      pil.setAttribute('d', 'M200 104 L' + (x - 12).toFixed(0) + ' 104');
+      const mio = Math.round(60 * (1 - v));
+      tid.textContent = mio > 0 ? 'Fyri umleið ' + mio + ' milliónum árum' : 'Í dag';
+      km.textContent = 'umleið ' + (Math.round((100 + 1400 * v) / 50) * 50) + ' km';
+    }
+    renna.addEventListener('input', dagfor);
+    dagfor();
+  })();
+
+  // ---------- 1c: rokna ----------
+  (function rokna(){
+    const inn = document.getElementById('jfRokn'), kn = document.getElementById('jfRoknKn'), fb = document.getElementById('jfRoknFb');
+    if (!inn) return;
+    function kanna(){
+      const v = Number(inn.value);
+      fb.hidden = false;
+      if (inn.value === ''){ fb.className = 'jf-feedback'; fb.textContent = 'Skriva eitt tal fyrst.'; return; }
+      if (v === 200){ fb.className = 'jf-feedback jf-good'; fb.innerHTML = '<b>Rætt!</b> 2 cm × 100 ár = 200 cm. Tað eru 2 metrar – umleið so langt sum ein hurð er høg.'; }
+      else { fb.className = 'jf-feedback'; fb.innerHTML = 'Ikki heilt. Hvussu nógv er 2 cm hvørt ár í 100 ár? <b>2 × 100 = ?</b>'; }
+    }
+    kn.addEventListener('click', kanna);
+    inn.addEventListener('keydown', e => { if (e.key === 'Enter') kanna(); });
+  })();
+
+  // ---------- 3a: hvat siga mørkini? ----------
+  (function mork(){
+    const rum = document.getElementById('jfMarkVal'), fb = document.getElementById('jfMarkFb');
+    if (!rum) return;
+    const SPURN = [
+      { mynd:'royd', spurn:'Eitt tjúkt reytt lag liggur millum tvær lavafláir.', svar:[['Pausan var long – plantur og trø vuksu.', true], ['Eldgosini komu beint aftaná hvørt annað.', false]] },
+      { mynd:'mark', spurn:'Bert ein tunn linja er millum tvær lavafláir – einki reytt.', svar:[['Pausan var long – plantur og trø vuksu.', false], ['Pausan var stutt – einki kundi vaksa.', true]] }
+    ];
+    SPURN.forEach((s, i) => {
+      const kort = document.createElement('div');
+      kort.className = 'jf-mark-kort';
+      const lag = s.mynd === 'royd'
+        ? '<rect x="0" y="0" width="200" height="36" fill="#7A8086"/><rect x="0" y="36" width="200" height="14" fill="#A4533A"/><rect x="0" y="50" width="200" height="36" fill="#4F555B"/>'
+        : '<rect x="0" y="0" width="200" height="42" fill="#7A8086"/><rect x="0" y="42" width="200" height="44" fill="#4F555B"/><path d="M0 42 L200 42" stroke="#1E2326" stroke-width="2.5"/>';
+      kort.innerHTML = '<svg viewBox="0 0 200 86" aria-hidden="true">' + lag + '</svg><p>' + s.spurn + '</p>';
+      const knappar = document.createElement('div'); knappar.className = 'jf-row';
+      s.svar.forEach(([t, rett]) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'jf-btn2'; b.textContent = t;
+        b.addEventListener('click', () => {
+          fb.hidden = false;
+          fb.className = 'jf-feedback' + (rett ? ' jf-good' : '');
+          fb.innerHTML = rett
+            ? (s.mynd === 'royd' ? '<b>Rætt!</b> Eitt tjúkt reytt lag – royðugrót – vísir, at pausan var long. Plantur og trø vuksu, til næsta eldgos legði seg omaná.' : '<b>Rætt!</b> Pausan var ov stutt til, at nakað kundi vaksa. Men vit síggja kortini eitt mark millum lavafláirnar.')
+            : 'Ikki heilt. Hygg aftur at myndini – er tað eitt reytt lag ímillum?';
+          if (rett){ knappar.querySelectorAll('button').forEach(x => x.disabled = true); b.classList.add('jf-primary'); }
+        });
+        knappar.appendChild(b);
+      });
+      kort.appendChild(knappar);
+      rum.appendChild(kort);
+    });
+  })();
+
+  // ---------- 3b: hvat kom fyrst? ----------
+  (function rod(){
+    const ol = document.getElementById('jfRod'), kn = document.getElementById('jfRodKn'), fb = document.getElementById('jfRodFb');
+    if (!ol) return;
+    // Rætta røðin, elsta fyrst
+    const RAETT = ['Fyrsta lavafláin', 'Royðugrótið', 'Ovasta lavafláin', 'Gongin'];
+    const LYS = {
+      'Fyrsta lavafláin':'Hon liggur niðast.',
+      'Royðugrótið':'Plantur vuksu omaná fyrstu lavafláini.',
+      'Ovasta lavafláin':'Hon rann út omaná royðugrótið.',
+      'Gongin':'Hon skerst ígjøgnum øll løgini.'
+    };
+    let rad = ['Gongin', 'Fyrsta lavafláin', 'Ovasta lavafláin', 'Royðugrótið'];
+    function teikna(){
+      ol.replaceChildren();
+      // Vís yngsta ovast: tí vendu vit listanum
+      [...rad].reverse().forEach((t, k) => {
+        const i = rad.length - 1 - k;
+        const li = document.createElement('li');
+        li.innerHTML = '<span class="jf-rod-heiti">' + t + '</span><span class="jf-rod-flyt"><button type="button" aria-label="Flyt ' + t + ' upp" data-d="1">▲</button><button type="button" aria-label="Flyt ' + t + ' niður" data-d="-1">▼</button></span>';
+        li.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+          const j = i + Number(b.dataset.d);
+          if (j < 0 || j >= rad.length) return;
+          [rad[i], rad[j]] = [rad[j], rad[i]];
+          fb.hidden = true;
+          teikna();
+        }));
+        ol.appendChild(li);
+      });
+    }
+    kn.addEventListener('click', () => {
+      const rett = rad.every((t, i) => t === RAETT[i]);
+      fb.hidden = false;
+      fb.className = 'jf-feedback' + (rett ? ' jf-good' : '');
+      fb.innerHTML = rett
+        ? '<b>Rætt!</b> ' + RAETT.map(t => '<br>' + t + ': ' + LYS[t]).join('') + '<br>Tað, sum liggur niðast, er elst – og ein gong er yngri enn løgini, hon skerst ígjøgnum.'
+        : 'Ikki heilt enn. Minst til: tað, sum liggur niðast, kom fyrst. Og ein gong kann bert skera ígjøgnum løg, sum longu eru har.';
+    });
+    teikna();
+  })();
+
+  // ---------- 3c: mineral ella grót? ----------
+  (function sortera(){
+    const rum = document.getElementById('jfSort'), fb = document.getElementById('jfSortFb');
+    if (!rum) return;
+    const TING = [['Basalt', 'grot'], ['Ein ljósur krystallur', 'mineral'], ['Royðugrót', 'grot'], ['Eitt grønt olivinkorn', 'mineral']];
+    let rett = 0;
+    TING.forEach(([navn, slag]) => {
+      const kort = document.createElement('div'); kort.className = 'jf-sort-kort';
+      kort.innerHTML = '<b>' + navn + '</b>';
+      const r = document.createElement('div'); r.className = 'jf-row';
+      [['mineral','Mineral'], ['grot','Grót']].forEach(([k, t]) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'jf-btn2'; b.textContent = t;
+        b.addEventListener('click', () => {
+          fb.hidden = false;
+          if (k === slag){
+            r.querySelectorAll('button').forEach(x => x.disabled = true);
+            b.classList.add('jf-primary'); kort.classList.add('er-rætt'); rett++;
+            fb.className = 'jf-feedback jf-good';
+            fb.textContent = rett === TING.length ? 'Flott! Eitt mineral er ein litur – eitt grót er fleiri litir saman.' : 'Rætt! ' + (slag === 'grot' ? navn + ' er sett saman av fleiri mineralum.' : 'Tað er eitt mineral – ein legoklossur.');
+          } else {
+            fb.className = 'jf-feedback';
+            fb.textContent = 'Ikki heilt. Er ' + navn.toLowerCase() + ' ein litur – ella fleiri litir settir saman?';
+          }
+        });
+        r.appendChild(b);
+      });
+      kort.appendChild(r);
+      rum.appendChild(kort);
+    });
+  })();
+})();
+</script>
+<script>
+/* LAGKØKAN – bygg Føroyar lag fyri lag (byggir á GeoSkúla-tilfarið hjá Jarðfeingi) */
+(function lagkaka(){
+  const svg = document.getElementById('lagkaka');
+  if (!svg) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const kn = {
+    eldgos: document.getElementById('lkEldgos'), pausa: document.getElementById('lkPausa'),
+    vik: document.getElementById('lkVik'), gong: document.getElementById('lkGongKn'),
+    aftur: document.getElementById('lkAftur')
+  };
+  const tekstur = document.getElementById('lkTekstur');
+  const tal = document.getElementById('lkTal');
+  const spurn = document.getElementById('lkSpurn');
+  const fb = document.getElementById('lkFeedback');
+
+  const W = 640, BOTN = 296, MIN_TOPP = 64, LAG_H = 34, ROYD_H = 10;
+  const VIK = { v:250, h:390 };   // har víkin verður skorin
+  const LITIR = ['#7A8086', '#4F555B'];
+
+  const BYRJAN = '»Fyri umleið 60 milliónum árum vóru eingar Føroyar. Trýst á »Eldgos«, og bygg landið lag fyri lag – eins og eina lagkøku.«';
+  const T = {
+    eldgos1: '»Eitt risastórt eldgos! Glóandi grótbræðing rann út yvir landið og storknaði til eitt lag av basalti.«',
+    stutt:   '»Eitt nýtt eldgos beint aftaná. Steðgurin var ov stuttur til, at nakað kundi vaksa – men tú sært kortini eitt mark millum løgini.«',
+    royd:    '»Nýtt eldgos! Plantulagið varð grivið undir grótbræðingini og gjørdist til eitt reytt lag – royðugrót.«',
+    pausa:   '»Pausa! Í langa tíð var einki eldgos. Veðrið var heitt og fuktigt, og trø og plantur vuksu.«',
+    vikKlar: ' Nú hevur tú nógv løg – trýst á »Skera eina vík«, tá ið tú vilt.',
+    fullt:   '»Nú er landið nóg høgt. Trýst á »Skera eina vík«.«',
+    vik:     '»Nógv seinni skóru ísur og hav eina vík ígjøgnum løgini. Finn løgini, sum passa saman: Trýst fyrst á eitt lag til vinstru og so á sama lag til høgru.«',
+    ratt:    '»Rætt! Tey bæði passa saman.«',
+    skeivt:  '»Hesi bæði passa ikki saman. Tel løgini niðanfrá, og royn aftur.«',
+    oll:     '»Flott! Øll løgini passa saman. Einaferð hekk landið saman yvir víkina – júst sum í Borðoyarvík í Klaksvík.«',
+    gong:    '»Grótbræðing treingdi seg upp ígjøgnum eina rivu í løgunum og storknaði. Hetta kallast ein gong. Er gongin eldri ella yngri enn løgini rundan um?«',
+    yngri:   'Rætt! Løgini vóru har fyrst. Gongin treingdi seg seinni upp ígjøgnum tey – tí er hon yngri.',
+    eldri:   'Ikki heilt. Hygg: gongin skerst ígjøgnum løgini. Hvat var har fyrst?'
+  };
+
+  let lag, topp, seinast, plantur, nBasalt, uid, valt, ratt, fasa;
+
+  function el(t, a, f){ const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (f) f.appendChild(e); return e; }
+  function sig(t){ tekstur.textContent = t; }
+  function vis(b, on){ b.hidden = !on; }
+
+  let G = {};
+  function nullstilla(){
+    svg.replaceChildren();
+    const defs = el('defs', {}, svg);
+    const g = el('linearGradient', {id:'lkGlod', x1:0, y1:0, x2:0, y2:1}, defs);
+    el('stop', {offset:0, 'stop-color':'#FFD36E'}, g); el('stop', {offset:.5, 'stop-color':'#F28C28'}, g); el('stop', {offset:1, 'stop-color':'#C0391F'}, g);
+    G.defs = defs;
+    el('rect', {x:0, y:0, width:W, height:330, fill:'#EAF2F4'}, svg);
+    // Eldra grótið niðast
+    el('rect', {x:0, y:BOTN, width:W, height:330-BOTN, fill:'#5C6166'}, svg);
+    el('text', {x:12, y:BOTN+22, fill:'#E8E6E0', 'font-size':13, 'font-family':'IBM Plex Mono, monospace'}, svg).textContent = 'eldri grót';
+    G.log = el('g', {}, svg); G.plantur = el('g', {}, svg); G.vik = el('g', {}, svg);
+    G.gong = el('g', {}, svg); G.band = el('g', {}, svg); G.hit = el('g', {}, svg);
+    lag = []; topp = BOTN; seinast = null; plantur = null; nBasalt = 0; uid = 0; valt = null; ratt = 0; fasa = 'bygg';
+    sig(BYRJAN);
+    kn.eldgos.disabled = false; kn.pausa.disabled = true;
+    vis(kn.eldgos, true); vis(kn.pausa, true); vis(kn.vik, false); vis(kn.gong, false);
+    spurn.hidden = true; fb.hidden = true;
+    teljari();
+  }
+
+  function teljari(){ tal.textContent = lag.length === 1 ? '1 lag' : lag.length + ' løg'; }
+
+  function wavyTopp(y){
+    let d = 'M0 ' + (y + 2);
+    for (let x = 40; x <= W; x += 40) d += ' Q' + (x - 20) + ' ' + (y - 3 + Math.random() * 6).toFixed(1) + ' ' + x + ' ' + (y + Math.random() * 3 - 1).toFixed(1);
+    return d;
+  }
+
+  function flaedi(e, sekundir){
+    // Grótbræðingin rennur inn frá vinstru
+    if (reduce) return;
+    const id = 'lkKlipp' + (++uid);
+    const cp = el('clipPath', {id}, G.defs);
+    const r = el('rect', {x:0, y:0, width:0, height:330}, cp);
+    el('animate', {attributeName:'width', from:0, to:W, dur:sekundir + 's', fill:'freeze', begin:'indefinite'}, r);
+    e.setAttribute('clip-path', 'url(#' + id + ')');
+    r.firstChild.beginElement();
+    setTimeout(() => { e.removeAttribute('clip-path'); cp.remove(); }, sekundir * 1000 + 100);
+  }
+
+  function eldgos(){
+    if (fasa !== 'bygg' || topp - LAG_H < MIN_TOPP) return;
+    let t;
+    if (seinast === 'pausa'){
+      // Plantulagið verður til royðugrót
+      const y = topp - ROYD_H;
+      const p = plantur; plantur = null;
+      p.classList.add('lk-burt'); setTimeout(() => p.remove(), 700);
+      const r = el('path', {d: wavyTopp(y) + ' L' + W + ' ' + (topp + 2) + ' L0 ' + (topp + 2) + ' Z', fill:'#A4533A', 'class':'lk-royd'}, G.log);
+      for (let i = 0; i < 6; i++){ const x = 30 + Math.random() * (W - 60); el('path', {d:'M' + x.toFixed(0) + ' ' + (y + 5) + ' q4 -3 8 0', stroke:'#6E3524', 'stroke-width':1.4, fill:'none'}, G.log); }
+      lag.push({slag:'royd', y:y, h:ROYD_H}); topp = y;
+      t = T.royd;
+    } else {
+      t = seinast === 'eldgos' ? T.stutt : T.eldgos1;
+    }
+    const y = topp - LAG_H;
+    const litur = LITIR[nBasalt % 2];
+    const g = el('g', {}, G.log);
+    const p = el('path', {d: wavyTopp(y) + ' L' + W + ' ' + (topp + 3) + ' L0 ' + (topp + 3) + ' Z', fill:'url(#lkGlod)', stroke:'#1E2326', 'stroke-width':1.6, 'class':'lk-lag'}, g);
+    for (let i = 0; i < 10; i++){
+      el('ellipse', {cx:(20 + Math.random() * (W - 40)).toFixed(0), cy:(y + 6 + Math.random() * 6).toFixed(1), rx:2.2, ry:1.6, fill:'#25292C', 'class':'lk-pokk', opacity:0}, g);
+    }
+    flaedi(g, 1.4);
+    setTimeout(() => { p.style.fill = litur; g.querySelectorAll('.lk-pokk').forEach(c => c.setAttribute('opacity', .85)); }, reduce ? 0 : 1300);
+    lag.push({slag:'basalt', y:y, h:LAG_H}); topp = y; nBasalt++;
+    seinast = 'eldgos';
+    kn.pausa.disabled = false;
+    if (topp - LAG_H < MIN_TOPP){ kn.eldgos.disabled = true; kn.pausa.disabled = true; t = T.fullt; }
+    if (nBasalt >= 4){ vis(kn.vik, true); if (t !== T.fullt) t = t.slice(0, -1) + T.vikKlar + '«'; }
+    sig(t);
+    teljari();
+  }
+
+  function pausa(){
+    if (fasa !== 'bygg' || seinast !== 'eldgos') return;
+    seinast = 'pausa';
+    kn.pausa.disabled = true;
+    plantur = el('g', {'class':'lk-plantur'}, G.plantur);
+    el('path', {d: 'M0 ' + (topp + 1) + ' L' + W + ' ' + (topp + 1), stroke:'#5F7A5B', 'stroke-width':4}, plantur);
+    for (let i = 0; i < 9; i++){
+      const x = 24 + i * 70 + Math.random() * 30, h = 14 + Math.random() * 12;
+      const tr = el('g', {style:'animation-delay:' + (i * 90) + 'ms'}, plantur);
+      el('rect', {x:(x - 1.6).toFixed(1), y:(topp - h).toFixed(1), width:3.2, height:h.toFixed(1), fill:'#6B4A2E'}, tr);
+      el('circle', {cx:x.toFixed(1), cy:(topp - h).toFixed(1), r:(7 + Math.random() * 4).toFixed(1), fill: i % 3 ? '#5F7A5B' : '#7C9A4A'}, tr);
+    }
+    sig(T.pausa);
+  }
+
+  function skeraVik(){
+    if (fasa !== 'bygg') return;
+    fasa = 'vik';
+    vis(kn.eldgos, false); vis(kn.pausa, false); vis(kn.vik, false);
+    if (plantur){ plantur.remove(); plantur = null; }
+    const g = el('g', {}, G.vik);
+    // Víkin verður skorin heilt niður ígjøgnum øll løgini; havið fyllir botnin
+    const botnur = BOTN - 6, y0 = topp + 10;
+    const c = (8 * botnur - 2 * y0) / 6;
+    const dalur = 'M' + VIK.v + ' ' + (topp - 30) + ' L' + VIK.h + ' ' + (topp - 30) + ' L' + (VIK.h - 14) + ' ' + y0 +
+                  ' C' + (VIK.h - 26) + ' ' + c.toFixed(1) + ' ' + (VIK.v + 26) + ' ' + c.toFixed(1) + ' ' + (VIK.v + 14) + ' ' + y0 + ' Z';
+    el('path', {d:dalur, fill:'#EAF2F4'}, g);
+    const dk = el('clipPath', {id:'lkDalKlipp'}, G.defs);
+    el('path', {d:dalur}, dk);
+    el('rect', {x:VIK.v, y:BOTN - 40, width:VIK.h - VIK.v, height:60, fill:'#4E8FA8', opacity:.9, 'clip-path':'url(#lkDalKlipp)'}, g);
+    el('text', {x:(VIK.v + VIK.h) / 2, y:BOTN - 16, 'text-anchor':'middle', fill:'#fff', 'font-size':14, 'font-weight':700, 'font-family':'Atkinson Hyperlegible, sans-serif'}, g).textContent = 'vík';
+    if (!reduce){
+      const id = 'lkVikK';
+      const cp = el('clipPath', {id}, G.defs);
+      const r = el('rect', {x:0, y:0, width:W, height:0}, cp);
+      el('animate', {attributeName:'height', from:0, to:330, dur:'1.4s', fill:'freeze', begin:'indefinite'}, r);
+      g.setAttribute('clip-path', 'url(#' + id + ')'); r.firstChild.beginElement();
+      setTimeout(() => { g.removeAttribute('clip-path'); }, 1500);
+    }
+    // Trýstiøki: eitt hvørjumegin fyri hvørt lag
+    lag.forEach((l, i) => {
+      const hh = Math.max(l.h, 16), yy = l.y + l.h / 2 - hh / 2;
+      ['v','h'].forEach(sida => {
+        const x = sida === 'v' ? 0 : VIK.h, w = sida === 'v' ? VIK.v : W - VIK.h;
+        const r = el('rect', {x, y:yy.toFixed(1), width:w, height:hh.toFixed(1), 'class':'lk-hit', tabindex:0, role:'button',
+          'aria-label':'Lag ' + (i + 1) + ' niðanfrá, ' + (l.slag === 'royd' ? 'royðugrót' : 'basalt') + ', ' + (sida === 'v' ? 'vinstru' : 'høgru') + ' megin'}, G.hit);
+        r.dataset.i = i; r.dataset.sida = sida;
+        r.addEventListener('click', () => trýstLag(r));
+        r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); trýstLag(r); } });
+      });
+    });
+    sig(T.vik);
+    fb.hidden = true;
+  }
+
+  function trýstLag(r){
+    if (fasa !== 'vik' || r.classList.contains('lk-rætt')) return;
+    if (!valt || valt.dataset.sida === r.dataset.sida){
+      if (valt) valt.classList.remove('lk-valt');
+      valt = r; r.classList.add('lk-valt');
+      return;
+    }
+    const a = valt, b = r; valt = null;
+    a.classList.remove('lk-valt');
+    if (a.dataset.i === b.dataset.i){
+      a.classList.add('lk-rætt'); b.classList.add('lk-rætt');
+      const l = lag[+a.dataset.i], y = l.y + l.h / 2;
+      el('path', {d:'M' + (VIK.v - 10) + ' ' + y + ' L' + (VIK.h + 10) + ' ' + y, 'class':'lk-band'}, G.band);
+      ratt++;
+      if (ratt === lag.length){
+        fasa = 'gong'; sig(T.oll);
+        fb.hidden = false; fb.className = 'jf-feedback jf-good'; fb.textContent = 'Øll ' + lag.length + ' løgini passa saman.';
+        vis(kn.gong, true);
+      } else sig(T.ratt);
+    } else {
+      [a, b].forEach(x => { x.classList.add('lk-skeivt'); setTimeout(() => x.classList.remove('lk-skeivt'), 700); });
+      sig(T.skeivt);
+    }
+  }
+
+  function gong(){
+    if (fasa !== 'gong') return;
+    fasa = 'spurn';
+    vis(kn.gong, false);
+    const x = 128, d = 'M' + (x - 9) + ' 330 L' + (x + 7) + ' 330 L' + (x + 11) + ' ' + (BOTN - 60) + ' L' + (x + 4) + ' ' + (topp + 14) + ' L' + (x - 4) + ' ' + (topp + 14) + ' L' + (x - 2) + ' ' + (BOTN - 60) + ' Z';
+    const g = el('g', {}, G.gong);
+    const p = el('path', {d, fill:'url(#lkGlod)', stroke:'#1E2326', 'stroke-width':1.6, 'class':'lk-lag'}, g);
+    el('text', {x:x + 18, y:topp + 30, fill:'#fff', stroke:'#1E2326', 'stroke-width':3, 'paint-order':'stroke', 'font-size':14, 'font-weight':700, 'font-family':'Atkinson Hyperlegible, sans-serif'}, g).textContent = 'gong';
+    if (!reduce){
+      const id = 'lkGongK';
+      const cp = el('clipPath', {id}, G.defs);
+      const r = el('rect', {x:0, y:330, width:W, height:0}, cp);
+      el('animate', {attributeName:'y', from:330, to:0, dur:'1.6s', fill:'freeze', begin:'indefinite'}, r);
+      el('animate', {attributeName:'height', from:0, to:330, dur:'1.6s', fill:'freeze', begin:'indefinite'}, r);
+      g.setAttribute('clip-path', 'url(#' + id + ')');
+      r.querySelectorAll('animate').forEach(a => a.beginElement());
+    }
+    setTimeout(() => { p.style.fill = '#2E3236'; }, reduce ? 0 : 1600);
+    sig(T.gong);
+    fb.hidden = true;
+    spurn.hidden = false;
+  }
+
+  spurn.querySelectorAll('[data-lk-svar]').forEach(b => b.addEventListener('click', () => {
+    const rett = b.dataset.lkSvar === 'yngri';
+    fb.hidden = false;
+    fb.className = 'jf-feedback' + (rett ? ' jf-good' : '');
+    fb.textContent = rett ? T.yngri : T.eldri;
+    if (rett) spurn.hidden = true;
+  }));
+
+  kn.eldgos.addEventListener('click', eldgos);
+  kn.pausa.addEventListener('click', pausa);
+  kn.vik.addEventListener('click', skeraVik);
+  kn.gong.addEventListener('click', gong);
+  kn.aftur.addEventListener('click', nullstilla);
+  nullstilla();
+})();
+</script></div></div></div><div id="c236003" class="frame frame-default frame-type-html frame-layout-0  frame-background-none frame-no-backgroundimage frame-space-before-extra-large frame-space-after-extra-large "><div class="frame-container"><div class="frame-inner accordion-frame-layout-0 gl-close"><!--
+  JARÐFRØÐI VIÐ JARÐFRÍÐU · MALLI
+  ──────────────────────────────────────────────────────────────
+  Sjálvstøðugur blokkur. Hann hevur sín egna stíl og sítt egna
+  script og tarnar ikki hinar blokkarnar.
+
+  Malli situr fast niðast til høgru. Trýst á hann fyri at lata
+  orðalistan upp – ella drag og kasta hann.
+
+  TUNNILIN: tá tú fert at draga Malla, kemur ein tunnilsmunni fram
+  har Malli byrjar niðast til høgru. Sleppur tú Malla oman móti tunnlinum, fer hann
+  inn í tunnilin og allur blokkurin horvnar. Ein lítil tunnilsmynd verður
+  eftir í horninum – trýst á hana, og Malli kemur út aftur.
+  Skal einki vera eftir, so set JF_VIS_AFTUR = false niðast
+  í scriptinum.
+
+  STØDD OG STØÐA: trý tøl ovast í stílinum –
+      --jf-malli-stodd    hvussu stórur hann er
+      --jf-malli-hogra    frá høgru síðubrún
+      --jf-malli-nidast   frá botninum
+
+  Kassin hevur eitt egið støddarmát og er miðjaður eftir
+  byrjunarstøðuni hjá Malli:
+      --jf-kassi-stodd    hvussu stórur tunnilsmunnin er
+
+  Tølini eru sett trimum ferðum: fyri vanligar skermar, fyri breiðar
+  (frá 1080px) og fyri telefonir (til 640px).
+
+  Skal Malli standa inni á sjálvari síðuni í staðin fyri at
+  flóta, so brúka jf-grotsedil.html.
+--><div id="jf-malli-widget"><!-- STEINURIN --><button id="jf-malli-rock" class="jf-rock" type="button" aria-label="Malli. Trýst fyri at síggja orðalistan. Drag fyri at kasta hann ella leggja hann í kassan." aria-haspopup="dialog" aria-expanded="false"><svg viewBox="-90 -78 180 160" aria-hidden="true"><defs><clipPath id="jf-malli-clipping"><path d="M-82 12 C-85 -1 -81 -12 -76 -22 C-71 -33 -64 -43 -54 -50 C-44 -57 -29 -60 -16 -62 C-3 -64 13 -63 26 -60 C39 -57 51 -52 60 -44 C70 -36 79 -23 83 -12 C87 -1 89 10 86 20 C84 30 78 41 68 48 C58 55 43 61 28 64 C13 67 -5 69 -20 67 C-35 65 -50 61 -60 52 C-70 43 -79 24 -82 12 Z"></path></clipPath></defs><path d="M-82 12 C-85 -1 -81 -12 -76 -22 C-71 -33 -64 -43 -54 -50 C-44 -57 -29 -60 -16 -62 C-3 -64 13 -63 26 -60 C39 -57 51 -52 60 -44 C70 -36 79 -23 83 -12 C87 -1 89 10 86 20 C84 30 78 41 68 48 C58 55 43 61 28 64 C13 67 -5 69 -20 67 C-35 65 -50 61 -60 52 C-70 43 -79 24 -82 12 Z" fill="#7E858B" stroke="#1E2326" stroke-width="5" stroke-linejoin="round"></path><g clip-path="url(#jf-malli-clipping)"><ellipse cx="6" cy="58" rx="96" ry="26" fill="#666D73" opacity=".55"></ellipse><path d="M-62 -20 C-50 -46 -14 -56 20 -54" stroke="#9AA1A6" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"></path><g fill="#F4F1EA"><rect x="-35" y="-39" width="6" height="3" rx="1" transform="rotate(71 -32 -37)"></rect><rect x="-58" y="-8" width="9" height="3" rx="1" transform="rotate(165 -53 -7)"></rect><rect x="30" y="-27" width="6" height="3" rx="1" transform="rotate(97 33 -25)"></rect><rect x="-45" y="-39" width="10" height="3" rx="1" transform="rotate(39 -40 -37)"></rect><rect x="38" y="33" width="6" height="3" rx="1" transform="rotate(144 41 34)"></rect><rect x="26" y="38" width="5" height="3" rx="1" transform="rotate(158 29 39)"></rect><rect x="-2" y="-31" width="5" height="3" rx="1" transform="rotate(85 1 -30)"></rect><rect x="46" y="9" width="9" height="3" rx="1" transform="rotate(159 51 10)"></rect><rect x="-44" y="-18" width="5" height="3" rx="1" transform="rotate(146 -42 -17)"></rect><rect x="-60" y="15" width="8" height="3" rx="1" transform="rotate(50 -56 16)"></rect><rect x="-14" y="-29" width="6" height="3" rx="1" transform="rotate(114 -11 -27)"></rect><rect x="-58" y="-26" width="8" height="3" rx="1" transform="rotate(138 -54 -25)"></rect></g><g fill="#3C4247"><circle cx="-50" cy="-20" r="4"></circle><circle cx="46" cy="-30" r="3.4"></circle><circle cx="52" cy="30" r="4.4"></circle><circle cx="-42" cy="42" r="3"></circle><circle cx="10" cy="52" r="3.2"></circle><circle cx="-14" cy="-46" r="2.8"></circle></g></g><circle cx="-20" cy="-4" r="8" fill="#fff"></circle><circle cx="20" cy="-4" r="8" fill="#fff"></circle><circle cx="-18" cy="-3" r="4.6" fill="#1E2326"></circle><circle cx="22" cy="-3" r="4.6" fill="#1E2326"></circle><path d="M-30 -20 Q-20 -26 -10 -20 M10 -20 Q20 -26 30 -20" stroke="#1E2326" stroke-width="3.5" fill="none" stroke-linecap="round"></path><path d="M-12 18 Q0 28 12 18" stroke="#1E2326" stroke-width="4" fill="none" stroke-linecap="round"></path></svg></button><!-- OPIN TRÆKASSI – Á BYRJUNARSTØÐUNI HJÁ MALLA --><div id="jf-malli-kassi" class="jf-kassi" aria-hidden="true"><svg viewBox="0 0 128 110" aria-hidden="true"><!-- Lokini standa opin --><path d="M23 42 L7 22 L42 14 L59 38 Z" fill="#C99561" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><path d="M69 38 L86 14 L121 22 L105 42 Z" fill="#D6A773" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><!-- Trææðrar á lokunum --><path d="M17 23 L43 20 M84 20 L111 23" stroke="#9B6A40" stroke-width="2" stroke-linecap="round"></path><!-- Myrkt hol í opna kassanum --><path d="M23 39 Q64 30 105 39 L103 58 H25 Z" fill="#3B2B23" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><!-- Síðurnar og framsíðan --><path d="M23 48 L31 99 H97 L105 48 Z" fill="#AF7748" stroke="#29231F" stroke-width="3" stroke-linejoin="round"></path><path d="M24 49 L31 99 H39 L34 49 Z" fill="#855532" opacity=".65"></path><path d="M94 49 L89 99 H97 L104 49 Z" fill="#70482E" opacity=".6"></path><!-- Træplankar --><path d="M46 51 L48 96 M64 50 V97 M82 51 L80 96" fill="none" stroke="#75492D" stroke-width="2.6"></path><path d="M35 61 Q45 58 57 61 M72 83 Q81 80 91 83" fill="none" stroke="#D6A16D" stroke-width="2" opacity=".8"></path><!-- Kanturin rundan um opið --><path d="M23 47 L105 47 L103 56 H25 Z" fill="#C28A54" stroke="#29231F" stroke-width="2.5" stroke-linejoin="round"></path><!-- Navnamerki --><rect x="44" y="68" width="40" height="16" rx="2.5" fill="#EBD7AF" stroke="#64462E" stroke-width="1.8"></rect><text x="64" y="79.5" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" fill="#503B2B">Malli</text><!-- Smáir seymir --><g fill="#41362E"><circle cx="35" cy="55" r="1.6"></circle><circle cx="93" cy="55" r="1.6"></circle><circle cx="36" cy="93" r="1.6"></circle><circle cx="92" cy="93" r="1.6"></circle></g></svg><span id="jf-malli-kassi-tekst" class="jf-kassi-tekst">Legg Malla inn</span></div><!-- LÍTLI TRÆKASSIN, TÁ MALLI ER HORVIN --><button id="jf-malli-aftur" class="jf-aftur" type="button" aria-label="Lat Malla út aftur"><svg viewBox="0 0 52 44" aria-hidden="true"><path d="M8 13 L13 38 H39 L44 13 Z" fill="#AF7748" stroke="#29231F" stroke-width="2.8" stroke-linejoin="round"></path><path d="M9 13 L21 5 L26 13 L31 5 L43 13" fill="#D6A773" stroke="#29231F" stroke-width="2.8" stroke-linejoin="round"></path><path d="M24 17 V37 M32 17 V37" stroke="#75492D" stroke-width="2"></path><rect x="17" y="23" width="19" height="8" rx="1.5" fill="#EBD7AF" stroke="#64462E" stroke-width="1"></rect></svg></button><div id="jf-malli-quip" class="jf-quip" role="status" hidden=""></div><!-- ORÐALISTI --><section id="jf-malli-glossary" class="jf-glossary" role="dialog" aria-modal="false" aria-labelledby="jf-malli-title" hidden=""><div class="jf-gloss-head"><div><span class="eyebrow">Malli · Jarðfrøði</span><h2 id="jf-malli-title">Tú kanst eisini spyrja meg!</h2></div><button id="jf-malli-close" class="jf-close" type="button" aria-label="Lat aftur">×</button></div><div class="jf-search-area"><label for="jf-malli-search">Leita eftir orði</label><div class="jf-search-row"><input id="jf-malli-search" class="jf-search" type="search" placeholder="t.d. poknur, kjarni, ísur" autocomplete="off" aria-controls="jf-malli-word-list"><button id="jf-malli-clear" class="jf-clear" type="button">
+          Reinsa
+        </button></div></div><p id="jf-malli-count" class="jf-result-count" aria-live="polite"></p><div id="jf-malli-definition" class="jf-definition" aria-live="polite" hidden=""></div><div id="jf-malli-word-list" class="jf-word-list" role="group" aria-label="Jarðfrøðilig orð"></div><p id="jf-malli-empty" class="jf-no-results" hidden="">
+      Einki orð funnið. Royn eitt annað orð.
+    </p><div class="jf-gloss-footer"><button id="jf-malli-fjal" class="jf-fjal" type="button">
+        Legg Malla í kassan
+      </button><a href="/jardfrida/ordalisti">Allur orðalistin →</a></div></section></div><script>
+(function () {
+  const root = document.getElementById('jf-malli-widget');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+
+  /* Skal lítli kassin vera eftir, tá Malli er horvin?
+     false = alt horvnar, til síðan verður endurlisin. */
+  const JF_VIS_AFTUR = true;
+
+  const rock = root.querySelector('#jf-malli-rock');
+  const panel = root.querySelector('#jf-malli-glossary');
+  const closeBtn = root.querySelector('#jf-malli-close');
+  const search = root.querySelector('#jf-malli-search');
+  const clearBtn = root.querySelector('#jf-malli-clear');
+  const list = root.querySelector('#jf-malli-word-list');
+  const definition = root.querySelector('#jf-malli-definition');
+  const count = root.querySelector('#jf-malli-count');
+  const empty = root.querySelector('#jf-malli-empty');
+  const quip = root.querySelector('#jf-malli-quip');
+  const kassi = root.querySelector('#jf-malli-kassi');
+  const kassiTekst = root.querySelector('#jf-malli-kassi-tekst');
+  const afturBtn = root.querySelector('#jf-malli-aftur');
+  const fjalBtn = root.querySelector('#jf-malli-fjal');
+
+  if (!JF_VIS_AFTUR) afturBtn.remove();
+
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  /* ORÐALISTIN ÚR UPPRUNALIGU PROTOTYPUNI */
+
+  const TERMS = [
+    ['Poknur (smá hol)',
+     'Poknur eru poknur í basalti. Tær eru eftir gassbløðrum í grótbræðingini. Tá ið grótbræðingin storknaði, vóru poknurnar eftir í grótinum.'],
+
+    ['Fyltar poknur',
+     'Poknur, sum seinni eru fyltar við mineralum. Vatn hevur seyrað gjøgnum grótið, og mineral eru úrskild inni í poknunum. Tað kunnu til dømis vera soðsteinar (zeolittar) ella kalsitt. Basalt við nógvum fyltum poknum verður kallað mandlugrót.'],
+
+    ['Hvítar mineralæðrar',
+     'Rivur ella sprungur í grótinum, sum seinni eru fyltar við mineralum. Rivur og sprungur kunnu ávirka, hvussu støðugt grótið er.'],
+
+    ['Ljós krystall',
+     'Ljós krystall í basalti eru ofta plagioklas (feldspatt).'],
+
+    ['Grøn korn',
+     'Grøn korn í basaltinum kunnu vera olivin. Olivin kann síggjast sum grøn krystall í basaltinum.'],
+
+    ['Reyðligur litur',
+     'Reyðligur litur kann benda á veðrað grót ella royðugrót. Royðugrót er legugrýti millum basaltfláirnar, ofta úr gosøsku og basaltsandi. Men reytt tilfar er ikki altíð royðugrót.'],
+
+    ['Basalt',
+     'Gráa og svarta grótið í modellinum er basalt.'],
+
+    ['Kjarni',
+     'Ein langur grótstavur, sum verður boraður upp úr undirgrundini.'],
+
+    ['Kol',
+     'Í Suðuroy finnast kolaeygu og kolløg millum basaltfláirnar.'],
+
+    ['Kjarnaboring',
+     'Jarðfrøðingar bora niður í grótið og taka ein kjarna upp. Kjarnin vísir, hvussu grótið sær út niðri í undirgrundini.'],
+
+    ['Mandlugrót',
+     'Basalt við nógvum fyltum poknum.'],
+
+    ['Royðugrót',
+     'Legugrýti millum basaltfláirnar. Royðugrót er ofta gjørt úr gosøsku og basaltsandi. Reytt tilfar er tó ikki altíð royðugrót.'],
+
+    ['Kantutur',
+     'Ein steinur við hvøssum kantum.'],
+
+    ['Avrundaður',
+     'Ein steinur, sum hevur mist kantarnar og er vorðin rundari.'],
+
+    ['Slíta',
+     'Vatn, ísur og vindur slíta grótið. Tá verða kantarnir minni, og steinurin verður rundari.'],
+
+    ['Jøkulsísur',
+     'Ísur, sum liggur yvir landinum í langa tíð og skríður spakuliga.'],
+
+    ['Ístíð',
+     'Ein long tíð, tá ið jøkulsísur lá yvir stórum pørtum av landinum.'],
+
+    ['Skøvur',
+     'Smá merki í grótinum. Sandur og steinar í ísinum kunnu gera skøvur, tá ið ísurin skríður.'],
+
+    ['Modell',
+     'Eitt modell er ein einfaldað útgáva av onkrum, sum hendir í veruleikanum. Royndin við sproytuni vísir, hvat kann henda, tá ið vatn frystir í eini rivu. Ísterningurin við sandi og steinum er eitt einfalt modell av, hvussu jøkulsísur kann flyta tilfar og máa undirlagið.'],
+
+    ['Máa',
+     'Sandur og steinar, sum jøkulsísurin dregur við sær, máa grótið. Tá kunnu skøvur koma í grótið.'],
+
+    ['Tæring',
+     'Veður, vatn og frost bróta og tæra grótið, har tað liggur.'],
+
+    ['Morena',
+     'Blandað, leyst tilfar, t.d. grót, sandur og leirur, sum jøkulsísur hevur flutt við sær og lagt frá sær.'],
+
+    ['Frostsprenging / frostsprongt grót',
+     'Tá ið vatn frystir í rivum og gloprum í grótinum, tekur ísurin meira pláss enn vatnið og kann trýsta grótið sundur. Jarðfeingi brúkar heitið »frostsprongt grót« um grót, sum er brotið niður á henda hátt.'],
+
+    ['Ísskøvur',
+     'Skøvur í føstum gróti, sum eru komnar, tá ið jøkulsísur við sandi og steinum hevur brýnt og skavað helluna. Skøvurnar kunnu geva ábending um, hvønn veg ísurin ferðaðist.'],
+
+    ['Urð',
+     'Leyst grót, ofta kantut, sum er dottið ella skrætt niður og liggur undir hamri ella øðrum brattlendi.']
+  ];
+
+  TERMS.sort((a,b) => a[0].localeCompare(b[0], 'fo'));
+
+  let selectedWord = null;
+
+  function normalize(text) {
+    return text.toLocaleLowerCase('fo')
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '');
+  }
+
+  function showDefinition(word, description, button) {
+    selectedWord = word;
+
+    definition.replaceChildren();
+
+    const heading = document.createElement('strong');
+    heading.textContent = word;
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = description;
+
+    definition.append(heading, paragraph);
+    definition.hidden = false;
+    definition.scrollTop = 0;
+
+    list.querySelectorAll('.jf-word').forEach(b => {
+      b.setAttribute(
+        'aria-pressed',
+        String(b === button)
+      );
+    });
+  }
+
+  const wordButtons = TERMS.map(([word, description]) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'jf-word';
+    button.textContent = word;
+    button.setAttribute('aria-pressed', 'false');
+
+    button.addEventListener('click', () => {
+      showDefinition(word, description, button);
+    });
+
+    list.appendChild(button);
+    return {button, word, description};
+  });
+
+  function filterWords() {
+    const query = normalize(search.value.trim());
+    let visible = 0;
+
+    wordButtons.forEach(item => {
+      const searchable = normalize(
+        item.word + ' ' + item.description
+      );
+
+      const matches = !query || searchable.includes(query);
+
+      item.button.hidden = !matches;
+      if (matches) visible++;
+    });
+
+    count.textContent = query
+      ? visible + ' av ' + TERMS.length + ' orðum'
+      : TERMS.length + ' orð · Vel eitt orð';
+
+    empty.hidden = visible !== 0;
+
+    list.scrollTop = 0;
+  }
+
+  search.addEventListener('input', filterWords);
+
+  clearBtn.addEventListener('click', () => {
+    search.value = '';
+    filterWords();
+    search.focus();
+  });
+
+  filterWords();
+
+  /* LATA UPP OG AFTUR */
+
+  function openGlossary() {
+    search.value = '';
+    selectedWord = null;
+    definition.hidden = true;
+
+    wordButtons.forEach(item => {
+      item.button.setAttribute('aria-pressed', 'false');
+    });
+
+    filterWords();
+
+    panel.hidden = false;
+    rock.setAttribute('aria-expanded', 'true');
+
+    search.focus({preventScroll:true});
+  }
+
+  function closeGlossary(returnFocus = false) {
+    if (panel.hidden) return;
+
+    panel.hidden = true;
+    rock.setAttribute('aria-expanded', 'false');
+
+    if (returnFocus) {
+      rock.focus({preventScroll:true});
+    }
+  }
+
+  closeBtn.addEventListener('click', () => {
+    closeGlossary(true);
+  });
+
+  /* KLIK UTTANFYRI ORÐALISTAN = LAT AFTUR */
+  document.addEventListener('pointerdown', event => {
+    if (panel.hidden) return;
+    if (panel.contains(event.target)) return;
+    if (rock.contains(event.target)) return;
+
+    closeGlossary();
+  }, true);
+
+  /* ESC = LAT AFTUR */
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !panel.hidden) {
+      closeGlossary(true);
+    }
+  });
+
+  /* MALLI KANN KASTAST */
+
+  const QUIPS = [
+    'Ái! Ansa tær!',
+    'Eg rulli, tí eg eri rundur!',
+    'Vatnið skumpaði og rullaði meg í mong ár.',
+    'Kantutir steinar rulla ikki so væl!',
+    'Hoyyy!',
+    'Kasta meg aftur!',
+    'Eg eri basalt – eg toli nógv.',
+    'Svimbul…'
+  ];
+
+  let x, y;
+  let vx = 0, vy = 0;
+  let angle = 0;
+  let animation = 0;
+  let lastTime = 0;
+  let drag = null;
+  let history = [];
+  let ignoreClick = false;
+  let quipTimer = null;
+
+  /* Lítill margi niðast og til høgru */
+  function bounds() {
+    const styles = getComputedStyle(root);
+    const safeBottom = parseInt(styles.getPropertyValue('--jf-malli-nidast'), 10) || 20;
+    const safeRight = parseInt(styles.getPropertyValue('--jf-malli-hogra'), 10) || 24;
+
+    return [
+      Math.max(0, window.innerWidth - rock.offsetWidth - safeRight),
+      Math.max(
+        0,
+        window.innerHeight - rock.offsetHeight - safeBottom
+      )
+    ];
+  }
+
+  function place() {
+    rock.style.left = x + 'px';
+    rock.style.top = y + 'px';
+    rock.style.transform = 'rotate(' + angle + 'rad)';
+
+    const qWidth = quip.offsetWidth || 190;
+    const qHeight = quip.offsetHeight || 36;
+
+    quip.style.left = Math.max(
+      8,
+      Math.min(window.innerWidth - qWidth - 8, x - 70)
+    ) + 'px';
+
+    quip.style.top = (
+      y > 70
+        ? y - qHeight - 12
+        : y + rock.offsetHeight + 8
+    ) + 'px';
+  }
+
+  function init() {
+    if (x !== undefined) return;
+
+    const rect = rock.getBoundingClientRect();
+
+    x = rect.left;
+    y = rect.top;
+
+    rock.style.right = 'auto';
+    rock.style.bottom = 'auto';
+
+    place();
+  }
+
+  function say(text) {
+    quip.textContent = text ||
+      QUIPS[Math.floor(Math.random() * QUIPS.length)];
+
+    quip.hidden = false;
+    place();
+
+    clearTimeout(quipTimer);
+    quipTimer = setTimeout(() => {
+      quip.hidden = true;
+    }, 1800);
+  }
+
+  function tick(now) {
+    const dt = Math.min(.033, Math.max(0, (now-lastTime)/1000));
+    lastTime = now;
+
+    const [maxX,maxY] = bounds();
+
+    if (!drag) {
+      vy += 2200 * dt;
+      x += vx * dt;
+      y += vy * dt;
+
+      if (x < 0) {
+        x = 0;
+        vx = -vx * .6;
+      }
+      if (x > maxX) {
+        x = maxX;
+        vx = -vx * .6;
+      }
+      if (y < 0) {
+        y = 0;
+        vy = -vy * .5;
+      }
+      if (y > maxY) {
+        y = maxY;
+        vy = -vy * .5;
+        vx *= .9;
+
+        if (Math.abs(vy) < 80) vy = 0;
+      }
+
+      angle += vx * dt / Math.max(1,rock.offsetWidth/2);
+
+      if (y >= maxY && vy === 0) {
+        vx *= .94;
+
+        if (Math.abs(vx) < 6) {
+          vx = 0;
+          place();
+          animation = 0;
+          return;
+        }
+      }
+    }
+
+    place();
+    animation = requestAnimationFrame(tick);
+  }
+
+  function startAnimation() {
+    if (animation || reducedMotion) return;
+
+    lastTime = performance.now();
+    animation = requestAnimationFrame(tick);
+  }
+
+  function hop() {
+    init();
+
+    if (reducedMotion) return;
+
+    vy = -650;
+    vx = (Math.random()-.5)*500;
+
+    startAnimation();
+  }
+
+  /* KASSIN – VÍSA, LÝSA OG LEGGJA MALLA INN */
+
+  function visKassa(on) {
+    kassi.classList.toggle('jf-kassi--synlig', on);
+
+    if (!on) {
+      kassi.classList.remove('jf-kassi--klar');
+      kassiTekst.textContent = 'Legg Malla inn';
+    }
+  }
+
+  /* Er Malli yvir kassanum? */
+  function yvirKassa() {
+    const k = kassi.querySelector('svg').getBoundingClientRect();
+    const r = rock.getBoundingClientRect();
+
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+
+    return cx > k.left - 18 && cx < k.right + 18 &&
+           cy > k.top - 18 && cy < k.bottom + 18;
+  }
+
+  function merkKassa() {
+    const klar = yvirKassa();
+
+    kassi.classList.toggle('jf-kassi--klar', klar);
+    kassiTekst.textContent = klar ? 'Slepp honum nú!' : 'Legg Malla inn';
+  }
+
+  function fjalAlt() {
+    closeGlossary();
+
+    if (animation) {
+      cancelAnimationFrame(animation);
+      animation = 0;
+    }
+
+    clearTimeout(quipTimer);
+    quip.hidden = true;
+
+    visKassa(false);
+    root.classList.add('jf-horvin');
+  }
+
+  function leggIKassa() {
+    kassiTekst.textContent = 'Góða nátt, Malli!';
+
+    if (reducedMotion) {
+      fjalAlt();
+      return;
+    }
+
+    const k = kassi.querySelector('svg').getBoundingClientRect();
+    const r = rock.getBoundingClientRect();
+
+    const dx = (k.left + k.width / 2) - (r.left + r.width / 2);
+    const dy = (k.top + k.height * .55) - (r.top + r.height / 2);
+
+    rock.classList.add('jf-rock--inn');
+    rock.style.transition =
+      'transform .34s cubic-bezier(.4,.1,.8,.6), opacity .3s ease-in';
+    rock.style.transform =
+      'translate(' + dx + 'px,' + dy + 'px) rotate(' +
+      (angle + 1.1) + 'rad) scale(.16)';
+    rock.style.opacity = '0';
+
+    setTimeout(fjalAlt, 370);
+  }
+
+  function latUtAftur() {
+    root.classList.remove('jf-horvin');
+
+    rock.classList.remove('jf-rock--inn');
+    rock.style.transition = '';
+    rock.style.opacity = '';
+    rock.style.transform = '';
+    rock.style.left = '';
+    rock.style.top = '';
+    rock.style.right = '';
+    rock.style.bottom = '';
+
+    x = undefined;
+    y = undefined;
+    vx = 0;
+    vy = 0;
+    angle = 0;
+
+    rock.focus({preventScroll:true});
+  }
+
+  if (afturBtn) {
+    afturBtn.addEventListener('click', latUtAftur);
+  }
+
+  fjalBtn.addEventListener('click', () => {
+    init();
+    visKassa(true);
+    leggIKassa();
+  });
+
+  rock.addEventListener('pointerdown', event => {
+    if (event.button !== undefined && event.button !== 0) return;
+
+    init();
+    ignoreClick = false;
+
+    if (animation) {
+      cancelAnimationFrame(animation);
+      animation = 0;
+    }
+
+    rock.setPointerCapture(event.pointerId);
+
+    drag = {
+      dx:event.clientX-x,
+      dy:event.clientY-y,
+      sx:event.clientX,
+      sy:event.clientY
+    };
+
+    history = [
+      [event.clientX,event.clientY,performance.now()]
+    ];
+
+    vx = 0;
+    vy = 0;
+  });
+
+  rock.addEventListener('pointermove', event => {
+    if (!drag || reducedMotion) return;
+
+    const [maxX,maxY] = bounds();
+
+    x = Math.max(
+      0,
+      Math.min(maxX,event.clientX-drag.dx)
+    );
+
+    y = Math.max(
+      0,
+      Math.min(maxY,event.clientY-drag.dy)
+    );
+
+    history.push([
+      event.clientX,event.clientY,performance.now()
+    ]);
+
+    if (history.length > 5) history.shift();
+
+    place();
+
+    /* Kassin kemur fram, tá Malli veruliga verður drigin */
+    const moved = Math.hypot(
+      event.clientX-drag.sx,
+      event.clientY-drag.sy
+    );
+
+    if (moved > 8) {
+      visKassa(true);
+      merkKassa();
+    }
+  });
+
+  rock.addEventListener('pointerup', event => {
+    if (!drag) return;
+
+    const distance = Math.hypot(
+      event.clientX-drag.sx,
+      event.clientY-drag.sy
+    );
+
+    drag = null;
+
+    if (distance < 8 || reducedMotion) {
+      visKassa(false);
+      return; /* Eitt vanligt klikk verður handfarið niðanfyri */
+    }
+
+    ignoreClick = true;
+
+    /* SLEPT OMAN Í KASSAN = ALT HORVNAR */
+    if (yvirKassa()) {
+      leggIKassa();
+      return;
+    }
+
+    visKassa(false);
+
+    const first = history[0];
+    const last = history[history.length-1];
+    const duration = Math.max(
+      .016,
+      (last[2]-first[2])/1000
+    );
+
+    vx = Math.max(
+      -2600,
+      Math.min(2600,(last[0]-first[0])/duration)
+    );
+
+    vy = Math.max(
+      -2600,
+      Math.min(2600,(last[1]-first[1])/duration)
+    );
+
+    say();
+    startAnimation();
+  });
+
+  rock.addEventListener('pointercancel', () => {
+    drag = null;
+    visKassa(false);
+  });
+
+  /* VANLIGT KLIKK: LAT ORÐALISTAN UPP/AFTUR */
+  rock.addEventListener('click', event => {
+    if (ignoreClick && event.detail !== 0) {
+      ignoreClick = false;
+      return;
+    }
+
+    if (panel.hidden) {
+      openGlossary();
+      hop();
+    } else {
+      closeGlossary();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (x === undefined) return;
+
+    const [maxX,maxY] = bounds();
+    x = Math.max(0,Math.min(maxX,x));
+    y = Math.max(0,Math.min(maxY,y));
+    place();
+  });
+
+})();
+</script></div></div></div></div></div><!--TYPO3SEARCH_end--></div></div></div>
+</body>
+</html>

@@ -108,26 +108,6 @@
 .jf .jf-say svg.jf-andlit-pop { animation:jfAndlit .38s cubic-bezier(.3,1.5,.5,1); }
 @keyframes jfAndlit { 0%{transform:scale(.86) rotate(-4deg)} 60%{transform:scale(1.08) rotate(3deg)} 100%{transform:none} }
 @media(prefers-reduced-motion:reduce){ .jf .jf-say svg.jf-andlit-pop { animation:none; } }
-/* LAGKØKAN */
-.jf .jf-lk-box svg { display:block; width:100%; height:auto; background:#EAF2F4; }
-.jf .jf-lk-tal { font:600 .85rem/1.3 var(--mono); color:var(--ink-soft); margin-left:auto; }
-.jf .jf-btn2[disabled] { opacity:.4; cursor:not-allowed; }
-.jf .jf-tekstknappur.jf-lk-aftur { appearance:none; border:0; background:none; padding:0; color:var(--sea); font:600 .85rem/1.4 var(--mono); text-decoration:underline; cursor:pointer; }
-.jf .jf-lk-kelda { margin:0; font-size:.85rem; color:var(--ink-soft); }
-#lagkaka .lk-lag { transition:fill 1.6s ease; }
-#lagkaka .lk-pokk { transition:opacity 1s ease 1.2s; }
-#lagkaka .lk-plantur > * { transform-box:fill-box; transform-origin:50% 100%; animation:lk-vaks .9s cubic-bezier(.3,1.4,.5,1) both; }
-@keyframes lk-vaks { from { transform:scale(0); } to { transform:scale(1); } }
-#lagkaka .lk-plantur.lk-burt { opacity:0; transition:opacity .6s ease; }
-#lagkaka .lk-royd { animation:lk-inn .8s ease both; }
-@keyframes lk-inn { from { opacity:0; } to { opacity:1; } }
-#lagkaka .lk-hit { fill:transparent; cursor:pointer; }
-#lagkaka .lk-hit:hover { fill:rgba(242,194,48,.18); }
-#lagkaka .lk-hit.lk-valt { fill:rgba(242,194,48,.35); stroke:#C99A12; stroke-width:3; }
-#lagkaka .lk-hit.lk-rætt { fill:rgba(255,255,255,.08); stroke:#8DBA5A; stroke-width:2; stroke-dasharray:5 4; cursor:default; }
-#lagkaka .lk-hit.lk-skeivt { fill:rgba(180,80,63,.35); stroke:#B4503F; stroke-width:3; }
-#lagkaka .lk-band { stroke:#5E7D35; stroke-width:3; stroke-dasharray:6 5; fill:none; animation:lk-inn .5s ease both; }
-@media(prefers-reduced-motion:reduce){ #lagkaka .lk-plantur > *, #lagkaka .lk-royd, #lagkaka .lk-band { animation:none; } #lagkaka .lk-lag, #lagkaka .lk-pokk { transition:none; } }
 </style>
 </head>
 <body class="jf-sida">
@@ -255,7 +235,7 @@
           Hetta eru veruligir kjarnar í goymsluni hjá Jarðfeingi. Hvítu blettirnir eru fyltar poknur – júst tey, tú leitar eftir á skerminum. Kjarnin á skerminum er ein tekning; hesin er grót.
         </figcaption></figure></article><article class="jf-panel"><span class="jf-tag jf-stone">Veruligir steinar</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Nú skulu tit hyggja at veruligum steinum. Teir kunnu tit nerta við!«</p></div><h2>Nú við veruligum steinum</h2><ol class="jf-steps"><li>Kenn eftir steininum. Er hann slættur ella grovur? Tungur ella lættur?</li><li>Hygg við sjóneykuni. Finnur tú poknur, fyltar poknur, ljós krystall, grøn korn, hvítar mineralæðrar ella reyðligan lit?</li><li>Er steinurin eins innaní og uttaná? Ofta er uttasta lagið brúnt ella ryðlitt, tí grótið er veðrað.</li><li>Brúkið samanberingarkortini: hvønn lit hevur grótið, hvussu nógvar poknur eru, og hvussu stór eru kornini?</li><li>Tekna steinin í loggbókina.</li></ol><p class="jf-hint"><b>Gott ráð:</b> Ger steinin eitt sindur vátan. So síggja tit litirnar betur.</p><figure class="jf-foto"><img width="1600" height="1200" src="/jardfrida/myndir/hjalla-04-lup.jpg" alt="Jarðfrøðingurin Irena kannar ein kjarna við sjóneyku." loading="lazy"><figcaption><span class="jf-hvar">Hjalla · 18.09.2026</span>
           Irena er jarðfrøðingur hjá Jarðfeingi. Hon ger júst tað, tú skalt gera nú: hyggur at grótinum við sjóneyku, áðrenn hon sigur, hvat tað er.
-        </figcaption></figure><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Eg havi eisini poknur og krystall. Kanst tú finna tey á mær?«</p></div></article></div></section><!-- ============ 2 · MÍN STEINUR ============ --><section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-stone">Veruligir steinar</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Finn ein stein, og vís flokkinum hann.«</p></div><h2>Mín steinur</h2><ol class="jf-steps"><li>Finn ein stein við skúlan ella heima.</li><li>Tak eina mynd av steininum. Bert av steininum – ikki av tær sjálvum ella øðrum.</li><li>Legg myndina á <em>Okkara steinar</em> niðanfyri. Skriva, hvar tú fanst steinin, hvat tú leggur merki til við honum, og hvat tú undrast á.</li></ol></article><article class="jf-panel"><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Ísur og vatn hava máað burturav mær, so nú eri eg rundur. Er tín steinur rundur ella kantutur?«</p></div><h2>Søgan hjá Malla</h2><div class="jf-journey" aria-label="Søgan hjá Malla: eitt petti brotnar úr fjallinum, ísurin flytur steinin, og vatnið fær steinin at rulla, til hann er rundur."><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><rect x="-56" y="-44" width="112" height="88" fill="#7A8086" stroke="#1E2326" stroke-width="4"></rect><rect x="-56" y="-44" width="112" height="22" fill="#5F7A5B" stroke="#1E2326" stroke-width="4"></rect><rect x="-56" y="12" width="112" height="10" fill="#A4533A"></rect><path d="M10 -22 L18 -2 L8 10 L16 44 M18 -2 L56 -8" stroke="#1E2326" stroke-width="3" fill="none"></path></svg>Partur av fjallinum</figure><span class="jf-arr">eitt petti brotnar<br>úr fjallinum →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-48 20 L-40 -30 L-6 -46 L30 -36 L48 -4 L36 34 L-10 44 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path></svg>Kantutur</figure><span class="jf-arr">ísurin flytur<br>steinin →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-50 14 C-50 -24 -24 -44 6 -44 C34 -40 50 -16 46 12 C44 36 18 44 -8 44 C-30 44 -50 36 -50 14 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"></path></svg>Kantarnir slítast</figure><span class="jf-arr">vatnið fær<br>steinin at rulla →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-52 6 C-52 -26 -24 -38 4 -38 C34 -38 54 -22 52 6 C50 30 28 38 0 38 C-28 38 -52 30 -52 6 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"></path></svg>Rundur</figure></div></article><article class="jf-panel"><h2>Okkara steinar</h2><div class="jf-gallery" id="gallery"></div><p class="jf-hint"><b>Hygg at steinunum hjá hinum:</b> Finn ein stein við poknum. Finn ein stein við ljósum krystallum. Finn ein reyðan stein. Finn ein rundan stein og ein kantutan stein.</p></article></div></section><!-- ============ 3 · KJARNUROYNDIR OG TUNNIL ============ --><section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden=""><div class="jf-stack"><article class="jf-panel" id="lagkakaPanel"><span class="jf-tag jf-screen">Skermur</span><h2>Lagkøkan – soleiðis vórðu Føroyar til</h2><p class="jf-task">Bygg Føroyar lag fyri lag. Síðan skerið tit eina vík og finna løgini, sum passa saman.</p><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p id="lkTala" aria-live="polite"><span class="jf-who">Jarðfríða</span><span id="lkTekstur">»Fyri umleið 60 milliónum árum vóru eingar Føroyar. Trýst á »Eldgos«, og bygg landið lag fyri lag – eins og eina lagkøku.«</span></p></div><div class="jf-section-box jf-lk-box"><svg id="lagkaka" viewBox="0 0 640 330" role="img" aria-label="Eitt snitt gjøgnum landið, har tú byggir løg av basalti og royðugróti"></svg></div><div class="jf-row" id="lkKnappar"><button class="jf-btn2 jf-primary" type="button" id="lkEldgos">🌋 Eldgos</button><button class="jf-btn2" type="button" id="lkPausa" disabled>🌿 Pausa</button><button class="jf-btn2" type="button" id="lkVik" hidden>🌊 Skera eina vík</button><button class="jf-btn2" type="button" id="lkGongKn" hidden>Ein gong</button><span class="jf-lk-tal" id="lkTal">0 løg</span></div><div class="jf-row" id="lkSpurn" hidden><button class="jf-btn2" type="button" data-lk-svar="eldri">Gongin er eldri</button><button class="jf-btn2" type="button" data-lk-svar="yngri">Gongin er yngri</button></div><div id="lkFeedback" class="jf-feedback" hidden aria-live="polite"></div><div class="jf-row"><button class="jf-tekstknappur jf-lk-aftur" type="button" id="lkAftur">Byrja umaftur</button></div><p class="jf-hint"><b>Tosið saman:</b> Hvussu kunnu tit síggja, at ein pausa millum tvey eldgos var long? Hvar í kjarnunum sóu tit reytt?</p><p class="jf-lk-kelda">Byggir á GeoSkúla-tilfarið hjá Jarðfeingi.</p></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Vit skulu gera ein tunnil gjøgnum fjallið. Men vit síggja ikki inn í fjallið. Tí bora vit og taka kjarnar upp.«</p></div><h2>Bora í fjallið hjá Jarðfríðu</h2><p class="jf-task">Trýst á B1, B2 og B3 fyri at bora.</p><div class="jf-section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Eitt fjall við trimum støðum at bora: B1, B2 og B3"></svg></div><div class="jf-row"><button class="jf-btn2" data-drill="B1">Bora við B1</button><button class="jf-btn2" data-drill="B2">Bora við B2</button><button class="jf-btn2" data-drill="B3">Bora við B3</button></div><div class="jf-tray" id="tray" aria-live="polite"></div><div class="jf-legend" aria-label="Hvat litirnir merkja"><span><i style="background:#5F7A5B"></i>grønt = mold</span><span><i style="background:#7A8086"></i>grátt = basalt</span><span><i style="background:#2E3236"></i>svart = basalt</span><span><i style="background:#A4533A"></i>reytt = royðugrót / bleytari millumløg</span></div><p class="jf-hint"><b>Tosið saman:</b> Er reytt í øllum trimum kjarnunum? Liggur reyða lagið í somu hædd í øllum trimum?</p><figure class="jf-foto"><img width="768" height="576" src="/jardfrida/myndir/hjalla-01-kjarnar-hond.jpg" alt="Goymsluhøllin á Hjalla við nógvum kassum av kjarnum." loading="lazy"><figcaption><span class="jf-hvar">Hjalla · 18.09.2026</span>
+        </figcaption></figure><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Eg havi eisini poknur og krystall. Kanst tú finna tey á mær?«</p></div></article></div></section><!-- ============ 2 · MÍN STEINUR ============ --><section id="phase-l2" role="tabpanel" aria-labelledby="tab-l2" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-stone">Veruligir steinar</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Nú ert tú jarðfrøðingur! Finn ein stein, og vís flokkinum hann.«</p></div><h2>Mín steinur</h2><ol class="jf-steps"><li>Finn ein stein við skúlan ella heima.</li><li>Tak eina mynd av steininum. Bert av steininum – ikki av tær sjálvum ella øðrum.</li><li>Legg myndina á <em>Okkara steinar</em> niðanfyri. Skriva, hvar tú fanst steinin, hvat tú leggur merki til við honum, og hvat tú undrast á.</li></ol></article><article class="jf-panel"><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli"></use></svg><p><span class="jf-who">Malli</span>»Ísur og vatn hava máað burturav mær, so nú eri eg rundur. Er tín steinur rundur ella kantutur?«</p></div><h2>Søgan hjá Malla</h2><div class="jf-journey" aria-label="Søgan hjá Malla: eitt petti brotnar úr fjallinum, ísurin flytur steinin, og vatnið fær steinin at rulla, til hann er rundur."><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><rect x="-56" y="-44" width="112" height="88" fill="#7A8086" stroke="#1E2326" stroke-width="4"></rect><rect x="-56" y="-44" width="112" height="22" fill="#5F7A5B" stroke="#1E2326" stroke-width="4"></rect><rect x="-56" y="12" width="112" height="10" fill="#A4533A"></rect><path d="M10 -22 L18 -2 L8 10 L16 44 M18 -2 L56 -8" stroke="#1E2326" stroke-width="3" fill="none"></path></svg>Partur av fjallinum</figure><span class="jf-arr">eitt petti brotnar<br>úr fjallinum →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-48 20 L-40 -30 L-6 -46 L30 -36 L48 -4 L36 34 L-10 44 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"></path></svg>Kantutur</figure><span class="jf-arr">ísurin flytur<br>steinin →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-50 14 C-50 -24 -24 -44 6 -44 C34 -40 50 -16 46 12 C44 36 18 44 -8 44 C-30 44 -50 36 -50 14 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"></path></svg>Kantarnir slítast</figure><span class="jf-arr">vatnið fær<br>steinin at rulla →</span><figure><svg viewBox="-60 -50 120 100" aria-hidden="true"><path d="M-52 6 C-52 -26 -24 -38 4 -38 C34 -38 54 -22 52 6 C50 30 28 38 0 38 C-28 38 -52 30 -52 6 Z" fill="#7E858B" stroke="#1E2326" stroke-width="4"></path></svg>Rundur</figure></div></article><article class="jf-panel"><h2>Okkara steinar</h2><div class="jf-gallery" id="gallery"></div><p class="jf-hint"><b>Hygg at steinunum hjá hinum:</b> Finn ein stein við poknum. Finn ein stein við ljósum krystallum. Finn ein reyðan stein. Finn ein rundan stein og ein kantutan stein.</p></article></div></section><!-- ============ 3 · KJARNUROYNDIR OG TUNNIL ============ --><section id="phase-l3" role="tabpanel" aria-labelledby="tab-l3" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Vit skulu gera ein tunnil gjøgnum fjallið. Men vit síggja ikki inn í fjallið. Tí bora vit og taka kjarnar upp.«</p></div><h2>Bora í fjallið hjá Jarðfríðu</h2><p class="jf-task">Trýst á B1, B2 og B3 fyri at bora.</p><div class="jf-section-box"><svg id="mtn" viewBox="0 0 640 330" role="img" aria-label="Eitt fjall við trimum støðum at bora: B1, B2 og B3"></svg></div><div class="jf-row"><button class="jf-btn2" data-drill="B1">Bora við B1</button><button class="jf-btn2" data-drill="B2">Bora við B2</button><button class="jf-btn2" data-drill="B3">Bora við B3</button></div><div class="jf-tray" id="tray" aria-live="polite"></div><div class="jf-legend" aria-label="Hvat litirnir merkja"><span><i style="background:#5F7A5B"></i>grønt = mold</span><span><i style="background:#7A8086"></i>grátt = basalt</span><span><i style="background:#2E3236"></i>svart = basalt</span><span><i style="background:#A4533A"></i>reytt = royðugrót / bleytari millumløg</span></div><p class="jf-hint"><b>Vilt tú vita, hvussu løgini í fjallinum vórðu til?</b> Royn Lagkøkuna í gongdini <a href="/jardfrida/gongdir/hvussu-vordu-foroyar-til#tab-l2">Hvussu vórðu Føroyar til?</a></p><p class="jf-hint"><b>Tosið saman:</b> Er reytt í øllum trimum kjarnunum? Liggur reyða lagið í somu hædd í øllum trimum?</p><figure class="jf-foto"><img width="768" height="576" src="/jardfrida/myndir/hjalla-01-kjarnar-hond.jpg" alt="Goymsluhøllin á Hjalla við nógvum kassum av kjarnum." loading="lazy"><figcaption><span class="jf-hvar">Hjalla · 18.09.2026</span>
           Hvør kassi her er ein boring. Jarðfrøðingar bora ikki bert eina ferð – teir bora aftur og aftur og samanbera kjarnarnar, júst sum tú gert við B1, B2 og B3.
         </figcaption></figure></article><article class="jf-panel"><span class="jf-tag jf-screen">Skermur</span><h2>Hvat er inni í fjallinum?</h2><p class="jf-task">Fyrst metur tú – síðan letur tú fjallið upp og samanberur.</p><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Hygg at teimum trimum kjarnunum. Tekna í loggbókina, hvussu tú heldur, at løgini halda fram millum boriholini.«</p></div><ol class="jf-steps"><li>Hygg at kjarnunum úr B1, B2 og B3. Hvussu liggja løgini?</li><li>Tekna í loggbókina, hvussu tú heldur, at løgini halda fram millum boriholini.</li><li>Hví heldur tú, at løgini liggja soleiðis? Hygg aftur at B1, B2 og B3.</li><li>Tá ið tú hevur teknað tína meting, kanst tú lata fjallið upp og samanbera.</li></ol><p class="jf-hint"><b>Tekna á pappír fyrst.</b> Tað er sjálv metingin, sum hevur týdning – ikki um hon vísir seg at halda.</p><div class="jf-row"><button class="jf-btn2 jf-primary" id="cutBtn">Sker fjallið hjá Jarðfríðu í helvt</button></div><div id="cutArea" class="jf-stack" hidden=""><div class="jf-section-box"><svg id="mtnCut" viewBox="0 0 640 330" role="img" aria-label="Fjallið skorið í helvt, so tú sært løgini innaní"></svg></div><div class="jf-say jf-malli"><svg aria-hidden="true"><use href="#malli-undr"></use></svg><p><span class="jf-who">Malli</span>»Eg var eisini einaferð partur av einum fjalli!«</p></div><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Best er, at tunnilin í hesum døminum gongur gjøgnum <b>støðugt grót</b>. Reyða lagið er bleytari og kann krevja meira trygging.«</p></div><div class="jf-slider"><label for="tunnel" class="jf-task">Flyt tunnilin upp og niður</label><input type="range" id="tunnel" min="0.5" max="8" step="0.5" value="4"><div class="jf-ends" aria-hidden="true"><span>⬇ longur niðri</span><span>hægri uppi ⬆</span></div></div><div class="jf-row"><button class="jf-btn2 jf-primary" id="checkTunnel">Kanna tunnilin</button></div><div id="tunnelFeedback" class="jf-feedback" hidden="" aria-live="polite"></div></div></article></div></section><!-- ============ 4 · TYKKARA EGNA FJALL ============ --><section id="phase-l4" role="tabpanel" aria-labelledby="tab-l4" hidden=""><div class="jf-stack"><article class="jf-panel"><span class="jf-tag jf-clay">Fjall</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Nú skulu tit sjálv vera jarðfrøðingar! Tit gera eitt fjall úr gandadeiggi. Síðan skal eitt annað par finna fram til, hvat er inni í fjallinum hjá tykkum.«</p></div><h2>Gerið eitt fjall – tvey og tvey</h2><ol class="jf-steps"><li>Gerið 3–4 flatar plátur úr gandadeiggi í ymiskum litum.</li><li>Leggið pláturnar oman á hvørja aðra. Tað eru løgini í fjallinum hjá tykkum.</li><li>Formið alt til eitt fjall. Dekkið tað við einum tunnum, grønum lagi, so eingin sær løgini.</li><li>Setið trý tannsteytarar í fjallið: B1, B2 og B3.</li></ol><p class="jf-hint"><b>Loyndarmál!</b> Sigið ikki hinum, hvussu fjallið hjá tykkum sær út innaní.</p></article><article class="jf-panel"><span class="jf-tag jf-clay">Fjall</span><h2>Býtið um fjall</h2><p class="jf-task">Býtið um fjall við eitt annað par. Nú skulu tit kanna fjallið hjá teimum.</p></article><article class="jf-panel"><span class="jf-tag jf-clay">Fjall</span><h2>Takið kjarnar</h2><ol class="jf-steps"><li>Stingið eitt súgvirør beint niður við B1. Heilt niður á borðið.</li><li>Snarið eitt sindur, og dragið súgvirørið upp.</li><li>Klippið súgvirørið upp, og leggið kjarnan við síðuna av. Skrivið B1 við hana.</li><li>Gerið tað sama við B2 og B3.</li></ol></article><article class="jf-panel"><span class="jf-tag jf-clay">Fjall</span><div class="jf-say"><svg aria-hidden="true"><use href="#jf"></use></svg><p><span class="jf-who">Jarðfríða</span>»Hyggið væl at kjarnunum. Hvørjir litir síggja tit? Hvussu liggja løgini?«</p></div><h2>Gitið, og teknið</h2><p class="jf-task">Teknið, hvussu tit halda, at fjallið sær út innaní. Brúkið litirnar úr kjarnunum.</p></article><article class="jf-panel"><span class="jf-tag jf-clay">Fjall</span><h2>Skerið fjallið í helvt</h2><ol class="jf-steps"><li>Skerið fjallið í helvt eftir longdini, gjøgnum B1, B2 og B3.</li><li>Leggið tekningina við síðuna av.</li></ol><h3>Samanberið við tekningina</h3><ul class="jf-steps"><li>Hvat vísti seg at vera rætt í tekningini? Hvat var øðrvísi, enn tit væntaðu?</li><li>Hyggið aftur at kjarnunum. Hvat vístu teir tykkum, og hvat kundu tit ikki vita við vissu?</li></ul><p class="jf-hint"><b>Minnist til:</b> Tríggjar boringar vísa ikki alt, sum er millum boriholini.</p><figure class="jf-foto"><img width="639" height="421" src="/jardfrida/myndir/fjall-gandadeiggj.jpg" alt="Eitt fjall úr gandadeiggi, skorið í helvt. Løgini síggjast í ymiskum litum." loading="lazy"><figcaption><span class="jf-hvar">Soleiðis sær tað út</span>
           Eitt fjall úr gandadeiggi, skorið í helvt. Løgini liggja ikki flatt – tey bugnast. Tað er júst tað, sum ger tað trupult at gita, hvar reyða lagið liggur.
@@ -263,6 +243,8 @@
                 Jarðfríða kannar fjallið fyri ein tunnil
               </a><a href="/jardfrida/gongdir/hvadani-kom-malli">
                 Hvaðani kom Malli?
+              </a><a href="/jardfrida/gongdir/hvussu-vordu-foroyar-til">
+                Hvussu vórðu Føroyar til?
               </a></nav><nav class="jf-footer-col" aria-label="Meira"><b>Meira</b><a href="/jardfrida/ordalisti">Orðalisti</a><a href="/jardfrida/laerari">Til læraran</a><a href="/jardfrida/um-tilfarid">Um tilfarið</a></nav><nav class="jf-footer-col" aria-label="Jarðfeingi"><b>Jarðfeingi</b><a href="https://jf.fo" target="_blank" rel="noopener">
                 jf.fo
               </a><a href="https://jf.fo/laer-um-jardfrodi" target="_blank" rel="noopener">
@@ -305,243 +287,6 @@
       }
     }, 0);
   });
-})();
-</script>
-<script>
-/* LAGKØKAN – bygg Føroyar lag fyri lag (byggir á GeoSkúla-tilfarið hjá Jarðfeingi) */
-(function lagkaka(){
-  const svg = document.getElementById('lagkaka');
-  if (!svg) return;
-  const NS = 'http://www.w3.org/2000/svg';
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const kn = {
-    eldgos: document.getElementById('lkEldgos'), pausa: document.getElementById('lkPausa'),
-    vik: document.getElementById('lkVik'), gong: document.getElementById('lkGongKn'),
-    aftur: document.getElementById('lkAftur')
-  };
-  const tekstur = document.getElementById('lkTekstur');
-  const tal = document.getElementById('lkTal');
-  const spurn = document.getElementById('lkSpurn');
-  const fb = document.getElementById('lkFeedback');
-
-  const W = 640, BOTN = 296, MIN_TOPP = 64, LAG_H = 34, ROYD_H = 10;
-  const VIK = { v:250, h:390 };   // har víkin verður skorin
-  const LITIR = ['#7A8086', '#4F555B'];
-
-  const BYRJAN = '»Fyri umleið 60 milliónum árum vóru eingar Føroyar. Trýst á »Eldgos«, og bygg landið lag fyri lag – eins og eina lagkøku.«';
-  const T = {
-    eldgos1: '»Eitt risastórt eldgos! Glóandi grótbræðing rann út yvir landið og storknaði til eitt lag av basalti.«',
-    stutt:   '»Eitt nýtt eldgos beint aftaná. Steðgurin var ov stuttur til, at nakað kundi vaksa – men tú sært kortini eitt mark millum løgini.«',
-    royd:    '»Nýtt eldgos! Plantulagið varð grivið undir grótbræðingini og gjørdist til eitt reytt lag – royðugrót.«',
-    pausa:   '»Pausa! Í langa tíð var einki eldgos. Veðrið var heitt og fuktigt, og trø og plantur vuksu.«',
-    vikKlar: ' Nú hevur tú nógv løg – trýst á »Skera eina vík«, tá ið tú vilt.',
-    fullt:   '»Nú er landið nóg høgt. Trýst á »Skera eina vík«.«',
-    vik:     '»Nógv seinni skóru ísur og hav eina vík ígjøgnum løgini. Finn løgini, sum passa saman: Trýst fyrst á eitt lag til vinstru og so á sama lag til høgru.«',
-    ratt:    '»Rætt! Tey bæði passa saman.«',
-    skeivt:  '»Hesi bæði passa ikki saman. Tel løgini niðanfrá, og royn aftur.«',
-    oll:     '»Flott! Øll løgini passa saman. Einaferð hekk landið saman yvir víkina – júst sum í Boroyavík í Klaksvík.«',
-    gong:    '»Grótbræðing treingdi seg upp ígjøgnum eina rivu í løgunum og storknaði. Hetta kallast ein gong. Er gongin eldri ella yngri enn løgini rundan um?«',
-    yngri:   'Rætt! Løgini vóru har fyrst. Gongin treingdi seg seinni upp ígjøgnum tey – tí er hon yngri.',
-    eldri:   'Ikki heilt. Hygg: gongin skerst ígjøgnum løgini. Hvat var har fyrst?'
-  };
-
-  let lag, topp, seinast, plantur, nBasalt, uid, valt, ratt, fasa;
-
-  function el(t, a, f){ const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (f) f.appendChild(e); return e; }
-  function sig(t){ tekstur.textContent = t; }
-  function vis(b, on){ b.hidden = !on; }
-
-  let G = {};
-  function nullstilla(){
-    svg.replaceChildren();
-    const defs = el('defs', {}, svg);
-    const g = el('linearGradient', {id:'lkGlod', x1:0, y1:0, x2:0, y2:1}, defs);
-    el('stop', {offset:0, 'stop-color':'#FFD36E'}, g); el('stop', {offset:.5, 'stop-color':'#F28C28'}, g); el('stop', {offset:1, 'stop-color':'#C0391F'}, g);
-    G.defs = defs;
-    el('rect', {x:0, y:0, width:W, height:330, fill:'#EAF2F4'}, svg);
-    // Eldra grótið niðast
-    el('rect', {x:0, y:BOTN, width:W, height:330-BOTN, fill:'#5C6166'}, svg);
-    el('text', {x:12, y:BOTN+22, fill:'#E8E6E0', 'font-size':13, 'font-family':'IBM Plex Mono, monospace'}, svg).textContent = 'eldri grót';
-    G.log = el('g', {}, svg); G.plantur = el('g', {}, svg); G.vik = el('g', {}, svg);
-    G.gong = el('g', {}, svg); G.band = el('g', {}, svg); G.hit = el('g', {}, svg);
-    lag = []; topp = BOTN; seinast = null; plantur = null; nBasalt = 0; uid = 0; valt = null; ratt = 0; fasa = 'bygg';
-    sig(BYRJAN);
-    kn.eldgos.disabled = false; kn.pausa.disabled = true;
-    vis(kn.eldgos, true); vis(kn.pausa, true); vis(kn.vik, false); vis(kn.gong, false);
-    spurn.hidden = true; fb.hidden = true;
-    teljari();
-  }
-
-  function teljari(){ tal.textContent = lag.length === 1 ? '1 lag' : lag.length + ' løg'; }
-
-  function wavyTopp(y){
-    let d = 'M0 ' + (y + 2);
-    for (let x = 40; x <= W; x += 40) d += ' Q' + (x - 20) + ' ' + (y - 3 + Math.random() * 6).toFixed(1) + ' ' + x + ' ' + (y + Math.random() * 3 - 1).toFixed(1);
-    return d;
-  }
-
-  function flaedi(e, sekundir){
-    // Grótbræðingin rennur inn frá vinstru
-    if (reduce) return;
-    const id = 'lkKlipp' + (++uid);
-    const cp = el('clipPath', {id}, G.defs);
-    const r = el('rect', {x:0, y:0, width:0, height:330}, cp);
-    el('animate', {attributeName:'width', from:0, to:W, dur:sekundir + 's', fill:'freeze', begin:'indefinite'}, r);
-    e.setAttribute('clip-path', 'url(#' + id + ')');
-    r.firstChild.beginElement();
-    setTimeout(() => { e.removeAttribute('clip-path'); cp.remove(); }, sekundir * 1000 + 100);
-  }
-
-  function eldgos(){
-    if (fasa !== 'bygg' || topp - LAG_H < MIN_TOPP) return;
-    let t;
-    if (seinast === 'pausa'){
-      // Plantulagið verður til royðugrót
-      const y = topp - ROYD_H;
-      const p = plantur; plantur = null;
-      p.classList.add('lk-burt'); setTimeout(() => p.remove(), 700);
-      const r = el('path', {d: wavyTopp(y) + ' L' + W + ' ' + (topp + 2) + ' L0 ' + (topp + 2) + ' Z', fill:'#A4533A', 'class':'lk-royd'}, G.log);
-      for (let i = 0; i < 6; i++){ const x = 30 + Math.random() * (W - 60); el('path', {d:'M' + x.toFixed(0) + ' ' + (y + 5) + ' q4 -3 8 0', stroke:'#6E3524', 'stroke-width':1.4, fill:'none'}, G.log); }
-      lag.push({slag:'royd', y:y, h:ROYD_H}); topp = y;
-      t = T.royd;
-    } else {
-      t = seinast === 'eldgos' ? T.stutt : T.eldgos1;
-    }
-    const y = topp - LAG_H;
-    const litur = LITIR[nBasalt % 2];
-    const g = el('g', {}, G.log);
-    const p = el('path', {d: wavyTopp(y) + ' L' + W + ' ' + (topp + 3) + ' L0 ' + (topp + 3) + ' Z', fill:'url(#lkGlod)', stroke:'#1E2326', 'stroke-width':1.6, 'class':'lk-lag'}, g);
-    for (let i = 0; i < 10; i++){
-      el('ellipse', {cx:(20 + Math.random() * (W - 40)).toFixed(0), cy:(y + 6 + Math.random() * 6).toFixed(1), rx:2.2, ry:1.6, fill:'#25292C', 'class':'lk-pokk', opacity:0}, g);
-    }
-    flaedi(g, 1.4);
-    setTimeout(() => { p.style.fill = litur; g.querySelectorAll('.lk-pokk').forEach(c => c.setAttribute('opacity', .85)); }, reduce ? 0 : 1300);
-    lag.push({slag:'basalt', y:y, h:LAG_H}); topp = y; nBasalt++;
-    seinast = 'eldgos';
-    kn.pausa.disabled = false;
-    if (topp - LAG_H < MIN_TOPP){ kn.eldgos.disabled = true; kn.pausa.disabled = true; t = T.fullt; }
-    if (nBasalt >= 4){ vis(kn.vik, true); if (t !== T.fullt) t = t.slice(0, -1) + T.vikKlar + '«'; }
-    sig(t);
-    teljari();
-  }
-
-  function pausa(){
-    if (fasa !== 'bygg' || seinast !== 'eldgos') return;
-    seinast = 'pausa';
-    kn.pausa.disabled = true;
-    plantur = el('g', {'class':'lk-plantur'}, G.plantur);
-    el('path', {d: 'M0 ' + (topp + 1) + ' L' + W + ' ' + (topp + 1), stroke:'#5F7A5B', 'stroke-width':4}, plantur);
-    for (let i = 0; i < 9; i++){
-      const x = 24 + i * 70 + Math.random() * 30, h = 14 + Math.random() * 12;
-      const tr = el('g', {style:'animation-delay:' + (i * 90) + 'ms'}, plantur);
-      el('rect', {x:(x - 1.6).toFixed(1), y:(topp - h).toFixed(1), width:3.2, height:h.toFixed(1), fill:'#6B4A2E'}, tr);
-      el('circle', {cx:x.toFixed(1), cy:(topp - h).toFixed(1), r:(7 + Math.random() * 4).toFixed(1), fill: i % 3 ? '#5F7A5B' : '#7C9A4A'}, tr);
-    }
-    sig(T.pausa);
-  }
-
-  function skeraVik(){
-    if (fasa !== 'bygg') return;
-    fasa = 'vik';
-    vis(kn.eldgos, false); vis(kn.pausa, false); vis(kn.vik, false);
-    if (plantur){ plantur.remove(); plantur = null; }
-    const g = el('g', {}, G.vik);
-    // Víkin verður skorin heilt niður ígjøgnum øll løgini; havið fyllir botnin
-    const botnur = BOTN - 6, y0 = topp + 10;
-    const c = (8 * botnur - 2 * y0) / 6;
-    const dalur = 'M' + VIK.v + ' ' + (topp - 30) + ' L' + VIK.h + ' ' + (topp - 30) + ' L' + (VIK.h - 14) + ' ' + y0 +
-                  ' C' + (VIK.h - 26) + ' ' + c.toFixed(1) + ' ' + (VIK.v + 26) + ' ' + c.toFixed(1) + ' ' + (VIK.v + 14) + ' ' + y0 + ' Z';
-    el('path', {d:dalur, fill:'#EAF2F4'}, g);
-    const dk = el('clipPath', {id:'lkDalKlipp'}, G.defs);
-    el('path', {d:dalur}, dk);
-    el('rect', {x:VIK.v, y:BOTN - 40, width:VIK.h - VIK.v, height:60, fill:'#4E8FA8', opacity:.9, 'clip-path':'url(#lkDalKlipp)'}, g);
-    el('text', {x:(VIK.v + VIK.h) / 2, y:BOTN - 16, 'text-anchor':'middle', fill:'#fff', 'font-size':14, 'font-weight':700, 'font-family':'Atkinson Hyperlegible, sans-serif'}, g).textContent = 'vík';
-    if (!reduce){
-      const id = 'lkVikK';
-      const cp = el('clipPath', {id}, G.defs);
-      const r = el('rect', {x:0, y:0, width:W, height:0}, cp);
-      el('animate', {attributeName:'height', from:0, to:330, dur:'1.4s', fill:'freeze', begin:'indefinite'}, r);
-      g.setAttribute('clip-path', 'url(#' + id + ')'); r.firstChild.beginElement();
-      setTimeout(() => { g.removeAttribute('clip-path'); }, 1500);
-    }
-    // Trýstiøki: eitt hvørjumegin fyri hvørt lag
-    lag.forEach((l, i) => {
-      const hh = Math.max(l.h, 16), yy = l.y + l.h / 2 - hh / 2;
-      ['v','h'].forEach(sida => {
-        const x = sida === 'v' ? 0 : VIK.h, w = sida === 'v' ? VIK.v : W - VIK.h;
-        const r = el('rect', {x, y:yy.toFixed(1), width:w, height:hh.toFixed(1), 'class':'lk-hit', tabindex:0, role:'button',
-          'aria-label':'Lag ' + (i + 1) + ' niðanfrá, ' + (l.slag === 'royd' ? 'royðugrót' : 'basalt') + ', ' + (sida === 'v' ? 'vinstru' : 'høgru') + ' megin'}, G.hit);
-        r.dataset.i = i; r.dataset.sida = sida;
-        r.addEventListener('click', () => trýstLag(r));
-        r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); trýstLag(r); } });
-      });
-    });
-    sig(T.vik);
-    fb.hidden = true;
-  }
-
-  function trýstLag(r){
-    if (fasa !== 'vik' || r.classList.contains('lk-rætt')) return;
-    if (!valt || valt.dataset.sida === r.dataset.sida){
-      if (valt) valt.classList.remove('lk-valt');
-      valt = r; r.classList.add('lk-valt');
-      return;
-    }
-    const a = valt, b = r; valt = null;
-    a.classList.remove('lk-valt');
-    if (a.dataset.i === b.dataset.i){
-      a.classList.add('lk-rætt'); b.classList.add('lk-rætt');
-      const l = lag[+a.dataset.i], y = l.y + l.h / 2;
-      el('path', {d:'M' + (VIK.v - 10) + ' ' + y + ' L' + (VIK.h + 10) + ' ' + y, 'class':'lk-band'}, G.band);
-      ratt++;
-      if (ratt === lag.length){
-        fasa = 'gong'; sig(T.oll);
-        fb.hidden = false; fb.className = 'jf-feedback jf-good'; fb.textContent = 'Øll ' + lag.length + ' løgini passa saman.';
-        vis(kn.gong, true);
-      } else sig(T.ratt);
-    } else {
-      [a, b].forEach(x => { x.classList.add('lk-skeivt'); setTimeout(() => x.classList.remove('lk-skeivt'), 700); });
-      sig(T.skeivt);
-    }
-  }
-
-  function gong(){
-    if (fasa !== 'gong') return;
-    fasa = 'spurn';
-    vis(kn.gong, false);
-    const x = 128, d = 'M' + (x - 9) + ' 330 L' + (x + 7) + ' 330 L' + (x + 11) + ' ' + (BOTN - 60) + ' L' + (x + 4) + ' ' + (topp + 14) + ' L' + (x - 4) + ' ' + (topp + 14) + ' L' + (x - 2) + ' ' + (BOTN - 60) + ' Z';
-    const g = el('g', {}, G.gong);
-    const p = el('path', {d, fill:'url(#lkGlod)', stroke:'#1E2326', 'stroke-width':1.6, 'class':'lk-lag'}, g);
-    el('text', {x:x + 18, y:topp + 30, fill:'#fff', stroke:'#1E2326', 'stroke-width':3, 'paint-order':'stroke', 'font-size':14, 'font-weight':700, 'font-family':'Atkinson Hyperlegible, sans-serif'}, g).textContent = 'gong';
-    if (!reduce){
-      const id = 'lkGongK';
-      const cp = el('clipPath', {id}, G.defs);
-      const r = el('rect', {x:0, y:330, width:W, height:0}, cp);
-      el('animate', {attributeName:'y', from:330, to:0, dur:'1.6s', fill:'freeze', begin:'indefinite'}, r);
-      el('animate', {attributeName:'height', from:0, to:330, dur:'1.6s', fill:'freeze', begin:'indefinite'}, r);
-      g.setAttribute('clip-path', 'url(#' + id + ')');
-      r.querySelectorAll('animate').forEach(a => a.beginElement());
-    }
-    setTimeout(() => { p.style.fill = '#2E3236'; }, reduce ? 0 : 1600);
-    sig(T.gong);
-    fb.hidden = true;
-    spurn.hidden = false;
-  }
-
-  spurn.querySelectorAll('[data-lk-svar]').forEach(b => b.addEventListener('click', () => {
-    const rett = b.dataset.lkSvar === 'yngri';
-    fb.hidden = false;
-    fb.className = 'jf-feedback' + (rett ? ' jf-good' : '');
-    fb.textContent = rett ? T.yngri : T.eldri;
-    if (rett) spurn.hidden = true;
-  }));
-
-  kn.eldgos.addEventListener('click', eldgos);
-  kn.pausa.addEventListener('click', pausa);
-  kn.vik.addEventListener('click', skeraVik);
-  kn.gong.addEventListener('click', gong);
-  kn.aftur.addEventListener('click', nullstilla);
-  nullstilla();
 })();
 </script>
 <script src="/jardfrida/jf.js"></script><script>
