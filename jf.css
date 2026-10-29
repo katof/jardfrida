@@ -138,3 +138,14 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 .jf .jf-kent-lab input { width:16px; height:16px; margin:0; accent-color:var(--olivine); cursor:pointer; }
 .jf .jf-ord.jf-kent dt { color:var(--ink-soft); }
 .jf .jf-ord.jf-kent dt::after { content:""; }
+
+/* ---------- Merkini hjá Malla (forsíðan) ---------- */
+.jf .jf-merki-listi { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:12px; }
+.jf .jf-merki-kort { display:grid; grid-template-columns:56px 1fr; gap:12px; align-items:center; padding:12px 14px; background:var(--surface); border:1px solid var(--line); }
+.jf .jf-merki-kort svg { width:56px; height:56px; display:block; }
+.jf .jf-merki-kort b { display:block; font-size:1rem; color:var(--ink-soft); }
+.jf .jf-merki-kort span { display:block; font-size:.9rem; line-height:1.35; color:var(--ink); margin-top:2px; }
+.jf .jf-merki-kort small { display:block; font:600 .72rem/1.2 var(--mono); color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:.04em; }
+.jf .jf-merki-kort.er-fingið { border-color:var(--ink); box-shadow:2px 2px 0 var(--ink); }
+.jf .jf-merki-kort.er-fingið b { color:var(--ink); }
+.jf .jf-merki-stat { margin-top:14px; justify-content:flex-start; }

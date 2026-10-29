@@ -12,8 +12,8 @@
   function kentTekst(k, n)  { return k === 1 ? '1 av ' + n + ' er kent' : k + ' av ' + n + ' eru kend'; }
 
   /* ---------- Toast (melding í nedast) ---------- */
-  var toastEl, toastTid;
-  function melding(tekst) {
+  var toastEl, toastTid, toastRad = [], toastVisir = false;
+  function visToast(tekst, tid) {
     if (!toastEl) {
       toastEl = document.createElement('div');
       toastEl.className = 'jf-toast';
@@ -21,11 +21,73 @@
       toastEl.setAttribute('aria-live', 'polite');
       document.body.appendChild(toastEl);
     }
+    toastVisir = true;
     toastEl.textContent = tekst;
     toastEl.classList.add('er-synlig');
     clearTimeout(toastTid);
-    toastTid = setTimeout(function () { toastEl.classList.remove('er-synlig'); }, 2600);
+    toastTid = setTimeout(function () {
+      toastEl.classList.remove('er-synlig');
+      toastVisir = false;
+      if (toastRad.length) { var n = toastRad.shift(); setTimeout(function () { visToast(n[0], n[1]); }, 250); }
+    }, tid || 2600);
   }
+  /* Vanlig melding: kemur beinanvegin. Bíðimelding (merki) kemur aftaná tí, ið longu sæst. */
+  function melding(tekst) { visToast(tekst); }
+  function meldingAftana(tekst, tid) { if (toastVisir) toastRad.push([tekst, tid]); else visToast(tekst, tid); }
+
+  /* ---------- Merkini hjá Malla ---------- */
+  var MERKI = [
+    { id:'sjoneyka',     navn:'Skarpa eygað',  hvussu:'Finn øll seks eyðkennini í kjarnanum við sjóneykuni.', gongd:'Tunnilsgongdin', farv:'#2A6A80',
+      ikon:'<circle cx="21" cy="21" r="10" fill="none" stroke="#fff" stroke-width="4"/><path d="M28 28 L37 37" stroke="#fff" stroke-width="5" stroke-linecap="round"/>' },
+    { id:'tunnil',       navn:'Tunnilsbyggjari', hvussu:'Vel eina góða leið fyri tunnilin gjøgnum fjallið.', gongd:'Tunnilsgongdin', farv:'#6E747A',
+      ikon:'<path d="M6 36 L18 12 L26 22 L31 15 L42 36 Z" fill="#fff"/><path d="M17 36 v-5 a5 5 0 0 1 10 0 v5 Z" fill="#6E747A"/>' },
+    { id:'malli-tunnil', navn:'Malli í tunlinum', hvussu:'Far við Malla inn í tunnilin.', gongd:'Tunnilsgongdin', farv:'#A4533A',
+      ikon:'<path d="M8 38 v-12 a16 16 0 0 1 32 0 v12 Z" fill="#fff"/><ellipse cx="24" cy="32" rx="8" ry="6" fill="#A4533A"/><circle cx="21.5" cy="31" r="1.4" fill="#fff"/><circle cx="26.5" cy="31" r="1.4" fill="#fff"/>' },
+    { id:'malli-funnin', navn:'Malli funnin', hvussu:'Finn Malla, har hann fjalir seg.', gongd:'Hvaðani kom Malli?', farv:'#5E7D35',
+      ikon:'<ellipse cx="24" cy="26" rx="15" ry="12" fill="#fff"/><circle cx="19" cy="24" r="2.4" fill="#5E7D35"/><circle cx="29" cy="24" r="2.4" fill="#5E7D35"/><path d="M19 30 Q24 34 29 30" stroke="#5E7D35" stroke-width="2.4" fill="none" stroke-linecap="round"/>' },
+    { id:'steinakort',   navn:'Steinakortið',  hvussu:'Ger eitt kort um tín stein og tak tað niður.', gongd:'Hvaðani kom Malli?', farv:'#B7821F',
+      ikon:'<rect x="9" y="11" width="30" height="26" rx="3" fill="#fff"/><ellipse cx="19" cy="22" rx="6" ry="5" fill="#B7821F"/><path d="M28 19 h7 M28 24 h7 M14 31 h21" stroke="#B7821F" stroke-width="2.4" stroke-linecap="round"/>' },
+    { id:'ord',          navn:'Orðasavnarin',  hvussu:'Kryss øll orðini av í orðalistanum.', gongd:'Orðalistin', farv:'#2E3236',
+      ikon:'<path d="M10 13 h11 a3 3 0 0 1 3 3 v21 a3 3 0 0 0 -3 -3 h-11 Z M38 13 h-11 a3 3 0 0 0 -3 3 v21 a3 3 0 0 1 3 -3 h11 Z" fill="#fff"/>' }
+  ];
+  var MERKILYKIL = 'jf-merki';
+  function mini() { var m = hent(MERKILYKIL); return (m && typeof m === 'object') ? m : {}; }
+  function merkiSvg(m, fingin) {
+    return '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="' + (fingin ? m.farv : '#D8D4CB') + '"/>' +
+      '<circle cx="24" cy="24" r="22" fill="none" stroke="' + (fingin ? '#1E2326' : '#B5B0A6') + '" stroke-width="2" stroke-dasharray="' + (fingin ? '0' : '4 3') + '"/>' +
+      (fingin ? m.ikon : '<text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="#8D877C" font-family="system-ui,sans-serif">?</text>') + '</svg>';
+  }
+  function teknaMerki() {
+    var stad = document.getElementById('jf-merki');
+    if (!stad) return;
+    var mitt = mini(), tal = 0;
+    var html = '<ul class="jf-merki-listi">';
+    MERKI.forEach(function (m) {
+      var f = !!mitt[m.id]; if (f) tal++;
+      html += '<li class="jf-merki-kort' + (f ? ' er-fingið' : '') + '">' + merkiSvg(m, f) +
+        '<div><b>' + (f ? m.navn : 'Enn ikki fingið') + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + '</small></div></li>';
+    });
+    html += '</ul><p class="jf-tjekt-stat jf-merki-stat"><span>' +
+      (tal === 1 ? 'Tú hevur savnað eitt av ' + MERKI.length : 'Tú hevur savnað ' + tal + ' av ' + MERKI.length) +
+      (tal === MERKI.length ? ' – øll! ✓' : '') + '</span>' +
+      (tal ? '<button type="button" class="jf-tjekt-nulstill" id="jf-merki-nul">Strika merkini</button>' : '') + '</p>';
+    stad.innerHTML = html;
+    var nul = document.getElementById('jf-merki-nul');
+    if (nul) nul.addEventListener('click', function () { goym(MERKILYKIL, {}); teknaMerki(); melding('Øll merkini eru strikað'); });
+  }
+  window.jfMerki = {
+    gev: function (id) {
+      var m = MERKI.filter(function (x) { return x.id === id; })[0];
+      if (!m) return;
+      var mitt = mini();
+      if (mitt[id]) return;                     // longu fingið
+      mitt[id] = new Date().toISOString().slice(0, 10);
+      goym(MERKILYKIL, mitt);
+      meldingAftana('🏅 Malli gav tær eitt merki: »' + m.navn + '«! Sí tað á forsíðuni.', 4200);
+      teknaMerki();
+    }
+  };
+  teknaMerki();
 
   /* ---------- 1) Borikjarnin: 0–100 m ---------- */
   var rot = document.getElementById('jf-borehole');
@@ -135,7 +197,7 @@
       gjort = [];
       goym(lykil, gjort);
       vis(false);
-      melding('Listin er byrjað umaftur');
+      melding('Alt á listanum er strikað');
     });
 
     vis(false);
@@ -174,6 +236,7 @@
       });
       statTekst.textContent = kentTekst(k, orðini.length);
       if (sigMelding) melding(k === orðini.length ? 'Øll orðini eru kend! ✓' : 'Goymt í kaganum – ' + kentTekst(k, orðini.length));
+      if (sigMelding && k === orðini.length) window.jfMerki.gev('ord');
     }
 
     orðini.forEach(function (o) {
@@ -199,7 +262,7 @@
       kent = {};
       goym(ordLykil, kent);
       ordVis(false);
-      melding('Listin er byrjað umaftur');
+      melding('Alt á listanum er strikað');
     });
 
     ordVis(false);

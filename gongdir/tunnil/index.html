@@ -381,7 +381,7 @@
       if (!finds.has(best)){ finds.add(best); document.querySelector(`[data-f="${best}"]`).classList.add('jf-found'); }
       fb.hidden = false;
       fb.innerHTML = lensMsg[best] + (finds.size === TOTAL ? '<br><b>Tú fanst øll seks eyðkennini! 🎉</b>' : ` <span style="color:var(--ink-soft)">(${finds.size} av ${TOTAL})</span>`);
-      if (finds.size === TOTAL){ const n = document.getElementById('lensNaest'); if (n) n.hidden = false; }
+      if (finds.size === TOTAL){ const n = document.getElementById('lensNaest'); if (n) n.hidden = false; window.jfMerki && window.jfMerki.gev('sjoneyka'); }
     }
   });
 
@@ -512,6 +512,7 @@
       fb.innerHTML = 'Tunnilin liggur <b>ov høgt</b>. Hann er heilt uppi í tindinum á fjallinum. Royn longur niðri.';
     } else {
       fb.className = 'jf-feedback jf-good';
+      window.jfMerki && window.jfMerki.gev('tunnil');
       fb.innerHTML = '<b>Gott val!</b> Í hesum døminum gongur tunnilin gjøgnum <b>støðugari grót</b> alla leiðina. 🎉<br><span style="color:var(--ink-soft)">Hetta er ein loysn í einfaldaða modellinum hjá Jarðfríðu. Tá ið veruligir tunlar verða gjørdir, kanna jarðfrøðingar eisini rivur, veik løg og vatn í fjallinum.</span>';
     }
   });
@@ -1014,6 +1015,7 @@
 
   function leggIKassa() {
     kassiTekst.textContent = 'Malli fer inn í tunnilin!';
+    window.jfMerki && window.jfMerki.gev('malli-tunnil');
 
     if (reducedMotion) {
       fjalAlt();

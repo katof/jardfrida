@@ -2793,6 +2793,7 @@ body.jf-sida #page-content .frame-type-html {
     root.classList.remove('jf-fjaldur', 'jf-lúrir');
     rock.setAttribute('aria-label', 'Malli. Trýst fyri at síggja orðalistan. Drag fyri at kasta hann.');
     setTimeout(function () { sig('Her eri eg!'); }, 350);
+    window.jfMerki && window.jfMerki.gev('malli-funnin');
   }
   rock.addEventListener('pointerdown', funnin, true);
   rock.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') funnin(); }, true);
@@ -3537,6 +3538,7 @@ body.jf-sida #page-content .frame-type-html {
         a.remove();
         setTimeout(() => URL.revokeObjectURL(a.href), 4000);
         kvittan.hidden = false;
+        window.jfMerki && window.jfMerki.gev('steinakort');
         kvittan.innerHTML = '<b>Kortið er tikið niður sum mynd.</b> Legg tað á »Okkara steinar« saman við eini mynd av steininum – ella prenta tað út og lat tað fylgja steininum.';
       }, 'image/png');
     });
