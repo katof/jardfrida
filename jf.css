@@ -141,11 +141,36 @@ body.jf-sida #page-content .frame-type-html { margin-bottom:0; padding-bottom:0;
 
 /* ---------- Merkini hjá Malla (forsíðan) ---------- */
 .jf .jf-merki-listi { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:12px; }
-.jf .jf-merki-kort { display:grid; grid-template-columns:56px 1fr; gap:12px; align-items:center; padding:12px 14px; background:var(--surface); border:1px solid var(--line); }
-.jf .jf-merki-kort svg { width:56px; height:56px; display:block; }
+.jf .jf-merki-kort { display:grid; grid-template-columns:60px 1fr; gap:12px; align-items:center; padding:12px 14px; background:var(--surface); border:1px solid var(--line); }
+.jf .jf-merki-kort svg { width:60px; height:60px; display:block; }
 .jf .jf-merki-kort b { display:block; font-size:1rem; color:var(--ink-soft); }
 .jf .jf-merki-kort span { display:block; font-size:.9rem; line-height:1.35; color:var(--ink); margin-top:2px; }
 .jf .jf-merki-kort small { display:block; font:600 .72rem/1.2 var(--mono); color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:.04em; }
-.jf .jf-merki-kort.er-fingið { border-color:var(--ink); box-shadow:2px 2px 0 var(--ink); }
+.jf .jf-merki-kort.er-fingið { border-color:#B8860B; background:#FFF8DF; box-shadow:3px 3px 0 #B8860B; }
 .jf .jf-merki-kort.er-fingið b { color:var(--ink); }
 .jf .jf-merki-stat { margin-top:14px; justify-content:flex-start; }
+
+/* ---------- Premian: gullsteyp ---------- */
+.jf-premia, .jf-premia * { box-sizing:border-box; }
+.jf-premia { position:fixed; inset:0; z-index:120; display:grid; place-items:center; padding:16px; background:rgba(30,35,38,.55); opacity:0; transition:opacity .25s; }
+.jf-premia.er-synlig { opacity:1; }
+.jf-premia-kort { position:relative; width:min(380px, 100%); padding:24px 22px 20px; text-align:center; background:#FFF8DF; color:#1E2326; border:3px solid #1E2326; border-radius:6px; box-shadow:6px 6px 0 #B8860B; transform:scale(.85) translateY(12px); transition:transform .35s cubic-bezier(.3,1.5,.5,1); font-family:"Atkinson Hyperlegible",system-ui,sans-serif; }
+.jf-premia.er-synlig .jf-premia-kort { transform:none; }
+.jf-premia-kort .jf-steyp-stort { width:132px; height:132px; display:block; margin:-4px auto 4px; animation:jf-steyp-hopp 1.2s ease-out .25s 1 both; }
+.jf-premia-yvir { margin:0; font:700 .82rem/1.2 "IBM Plex Mono",monospace; letter-spacing:.06em; text-transform:uppercase; color:#8A6508; }
+.jf-premia-kort h2 { margin:6px 0 6px; font:700 1.9rem/1.1 "Fraunces",Georgia,serif; color:#1E2326; }
+.jf-premia-hvi { margin:0 0 10px; font-size:1rem; line-height:1.4; }
+.jf-premia-tal { margin:0 0 16px; font-weight:700; font-size:.95rem; }
+.jf-premia-knappar { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.jf-premia-knappar a, .jf-premia-knappar button { font:700 1rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; padding:11px 16px; border:2px solid #1E2326; border-radius:3px; cursor:pointer; text-decoration:none; }
+.jf-premia-sí { background:#F2C230; color:#1E2326; }
+.jf-premia-aftur { background:#1E2326; color:#fff; }
+.jf-premia-knappar a:focus-visible, .jf-premia-knappar button:focus-visible { outline:3px solid #2A6A80; outline-offset:2px; }
+.jf-premia-glitur { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.jf-premia-glitur i { position:absolute; top:-12px; left:var(--x); width:9px; height:14px; background:#F2C230; border-radius:2px; transform:rotate(var(--r)); animation:jf-glitur 2.2s ease-in var(--d) 1 both; }
+.jf-premia-glitur i:nth-child(3n) { background:#2A6A80; }
+.jf-premia-glitur i:nth-child(4n) { background:#A4533A; }
+.jf-premia-glitur i:nth-child(5n) { background:#5E7D35; }
+@keyframes jf-glitur { to { transform:translateY(105vh) rotate(calc(var(--r) + 540deg)); opacity:.7; } }
+@keyframes jf-steyp-hopp { 0% { transform:scale(.4) rotate(-12deg); } 55% { transform:scale(1.12) rotate(4deg); } 100% { transform:none; } }
+@media (prefers-reduced-motion:reduce) { .jf-premia, .jf-premia-kort { transition:none; } .jf-premia-kort .jf-steyp-stort, .jf-premia-glitur i { animation:none; } .jf-premia-glitur { display:none; } }

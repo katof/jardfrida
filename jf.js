@@ -52,10 +52,56 @@
   ];
   var MERKILYKIL = 'jf-merki';
   function mini() { var m = hent(MERKILYKIL); return (m && typeof m === 'object') ? m : {}; }
-  function merkiSvg(m, fingin) {
-    return '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="' + (fingin ? m.farv : '#D8D4CB') + '"/>' +
-      '<circle cx="24" cy="24" r="22" fill="none" stroke="' + (fingin ? '#1E2326' : '#B5B0A6') + '" stroke-width="2" stroke-dasharray="' + (fingin ? '0' : '4 3') + '"/>' +
-      (fingin ? m.ikon : '<text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="#8D877C" font-family="system-ui,sans-serif">?</text>') + '</svg>';
+  /* Gullsteyp: liturin og myndin á merkinum sita á steypinum */
+  function steypSvg(m, fingin, stort) {
+    var G = fingin ? 'url(#jfGull' + (stort ? 'S' : '') + ')' : '#DAD6CD';
+    var K = fingin ? '#1E2326' : '#B5B0A6';
+    var gid = 'jfGull' + (stort ? 'S' : '');
+    return '<svg viewBox="0 0 48 48" aria-hidden="true"' + (stort ? ' class="jf-steyp-stort"' : '') + '>' +
+      (fingin ? '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE38A"/><stop offset=".45" stop-color="#F2C230"/><stop offset="1" stop-color="#B8860B"/></linearGradient></defs>' : '') +
+      '<path d="M13 11 H7 Q6 22 16 24 M35 11 H41 Q42 22 32 24" fill="none" stroke="' + K + '" stroke-width="2.6" stroke-linecap="round"/>' +
+      '<path d="M12 7 H36 V17 Q36 30 24 30 Q12 30 12 17 Z" fill="' + G + '" stroke="' + K + '" stroke-width="2" stroke-linejoin="round"/>' +
+      '<rect x="21.5" y="30" width="5" height="5" fill="' + G + '" stroke="' + K + '" stroke-width="1.6"/>' +
+      '<rect x="15" y="35" width="18" height="4.5" rx="1" fill="' + G + '" stroke="' + K + '" stroke-width="1.6"/>' +
+      '<rect x="12" y="39.5" width="24" height="4.5" rx="1" fill="' + (fingin ? '#3A3F44' : '#CFCBC1') + '" stroke="' + K + '" stroke-width="1.6"/>' +
+      (fingin
+        ? '<circle cx="24" cy="17.5" r="8" fill="' + m.farv + '" stroke="#1E2326" stroke-width="1.4"/><g transform="translate(24 17.5) scale(.3) translate(-24 -24)">' + m.ikon + '</g>' +
+          '<path d="M15 10 Q14 18 17 23" stroke="#FFF6CF" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8"/>'
+        : '<text x="24" y="23" text-anchor="middle" font-size="13" font-weight="700" fill="#8D877C" font-family="system-ui,sans-serif">?</text>') +
+      '</svg>';
+  }
+  function merkiSvg(m, fingin) { return steypSvg(m, fingin, false); }
+
+  /* Stóra premian: kemur fram, tá ið tú fært eitt gullsteyp */
+  function visPremiu(m, tal) {
+    var gamal = document.querySelector('.jf-premia');
+    if (gamal) gamal.remove();
+    var bak = document.createElement('div');
+    bak.className = 'jf-premia';
+    var aForsidu = !!document.getElementById('jf-merki');
+    var gl = '';
+    for (var i = 0; i < 14; i++) gl += '<i style="--x:' + (Math.random() * 100).toFixed(0) + '%;--d:' + (Math.random() * .6).toFixed(2) + 's;--r:' + (Math.random() * 360).toFixed(0) + 'deg"></i>';
+    bak.innerHTML =
+      '<div class="jf-premia-glitur" aria-hidden="true">' + gl + '</div>' +
+      '<div class="jf-premia-kort" role="dialog" aria-modal="true" aria-labelledby="jfPremiaHeiti">' +
+        steypSvg(m, true, true) +
+        '<p class="jf-premia-yvir">Tú fekst eitt gullsteyp!</p>' +
+        '<h2 id="jfPremiaHeiti">' + m.navn + '</h2>' +
+        '<p class="jf-premia-hvi">' + m.hvussu + '</p>' +
+        '<p class="jf-premia-tal">' + (tal === MERKI.length ? 'Nú hevur tú øll ' + MERKI.length + '! Tú ert ein veruligur jarðfrøðingur.' : (tal === 1 ? 'Tú hevur savnað eitt av ' + MERKI.length + '.' : 'Tú hevur savnað ' + tal + ' av ' + MERKI.length + '.')) + '</p>' +
+        '<div class="jf-premia-knappar">' +
+          (aForsidu ? '' : '<a class="jf-premia-sí" href="/jardfrida/#merki">Sí øll gullsteypini</a>') +
+          '<button type="button" class="jf-premia-aftur">Halt fram</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(bak);
+    var aftur = bak.querySelector('.jf-premia-aftur');
+    function lat() { bak.classList.remove('er-synlig'); document.removeEventListener('keydown', esc); setTimeout(function () { bak.remove(); }, 250); }
+    function esc(e) { if (e.key === 'Escape') lat(); }
+    aftur.addEventListener('click', lat);
+    bak.addEventListener('click', function (e) { if (e.target === bak) lat(); });
+    document.addEventListener('keydown', esc);
+    requestAnimationFrame(function () { bak.classList.add('er-synlig'); aftur.focus({ preventScroll: true }); });
   }
   function teknaMerki() {
     var stad = document.getElementById('jf-merki');
@@ -65,15 +111,15 @@
     MERKI.forEach(function (m) {
       var f = !!mitt[m.id]; if (f) tal++;
       html += '<li class="jf-merki-kort' + (f ? ' er-fingið' : '') + '">' + merkiSvg(m, f) +
-        '<div><b>' + (f ? m.navn : 'Enn ikki fingið') + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + '</small></div></li>';
+        '<div><b>' + (f ? m.navn : 'Enn ikki vunnið') + '</b><span>' + m.hvussu + '</span><small>' + m.gongd + '</small></div></li>';
     });
     html += '</ul><p class="jf-tjekt-stat jf-merki-stat"><span>' +
       (tal === 1 ? 'Tú hevur savnað eitt av ' + MERKI.length : 'Tú hevur savnað ' + tal + ' av ' + MERKI.length) +
-      (tal === MERKI.length ? ' – øll! ✓' : '') + '</span>' +
-      (tal ? '<button type="button" class="jf-tjekt-nulstill" id="jf-merki-nul">Strika merkini</button>' : '') + '</p>';
+      (tal === MERKI.length ? ' – øll! 🏆' : '') + '</span>' +
+      (tal ? '<button type="button" class="jf-tjekt-nulstill" id="jf-merki-nul">Strika gullsteypini</button>' : '') + '</p>';
     stad.innerHTML = html;
     var nul = document.getElementById('jf-merki-nul');
-    if (nul) nul.addEventListener('click', function () { goym(MERKILYKIL, {}); teknaMerki(); melding('Øll merkini eru strikað'); });
+    if (nul) nul.addEventListener('click', function () { goym(MERKILYKIL, {}); teknaMerki(); melding('Øll gullsteypini eru strikað'); });
   }
   window.jfMerki = {
     gev: function (id) {
@@ -83,7 +129,8 @@
       if (mitt[id]) return;                     // longu fingið
       mitt[id] = new Date().toISOString().slice(0, 10);
       goym(MERKILYKIL, mitt);
-      meldingAftana('🏅 Malli gav tær eitt merki: »' + m.navn + '«! Sí tað á forsíðuni.', 4200);
+      var tal = Object.keys(mitt).filter(function (k) { return MERKI.some(function (x) { return x.id === k; }); }).length;
+      setTimeout(function () { visPremiu(m, tal); }, toastVisir ? 900 : 0);
       teknaMerki();
     }
   };
