@@ -7,6 +7,8 @@ HER = pathlib.Path(__file__).parent
 # Adressan stendur bert her. Broyt hana, tá ið tilfarið flytur til snar.fo.
 ADRESSUR = {
     "loggbok-malli": "https://snar.fo/jardfrida/gongdir/hvadani-kom-malli",
+    "loggbok-foroyar-til": "https://snar.fo/jardfrida/gongdir/hvussu-vordu-foroyar-til",
+    "loggbok-eldgosini": "https://snar.fo/jardfrida/gongdir/ta-eldgosini-sloknadu",
     "loggbok-tunnil": "https://snardev.ctrl.fo/jardfrida/gongdir/tunnil",
     "laerarvegleiding": "https://snardev.ctrl.fo/jardfrida",
     "samanberingarkort": "https://snardev.ctrl.fo/jardfrida",
