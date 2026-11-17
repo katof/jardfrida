@@ -126,12 +126,23 @@ soga_html = '<div class="soga">' + ''.join(f'<figure><img src="{M}m-soga-{i+1}.p
 random.seed(4)
 rod = list(range(6)); random.shuffle(rod)
 stein_html = '<div class="steinar">' + ''.join(stein_svg(idx, 'ABCDEF'[i]) for i, idx in enumerate(rod)) + '</div>'
-STEINAR4 = [(1, 2, True), (2, 5, False), (3, 3, True), (4, 5, False)]
-def stein_med_skovum(idx, skovur, nr):
-    d = SKOP[idx][1]
-    sk = '<g stroke="#EDEFE8" stroke-width="2.2" stroke-linecap="round" opacity=".85"><path d="M-26 -6 L10 -16"/><path d="M-20 6 L18 -4"/><path d="M-10 18 L22 8"/></g>' if skovur else ''
-    return f'<div class="spor"><svg viewBox="-60 -50 120 100"><path d="{d}" fill="#7E858B" stroke="#1E2326" stroke-width="4" stroke-linejoin="round"/>{sk}</svg><div><b>Steinur {nr}</b>' + kross(['Ísurin kann hava flutt hann', 'Vatnið kann hava rullað hann']) + '<div class="linjur"><span></span></div></div></div>'
-spor_html = ''.join(stein_med_skovum(i, s, n) for n, i, s in STEINAR4)
+# Fýra ymiskir steinar við hvør sínum sporum – somu tekningar sum á heimasíðuni.
+_UT = ' stroke="#1E2326" stroke-width="4" stroke-linejoin="round"'
+def _dottar(l): return ''.join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#5C6369" opacity=".5"/>' for x, y, r in l)
+def _strikur(l, op): return '<g stroke="#EDEFE8" stroke-linecap="round" fill="none">' + ''.join(f'<path d="{d}" stroke-width="{w}" opacity="{op}"/>' for d, w in l) + '</g>'
+_S = lambda i: SKOP[i][1]
+STEINAR4 = [
+ (1, f'<path d="{_S(0)}" fill="#7E858B"{_UT}/><path d="M-21 -25 L28 -28 L45 -4 L-4 2 Z" fill="#949BA1"/><path d="M-52 8 L-21 -25 L-4 2 L-18 23 Z" fill="#6B7278"/><path d="M-21 -25 L-4 2 L45 -4 M-4 2 L-18 23" stroke="#1E2326" stroke-width="1.6" fill="none" stroke-linejoin="round"/><path d="{_S(0)}" fill="none"{_UT}/>' + _dottar([(12, -14, 2.2), (8, 14, 2.6), (-30, 4, 2)])),
+ (2, f'<path d="{_S(2)}" fill="#7E858B"{_UT}/><path d="M-34 -6 L-8 -27 L24 -17 L34 3 L4 20 L-26 12 Z" fill="#959CA2" stroke="#5C6369" stroke-width="1.2" stroke-linejoin="round"/>' + _dottar([(-30, 22, 2.2), (26, 22, 2.4)]) + _strikur([('M-28 -3 L14 -17', 2.2), ('M-24 5 L26 -9', 2.4), ('M-14 11 L28 -1', 2), ('M-6 -18 L12 -23', 1.6), ('M-2 16 L18 10', 1.6), ('M-30 3 L-12 -3', 1.4), ('M4 -4 L30 -12', 1.4)], .85)),
+ (3, f'<path d="{_S(5)}" fill="#7E858B"{_UT}/>' + _dottar([(-18, -12, 2.8), (10, -16, 2.2), (20, 8, 3), (-8, 14, 2.4), (0, -2, 1.8), (-25, 2, 2)]) + '<path d="M-27 -17 Q-8 -30 16 -25" stroke="#C9CED2" stroke-width="3" stroke-linecap="round" fill="none" opacity=".55"/>'),
+ (4, f'<path d="{_S(4)}" fill="#7E858B"{_UT}/>' + _dottar([(-22, -14, 2.4), (18, 10, 2.8), (-10, 16, 2.2), (24, -12, 2)]) + '<path d="M-26 -18 Q-8 -29 14 -25" stroke="#C9CED2" stroke-width="3" stroke-linecap="round" fill="none" opacity=".45"/>' + _strikur([('M-18 -2 L6 -9', 1.6), ('M-6 8 L16 2', 1.4)], .5)),
+]
+def stein_vid_sporum(nr, svg):
+    return (f'<div class="spor"><svg viewBox="-60 -50 120 100">{svg}</svg><div><b>Steinur {nr}</b>'
+            + '<p class="spurn" style="margin:1mm 0 0">Eg síggi:</p>' + kross(['hvassar kantar', 'skøvur', 'eina slætta flatu', 'rundur'], 'linja')
+            + '<p class="spurn" style="margin:1mm 0 0">Tað kann benda á:</p>' + kross(['Frostið kann hava brotið hann leysan', 'Ísurin kann hava flutt hann', 'Vatnið kann hava rullað hann'])
+            + '<div class="linjur"><span></span></div></div></div>')
+spor_html = ''.join(stein_vid_sporum(n, g) for n, g in STEINAR4)
 
 g2 = [kapittul(2, 'Hvaðani kom Malli?', 'Hey, eg eiti Malli. Eg var einaferð partur av einum fjalli – hvassur í kantinum. Nú eri eg rundur og liggi í lummanum hjá Jarðfríðu. Hvat hendi við mær á leiðini?', '#2A6A80', f'<img src="{M}m-soga-9.png" alt="">'),
 partur(1, 'Søgan hjá Malla', K2),
@@ -174,7 +185,7 @@ bolkur('Roynd', 'Látið ísin skríða oman brekkuna',
   ol(['Dagin fyri: Fyllið eina plastdós við vatni, sandi og smásteinum, og setið hana í frystaran.', 'Oysið sand og smásteinar í ein djúpan bakka, og leggið hann á skák á bókum.', 'Leggið ísklumpin ovast, og skumpið hann varliga oman brekkuna.', 'Latið ísin liggja niðast, til hann er bráðnaður.']),
   tvey(ramma(42, 'Brekkan áðrenn'), ramma(42, 'Brekkan aftaná')),
   tala('jf', '»Tað, sum liggur eftir, tá ið ísurin er bráðnaður, eitur morena: blandað, leyst tilfar – grót, sandur og leirur – sum jøkulsísur hevur flutt við sær og lagt frá sær.«')),
-bolkur('Uppgáva', 'Ísurin ella vatnið?', p('Hygg at skapinum og skøvunum. Hvat kunnu sporini benda á? Set kross, og skriva hví.'), spor_html,
+bolkur('Uppgáva', 'Frost, ísur ella vatn?', p('Hygg væl at hvørjum steini. Set fyrst kross við tað, tú sært. Set síðan kross við ta frágreiðing, sum hóskar best til sporini, og skriva hví.'), spor_html,
   ráð('Ein rundur steinur ella ein skøva er ikki í sjálvum sær prógv. Hygg eftir fleiri sporum.', 'Minst til')),
 partur(4, 'Søgan hjá tínum steini', K2),
 bolkur('Úti', 'Áðrenn tit fara út',
