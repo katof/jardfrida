@@ -1,0 +1,796 @@
+/* ──────────────────────────────────────────────────────────────
+   Jarðfrøði við Jarðfríðu · felles printstilark
+   Brúkast til loggbøkur, lærarvegleiðing og samanberingarkort.
+   Prentast úr Chromium: A4, uttan marginalar frá kagaranum.
+   ────────────────────────────────────────────────────────────── */
+
+@font-face{font-family:"Fraunces";src:url("skriftir/fraunces-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"Fraunces";src:url("skriftir/fraunces-latin-700-normal.woff2") format("woff2");font-weight:700;font-display:block}
+@font-face{font-family:"Atkinson";src:url("skriftir/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"Atkinson";src:url("skriftir/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");font-weight:700;font-display:block}
+
+:root{
+  /* Somu litir sum á heimasíðuni */
+  --ink:#1F2428;
+  --ink-soft:#585F65;
+  --line:#D9D3C4;
+  --line-soft:#E8E3D6;
+  --paper:#F4F1E8;
+  --basalt:#6E747A;
+  --sea:#2A6A80;
+  --olivine:#5E7D35;
+  --ochre:#B7821F;
+  --tuff:#A4533A;
+
+  --display:"Fraunces", Georgia, serif;
+  --body:"Atkinson", system-ui, sans-serif;
+
+  /* Linjuhædd fyri skriving – 9 mm er hóskandi til 4.–6. floksstig */
+  --skrivlinja:8.5mm;
+
+  --akse:var(--basalt);     /* verður sett pr. part */
+}
+
+/* ── Síðuuppseting ─────────────────────────────────────────── */
+@page{ size:A4; margin:0; }
+
+*{box-sizing:border-box}
+
+html,body{margin:0;padding:0}
+
+body{
+  font-family:var(--body);
+  font-size:11.3pt;
+  line-height:1.5;
+  color:var(--ink);
+  background:#8c8c8c;            /* bert á skerminum, sæst ikki í prenti */
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+.sida{
+  position:relative;
+  width:210mm;
+  height:297mm;
+  padding:17mm 18mm 17mm;
+  background:#fff;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  page-break-after:always;
+  break-after:page;
+  margin:0 auto 8mm;             /* bert á skerminum */
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+}
+.sida:last-child{page-break-after:auto;break-after:auto;margin-bottom:0}
+
+@media print{
+  body{background:#fff}
+  .sida{margin:0;box-shadow:none}
+}
+
+/* ── Litmerki fyri partin ──────────────────────────────────── */
+.sida[data-part="1"]{--akse:var(--basalt)}
+.sida[data-part="2"]{--akse:var(--sea)}
+.sida[data-part="3"]{--akse:var(--olivine)}
+.sida[data-part="4"]{--akse:var(--ochre)}
+.sida[data-part="ord"]{--akse:var(--tuff)}
+
+/* Lítið litmerki við partanavninum ovast – ongin ramma, ongin strika */
+.toppur .partur::before{
+  content:"";
+  display:inline-block;
+  width:3.2mm;height:3.2mm;
+  border-radius:50%;
+  background:var(--akse);
+  margin-right:2.2mm;
+  vertical-align:-.2mm;
+}
+
+/* ── Toppur og botnur ──────────────────────────────────────── */
+.toppur{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  font-size:8.6pt;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:9mm;
+}
+.toppur .partur{color:var(--akse);font-weight:700}
+
+.botnur{
+  position:absolute;
+  left:18mm;
+  right:18mm;
+  bottom:9mm;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  font-size:8.4pt;
+  color:var(--ink-soft);
+}
+.botnur .nr{font-family:var(--display);font-weight:700;font-size:11pt;color:var(--akse)}
+
+/* ── Yvirskriftir ──────────────────────────────────────────── */
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.1}
+
+h1{font-size:30pt;letter-spacing:-.01em}
+h2{font-size:19pt;margin-bottom:4mm;display:flex;align-items:baseline;gap:.42em}
+h2 .tal{color:var(--akse);font-size:26pt}
+
+p{margin:0 0 3mm}
+.innleiðing{color:var(--ink-soft);margin-bottom:7mm;max-width:150mm}
+
+/* ── Uppgávur: talið stendur í ytru marginalinum, eingin ramma ─ */
+.uppgava{margin:0 0 3.5mm;padding-left:12mm;position:relative}
+.uppgava:last-child{margin-bottom:0}
+
+.uppgava > .tal{
+  position:absolute;
+  left:0;
+  top:-1.5mm;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:15pt;
+  color:var(--akse);
+  line-height:1;
+}
+.uppgava > h3{font-size:13.5pt;margin-bottom:1mm}
+.uppgava > p{color:var(--ink-soft);margin-bottom:2.5mm}
+
+/* ── Skrivilinjur: eingin kassi, bert linjur at skriva á ─────── */
+.linjur{
+  --n:3;
+  height:calc(var(--skrivlinja) * var(--n));
+  background-image:repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--skrivlinja) - .35mm),
+      var(--line) calc(var(--skrivlinja) - .35mm),
+      var(--line) var(--skrivlinja));
+  margin:2mm 0 3mm;
+}
+.uppgava > h3 + .linjur{margin-top:4mm}
+/* Stutt linja at skriva á inni í einum teksti */
+.skrivlinja{display:inline-block;min-width:58mm;border-bottom:.35mm solid var(--line);margin-left:1.5mm}
+.linjur.l1{--n:1}
+.linjur.l3{--n:3}
+.linjur.l2{--n:2}
+.linjur.l4{--n:4}
+.linjur.l5{--n:5}
+.linjur.l6{--n:6}
+
+/* ── Teknifeltið: punktanet sum í einari teknibók, ongin ramma ─ */
+.teknifelt{
+  position:relative;
+  height:42mm;
+  margin-bottom:3mm;
+  background-image:radial-gradient(circle, #CFC8B6 .42mm, transparent .46mm);
+  background-size:5mm 5mm;
+  background-position:1.5mm 1.5mm;
+  border-radius:2mm;
+}
+.teknifelt.h22{height:22mm}
+.teknifelt.h26{height:26mm}
+.teknifelt.h34{height:34mm}
+.teknifelt.h38{height:38mm}
+.teknifelt.h44{height:44mm}
+.teknifelt.h30{height:28mm}
+.teknifelt.h50{height:50mm}
+.teknifelt.h62{height:62mm}
+.teknifelt.h72{height:72mm}
+
+.teknimerki{
+  font-size:9.6pt;
+  color:var(--ink-soft);
+  margin-bottom:2mm;
+  display:block;
+}
+
+/* Fleiri teknifelt við síðuna av hvørjum øðrum */
+.felt-rad{display:grid;gap:7mm;margin-bottom:4mm}
+.felt-rad.tvey{grid-template-columns:1fr 1fr}
+.felt-rad.trý{grid-template-columns:1fr 1fr 1fr}
+.felt-rad .teknifelt{margin-bottom:0}
+
+/* Ein einstøk skrivilinja */
+.linja{
+  border-bottom:1px solid var(--line);
+  height:9mm;
+  margin-bottom:4mm;
+}
+.eigari .linja{border-bottom-color:#C9C1AC}
+
+/* ── Val: opin ringur, ikki kassi ───────────────────────────── */
+.val{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4mm 9mm;
+  margin:0 0 5mm;
+  padding:0;
+  list-style:none;
+}
+.val.undir{flex-direction:column;gap:4.5mm}
+.val li{display:flex;align-items:center;gap:3mm;font-size:11.3pt}
+.val li::before{
+  content:"";
+  width:5.2mm;height:5.2mm;
+  border:1.3px solid var(--akse);
+  border-radius:50%;
+  flex:none;
+}
+
+/* ── Talvur: bert vatnrættar hárlinjur ──────────────────────── */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:0 0 5mm;
+  font-size:10.8pt;
+}
+th,td{
+  text-align:left;
+  padding:2.8mm 3mm;
+  border-bottom:1px solid var(--line);
+  vertical-align:bottom;
+}
+thead th{
+  border-bottom:1.6px solid var(--akse);
+  font-family:var(--body);
+  font-weight:700;
+  font-size:10pt;
+  color:var(--ink);
+  padding-bottom:2mm;
+}
+tbody th{font-weight:400;color:var(--ink);width:34%}
+td.skriv{height:9mm}
+td.høgri{text-align:right}
+table.høg td,table.høg th{padding-top:6mm;padding-bottom:6mm}
+/* Tætt talva til vegleiðingina – nógv tekstur í smølum teigum */
+table.tett{font-size:9.6pt}
+table.tett th,table.tett td{padding:2.2mm 2.4mm;line-height:1.35}
+table.tett tbody th{width:auto;font-family:var(--display);font-weight:700;font-size:10pt}
+table.tett thead th{font-size:9.2pt}
+
+/* Eygleiðingartalvan – fimm teigar, teksturin stendur ovast í hvørjum teigi */
+table.talva-eygleiding{font-size:9.5pt}
+table.talva-eygleiding th,table.talva-eygleiding td{
+  padding:2.6mm 2.4mm;
+  line-height:1.34;
+  vertical-align:top;
+}
+table.talva-eygleiding thead th{font-size:9.1pt}
+table.talva-eygleiding tbody th{font-size:10pt}
+.talva-eygleiding th:nth-child(1),.talva-eygleiding td:nth-child(1){width:31mm}
+.talva-eygleiding th:nth-child(2),.talva-eygleiding td:nth-child(2){width:28mm}
+.talva-eygleiding th:nth-child(3),.talva-eygleiding td:nth-child(3){width:27mm}
+.talva-eygleiding th:nth-child(4),.talva-eygleiding td:nth-child(4){width:32mm}
+.talva-eygleiding th:nth-child(5),.talva-eygleiding td:nth-child(5){width:56mm}
+
+/* ── Talubløðra: ongin ramma, bert figur og tekstur ──────────── */
+.sigur{
+  display:grid;
+  grid-template-columns:17mm 1fr;
+  gap:5mm;
+  align-items:start;
+  margin:6mm 0;
+  max-width:155mm;
+}
+.sigur svg{width:17mm;height:17mm;display:block}
+.sigur .navn{
+  display:block;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:11.5pt;
+  color:var(--akse);
+  margin-bottom:.8mm;
+}
+.sigur p{margin:0;color:var(--ink)}
+.sigur.niðast{
+  margin-top:auto;
+  margin-bottom:0;
+  padding-top:5mm;
+  grid-template-columns:13mm 1fr;
+  gap:4mm;
+  font-size:10.3pt;
+}
+.sigur.niðast svg{width:13mm;height:13mm}
+/* Nettasta útgávan – ein brádnóta, tá ið síðan er full */
+.sigur.nota{
+  grid-template-columns:9mm 1fr;
+  gap:3mm;
+  margin:4mm 0 0;
+  align-items:center;
+  font-size:9.8pt;
+  color:var(--ink-soft);
+}
+.sigur.nota svg{width:9mm;height:9mm}
+.sigur.nota .navn{display:inline;font-size:9.8pt;margin-right:1.5mm}
+.sigur.niðast .navn{font-size:10.5pt}
+
+/* ── Gongdin: meta → royna → hyggja → samanbera ─────────────── */
+.gongd{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:3mm;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:12pt;
+  color:var(--ink-soft);
+  margin:6mm 0;
+}
+.gongd span{color:var(--ink)}
+.gongd i{color:var(--line);font-style:normal;font-size:13pt}
+
+/* ── Forsíða ───────────────────────────────────────────────── */
+.forsida{
+  background:var(--paper);
+  padding:30mm 22mm 20mm;
+  display:flex;
+  flex-direction:column;
+}
+.forsida::before{display:none}
+
+.merki{
+  font-size:9pt;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--tuff);
+  font-weight:700;
+  margin-bottom:auto;
+}
+.forsida h1{font-size:46pt;line-height:1.02;margin-bottom:4mm;max-width:140mm}
+.forsida .undir{
+  font-family:var(--display);
+  font-size:16pt;
+  color:var(--ink-soft);
+  margin-bottom:9mm;
+}
+.forsida .fakta{
+  font-size:10.6pt;
+  color:var(--ink-soft);
+  margin-bottom:12mm;
+}
+.forsida .fakta b{color:var(--ink)}
+
+.eigari{margin-bottom:11mm;max-width:118mm}
+.eigari .merkt{font-size:10.2pt;color:var(--ink-soft);margin-bottom:1.5mm;display:block}
+.eigari .linjur{background-image:repeating-linear-gradient(
+    to bottom,transparent 0,transparent calc(var(--skrivlinja) - .35mm),
+    #C9C1AC calc(var(--skrivlinja) - .35mm),#C9C1AC var(--skrivlinja))}
+
+.forsida-figur{position:absolute;right:20mm;top:152mm;width:62mm;height:62mm}
+.forsida-figur svg{width:100%;height:100%}
+
+/* QR – einasta staðið í skjalinum, har vevadressan stendur */
+.qr{
+  display:grid;
+  grid-template-columns:24mm 1fr;
+  gap:5mm;
+  align-items:center;
+  padding-top:6mm;
+  border-top:1px solid #DED7C6;
+  margin-top:auto;
+}
+.qr svg{width:24mm;height:24mm;display:block}
+.qr .adr b{
+  display:block;
+  font-family:var(--display);
+  font-size:11.5pt;
+  margin-bottom:.8mm;
+}
+.qr .adr code{
+  font-family:var(--body);
+  font-size:10.4pt;
+  color:var(--sea);
+  word-break:break-all;
+}
+.qr .adr p{font-size:9.4pt;color:var(--ink-soft);margin:1mm 0 0}
+
+.prototypa{
+  font-size:8.6pt;
+  color:var(--ink-soft);
+  margin-top:7mm;
+  line-height:1.4;
+}
+
+/* ── Innihaldsyvirlit á forsíðuni ───────────────────────────── */
+.partaryvirlit{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6mm 8mm;
+  margin:0 0 9mm;
+  padding:0;
+  list-style:none;
+}
+.partaryvirlit li{display:grid;grid-template-columns:8mm 1fr;gap:3mm;align-items:baseline}
+.partaryvirlit .n{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:15pt;
+  color:var(--p,var(--basalt));
+}
+.partaryvirlit li:nth-child(1){--p:var(--basalt)}
+.partaryvirlit li:nth-child(2){--p:var(--sea)}
+.partaryvirlit li:nth-child(3){--p:var(--olivine)}
+.partaryvirlit li:nth-child(4){--p:var(--ochre)}
+.partaryvirlit b{font-family:var(--display);font-size:12.5pt;display:block;line-height:1.15}
+.partaryvirlit small{color:var(--ink-soft);font-size:9.8pt;line-height:1.3;display:block}
+
+/* ── Kjarnar til at lita – trý smal íløt ───────────────────── */
+.kjarnar{display:grid;grid-template-columns:repeat(3,1fr);gap:11mm;margin:0 0 4mm;max-width:118mm}
+.kjarnar figure{margin:0;text-align:center}
+.kjarnar .rør{
+  width:17mm;
+  height:74mm;
+  margin:0 auto;
+  border:1.1px solid var(--line);
+  border-radius:2.5mm;
+  background:#fff;
+  /* smáar dýpdarmerkingar á vinstru brún, sum á einum veruligum kjarna */
+  background-image:repeating-linear-gradient(
+      to bottom,
+      var(--line-soft) 0, var(--line-soft) .3mm,
+      transparent .3mm, transparent 9.25mm);
+  background-size:3mm 100%;
+  background-repeat:no-repeat;
+}
+.kjarnar figcaption{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:11pt;
+  color:var(--akse);
+  margin-top:2mm;
+}
+.litlykil{display:flex;flex-wrap:wrap;gap:3mm 7mm;font-size:9.6pt;color:var(--ink-soft);margin:0 0 5mm}
+.litlykil span{display:flex;align-items:center;gap:2mm}
+.litlykil i{width:4mm;height:4mm;border-radius:1mm;border:1px solid var(--line)}
+
+/* ── Fjallið í tværskurði – undirlag til at tekna á ─────────── */
+.fjall{margin:0 0 5mm;max-width:142mm}
+.fjall.tvey{max-width:106mm}
+.fjall svg{width:100%;height:auto;display:block}
+
+/* ── Tosið saman ───────────────────────────────────────────── */
+.tosid{
+  margin:5mm 0;
+  padding-left:5mm;
+  border-left:2.5px solid var(--akse);
+}
+.tosid b{
+  display:block;
+  font-family:var(--display);
+  font-size:11.5pt;
+  color:var(--akse);
+  margin-bottom:1mm;
+}
+.tosid p{margin:0;color:var(--ink-soft);font-size:10.6pt}
+
+/* ── Bíða! ─────────────────────────────────────────────────── */
+.bida{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:11.5pt;
+  color:var(--tuff);
+  margin:4mm 0;
+}
+
+/* ── Grótmerki – sum seðlarnir á kjarnakassunum í savninum ── */
+.grotfelt{display:grid;grid-template-columns:1fr 54mm;gap:7mm;align-items:start;margin-bottom:4mm}
+.grotfelt .teknifelt{margin-bottom:0}
+
+.grotmerki{
+  border:1.1px solid var(--line);
+  border-radius:1.5mm;
+  padding:4mm 4.5mm 2mm;
+  background:#FBF9F3;
+}
+.grotmerki .heiti{
+  display:block;
+  font-size:8.4pt;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--tuff);
+  font-weight:700;
+  margin-bottom:3mm;
+}
+.grotmerki dl{margin:0}
+.grotmerki dt{
+  font-size:8.8pt;
+  color:var(--ink-soft);
+  letter-spacing:.03em;
+  margin-bottom:.5mm;
+}
+.grotmerki dd{
+  margin:0 0 4mm;
+  border-bottom:1px solid var(--line);
+  height:7mm;
+}
+.grotmerki dd:last-child{margin-bottom:2mm}
+
+/* ── Orðalisti ─────────────────────────────────────────────── */
+.ordalisti{margin:0 0 5mm}
+.ordalisti div{
+  display:grid;
+  grid-template-columns:42mm 1fr;
+  gap:5mm;
+  padding:2.6mm 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.ordalisti div:last-child{border-bottom:0}
+.ordalisti dt{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:11pt;
+  line-height:1.2;
+  margin:0;
+}
+.ordalisti dd{margin:0;font-size:10.4pt;color:var(--ink-soft);line-height:1.45}
+
+/* ── Tvær gongdir við síðuna av hvørjari aðrari ────────────── */
+.gongdir{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin:0 0 6mm}
+.gongdir section{margin:0}
+.gongdir h3{
+  font-family:var(--display);
+  font-size:13pt;
+  line-height:1.15;
+  margin:0 0 1.5mm;
+  color:var(--akse);
+}
+.gongdir .stig{font-size:9.4pt;color:var(--ink-soft);display:block;margin-bottom:2.5mm}
+.gongdir p{font-size:10.3pt;margin:0 0 2.5mm}
+.gongdir ol{margin:0;padding-left:5mm;font-size:10.2pt;color:var(--ink-soft)}
+.gongdir li{margin-bottom:.8mm}
+
+/* ── Listi við ráðum – ingin punkt, bara luft ───────────────── */
+.rad{margin:0 0 5mm;padding:0;list-style:none}
+.rad li{margin-bottom:3.5mm;font-size:10.8pt}
+.rad b{font-family:var(--display);font-size:11.3pt;color:var(--ink)}
+
+/* ── Keldunóta ─────────────────────────────────────────────── */
+.kelda{font-size:8.8pt;color:var(--ink-soft);line-height:1.4;margin:4mm 0 0}
+
+/* ── Modell og myndir: ongin ramma, bert linjur og pílar ───── */
+.mynd{width:100%;margin:0 0 3mm}
+.mynd svg{width:100%;height:auto;display:block}
+.mynd.breid{width:168mm;max-width:100%;align-self:center;margin:0 0 3mm}
+
+.myndatekstur{
+  font-size:9.8pt;
+  line-height:1.45;
+  color:var(--ink-soft);
+  margin:0 0 7mm;
+  max-width:158mm;
+}
+
+/* Gongdin: eitt stig á hvørjari linju, pílur niður í vinstru kantinum */
+.gongd-mynd{
+  margin:0 0 3mm;
+  padding:0;
+  list-style:none;
+}
+.gongd-mynd li{
+  display:grid;
+  grid-template-columns:31mm 1fr;
+  gap:0 5mm;
+  position:relative;
+  margin-left:1.7mm;
+  padding:0 0 4.6mm 6.6mm;
+  border-left:1.3px solid var(--line);
+}
+.gongd-mynd li:last-child{
+  border-left-color:transparent;
+  padding-bottom:0;
+}
+.gongd-mynd li::before{          /* prikkurin á spinunum */
+  content:"";
+  position:absolute;
+  left:-1.9mm;
+  top:1.4mm;
+  width:3.4mm;
+  height:3.4mm;
+  border-radius:50%;
+  border:1.3px solid var(--akse);
+  background:#fff;
+}
+.gongd-mynd li:not(:last-child)::after{   /* pílurin niður */
+  content:"";
+  position:absolute;
+  left:-1.7mm;
+  bottom:.9mm;
+  width:0;
+  height:0;
+  border-left:1.5mm solid transparent;
+  border-right:1.5mm solid transparent;
+  border-top:2.2mm solid var(--akse);
+}
+.gongd-mynd b{
+  font-family:var(--display);
+  font-size:11.5pt;
+  line-height:1.2;
+  color:var(--akse);
+}
+.gongd-mynd p{margin:0;font-size:10.6pt;line-height:1.4}
+.gongd-mynd .lykilmerki{
+  grid-column:2;
+  margin:1.8mm 0 0;
+  font-family:var(--display);
+  font-size:10.2pt;
+  line-height:1.35;
+  color:var(--tuff);
+}
+
+/* ── Tveir teigar við síðuna av hvørjum øðrum ──────────────── */
+.tveir{display:grid;grid-template-columns:1fr 1fr;gap:0 9mm;align-items:start;margin:0 0 5mm}
+.tveir h3{
+  font-family:var(--display);
+  font-size:12.5pt;
+  margin:0 0 2.5mm;
+  color:var(--akse);
+}
+.tveir p{font-size:10.3pt;line-height:1.45}
+.tveir .rad{margin-bottom:0}
+.tveir .rad li{font-size:10.3pt;margin-bottom:3mm}
+
+/* ── Tilfarslisti ──────────────────────────────────────────── */
+.tilfar{display:grid;grid-template-columns:1fr 1fr;gap:6mm 9mm;margin:0 0 5mm}
+.tilfar h4{
+  font-family:var(--display);
+  font-size:11.5pt;
+  margin:0 0 1.5mm;
+  color:var(--akse);
+}
+.tilfar ul{margin:0;padding-left:5mm;font-size:10.3pt;color:var(--ink-soft)}
+.tilfar li{margin-bottom:.6mm}
+
+/* ── Samanberingarkortini ──────────────────────────────────── */
+.klipp{
+  border:1.3px dashed #B6AF9C;
+  border-radius:2mm;
+  padding:4mm;
+}
+.klippmerki{
+  font-size:9pt;
+  color:var(--ink-soft);
+  margin:0 0 3mm;
+}
+
+/* Litkortið – litir við holum at hyggja ígjøgnum */
+.litkort{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.litkort figure{margin:0}
+.litkort .flatur{
+  height:25mm;
+  border-radius:1.5mm;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.litkort .hol{
+  width:17mm;height:17mm;
+  border-radius:50%;
+  border:1.2px dashed #9A937F;
+  background:#fff;
+}
+.litkort figcaption{
+  font-size:10pt;
+  text-align:center;
+  margin-top:1.8mm;
+  color:var(--ink);
+}
+
+/* Mynsturkort – krystall, poknur og kornstødd */
+.mynstur{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin:0 0 4mm}
+.mynstur.trý{grid-template-columns:repeat(3,1fr)}
+.mynstur figure{margin:0;text-align:center}
+.mynstur svg{width:100%;height:auto;display:block;border-radius:1.5mm}
+.mynstur b{display:block;font-family:var(--display);font-size:11pt;margin-top:2mm}
+.mynstur small{display:block;font-size:9.4pt;color:var(--ink-soft);line-height:1.3}
+
+/* Røðingarspælið – seks steinar at klippa út */
+.steinakort{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin:0 0 5mm}
+.steinakort figure{
+  margin:0;
+  text-align:center;
+  border:1.3px dashed #B6AF9C;
+  border-radius:2mm;
+  padding:3mm 2mm 2mm;
+}
+.steinakort svg{width:30mm;height:30mm;display:block;margin:0 auto}
+.steinakort figcaption{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:13pt;
+  color:var(--ink-soft);
+  margin-top:1mm;
+}
+
+.endar{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:11.5pt;
+  color:var(--akse);
+  margin:0 0 5mm;
+}
+
+/* ── Grótseðlar til kassan ────────────────────────────────── */
+.seðlar{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin:0 0 4mm}
+.grotkort{
+  border:1.2px dashed #B6AF9C;
+  border-radius:2mm;
+  padding:3.5mm 4mm 2.5mm;
+  min-height:50mm;
+  display:flex;
+  flex-direction:column;
+}
+.grotkort .hovd{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:2.5mm;
+}
+.grotkort .merkt{
+  font-size:7.6pt;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--tuff);
+  font-weight:700;
+}
+.grotkort .nr{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:19pt;
+  line-height:1;
+  color:var(--ink);
+}
+.grotkort .slag{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:12pt;
+  line-height:1.15;
+  margin:0 0 2.5mm;
+  min-height:11mm;
+}
+.grotkort .slag.oyð{border-bottom:1px solid var(--line);min-height:9mm;margin-bottom:4mm}
+.grotkort dl{margin:0 0 auto}
+.grotkort dt{font-size:8.4pt;color:var(--ink-soft);margin-bottom:.4mm}
+.grotkort dd{margin:0 0 2.6mm;border-bottom:1px solid var(--line);height:5mm}
+.grotkort .fót{
+  font-size:7.4pt;
+  color:var(--ink-soft);
+  margin-top:2mm;
+}
+
+/* Teljingarringur á pakkaseðlinum */
+.telja{
+  width:5mm;height:5mm;
+  border:1.2px solid var(--line);
+  border-radius:50%;
+  display:inline-block;
+}
+
+/* Merki til lokið á kassanum */
+.kassamerki{
+  border:1.4px solid var(--line);
+  border-radius:3mm;
+  padding:10mm 11mm;
+  background:var(--paper);
+}
+.kassamerki h3{
+  font-family:var(--display);
+  font-size:26pt;
+  line-height:1.05;
+  margin:0 0 2mm;
+}
+.kassamerki .undir{font-family:var(--display);font-size:13pt;color:var(--ink-soft);margin:0 0 6mm}
+.kassamerki .rað{display:grid;grid-template-columns:1fr 26mm;gap:7mm;align-items:end}
+.kassamerki ul{margin:0;padding-left:5mm;font-size:10.2pt;color:var(--ink-soft)}
+.kassamerki svg.qr{width:26mm;height:26mm;display:block}
+
+/* ── Smávegis ──────────────────────────────────────────────── */
+.vink{font-size:10pt;color:var(--ink-soft);margin:4mm 0 0}
+.saman{display:grid;grid-template-columns:1fr 1fr;gap:7mm}
+hr.lett{border:0;border-top:1px solid var(--line-soft);margin:7mm 0}
