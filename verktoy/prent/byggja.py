@@ -10,7 +10,7 @@ ADRESSUR = {
     "loggbok-foroyar-til": "https://snar.fo/jardfrida/gongdir/hvussu-vordu-foroyar-til",
     "loggbok-eldgosini": "https://snar.fo/jardfrida/gongdir/ta-eldgosini-sloknadu",
     "loggbok-tunnil": "https://snardev.ctrl.fo/jardfrida/gongdir/tunnil",
-    "laerarvegleiding": "https://snardev.ctrl.fo/jardfrida",
+    "laerarvegleiding": "https://snar.fo/jardfrida",
     "samanberingarkort": "https://snardev.ctrl.fo/jardfrida",
     "kassatilfar": "https://snardev.ctrl.fo/jardfrida",
 }
